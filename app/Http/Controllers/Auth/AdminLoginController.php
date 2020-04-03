@@ -27,10 +27,17 @@ class AdminLoginController extends Controller
   	]);
 
   	if(Auth::guard('admin')->attempt(['email' => $request->email, 'password' => $request->password], $request->remember)) {
-  		return redirect()->intended(route('admin.dashboard'));
+		return redirect()->intended(route('admin.dashboard'));
   	}
 
 	$errors = new MessageBag(['email' => ['Email and/or password invalid.']]); // if Auth::attempt fails (wrong credentials) create a new message bag instance.
   	return redirect()->back()->withInput($request->only('email','remember'))->withErrors($errors);
+  }
+
+  
+  public function logout()
+  {
+	  Auth::guard('admin')->logout();
+	  return redirect('/');
   }
 }

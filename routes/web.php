@@ -21,9 +21,13 @@ Auth::routes(['register' => false]);
 
 Route::get('/home', 'HomeController@index')->name('home');
 // Route::get('/admin', 'AdminController@index')->name('AdminHome');
+Route::get('/users/logout', 'Auth\LoginController@userLogout')->name('user.logout');
 
 Route::group(['prefix' => 'admin' , 'as' => 'admin.'], function(){
-	Route::get('/', 'AdminController@index')->name('dashboard');
 	Route::get('/login', 'Auth\AdminLoginController@showLoginForm')->name('login');
 	Route::post('/login', 'Auth\AdminLoginController@login')->name('login.submit');
+	Route::get('/', 'AdminController@index')->name('dashboard');
+	Route::get('/logout', 'Auth\AdminLoginController@logout')->name('logout');
+
+
 });
