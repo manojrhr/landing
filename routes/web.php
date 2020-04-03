@@ -20,3 +20,10 @@ Route::get('/', function () {
 Auth::routes(['register' => false]);
 
 Route::get('/home', 'HomeController@index')->name('home');
+// Route::get('/admin', 'AdminController@index')->name('AdminHome');
+
+Route::group(['prefix' => 'admin' , 'as' => 'admin.'], function(){
+	Route::get('/', 'AdminController@index')->name('dashboard');
+	Route::get('/login', 'Auth\AdminLoginController@showLoginForm')->name('login');
+	Route::post('/login', 'Auth\AdminLoginController@login')->name('login.submit');
+});
