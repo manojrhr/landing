@@ -27,3 +27,7 @@ Route::group([
 		Route::get('profile', 'Api\AuthController@profile');
 	});
 });
+
+Route::group(['middleware' => 'auth:api'], function() {
+	Route::post('update_profile', 'Api\UserController@update_profile');
+});
