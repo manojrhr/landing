@@ -17,7 +17,7 @@ Route::get('/', function () {
     return view('coming');
 })->name('root');
 
-Auth::routes();
+Auth::routes(['verify' => true]);
 
 Route::get('/home', 'HomeController@index')->name('home');
 // Route::get('/admin', 'AdminController@index')->name('AdminHome');
@@ -31,3 +31,15 @@ Route::group(['prefix' => 'admin' , 'as' => 'admin.'], function(){
 
 	Route::get('/users', 'Web\Admin\UserController@index')->name('users');
 });
+
+
+Route::get('/testmail', function () {
+	Mail::send([], [], function ($message) {
+		$message->to('manojrhr@gmail.com')
+		->subject('Testing email from skiski')
+    // here comes what you want
+    // ->setBody('Hi, welcome user!'); // assuming text/plain
+    // or:
+    ->setBody('<h1>Hi, welcome user!</h1>', 'text/html'); // for HTML rich messages
+});
+})->name('testmail');
