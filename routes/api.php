@@ -14,20 +14,18 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::group([
-	'prefix' => 'auth'
-], function () {
+Route::group(['prefix' => 'auth'], function () {
 	Route::post('login', 'Api\AuthController@login');
 	Route::post('signup', 'Api\AuthController@signup');
+	Route::post('signup', 'Api\AuthController@signup');
+	Route::post('forgot_password', 'Api\AuthController@forgot');
 
-	Route::group([
-		'middleware' => 'auth:api'
-	], function() {
+	Route::group(['middleware' => 'auth:api'], function() {
 		Route::get('logout', 'Api\AuthController@logout');
-		Route::get('profile', 'Api\AuthController@profile');
 	});
 });
 
 Route::group(['middleware' => 'auth:api'], function() {
+	Route::get('profile', 'Api\UserController@profile');
 	Route::post('update_profile', 'Api\UserController@update_profile');
 });

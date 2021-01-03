@@ -37,4 +37,14 @@ class UserController extends Controller
     		'message' => 'Profile successfully updated!'
     	], 201);
     }
+    
+    /**
+     * Get the authenticated User
+     *
+     * @return [json] user object
+     */
+    public function profile(Request $request)
+    {
+        return response()->json($request->user());
+    }
 }

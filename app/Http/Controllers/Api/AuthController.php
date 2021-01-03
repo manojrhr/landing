@@ -7,6 +7,8 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Carbon\Carbon;
 use App\User;
+use App\Http\Requests\ResetPasswordRequest;
+use Illuminate\Support\Facades\Password;
 
 class AuthController extends Controller
 {
@@ -100,13 +102,14 @@ class AuthController extends Controller
     	]);
     }
 
-    /**
-     * Get the authenticated User
-     *
-     * @return [json] user object
-     */
-    public function profile(Request $request)
-    {
-    	return response()->json($request->user());
+    public function forgot() {
+        $credentials = request()->validate(['email' => 'required|email|exists:users']);
+
+        Password::sendResetLink($credentials);
+
+        return response()->json([
+            "success" => true,
+            "message" => "Reset password link sent on your email id."
+        ]);
     }
 }
