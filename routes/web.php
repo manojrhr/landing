@@ -18,6 +18,7 @@ Route::get('/', function () {
 })->name('root');
 
 Auth::routes(['verify' => true]);
+Route::get('/testapi', 'Web\HomeController@api')->name('api');
 
 Route::get('/profile', 'HomeController@index')->name('profile');
 Route::get('/home', 'Web\HomeController@index')->name('home');

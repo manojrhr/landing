@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Web;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\User;
 
 class HomeController extends Controller
 {
@@ -25,5 +26,10 @@ class HomeController extends Controller
     public function index()
     {
         return view('web.home');
+    }
+    public function api()
+    {
+        $user = User::find(1)->get();
+        return app()->call('App\Http\Controllers\Api\UserController@profile', [$user]);
     }
 }

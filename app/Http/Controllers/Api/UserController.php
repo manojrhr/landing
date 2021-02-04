@@ -15,12 +15,13 @@ class UserController extends Controller
     public function update_profile(Request $request)
     {
     	$request->validate([
-    		'name' => 'required|string',
-    		'password' => 'required|string',
-    		'avatar' => 'required|image:jpeg,png,jpg|max:2048'
+    		'name' => 'string|max:255',
+    		'password' => 'string',
+    		'avatar' => 'image:jpeg,png,jpg|max:2048'
     	]);
     	$user = $request->user();
-    	$user->name = $request->password;
+    	$user->name = $request->name;
+        $user->phone = $request->phone;
     	$user->password = bcrypt($request->password);
 
     	if($request->hasFile('avatar')){
@@ -28,7 +29,7 @@ class UserController extends Controller
     		$filename = time() .'.'. $avatar->getClientOriginalExtension();
     		$photo = Image::make($avatar)->resize(300, 300)->save(public_path('images/avatar/'.$filename));
 
-    		$user->avatar = $filename;
+    		$user->avatar = 'images/avatar/'.$filename;
     	}
 
 		$user->save();
