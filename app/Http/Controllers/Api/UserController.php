@@ -9,19 +9,31 @@ use Carbon\Carbon;
 use App\User;
 use Image;
 use Storage;
+use Validator;
+use App\Repositories\UserRepository as UserRepo;
 
 class UserController extends Controller
 {
     public function update_profile(Request $request)
     {
-    	$request->validate([
+    	$validator = Validator::make($request->all(), [
     		'name' => 'string|max:255',
     		'password' => 'string',
-    		'avatar' => 'image:jpeg,png,jpg|max:2048'
+    		'avatar' => 'image:jpeg,png,jpg|max:2048',
+            'phone' => 'image:jpeg,png,jpg|max:2048'
     	]);
+
+        if ($validator->fails()) {
+
+            $errors = implode(',', $validator->messages()->all());
+
+            $response_array = ['success' => false , 'error' => Helper::error_message(101) ,'error_code' => 101];
+        }
+        $m_c_code = $request->c_code !='' ? $request->c_code : '+1';
+
     	$user = $request->user();
     	$user->name = $request->name;
-        $user->phone = $request->phone;
+        $user->phone = $m_c_code.$request->phone;
     	$user->password = bcrypt($request->password);
 
     	if($request->hasFile('avatar')){
@@ -32,11 +44,12 @@ class UserController extends Controller
     		$user->avatar = 'images/avatar/'.$filename;
     	}
 
-		$user->save();
-    	return response()->json([
-    		'success' => true,
-    		'message' => 'Profile successfully updated!'
-    	], 201);
+		if($user->save()){
+            $response_array = ['success' => true, 'message' => 'Something went wrong!'];
+        } else {
+            $response_array = ['success' => true, 'message' => 'Profile successfully updated!'];
+        }
+    	return response()->json($response_array, 201);
     }
     
     /**
