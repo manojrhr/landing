@@ -29,7 +29,7 @@ Route::get('/home', 'Web\HomeController@index')->name('home');
 Route::get('/users/logout', 'Auth\LoginController@userLogout')->name('user.logout');
 
 Route::group(['prefix' => 'user' , 'as' => 'user.'], function(){
-	Route::get('/profile', 'web\UserController@show_profile')->name('profile');
+	Route::get('/profile', 'Web\UserController@show_profile')->name('profile');
 });
 
 Route::group(['prefix' => 'admin' , 'as' => 'admin.'], function(){
