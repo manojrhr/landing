@@ -671,9 +671,9 @@ h1, h2, h3, h4, h5,
       font-size: 3.5rem;
       color: #06485e; }
     .section-bg.style-1 h3 {
-	font-size: 20px;
-	color: #fff;
-	margin-bottom: 30px;
+  font-size: 20px;
+  color: #fff;
+  margin-bottom: 30px;
        }
     .section-bg.style-1 p {
       color: #fff;
@@ -1664,40 +1664,40 @@ h1, h2, h3, h4, h5,
   padding-bottom: 20px;
   }
   .login-register-main .card-header {
-	text-align: center;
-	font-weight: bold;
-	font-size: 25px;
-	background-color: #06485e;
-	color: #fff;
+  text-align: center;
+  font-weight: bold;
+  font-size: 25px;
+  background-color: #06485e;
+  color: #fff;
 }
 .login-register-main .form-group .btn.btn-primary {
-	background-color: #06485e;
-	border: #06485e;
+  background-color: #06485e;
+  border: #06485e;
 }
 .login-register-main .form-group .btn.btn-link
 {
-	color: #06485e;
+  color: #06485e;
 }
 .login-register-main .form-check .form-check-label {
-	margin-bottom: 0;
-	font-size: 13px;
-	line-height: 0;
-	color: #000;
+  margin-bottom: 0;
+  font-size: 13px;
+  line-height: 0;
+  color: #000;
 }
 .login-register-main .form-check .form-check-input {
-	position: relative;
-	margin: ;
-	margin-top: 0;
+  position: relative;
+  margin: ;
+  margin-top: 0;
 }
 .footer .footer-content ul li a, .footer .footer-content p, .footer .footer-content p a
 {
-	color: #000;
+  color: #000;
 }
 .pay-itself-section .text-serif.text-primary {
-	font-size: 54px;
+  font-size: 54px;
 }
 .pay-itself-section p .img-fluid {
-	margin-top: 40px;
+  margin-top: 40px;
 }
 .site-navigation ul.site-menu li a.nav-link {
     text-transform: uppercase;

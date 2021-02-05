@@ -31,7 +31,49 @@
 			<div class="site-mobile-menu-body"></div>
 		</div>
 		<div class="header-top bg-light">
-			<div class="site-navbar py-2 js-sticky-header site-navbar-target d-none pl-0 d-lg-block" role="banner">
+			<div class="container-fluid">
+				<div class="row align-items-center">
+					<div class="col-6 col-lg-3">
+						<a class="logo" href="{{ route('home') }}">
+							<img src="{{ asset('assets/web/images/logo.png') }}" alt="Image" class="img-fluid">
+						</a>
+					</div>
+					<div class="col-lg-9 d-none d-lg-block">
+						<nav class="site-navigation position-relative text-right" role="navigation">
+							<ul class="site-menu main-menu js-clone-nav mr-auto d-none pl-0 d-lg-block navbar-nav ml-auto">
+									<li class="active">
+										<a href="index.html" class="nav-link text-left">List you car</a>
+									</li>
+									<li>
+										<a href="about.html" class="nav-link text-left">Learn more</a>
+									</li>
+									@if (!Auth::guest())
+									<li>
+										<a href="{{ route('user.profile') }}" class="nav-link text-left">{{ Auth::user()->name }}</a>
+									</li>	
+									<li>
+										<a href="{{ route('user.logout') }}" class="nav-link text-left">{{ __('Logout') }}</a>
+									</li>	
+									@endif
+									@guest
+									<li>
+										<a href="{{ route('login') }}" class="nav-link text-left">Login</a>
+									</li>
+									<li>
+										<a href="{{ route('register') }}" class="nav-link text-left">Sign up</a>
+									</li>
+			                        @endguest
+
+								</nav>
+							</div>
+
+
+							<div class="col-6 d-block d-lg-none text-right">
+								<a href="#" class="d-inline-block d-lg-none site-menu-toggle js-menu-toggle text-black active"><span class="icon-menu h3"></span></a>
+							</div>
+						</div>
+					</div>
+			<!-- <div class="site-navbar py-2 js-sticky-header site-navbar-target d-none pl-0 d-lg-block" role="banner">
 				<div class="container-fluid">
 					<div class="d-flex">
 						<div class="col-6 col-lg-3">
@@ -56,17 +98,13 @@
 										<a href="{{ route('register') }}" class="nav-link text-left">Sign up</a>
 									</li>
 			                        @endguest
-									<!-- <li><a href="blog.html" class="nav-link text-left">Blog</a></li> 
-									<li>
-										<a href="contact.html" class="nav-link text-left">Contact</a>
-									</li>-->
 								</ul> </ul>
 							</nav>
 						</div>
 					</div>
 				</div>
 			</div>
-		</div>
+		</div> -->
 
       	@yield('content')
 
