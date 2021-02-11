@@ -106,6 +106,7 @@
 			</div>
 		</div> -->
 
+      	@include('includes.flash-message')
       	@yield('content')
 
 		<div class="footer bg-light">

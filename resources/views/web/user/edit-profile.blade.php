@@ -41,7 +41,7 @@
 							</div>
 							<div class="col-sm-9 text-secondary">
                                 <input type="text" class="form-control" 
-                                    id="name" placeholder="Full Name" value="{{ Auth::user()->name }}">
+                                    id="name" name="name" placeholder="Full Name" value="{{ Auth::user()->name }}">
 							</div>
 						</div>
 						<hr>
@@ -51,7 +51,7 @@
 							</div>
 							<div class="col-sm-9 text-secondary">
                                 <input type="email" class="form-control" 
-                                    id="email" placeholder="Email" value="{{ Auth::user()->email }}">
+                                    id="email" name="email" placeholder="Email" value="{{ Auth::user()->email }}">
 							</div>
 						</div>
 						<hr>
@@ -61,7 +61,7 @@
 							</div>
 							<div class="col-sm-9 text-secondary">
                                 <input type="text" class="form-control" 
-                                    id="phone" placeholder="Phone" value="{{ Auth::user()->phone }}">
+                                    id="phone" name="phone" placeholder="Phone" value="{{ Auth::user()->phone }}">
 							</div>
 						</div>
 						<!-- <hr>
