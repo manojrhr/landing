@@ -30,6 +30,8 @@ Route::get('/users/logout', 'Auth\LoginController@userLogout')->name('user.logou
 
 Route::group(['prefix' => 'user' , 'as' => 'user.'], function(){
 	Route::get('/profile', 'Web\UserController@show_profile')->name('profile');
+	Route::get('/update-profile', 'Web\UserController@edit_profile')->name('edit_profile');
+	Route::post('/update-profile', 'Web\UserController@update_profile')->name('update_profile');
 });
 
 Route::group(['prefix' => 'admin' , 'as' => 'admin.'], function(){

@@ -17,6 +17,7 @@ class CreateJetSkisTable extends Migration
             $table->id();
             $table->string('title');
             $table->text('description');
+            $table->float('price');
             $table->tinyInteger('captain');
             $table->Integer('capacity');
             $table->text('images');

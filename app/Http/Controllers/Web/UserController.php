@@ -26,4 +26,14 @@ class UserController extends Controller
     {
         return view('web.user.profile');
     }
+
+    public function edit_profile()
+    {
+        return view('web.user.edit-profile');
+    }
+
+    public function update_profile(Request $request)
+    {
+        dd($request);
+    }
 }
