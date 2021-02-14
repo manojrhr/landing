@@ -183,12 +183,3 @@
     </div>
     </div>
 @endsection
-@section('scripts')
-<script type="text/javascript">
-  $(document).ready(function(){
-    $('.send-booking-inquiry-btn').click(function(){
-      alertify.success('Success message');
-    });
-  });
-</script>
-@endsection
