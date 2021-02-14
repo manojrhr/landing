@@ -1,8 +1,23 @@
 @extends('layouts/web/web')
 
+@section('styles')
+<style type="text/css">
+	.profile-header{
+		height: 200px;
+	}
+</style>
+@endsection
+
 @section('content')
-<div class="profile-header">
-	<img src="{{ asset('assets/web/images/profile-cover.jpg') }}">
+<div class="profile-header" style="background-image: url('{{ asset('assets/web/images/profile-cover.jpg')}}');">
+	<!-- <img src="{{ asset('assets/web/images/profile-cover.jpg') }}"> -->
+    <div class="container">
+        <div class="row align-items-center text-center">
+            <div class="col-lg-12 mt-5" data-aos="fade-up">
+                <h1 style="color: white;">Update Profile</h1>
+            </div>
+        </div>
+    </div>
 </div>
 <div class="container pt-5">
 	<div class="main-body">
@@ -14,9 +29,10 @@
 					@csrf
 						<div class="d-flex flex-column align-items-center text-center">
 							<img src="{{ url('/'.Auth::user()->avatar) }}" alt="Admin" class="rounded-circle" width="150">
+							<input type="file" name="avatar" id="avatar">
 							<div class="mt-3">
-								<h4>John Doe</h4>
-								<p class="text-muted font-size-sm">Joined Oct 2020</p>
+								<h4>{{ Auth::user()->name }}</h4>
+								<p class="text-muted font-size-sm">{{ date('d M Y', strtotime(Auth::user()->created_at)) }}</p>
 								<button class="btn btn-outline-primary">Message</button>
 							</div>
 						</div>
@@ -51,7 +67,7 @@
 							</div>
 							<div class="col-sm-9 text-secondary">
                                 <input type="email" class="form-control" 
-                                    id="email" name="email" placeholder="Email" value="{{ Auth::user()->email }}">
+                                    id="email" name="email" placeholder="Email" value="{{ Auth::user()->email }}" readonly="">
 							</div>
 						</div>
 						<hr>
@@ -64,6 +80,36 @@
                                     id="phone" name="phone" placeholder="Phone" value="{{ Auth::user()->phone }}">
 							</div>
 						</div>
+						<hr>
+						<div class="row">
+							<div class="col-sm-3">
+								<h6 class="mb-0">Current Password</h6>
+							</div>
+							<div class="col-sm-9 text-secondary">
+                                <input type="password" class="form-control" 
+                                    id="current_password" name="current_password" placeholder="Current Password" value="">
+							</div>
+						</div>
+						<hr>
+						<div class="row">
+							<div class="col-sm-3">
+								<h6 class="mb-0">New Password</h6>
+							</div>
+							<div class="col-sm-9 text-secondary">
+                                <input type="password" class="form-control" 
+                                    id="new_password" name="new_password" placeholder="New Password" value="">
+							</div>
+						</div>
+						<hr>
+						<div class="row">
+							<div class="col-sm-3">
+								<h6 class="mb-0">Confirm Password</h6>
+							</div>
+							<div class="col-sm-9 text-secondary">
+                                <input type="password" class="form-control" 
+                                    id="new_confirm_password" name="new_confirm_password" placeholder="Confirm New Password" value="">
+							</div>
+						</div>
 						<!-- <hr>
 						<div class="row">
 							<div class="col-sm-3">
@@ -74,7 +120,7 @@
                                     id="phone" placeholder="Phone" value="Bay Area, San Francisco, CA">
 							</div>
 						</div> -->
-						<hr>
+						<!-- <hr>
 						<div class="row">
 							<div class="col-sm-3">
 								<h6 class="mb-0">About</h6>
@@ -82,7 +128,7 @@
 							<div class="col-sm-9 text-secondary">
 								<textarea id="about" name="about" rows="4" cols="50">{{ Auth::user()->about }}</textarea>
 							</div>
-						</div>
+						</div> -->
 						<hr>
 						<div class="row">
 							<div class="col-sm-3">

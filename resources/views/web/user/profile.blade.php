@@ -1,8 +1,23 @@
 @extends('layouts/web/web')
 
+@section('styles')
+<style type="text/css">
+	.profile-header{
+		height: 200px;
+	}
+</style>
+@endsection
+
 @section('content')
-<div class="profile-header">
-	<img src="{{ asset('assets/web/images/profile-cover.jpg') }}">
+<div class="profile-header" style="background-image: url('{{ asset('assets/web/images/profile-cover.jpg')}}');">
+	<!-- <img src="{{ asset('assets/web/images/profile-cover.jpg') }}"> -->
+    <div class="container">
+        <div class="row align-items-center text-center">
+            <div class="col-lg-12 mt-5" data-aos="fade-up">
+                <h1 style="color: white;">Profile</h1>
+            </div>
+        </div>
+    </div>
 </div>
 <div class="container pt-5">
 	<div class="main-body">
@@ -31,8 +46,17 @@
 				</div>
 			</div>
 			<div class="col-md-8">
+				<div>
+				</div>
 				<div class="card mb-3">
 					<div class="card-body">
+						<div class="row">
+							<div class="col-sm-10 text-secondary">
+							</div>
+							<div class="col-sm-2 text-secondary">
+								<button class="btn btn-primary float-right" onclick="window.location='{{ route("user.edit_profile") }}'">Update Profile</button>
+							</div>
+						</div>
 						<div class="row">
 							<div class="col-sm-3">
 								<h6 class="mb-0">Full Name</h6>

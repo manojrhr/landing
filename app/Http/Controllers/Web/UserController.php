@@ -3,8 +3,9 @@
 namespace App\Http\Controllers\Web;
 
 use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
 use App\Repositories\UserRepository as UserRepo;
+use Illuminate\Http\Request;
+use Redirect;
 
 class UserController extends Controller
 {
@@ -39,11 +40,12 @@ class UserController extends Controller
         if($response_array['success'] === true){
             $request->session()->flash('message.level', 'success');
             $request->session()->flash('message.content', 'Profile updated successfully!');
+            return redirect('/user/profile');
         } else {
-            $request->session()->flash('message.level', 'danger');
+            $request->session()->flash('message.level', 'error');
             $request->session()->flash('message.content', $response_array['message']);
+            return Redirect::back();
         }
-        return redirect('/user/profile');
         // return view('web.user.profile');
     }
 }

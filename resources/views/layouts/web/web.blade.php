@@ -19,6 +19,17 @@
 	<link rel="stylesheet" href="{{ asset('assets/web/css/aos.css') }}">
 	<link href="{{ asset('assets/web/css/jquery.mb.ytplayer.min.css') }}" media="all" rel="stylesheet" type="text/css">
 	<link rel="stylesheet" href="{{ asset('assets/web/css/style.css') }}">
+
+	<!-- CSS -->
+	<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/css/alertify.min.css"/>
+	<!-- Default theme -->
+	<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/css/themes/default.min.css"/>
+	<!-- Semantic UI theme -->
+	<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/css/themes/semantic.min.css"/>
+	<!-- Bootstrap theme -->
+	<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/css/themes/bootstrap.min.css"/>
+
+	@yield('styles')
 </head>
 <body data-spy="scroll" data-target=".site-navbar-target" data-offset="300">
 	<div class="site-wrap">
@@ -175,11 +186,15 @@
 	<script src="{{ asset('assets/web/js/jquery.sticky.js') }}"></script>
 	<script src="{{ asset('assets/web/js/jquery.mb.ytplayer.min.js') }}"></script>
 	<script src="{{ asset('assets/web/js/main.js') }}"></script>
-	<script async src="gtag/js_id_ua-23581568-13.js"></script>
+	<!-- <script async src="gtag/js_id_ua-23581568-13.js"></script> -->
+	<!-- Alertify -->
+	<script src="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/alertify.min.js"></script>
 	<script>
 		window.dataLayer = window.dataLayer || [];
 		function gtag(){dataLayer.push(arguments);}
 		gtag('js', new Date());
 		gtag('config', 'UA-23581568-13');
 	</script>
-	</html>
+	@include('includes.flash-message')
+	@yield('scripts')
+</html>

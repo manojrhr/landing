@@ -27,6 +27,7 @@ class HomeController extends Controller
     {
         return view('web.home');
     }
+    
     public function api()
     {
         $user = User::find(1)->get();

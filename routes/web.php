@@ -16,14 +16,20 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('coming');
 })->name('root');
-Route::get('/jetskis', function () {
-    return view('web.listing');
-})->name('root');
+
+Route::get('/jetskies', function () {
+	$rows = array([],[],[],[],[],[]);
+    return view('web.listing', compact('rows'));
+})->name('listing');
+
+Route::get('/jetski-details', function () {
+    return view('web.details');
+})->name('details');
 
 Auth::routes(['verify' => true]);
 Route::get('/testapi', 'Web\HomeController@api')->name('api');
 
-Route::get('/profile', 'HomeController@index')->name('profile');
+// Route::get('/profile', 'HomeController@index')->name('profile');
 Route::get('/home', 'Web\HomeController@index')->name('home');
 // Route::get('/admin', 'AdminController@index')->name('AdminHome');
 Route::get('/users/logout', 'Auth\LoginController@userLogout')->name('user.logout');
