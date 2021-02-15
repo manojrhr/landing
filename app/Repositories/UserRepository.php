@@ -51,6 +51,7 @@ class UserRepository {
         }
         
         if($request->hasFile('avatar')){
+            unlink($user->avatar);
             $avatar = $request->file('avatar');
             $filename = time() .'.'. $avatar->getClientOriginalExtension();
             $photo = Image::make($avatar)->resize(300, 300)->save(public_path('images/avatar/'.$filename));
