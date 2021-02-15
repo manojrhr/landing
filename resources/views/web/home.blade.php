@@ -36,10 +36,10 @@
 					</div>
 					<div class="col-md-6">
 						<span class="text-serif text-primary">About Us</span>
-						<h3 class="heading-92913 text-black">Welcome To Our Website</h3>
+						<h3 class="heading-92913 text-black">Welcome To SkiSki</h3>
 						<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ipsum, illum, quasi. Odit velit deserunt eligendi unde, enim. Enim fugiat.</p>
 						<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium eius ullam impedit architecto debitis facilis!</p>
-						<p><a href="#" class="btn btn-primary py-3 px-4">Learn More</a></p>
+						<p><a href="{{ route('listing') }}" class="btn btn-primary py-3 px-4">Explore Jet Skies</a></p>
 					</div>
 				</div>
 			</div>
@@ -124,104 +124,116 @@
 				<div class="row">
 					<div class="col-md-6 col-lg-4 mb-4">
 						<div class="service-39381">
-							<img src=" {{ asset('assets/web/images/hero_1.jpg') }}" alt="Image" class="img-fluid">
-							<div class="p-4">
-								<h3><a href="#"><span class="icon-room mr-1 text-primary"></span> Croatia &mdash; Columbia</a></h3>
-								<div class="d-flex">
-									<div class="mr-auto">
-										<span class="icon-date_range"></span>
-										Sep. 05 &mdash; Oct. 15
-									</div>
-									<div class="ml-auto price">
-										<span class="bg-primary">$600</span>
-									</div>
+							<a href="{{ route('listing') }}">
+								<img src=" {{ asset('assets/web/images/hero_1.jpg') }}" alt="Image" class="img-fluid">
+								<div class="p-4">
+									<h3><a href="{{ route('listing') }}"><span class="icon-room mr-1 text-primary"></span> Croatia &mdash; Columbia</a></h3>
+									<!-- <div class="d-flex">
+										<div class="mr-auto">
+											<span class="icon-date_range"></span>
+											Sep. 05 &mdash; Oct. 15
+										</div>
+										<div class="ml-auto price">
+											<span class="bg-primary">$600</span>
+										</div>
+									</div> -->
 								</div>
-							</div>
+							</a>
 						</div>
 					</div>
 					<div class="col-md-6 col-lg-4 mb-4">
 						<div class="service-39381">
-							<img src=" {{ asset('assets/web/images/hero_2.jpg') }}" alt="Image" class="img-fluid">
-							<div class="p-4">
-								<h3><a href="#"><span class="icon-room mr-1 text-primary"></span> Croatia &mdash; Columbia</a></h3>
-								<div class="d-flex">
-									<div class="mr-auto">
-										<span class="icon-date_range"></span>
-										Sep. 05 &mdash; Oct. 15
-									</div>
-									<div class="ml-auto price">
-										<span class="bg-primary">$600</span>
-									</div>
+							<a href="{{ route('listing') }}">
+								<img src=" {{ asset('assets/web/images/hero_2.jpg') }}" alt="Image" class="img-fluid">
+								<div class="p-4">
+									<h3><a href="{{ route('listing') }}"><span class="icon-room mr-1 text-primary"></span> Croatia &mdash; Columbia</a></h3>
+									<!-- <div class="d-flex">
+										<div class="mr-auto">
+											<span class="icon-date_range"></span>
+											Sep. 05 &mdash; Oct. 15
+										</div>
+										<div class="ml-auto price">
+											<span class="bg-primary">$600</span>
+										</div>
+									</div> -->
 								</div>
-							</div>
+							</a>
 						</div>
 					</div>
 					<div class="col-md-6 col-lg-4 mb-4">
 						<div class="service-39381">
-							<img src=" {{ asset('assets/web/images/hero_1.jpg') }}" alt="Image" class="img-fluid">
-							<div class="p-4">
-								<h3><a href="#"><span class="icon-room mr-1 text-primary"></span> Croatia &mdash; Columbia</a></h3>
-								<div class="d-flex">
-									<div class="mr-auto">
-										<span class="icon-date_range"></span>
-										Sep. 05 &mdash; Oct. 15
-									</div>
-									<div class="ml-auto price">
-										<span class="bg-primary">$600</span>
-									</div>
+							<a href="{{ route('listing') }}">
+								<img src=" {{ asset('assets/web/images/hero_1.jpg') }}" alt="Image" class="img-fluid">
+								<div class="p-4">
+									<h3><a href="{{ route('listing') }}"><span class="icon-room mr-1 text-primary"></span> Croatia &mdash; Columbia</a></h3>
+									<!-- <div class="d-flex">
+										<div class="mr-auto">
+											<span class="icon-date_range"></span>
+											Sep. 05 &mdash; Oct. 15
+										</div>
+										<div class="ml-auto price">
+											<span class="bg-primary">$600</span>
+										</div>
+									</div> -->
 								</div>
-							</div>
+							</a>
 						</div>
 					</div>
 					<div class="col-md-6 col-lg-4 mb-4">
 						<div class="service-39381">
-							<img src=" {{ asset('assets/web/images/hero_2.jpg') }}" alt="Image" class="img-fluid">
-							<div class="p-4">
-								<h3><a href="#"><span class="icon-room mr-1 text-primary"></span> Croatia &mdash; Columbia</a></h3>
-								<div class="d-flex">
-									<div class="mr-auto">
-										<span class="icon-date_range"></span>
-										Sep. 05 &mdash; Oct. 15
-									</div>
-									<div class="ml-auto price">
-										<span class="bg-primary">$600</span>
-									</div>
+							<a href="{{ route('listing') }}">
+								<img src=" {{ asset('assets/web/images/hero_2.jpg') }}" alt="Image" class="img-fluid">
+								<div class="p-4">
+									<h3><a href="{{ route('listing') }}"><span class="icon-room mr-1 text-primary"></span> Croatia &mdash; Columbia</a></h3>
+									<!-- <div class="d-flex">
+										<div class="mr-auto">
+											<span class="icon-date_range"></span>
+											Sep. 05 &mdash; Oct. 15
+										</div>
+										<div class="ml-auto price">
+											<span class="bg-primary">$600</span>
+										</div>
+									</div> -->
 								</div>
-							</div>
+							</a>
 						</div>
 					</div>
 					<div class="col-md-6 col-lg-4 mb-4">
 						<div class="service-39381">
-							<img src=" {{ asset('assets/web/images/hero_1.jpg') }}" alt="Image" class="img-fluid">
-							<div class="p-4">
-								<h3><a href="#"><span class="icon-room mr-1 text-primary"></span> Croatia &mdash; Columbia</a></h3>
-								<div class="d-flex">
-									<div class="mr-auto">
-										<span class="icon-date_range"></span>
-										Sep. 05 &mdash; Oct. 15
-									</div>
-									<div class="ml-auto price">
-										<span class="bg-primary">$600</span>
-									</div>
+							<a href="{{ route('listing') }}">
+								<img src=" {{ asset('assets/web/images/hero_1.jpg') }}" alt="Image" class="img-fluid">
+								<div class="p-4">
+									<h3><a href="{{ route('listing') }}"><span class="icon-room mr-1 text-primary"></span> Croatia &mdash; Columbia</a></h3>
+									<!-- <div class="d-flex">
+										<div class="mr-auto">
+											<span class="icon-date_range"></span>
+											Sep. 05 &mdash; Oct. 15
+										</div>
+										<div class="ml-auto price">
+											<span class="bg-primary">$600</span>
+										</div>
+									</div> -->
 								</div>
-							</div>
+							</a>
 						</div>
 					</div>
 					<div class="col-md-6 col-lg-4 mb-4">
 						<div class="service-39381">
-							<img src=" {{ asset('assets/web/images/hero_2.jpg') }}" alt="Image" class="img-fluid">
-							<div class="p-4">
-								<h3><a href="#"><span class="icon-room mr-1 text-primary"></span> Croatia &mdash; Columbia</a></h3>
-								<div class="d-flex">
-									<div class="mr-auto">
-										<span class="icon-date_range"></span>
-										Sep. 05 &mdash; Oct. 15
-									</div>
-									<div class="ml-auto price">
-										<span class="bg-primary">$600</span>
-									</div>
+							<a href="{{ route('listing') }}">
+								<img src=" {{ asset('assets/web/images/hero_2.jpg') }}" alt="Image" class="img-fluid">
+								<div class="p-4">
+									<h3><a href="{{ route('listing') }}"><span class="icon-room mr-1 text-primary"></span> Croatia &mdash; Columbia</a></h3>
+									<!-- <div class="d-flex">
+										<div class="mr-auto">
+											<span class="icon-date_range"></span>
+											Sep. 05 &mdash; Oct. 15
+										</div>
+										<div class="ml-auto price">
+											<span class="bg-primary">$600</span>
+										</div>
+									</div> -->
 								</div>
-							</div>
+							</a>
 						</div>
 					</div>
 				</div>

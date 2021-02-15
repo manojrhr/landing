@@ -1,8 +1,13 @@
 @extends('layouts/web/web')
 
+@section('styles')
+  <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.2.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="{{ asset('assets/web/css/starrr.css') }}">
+@endsection
+
 @section('content')
    
-         <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
+<div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
   <div class="carousel-inner">
     <div class="carousel-item active">
       <img class="d-block w-100" src="https://skiski.ca/web/images/slider-1.jpg" alt="First slide">
@@ -32,7 +37,7 @@
           </div>
           <div class="row reviews-booking-tab">
             <div class="col-6">
-              <span><img class="" src="https://skiski.ca/web/images/review-stars.png" alt="reviews"> 6 reviews</span>
+              <span><div class='starrr' id='star1'></div> 6 reviews</span>
             </div>
             <div class="col-6">
               <span><i class="fa fa-check-circle" aria-hidden="true"></i> 151 bookings</span>
@@ -182,4 +187,14 @@
       </div>
     </div>
     </div>
+@endsection
+
+@section('scripts')
+  <script src="{{ asset('assets/web/js/starrr.js') }}"></script>
+  <script>
+      $('#star1').starrr({
+        rating: 4,
+        readOnly: true
+      });
+  </script>
 @endsection
