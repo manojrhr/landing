@@ -18,7 +18,8 @@
         "laravel/passport": "~9.0",
         "laravel/tinker": "^2.0",
         "laravel/ui": "^2.0",
-        "lcobucci/jwt": "~3.3.3"
+        "lcobucci/jwt": "~3.3.3",
+        "stripe/stripe-php": "^7.75"
     },
     "require-dev": {
         "facade/ignition": "^2.0",
