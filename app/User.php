@@ -17,7 +17,7 @@ class User extends Authenticatable implements MustVerifyEmail
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password', 'phone', 'avatar',
+        'name', 'email', 'password', 'phone', 'avatar', 'stripe_connect_id', 'completed_stripe_onboarding',
     ];
 
     /**
@@ -36,5 +36,6 @@ class User extends Authenticatable implements MustVerifyEmail
      */
     protected $casts = [
         'email_verified_at' => 'datetime',
+        'completed_stripe_onboarding' => 'bool',
     ];
 }
