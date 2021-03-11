@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Repositories\UserRepository as UserRepo;
 use Illuminate\Http\Request;
 use Redirect;
+use Auth;
 
 class UserController extends Controller
 {
@@ -26,7 +27,8 @@ class UserController extends Controller
      */
     public function show_profile()
     {
-        return view('web.user.profile');
+        $user = Auth::user();
+        return view('web.user.profile', compact('user'));
     }
 
     public function edit_profile()

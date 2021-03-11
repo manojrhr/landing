@@ -26,11 +26,12 @@
 				<div class="card">
 					<div class="card-body">
 						<div class="d-flex flex-column align-items-center text-center">
-							<img src="{{ url('/'.Auth::user()->avatar) }}" alt="Admin" class="rounded-circle" width="150">
+							<img src="{{ url('/'.$user->avatar) }}" alt="Admin" class="rounded-circle" width="150">
 							<div class="mt-3">
-								<h4>John Doe</h4>
-								<p class="text-muted font-size-sm">Joined Oct 2020</p>
+								<h4>{{ $user->name }}</h4>
+								<p class="text-muted font-size-sm">Joined {{ date('m Y', strtotime($user->created_at)) }}</p>
 								<button class="btn btn-outline-primary">Message</button>
+								@include('web.user.stripebutton')
 							</div>
 						</div>
 					</div>
@@ -62,7 +63,7 @@
 								<h6 class="mb-0">Full Name</h6>
 							</div>
 							<div class="col-sm-9 text-secondary">
-								{{ Auth::user()->name }}
+								{{ $user->name }}
 							</div>
 						</div>
 						<hr>
@@ -71,7 +72,7 @@
 								<h6 class="mb-0">Email</h6>
 							</div>
 							<div class="col-sm-9 text-secondary">
-								{{ Auth::user()->email }}
+								{{ $user->email }}
 							</div>
 						</div>
 						<hr>
@@ -80,7 +81,7 @@
 								<h6 class="mb-0">Phone</h6>
 							</div>
 							<div class="col-sm-9 text-secondary">
-								{{ Auth::user()->phone }}
+								{{ $user->phone }}
 							</div>
 						</div>
 						<!--<hr>
