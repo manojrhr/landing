@@ -2065,7 +2065,7 @@ font-size: 14px;
   flex-direction: column;
   -webkit-box-align: stretch;
   align-items: stretch;
-  width: 472px;
+  width: 100%;
   height: auto;
   padding: 26px;
   margin: 0 20px 24px 0;
@@ -2130,5 +2130,19 @@ font-size: 14px;
 }
 ._3vXws {
   padding: 0;
+}
+
+@media screen and (min-width: 375px) and (max-width: 812px) {
+.owner-img img {
+	width: 35%;
+	margin: 0 auto;
+	display: block;
+}
+._1W2S4 {
+  width: 100%;
+}
+.footer-content .img-fluid {
+	width: 44%;
+}
 }
   /*j-css-close*/
