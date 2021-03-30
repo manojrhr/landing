@@ -8,15 +8,19 @@
 @section('content')
          <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
   <div class="carousel-inner">
-    <div class="carousel-item active">
-      <img class="d-block w-100" src="https://skiski.ca/web/images/slider-1.jpg" alt="First slide">
-    </div>
-    <div class="carousel-item">
+	@php $i = 0; @endphp
+	@foreach(json_decode($jetski->images) as $image)
+		<div class="carousel-item {{ $i == 0 ? 'active' : '' }}">
+			<img class="d-block w-100" src="{{ asset($image) }}" alt="First slide">
+		</div>
+		@php $i++; @endphp
+	@endforeach
+    <!-- <div class="carousel-item">
       <img class="d-block w-100" src="https://skiski.ca/web/images/slider-2.jpg" alt="Second slide">
     </div>
     <div class="carousel-item">
       <img class="d-block w-100" src="https://skiski.ca/web/images/slider-3.jpg" alt="Third slide">
-    </div>
+    </div> -->
   </div>
   <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
     <span class="carousel-control-prev-icon" aria-hidden="true"></span>

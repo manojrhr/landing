@@ -1,6 +1,6 @@
 <?php
 
-if (!function_exists('DummyFunction')) {
+if (!function_exists('null_safe')) {
 
     // Convert all NULL values to empty strings
     function null_safe($arr) {

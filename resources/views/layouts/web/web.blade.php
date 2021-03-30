@@ -30,6 +30,7 @@
 	<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/css/themes/bootstrap.min.css"/>
 
 	@yield('styles')
+    @livewireStyles
 </head>
 <body data-spy="scroll" data-target=".site-navbar-target" data-offset="300">
 	<div class="site-wrap">
@@ -197,4 +198,5 @@
 	</script>
 	@include('includes.flash-message')
 	@yield('scripts')
+    @livewireScripts
 </html>

@@ -35,6 +35,10 @@ class JetSkiRepository {
 			foreach($request->file('images') as $image)
 			{
 				$filename = uniqid('ski_').'.'. $image->getClientOriginalExtension();
+				if($i==1){
+					$main_image_name = '/images/jetski/'.$filename;
+					$main_image = Image::make($image)->resize(362.2, 241.47)->save(public_path('images/jetski/'.$filename));
+				}
 				$photo = Image::make($image)->resize(1500, 600)->save(public_path('images/jetski/'.$filename));
 				$data[] = '/images/jetski/'.$filename;  
 				$i++;
@@ -48,6 +52,7 @@ class JetSkiRepository {
             'price' => $request->price,
     		'captain' => $request->captain,
     		'capacity' => $request->capacity,
+    		'image' => $main_image_name,
     		'images' => json_encode($data),
     		'lat' => $request->lat,
     		'long' => $request->long,

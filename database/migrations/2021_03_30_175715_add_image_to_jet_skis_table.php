@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class AddSlugTojetSkiesTable extends Migration
+class AddImageToJetSkisTable extends Migration
 {
     /**
      * Run the migrations.
@@ -14,7 +14,7 @@ class AddSlugTojetSkiesTable extends Migration
     public function up()
     {
         Schema::table('jet_skis', function (Blueprint $table) {
-            $table->string('slug')->after('title');
+            $table->string('image')->after('capacity');
         });
     }
 
@@ -26,7 +26,7 @@ class AddSlugTojetSkiesTable extends Migration
     public function down()
     {
         Schema::table('jet_skis', function (Blueprint $table) {
-            $table->dropColumn('slug');
+            $table->dropColumn('image');
         });
     }
 }
