@@ -28,4 +28,6 @@ Route::group(['prefix' => 'auth'], function () {
 Route::group(['middleware' => 'auth:api'], function() {
 	Route::get('profile', 'Api\UserController@profile');
 	Route::post('update_profile', 'Api\UserController@update_profile');
+	// Add Jet Ski
+	Route::post('add_jetski', 'Api\SkijetController@create');
 });

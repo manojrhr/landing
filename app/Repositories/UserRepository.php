@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Repositories;
+
 use Illuminate\Support\Facades\Auth;
 use Carbon\Carbon;
 use App\User;
@@ -27,7 +28,6 @@ class UserRepository {
         if ($validator->fails()) {
 
             $errors = implode(',', $validator->messages()->all());
-
             return $response_array = ['success' => false , 'message' => $errors, 'error_code' => 101];
         }
 

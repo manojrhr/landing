@@ -6,5 +6,12 @@ use Illuminate\Database\Eloquent\Model;
 
 class JetSki extends Model
 {
-    //
+    /**
+     * The attributes that are mass assignable.
+     *
+     * @var array
+     */
+    protected $fillable = [
+        'title', 'slug', 'description', 'price', 'captain', 'capacity', 'images', 'lat', 'long', 'city', 'state', 'country', 'user_id'
+    ];
 }
