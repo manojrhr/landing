@@ -32,7 +32,7 @@ Auth::routes(['verify' => true]);
 
 // Route::get('/profile', 'HomeController@index')->name('profile');
 Route::get('/home', 'Web\HomeController@index')->name('home');
-Route::get('/jetskies', 'Web\JetskiController@index')->name('jetskies');
+Route::get('/jetskies', 'Web\JetskiController@index')->name('listing');
 Route::get('/jetski/{slug}', 'Web\JetskiController@details')->name('jetski_detail');
 // Route::get('/admin', 'AdminController@index')->name('AdminHome');
 Route::get('/users/logout', 'Auth\LoginController@userLogout')->name('user.logout');
