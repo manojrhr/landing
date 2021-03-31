@@ -38,4 +38,9 @@ class User extends Authenticatable implements MustVerifyEmail
         'email_verified_at' => 'datetime',
         'completed_stripe_onboarding' => 'bool',
     ];
+
+    public function jetskis()
+    {
+        return $this->hasMany(JetSki::class);
+    }
 }

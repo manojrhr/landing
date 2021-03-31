@@ -36,7 +36,7 @@
 			<div class="row">
 				<div class="col-lg-8 col-md-8 col-sm-8 col-xs-8">
 					<div class="product-name">
-						<h2>SeaDoo GTI130 Rental in Littleton</h2>
+						<h2>{{ $jetski->title }}</h2>
 					</div>
 					<div class="row reviews-booking-tab">
 						<div class="col-6">
@@ -48,13 +48,11 @@
 					</div>
 					<div class="row mt-5">
 						<div class="col-12 _1yVAB">
-							<p class="mb-3">Take to the water for an exhilarating jet ski adventure in Livingston, Texas. 
-								Book the Yamaha EX Sport Jet Ski for 1-2 person. Rates as low as $50 per 
-								hour each or only $475 per day for both.</p>
-							<p>Get ready for a memorable experience and enjoy the sun and the surf<span id="dots">...</span>
+							<p class="mb-3">{{ $jetski->description }}</p>
+							<!-- <p>Get ready for a memorable experience and enjoy the sun and the surf<span id="dots">...</span>
 								<span id="more" style="display:none; ">erisque enim ligula venenatis dolor. Maecenas nisl est, ultrices nec congue eget, auctor vitae massa. Fusce luctus vestibulum augue ut aliquet. Nunc sagittis dictum nisi, sed ullamcorper ipsum dignissim ac. In at libero sed nunc venenatis imperdiet sed ornare turpis. Donec vitae dui eget tellus gravida venenatis. Integer fringilla congue eros non fermentum. Sed dapibus pulvinar nibh tempor porta.</span>
 							 </p>
-							<span onclick="myFunction()" id="myBtn" class="read-more">Read full description</span>
+							<span onclick="myFunction()" id="myBtn" class="read-more">Read full description</span> -->
 						</div>
 					</div>
 
@@ -65,8 +63,13 @@
 									<img src="https://skiski.ca/web/images/captain-img.png">
 							</div>
 							<div class="captain-incld-text row">
-									<div class="captain-incld-head col-12">Captain is not included.</div>
-									<div class="captain-incld-detail col-12">Trip may require hiring additional qualified personnel.</div>
+									@if($jetski->captain == 1)
+										<div class="captain-incld-head col-12">Captain is included.</div>
+										<div class="captain-incld-detail col-12">A captain is provided by the listing owner to host and operate the trip.</div>
+									@else
+										<div class="captain-incld-head col-12">Captain is not included.</div>
+										<div class="captain-incld-detail col-12">Trip may require hiring additional qualified personnel.</div>
+									@endif
 							</div>
 						</div>
 					</div>
@@ -77,10 +80,10 @@
 							</div>
 							<div class="captain-incld-text row">
 									<div class="captain-incld-head col-12">Capacity</div>
-									<div class="captain-incld-detail col-12">3 guests</div>
+									<div class="captain-incld-detail col-12">{{ $jetski->capacity }} guests</div>
 							</div>
 						</div>
-						<div class="jet-ski-info">
+						<!-- <div class="jet-ski-info">
 								<div class="captain-incld">
 									<img src="https://skiski.ca/web/images/jet-ski-ico.png">
 						</div>
@@ -88,7 +91,7 @@
 								<div class="captain-incld-head col-12">Jetskis & Personal Watercraft</div>
 								<div class="captain-incld-detail col-12">Jet Ski</div>
 							</div>
-						</div>
+						</div> -->
 					</div>
 				</div>
 				<div class="owener-info-box mt-5">
@@ -96,7 +99,7 @@
 					<div class="col-lg-2">
 						<div class="owner-info">
 							<div class="owner-img">
-								<img src="https://www.bootdey.com/img/Content/avatar/avatar7.png" alt="Image" class="">
+								<img src="{{ asset($jetski->user->avatar) }}" alt="Image" class="">
 							</div>
 						</div>
 					</div>
@@ -104,9 +107,9 @@
 						<div>
 							<h2 class="_sNM-">
 							<span class="_2nErR">Owner:</span>
-						Avatar
+							{{ $jetski->user->name }}
 					</h2>
-					<p class="_14o15">We welcome you to explore the extensive and incredible experience in order to get a glimpse of the mysterious and entrancing Scuba diving in India as well as water sports in Malvan.We have an idyllic setting and a trustworthy guidance which ends right here at Malvan. We make sure to provide a high quality and matchless experience for all the tourists who head here from all over the globe, to get a glance of this exciting and truly mesmerizing Scuba diving experience.</p>
+					<p class="_14o15">{{ $jetski->user->about }}</p>
 					</div>
 					</div>
 				</div>
@@ -182,7 +185,7 @@
 						<div class="_2oHrE">
 							<sup class="_2Ev4T">From</sup>
 							<div class="_3JqG_">
-								<span class="_1qauV">$</span>617<sub class="_39y-F">/hour</sub>
+								<span class="_1qauV">$</span>{{ $jetski->price }}<sub class="_39y-F">/hour</sub>
 							</div>
 						</div>
 					</div>
@@ -193,6 +196,23 @@
 @endsection
 
 @section('scripts')
+	<script>
+		function myFunction() {
+			var dots = document.getElementById("dots");
+			var moreText = document.getElementById("more");
+			var btnText = document.getElementById("myBtn");
+
+			if (dots.style.display === "none") {
+				dots.style.display = "inline";
+				btnText.innerHTML = "Read full description"; 
+				moreText.style.display = "none";
+			} else {
+				dots.style.display = "none";
+				btnText.innerHTML = "Hide full description"; 
+				moreText.style.display = "inline";
+			}
+		}
+	</script>
   <script src="{{ asset('assets/web/js/starrr.js') }}"></script>
   <script>
       $('#star1').starrr({

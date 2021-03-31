@@ -17,7 +17,7 @@ class JetskiController extends Controller
 
     public function details($slug)
     {
-        $jetski = JetSki::where('slug', '=', $slug)->first();
+        $jetski = JetSki::with(['user'])->where('slug', '=', $slug)->first();
         if(!$jetski){
             abort(404);
         }
