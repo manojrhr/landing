@@ -6,6 +6,7 @@ use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Passport\HasApiTokens;
+use App\Events\NewUserRegisteredEvent;
 
 class User extends Authenticatable implements MustVerifyEmail
 {
@@ -29,6 +30,9 @@ class User extends Authenticatable implements MustVerifyEmail
         'password', 'remember_token',
     ];
 
+    protected $dispatchesEvents = [
+        'created' => NewUserRegisteredEvent::class,
+    ];
     /**
      * The attributes that should be cast to native types.
      *

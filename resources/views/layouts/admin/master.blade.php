@@ -58,6 +58,29 @@
 
       <div class="navbar-custom-menu">
         <ul class="nav navbar-nav">
+        <li class="dropdown notifications-menu open">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="true">
+              <i class="fa fa-bell-o"></i>
+              <span class="label label-warning">{{auth()->user()->unreadNotifications()->groupBy('notifiable_type')->count()}}</span>
+            </a>
+            <ul class="dropdown-menu">
+              <li class="header">You have {{auth()->user()->unreadNotifications()->groupBy('notifiable_type')->count()
+}} notifications</li>
+              <li>
+                <!-- inner menu: contains the actual data -->
+                <ul class="menu">
+                @foreach (Auth::user()->notifications as $notification)
+                  <li>
+                    <a href="{{ $notification->data['link'] }}">
+                      <i class="{{ $notification->data['icon'] }}"></i> {{ $notification->data['message'] }}
+                    </a>
+                  </li>
+                @endforeach
+                </ul>
+              </li>
+              <li class="footer"><a href="#">Mark all as read</a></li>
+            </ul>
+          </li>
           <!-- User Account: style can be found in dropdown.less -->
           <li class="dropdown user user-menu">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
