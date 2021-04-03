@@ -5,6 +5,7 @@ namespace App\Repositories;
 use App\JetSki;
 use Image;
 use Validator;
+use App\Events\NewJetSkiAddedEvent;
 
 class JetSkiRepository {
 
@@ -63,6 +64,8 @@ class JetSkiRepository {
     	]);
 
     	$jetski->save();
+		
+		event(new NewJetSkiAddedEvent($jetski));
 
     	return response()->json([
     		'success' => true,

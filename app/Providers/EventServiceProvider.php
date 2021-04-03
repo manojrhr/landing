@@ -7,6 +7,7 @@ use Illuminate\Auth\Listeners\SendEmailVerificationNotification;
 use Illuminate\Foundation\Support\Providers\EventServiceProvider as ServiceProvider;
 use Illuminate\Support\Facades\Event;
 use App\Events\NewUserRegisteredEvent;
+use App\Events\NewJetSkiAddedEvent;
 
 class EventServiceProvider extends ServiceProvider
 {
@@ -18,6 +19,9 @@ class EventServiceProvider extends ServiceProvider
     protected $listen = [
         NewUserRegisteredEvent::class => [
             \App\Listeners\SendNewUserAdminNotification::class,
+        ],
+        NewJetSkiAddedEvent::class => [
+            \App\Listeners\SendNewJetSkiAdminNotification::class,
         ],
     ];
 

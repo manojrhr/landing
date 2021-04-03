@@ -69,7 +69,7 @@
               <li>
                 <!-- inner menu: contains the actual data -->
                 <ul class="menu">
-                @foreach (Auth::user()->notifications as $notification)
+                @foreach (Auth::user()->unreadNotifications as $notification)
                   <li>
                     <a href="{{ $notification->data['link'] }}">
                       <i class="{{ $notification->data['icon'] }}"></i> {{ $notification->data['message'] }}
