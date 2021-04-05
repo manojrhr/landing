@@ -52,7 +52,12 @@ Route::group(['prefix' => 'admin' , 'as' => 'admin.'], function(){
 	Route::get('/', 'Web\Admin\AdminController@index')->name('dashboard');
 	Route::get('/logout', 'Auth\AdminLoginController@logout')->name('logout');
 
+	Route::get('/makes', 'Web\Admin\MakeController@index')->name('makes');
+	Route::post('/makes', 'Web\Admin\MakeController@store')->name('make.create');
+	Route::get('/make/delete/{id}', 'Web\Admin\MakeController@delete')->name('make.delete');
+
 	Route::get('/users', 'Web\Admin\UserController@index')->name('users');
+	Route::get('/user/delete/{id}', 'Web\Admin\UserController@delete')->name('user.delete');
 });
 
 

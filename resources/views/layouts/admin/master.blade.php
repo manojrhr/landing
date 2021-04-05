@@ -28,6 +28,15 @@
   <!-- bootstrap wysihtml5 - text editor -->
   <link rel="stylesheet" href="{{ asset('assets/admin/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css') }}">
 
+	<!-- CSS -->
+	<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/css/alertify.min.css"/>
+	<!-- Default theme -->
+	<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/css/themes/default.min.css"/>
+	<!-- Semantic UI theme -->
+	<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/css/themes/semantic.min.css"/>
+	<!-- Bootstrap theme -->
+	<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/css/themes/bootstrap.min.css"/>
+
   <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
   <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
   <!--[if lt IE 9]>
@@ -140,6 +149,7 @@
         <li class="header">MAIN NAVIGATION</li>
         <li><a href="{{ route('admin.dashboard') }}"><i class="fa fa-book"></i><span>Dashboard</span></a></li>
         <li><a href="{{ route('admin.users') }}"><i class="fa fa-user"></i><span>Users</span></a></li>
+        <li><a href="{{ route('admin.makes') }}"><i class="fa fa-list"></i><span>Makes</span></a></li>
       </ul>
     </section>
     <!-- /.sidebar -->
@@ -161,6 +171,8 @@
 
     <!-- Main content -->
     <section class="content">
+    
+      @include('includes.flash-message')
       @yield('content')
     </section>
     <!-- /.content -->

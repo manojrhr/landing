@@ -1,7 +1,7 @@
 @extends('layouts.admin.master')
 
-@section('title', 'Users')
-@section('subtitle', 'Users Registered')
+@section('title', 'Make')
+@section('subtitle', 'Jet Ski Make')
 
 @section('style')
         <!-- Bootstrap CSS -->
@@ -11,6 +11,31 @@
 @endsection
 
 @section('content')
+<div class="box box-info">
+            <div class="box-header with-border">
+              <h3 class="box-title">Horizontal Form</h3>
+            </div>
+            <!-- /.box-header -->
+            <!-- form start -->
+            <form class="form-horizontal" method="post" action="{{route('admin.make.create')}}">
+              @csrf
+              <div class="box-body">
+                <div class="form-group">
+                  <label for="inputEmail3" class="col-sm-2 control-label">Name</label>
+
+                  <div class="col-sm-6">
+                    <input type="text" class="form-control" name="name" id="makeName" placeholder="Make Name">
+                  </div>
+
+                  <div class="col-sm-2">
+                    <button type="submit" class="btn btn-info pull-right">Add New Make</button>
+                  </div>
+                </div>
+              </div>
+              <!-- /.box-body -->
+            </form>
+          </div>
+
           <div class="box">
             <!-- <div class="box-header">
               <h3 class="box-title">Data Table With Full Features</h3>
@@ -22,25 +47,21 @@
                         <tr>
                             <th>#</th>
                             <th>Name</th>
-                            <th>Email</th>
-                            <th>Phone #</th>
                             <th>Actions</th>
                         </tr>
                     </thead>
                     <tbody>
                         <?php $i=1 ?>
-                        @foreach($users as $user)
+                        @foreach($makes as $make)
                             <tr>
                                 <td>{{ $i }}</td>
                                 <td>
-                                    {{ $user->name }}
+                                    {{ $make->name }}
                                 </td>
-                                <td>{{ $user->email }}</td>
-                                <td>{{ $user->phone }}</td>
                                 <td>
                                     <!-- <a  class="btn btn-success" href="">View</a>
                                     <a  class="btn btn-primary" href="">Update</a> -->
-                                    <a  class="btn btn-danger" href="{{route('admin.user.delete',$user->id)}}" onclick="return confirm('Are you sure?')">Delete</a>
+                                    <a  class="btn btn-danger" href="{{route('admin.make.delete',$make->id)}}" onclick="return confirm('Are you sure?')">Delete</a>
                                 </td>
                             </tr>
                             <?php $i++; ?>
