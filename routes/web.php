@@ -51,10 +51,14 @@ Route::group(['prefix' => 'admin' , 'as' => 'admin.'], function(){
 	Route::post('/login', 'Auth\AdminLoginController@login')->name('login.submit');
 	Route::get('/', 'Web\Admin\AdminController@index')->name('dashboard');
 	Route::get('/logout', 'Auth\AdminLoginController@logout')->name('logout');
-
+	
 	Route::get('/makes', 'Web\Admin\MakeController@index')->name('makes');
 	Route::post('/makes', 'Web\Admin\MakeController@store')->name('make.create');
+	Route::get('/make/single/{id}', 'Web\Admin\MakeController@single')->name('make.single');
 	Route::get('/make/delete/{id}', 'Web\Admin\MakeController@delete')->name('make.delete');
+	
+	Route::post('/model/create/{id}', 'Web\Admin\MakeController@storeModel')->name('model.create');
+	Route::get('/model/delete/{id}', 'Web\Admin\MakeController@deleteModel')->name('model.delete');
 
 	Route::get('/users', 'Web\Admin\UserController@index')->name('users');
 	Route::get('/user/delete/{id}', 'Web\Admin\UserController@delete')->name('user.delete');

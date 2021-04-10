@@ -27,6 +27,6 @@ class CreateMakeTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('make');
+        Schema::dropIfExists('makes');
     }
 }

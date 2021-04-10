@@ -13,9 +13,9 @@ class CreateModelTable extends Migration
      */
     public function up()
     {
-        Schema::create('model', function (Blueprint $table) {
+        Schema::create('models', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('make_id')->constrained('makes');
+            $table->foreignId('make_id')->constrained('makes')->onDelete('cascade');;
             $table->string('name');
             $table->timestamps();
         });
@@ -28,6 +28,6 @@ class CreateModelTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('model');
+        Schema::dropIfExists('models');
     }
 }
