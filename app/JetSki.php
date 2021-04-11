@@ -12,7 +12,8 @@ class JetSki extends Model
      * @var array
      */
     protected $fillable = [
-        'title', 'slug', 'description', 'price', 'captain', 'capacity', 'image', 'images', 'lat', 'long', 'city', 'state', 'country', 'user_id'
+        'title', 'slug', 'description', 'price', 'captain', 'capacity', 'image', 'images', 'lat', 'long', 'city', 'state', 'country', 'user_id',, 'price_unit', 'make_id', 'model_id', 'insurance', 'cancel_policy_id'
+
     ];
 
     public function user()

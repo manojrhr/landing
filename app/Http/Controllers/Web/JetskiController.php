@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\JetSki;
 use App\Make;
 use App\Models;
+use DB;
 
 class JetskiController extends Controller
 {
@@ -27,7 +28,7 @@ class JetskiController extends Controller
         return view('web.details', compact('jetski'));
     }
 
-    function models( Request $request )
+    public function models( Request $request )
     {
         $this->validate( $request, [ 'id' => 'required|exists:makes,id' ] );
         $models = Models::where('make_id', $request->get('id') )->get();
@@ -38,5 +39,16 @@ class JetskiController extends Controller
             $output[$model->id] = $model->name;
         }
         return $output;
+    }
+
+    public function addJetSki()
+    {
+        $cancel_policies = DB::table('cancel_policies')->get();
+        return view('web.registerJetSki', compact('cancel_policies'));
+    }
+
+    public function saveJetSki(Request $request)
+    {
+        dd($request->all());
     }
 }

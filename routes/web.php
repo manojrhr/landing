@@ -38,15 +38,17 @@ Route::get('/home', 'Web\HomeController@index')->name('home');
 Route::get('/jetskies', 'Web\JetskiController@index')->name('listing');
 Route::get('/jetski/{slug}', 'Web\JetskiController@details')->name('jetski_detail');
 
-Route::view('addjetski','web.registerJetSki');
 // Route::get('/admin', 'AdminController@index')->name('AdminHome');
 Route::get('/users/logout', 'Auth\LoginController@userLogout')->name('user.logout');
+
+Route::get('/add/jetski','Web\JetskiController@addJetSki')->name('add.jetski');
+Route::post('/add/jetski','Web\JetskiController@saveJetSki')->name('save.jetski');
 
 Route::group(['prefix' => 'user' , 'as' => 'user.'], function(){
 	Route::get('/profile', 'Web\UserController@show_profile')->name('profile');
 	Route::get('/update-profile', 'Web\UserController@edit_profile')->name('edit_profile');
 	Route::post('/update-profile', 'Web\UserController@update_profile')->name('update_profile');
-
+	
 	Route::get('stripe/{id}', 'Web\SellerController@redirectToStripe')->name('redirect_stripe');
 	Route::get('connect/{token}', 'Web\SellerController@saveStripeAccount')->name('save_stripe');
 });
