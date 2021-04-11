@@ -122,124 +122,25 @@
 					</div>
 				</div>
 				<div class="row">
+					@foreach($jetskies as $jetski)
 					<div class="col-md-6 col-lg-4 mb-4">
 						<div class="service-39381">
-							<a href="{{ route('listing') }}">
-								<img src=" {{ asset('assets/web/images/hero_1.jpg') }}" alt="Image" class="img-fluid">
+							<a href="{{ route('jetski_detail',$jetski->slug) }}">
+								<img src=" {{ asset($jetski->image) }}" alt="Image" class="img-fluid">
 								<div class="p-4">
-									<h3><a href="{{ route('listing') }}"><span class="icon-room mr-1 text-primary"></span> Croatia &mdash; Columbia</a></h3>
-									<!-- <div class="d-flex">
-										<div class="mr-auto">
-											<span class="icon-date_range"></span>
-											Sep. 05 &mdash; Oct. 15
-										</div>
-										<div class="ml-auto price">
-											<span class="bg-primary">$600</span>
-										</div>
+									<h3><a href="{{ route('listing') }}"><span class="icon-room mr-1 text-primary"></span> {{$jetski->city}} &mdash; {{$jetski->state}}</a></h3>
+									<!-- <div class="ml-auto price">
+										<span class="bg-primary">$600</span>
 									</div> -->
 								</div>
 							</a>
 						</div>
 					</div>
-					<div class="col-md-6 col-lg-4 mb-4">
-						<div class="service-39381">
-							<a href="{{ route('listing') }}">
-								<img src=" {{ asset('assets/web/images/hero_2.jpg') }}" alt="Image" class="img-fluid">
-								<div class="p-4">
-									<h3><a href="{{ route('listing') }}"><span class="icon-room mr-1 text-primary"></span> Croatia &mdash; Columbia</a></h3>
-									<!-- <div class="d-flex">
-										<div class="mr-auto">
-											<span class="icon-date_range"></span>
-											Sep. 05 &mdash; Oct. 15
-										</div>
-										<div class="ml-auto price">
-											<span class="bg-primary">$600</span>
-										</div>
-									</div> -->
-								</div>
-							</a>
-						</div>
-					</div>
-					<div class="col-md-6 col-lg-4 mb-4">
-						<div class="service-39381">
-							<a href="{{ route('listing') }}">
-								<img src=" {{ asset('assets/web/images/hero_1.jpg') }}" alt="Image" class="img-fluid">
-								<div class="p-4">
-									<h3><a href="{{ route('listing') }}"><span class="icon-room mr-1 text-primary"></span> Croatia &mdash; Columbia</a></h3>
-									<!-- <div class="d-flex">
-										<div class="mr-auto">
-											<span class="icon-date_range"></span>
-											Sep. 05 &mdash; Oct. 15
-										</div>
-										<div class="ml-auto price">
-											<span class="bg-primary">$600</span>
-										</div>
-									</div> -->
-								</div>
-							</a>
-						</div>
-					</div>
-					<div class="col-md-6 col-lg-4 mb-4">
-						<div class="service-39381">
-							<a href="{{ route('listing') }}">
-								<img src=" {{ asset('assets/web/images/hero_2.jpg') }}" alt="Image" class="img-fluid">
-								<div class="p-4">
-									<h3><a href="{{ route('listing') }}"><span class="icon-room mr-1 text-primary"></span> Croatia &mdash; Columbia</a></h3>
-									<!-- <div class="d-flex">
-										<div class="mr-auto">
-											<span class="icon-date_range"></span>
-											Sep. 05 &mdash; Oct. 15
-										</div>
-										<div class="ml-auto price">
-											<span class="bg-primary">$600</span>
-										</div>
-									</div> -->
-								</div>
-							</a>
-						</div>
-					</div>
-					<div class="col-md-6 col-lg-4 mb-4">
-						<div class="service-39381">
-							<a href="{{ route('listing') }}">
-								<img src=" {{ asset('assets/web/images/hero_1.jpg') }}" alt="Image" class="img-fluid">
-								<div class="p-4">
-									<h3><a href="{{ route('listing') }}"><span class="icon-room mr-1 text-primary"></span> Croatia &mdash; Columbia</a></h3>
-									<!-- <div class="d-flex">
-										<div class="mr-auto">
-											<span class="icon-date_range"></span>
-											Sep. 05 &mdash; Oct. 15
-										</div>
-										<div class="ml-auto price">
-											<span class="bg-primary">$600</span>
-										</div>
-									</div> -->
-								</div>
-							</a>
-						</div>
-					</div>
-					<div class="col-md-6 col-lg-4 mb-4">
-						<div class="service-39381">
-							<a href="{{ route('listing') }}">
-								<img src=" {{ asset('assets/web/images/hero_2.jpg') }}" alt="Image" class="img-fluid">
-								<div class="p-4">
-									<h3><a href="{{ route('listing') }}"><span class="icon-room mr-1 text-primary"></span> Croatia &mdash; Columbia</a></h3>
-									<!-- <div class="d-flex">
-										<div class="mr-auto">
-											<span class="icon-date_range"></span>
-											Sep. 05 &mdash; Oct. 15
-										</div>
-										<div class="ml-auto price">
-											<span class="bg-primary">$600</span>
-										</div>
-									</div> -->
-								</div>
-							</a>
-						</div>
-					</div>
+					@endforeach
 				</div>
 			</div>
 		</div>
-		<div class="site-section p-0">
+		<div class="site-section p-20">
 			<div class="container">
 				<div class="row">
 					<div class="col-md-12 text-center pay-itself-section">
@@ -288,142 +189,6 @@
 								<input type="submit" class="btn btn-primary py-3 px-5" value="Book Now">
 							</div>
 						</form> -->
-					</div>
-				</div>
-			</div>
-		</div>
-		<div class="site-section">
-			<div class="container">
-				<div class="row justify-content-center mb-5">
-					<div class="col-md-7 text-center">
-						<span class="text-serif text-primary">Team</span>
-						<h3 class="heading-92913 text-black text-center">Our Team</h3>
-					</div>
-				</div>
-				<div class="row">
-					<div class="col-lg-3 col-md-6 mb-lg-0">
-						<div class="person">
-							<figure>
-								<img src=" {{ asset('assets/web/images/person_1.jpg') }}" alt="Image" class="img-fluid">
-								<div class="social">
-									<a href="#"><span class="icon-facebook"></span></a>
-									<a href="#"><span class="icon-twitter"></span></a>
-									<a href="#"><span class="icon-linkedin"></span></a>
-								</div>
-							</figure>
-							<div class="person-contents">
-								<h3>Craig Daniel</h3>
-								<span class="position">Engineer</span>
-							</div>
-						</div>
-					</div>
-					<div class="col-lg-3 col-md-6 mb-lg-0">
-						<div class="person">
-							<figure>
-								<img src=" {{ asset('assets/web/images/person_2.jpg') }}" alt="Image" class="img-fluid">
-								<div class="social">
-									<a href="#"><span class="icon-facebook"></span></a>
-									<a href="#"><span class="icon-twitter"></span></a>
-									<a href="#"><span class="icon-linkedin"></span></a>
-								</div>
-							</figure>
-							<div class="person-contents">
-								<h3>Craig Daniel</h3>
-								<span class="position">Engineer</span>
-							</div>
-						</div>
-					</div>
-					<div class="col-lg-3 col-md-6 mb-lg-0">
-						<div class="person">
-							<figure>
-								<img src=" {{ asset('assets/web/images/person_3.jpg') }}" alt="Image" class="img-fluid">
-								<div class="social">
-									<a href="#"><span class="icon-facebook"></span></a>
-									<a href="#"><span class="icon-twitter"></span></a>
-									<a href="#"><span class="icon-linkedin"></span></a>
-								</div>
-							</figure>
-							<div class="person-contents">
-								<h3>Craig Daniel</h3>
-								<span class="position">Engineer</span>
-							</div>
-						</div>
-					</div>
-					<div class="col-lg-3 col-md-6 mb-lg-0">
-						<div class="person">
-							<figure>
-								<img src=" {{ asset('assets/web/images/person_4.jpg') }}" alt="Image" class="img-fluid">
-								<div class="social">
-									<a href="#"><span class="icon-facebook"></span></a>
-									<a href="#"><span class="icon-twitter"></span></a>
-									<a href="#"><span class="icon-linkedin"></span></a>
-								</div>
-							</figure>
-							<div class="person-contents">
-								<h3>Craig Daniel</h3>
-								<span class="position">Engineer</span>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-		<div class="site-section">
-			<div class="container">
-				<div class="row justify-content-center mb-5">
-					<div class="col-md-7 text-center">
-						<span class="text-serif text-primary">Testimonial</span>
-						<h3 class="heading-92913 text-black text-center">What Customer Saying...</h3>
-					</div>
-				</div>
-				<div class="row">
-					<div class="mb-4 mb-lg-0 col-md-6 col-lg-4">
-						<div class="testimony-39291">
-							<blockquote>
-								<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolorem laborum cumque commodi, unde doloribus.</p>
-							</blockquote>
-							<div class="d-flex vcard align-items-center">
-								<div class="pic mr-3">
-									<img src=" {{ asset('assets/web/images/person_3_sq.jpg') }}" alt="Image" class="img-fluid">
-								</div>
-								<div class="text">
-									<strong class="d-block">John Doe</strong>
-									<span>CEO and Co-Founder</span>
-								</div>
-							</div>
-						</div>
-					</div>
-					<div class="mb-4 mb-lg-0 col-md-6 col-lg-4">
-						<div class="testimony-39291">
-							<blockquote>
-								<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolorem laborum cumque commodi, unde doloribus.</p>
-							</blockquote>
-							<div class="d-flex vcard align-items-center">
-								<div class="pic mr-3">
-									<img src=" {{ asset('assets/web/images/person_4_sq.jpg') }}" alt="Image" class="img-fluid">
-								</div>
-								<div class="text">
-									<strong class="d-block">John Doe</strong>
-									<span>CEO and Co-Founder</span>
-								</div>
-							</div>
-						</div>
-					</div>
-					<div class="mb-4 mb-lg-0 col-md-6 col-lg-4">
-						<div class="testimony-39291">
-							<blockquote>
-								<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolorem laborum cumque commodi, unde doloribus.</p>
-							</blockquote>
-							<div class="d-flex vcard align-items-center">
-								<div class="pic mr-3">
-									<img src=" {{ asset('assets/web/images/person_3_sq.jpg') }}" alt="Image" class="img-fluid">
-								</div>
-								<div class="text">
-									<strong class="d-block">John Doe</strong>
-									<span>CEO and Co-Founder</span>
-								</div>
-							</div>
-						</div>
 					</div>
 				</div>
 			</div>

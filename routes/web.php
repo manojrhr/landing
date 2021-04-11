@@ -14,9 +14,10 @@ use App\JetSki;
 |
 */
 
-Route::get('/', function () {
-    return view('coming');
-})->name('root');
+// Route::get('/', function () {
+//     return view('coming');
+// })->name('root');
+Route::get('/', 'Web\HomeController@index')->name('home');
 
 // Route::get('/jetskies', function () {
 // 	// $rows = array([],[],[],[],[],[]);
@@ -24,9 +25,9 @@ Route::get('/', function () {
 //     return view('web.listing', compact('rows'));
 // })->name('listing');
 
-Route::get('/jetski-details', function () {
-    return view('web.details');
-})->name('details');
+// Route::get('/jetski-details', function () {
+//     return view('web.details');
+// })->name('details');
 
 Auth::routes(['verify' => true]);
 
