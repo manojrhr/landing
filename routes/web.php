@@ -41,8 +41,10 @@ Route::get('/jetski/{slug}', 'Web\JetskiController@details')->name('jetski_detai
 // Route::get('/admin', 'AdminController@index')->name('AdminHome');
 Route::get('/users/logout', 'Auth\LoginController@userLogout')->name('user.logout');
 
-Route::get('/add/jetski','Web\JetskiController@addJetSki')->name('add.jetski');
-Route::post('/add/jetski','Web\JetskiController@saveJetSki')->name('save.jetski');
+Route::group(['middleware' => ['auth']], function() {
+	Route::get('/add/jetski','Web\JetskiController@addJetSki')->name('add.jetski');
+	Route::post('/add/jetski','Web\JetskiController@saveJetSki')->name('save.jetski');
+});
 
 Route::group(['prefix' => 'user' , 'as' => 'user.'], function(){
 	Route::get('/profile', 'Web\UserController@show_profile')->name('profile');

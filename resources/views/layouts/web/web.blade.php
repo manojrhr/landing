@@ -53,20 +53,12 @@
 					<div class="col-lg-9 d-none d-lg-block">
 						<nav class="site-navigation position-relative text-right" role="navigation">
 							<ul class="site-menu main-menu js-clone-nav mr-auto d-none pl-0 d-lg-block navbar-nav ml-auto">
-									<li class="active">
-										<a href="index.html" class="nav-link text-left">List you car</a>
+									<li>
+										<a href="{{route('add.jetski')}}" class="nav-link text-left">List your Jet Ski</a>
 									</li>
 									<li>
 										<a href="about.html" class="nav-link text-left">Learn more</a>
 									</li>
-									@if (!Auth::guest())
-									<li>
-										<a href="{{ route('user.profile') }}" class="nav-link text-left">{{ Auth::user()->name }}</a>
-									</li>	
-									<li>
-										<a href="{{ route('user.logout') }}" class="nav-link text-left">{{ __('Logout') }}</a>
-									</li>	
-									@endif
 									@guest
 									<li>
 										<a href="{{ route('login') }}" class="nav-link text-left">Login</a>
@@ -74,6 +66,13 @@
 									<li>
 										<a href="{{ route('register') }}" class="nav-link text-left">Sign up</a>
 									</li>
+									@else
+									<li>
+										<a href="{{ route('user.profile') }}" class="nav-link text-left">{{ Auth::user()->name }}</a>
+									</li>	
+									<li>
+										<a href="{{ route('user.logout') }}" class="nav-link text-left">{{ __('Logout') }}</a>
+									</li>	
 			                        @endguest
 
 								</nav>
@@ -140,14 +139,14 @@
 							<li><a href="#">Projects</a></li>
 						</ul>
 					</div>
-					<div class="col-lg-3 footer-content">
+					<!-- <div class="col-lg-3 footer-content">
 						<h3 class="footer-heading"><span>Our Services</span></h3>
 						<ul class="list-unstyled">
 							<li><a href="#">Industrial</a></li>
 							<li><a href="#">Construction</a></li>
 							<li><a href="#">Remodeling</a></li>
 						</ul>
-					</div>
+					</div> -->
 					<div class="col-lg-3 footer-content">
 						<h3 class="footer-heading"><span>Contact</span></h3>
 						<ul class="list-unstyled">
