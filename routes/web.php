@@ -30,10 +30,14 @@ Route::get('/jetski-details', function () {
 
 Auth::routes(['verify' => true]);
 
+Route::post('/get/models', 'Web\JetskiController@models')->name('loadModels');
+
 // Route::get('/profile', 'HomeController@index')->name('profile');
 Route::get('/home', 'Web\HomeController@index')->name('home');
 Route::get('/jetskies', 'Web\JetskiController@index')->name('listing');
 Route::get('/jetski/{slug}', 'Web\JetskiController@details')->name('jetski_detail');
+
+Route::view('addjetski','web.registerJetSki');
 // Route::get('/admin', 'AdminController@index')->name('AdminHome');
 Route::get('/users/logout', 'Auth\LoginController@userLogout')->name('user.logout');
 

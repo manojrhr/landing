@@ -2131,7 +2131,35 @@ font-size: 14px;
 ._3vXws {
   padding: 0;
 }
+div.elem-group {
+  margin: 20px 0;
+}
 
+div.elem-group.inlined {
+  width: 49%;
+  display: inline-block;
+  float: left;
+  margin-left: 1%;
+}
+
+label {
+  display: block;
+  font-size: 1.25em;
+}
+
+input, select, textarea {
+  border-radius: 2px;
+  border: 1px solid #ccc;
+  box-sizing: border-box;
+  font-size: 1em;
+  width: 100%;
+  padding: 10px;
+}
+
+div.elem-group.inlined input {
+  width: 95%;
+  display: inline-block;
+}
 @media screen and (min-width: 375px) and (max-width: 812px) {
 .owner-img img {
 	width: 35%;
@@ -2145,4 +2173,243 @@ font-size: 14px;
 	width: 44%;
 }
 }
-  /*j-css-close*/
+.booking-requst-row h4, .booking-requst-row p
+{
+	width: 100%;
+	float:left;
+	margin-bottom: 0;
+}
+.duration-row div.elem-group.inlined {
+	width: 33.33333%;
+	display: inline-block;
+	float: left;
+	margin-left: 0%;
+}
+.booking-requst-row div.elem-group {
+	margin: 5px 0;
+	width: 100%;
+}
+.preferred-dates-row div.elem-group.inlined {
+	width: 50%;
+	display: inline-block;
+	float: left;
+	margin-left: 0%;
+}
+.Group-size-row div.elem-group.inlined {
+	width: 25%;
+	display: inline-block;
+	float: left;
+	margin-left: 0%;
+}
+.Anything-size-row div.elem-group.inlined {
+	width: 100%;
+	display: inline-block;
+	float: left;
+	margin-left: 0%;
+}
+.register-jet-form .form-check {
+  display: block;
+  min-height: 1.5rem;
+  margin-bottom: .125rem;
+  width: 100%;
+  border-bottom: 1px solid #efeeed;
+  padding: 15px 31px;
+}
+.register-jet-form .form-check-input:checked[type="radio"] {
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='-4 -4 8 8'%3e%3ccircle r='2' fill='%23fff'/%3e%3c/svg%3e");
+}
+.register-jet-form .form-check-input:checked {
+  background-color: #0d6efd;
+  border-color: #0d6efd;
+}
+.register-jet-form .form-check .form-check-input {
+  float: left;
+  margin-left: -1.5em;
+}
+.register-jet-form .form-check-input {
+  width: 1em;
+  height: 1em;
+  margin-top: .25em;
+  vertical-align: top;
+  background-color: #fff;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+  border: 1px solid rgba(0,0,0,.25);
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  -webkit-print-color-adjust: exact;
+  color-adjust: exact;
+}
+.register-jet-form .form-check .form-check-label {
+  font-size: 1.2rem;
+  font-weight: 500;
+  font-family: "Oswald", sans-serif;
+  line-height: 25px;
+  width: 100%;
+}
+.register-jet-form .form-check .form-check-label p
+{
+  font-size: 12px;
+  font-weight: normal;
+  font-family: "Muli";
+  margin-bottom: 0;
+}
+.register-jet-form h4, .register-jet-form p {
+  width: 100%;
+  float: left;
+}
+.register-jet-form p {
+  font-size: 14px;
+}
+.register-jet-form .elem-group.inlined {
+  margin: 0 10px 15px 0px;
+}
+.register-jet-form {
+  margin: 0;
+}
+.register-jet-form .elem-group.inlined input {
+  height: 45px;
+}
+.register-jet-form .elem-group.inlined select {
+  width: 95%;
+}
+.register-jet-form hr {
+  width: 100%;
+  margin-top: 2rem;
+}
+ .wrapper-box {
+   display: flex;
+   flex-direction: row;
+   flex-wrap: wrap;
+   align-items: center;
+   justify-content: center;
+}
+ .box {
+   display: block;
+   min-width: 300px;
+   height: 300px;
+   margin: 10px;
+   background-color: white;
+   border-radius: 5px;
+   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+   transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+   overflow: hidden;
+}
+ .upload-options {
+   position: relative;
+   height: 75px;
+   background-color: #1089ff;
+   cursor: pointer;
+   overflow: hidden;
+   text-align: center;
+   transition: background-color ease-in-out 150ms;
+}
+ .upload-options:hover {
+   background-color: #3e9dfa;
+}
+ .upload-options input {
+   width: 0.1px;
+   height: 0.1px;
+   opacity: 0;
+   overflow: hidden;
+   position: absolute;
+   z-index: -1;
+}
+ .upload-options label {
+   display: flex;
+   align-items: center;
+   width: 100%;
+   height: 100%;
+   font-weight: 400;
+   text-overflow: ellipsis;
+   white-space: nowrap;
+   cursor: pointer;
+   overflow: hidden;
+}
+ .upload-options label::after {
+   content: 'add';
+   font-family: 'Material Icons';
+   position: absolute;
+   font-size: 2.5rem;
+   color: rgba(230, 230, 230, 1);
+   top: calc(50% - 2.5rem);
+   left: calc(50% - 1.25rem);
+   z-index: 0;
+}
+ .upload-options label span {
+   display: inline-block;
+   width: 50%;
+   height: 100%;
+   text-overflow: ellipsis;
+   white-space: nowrap;
+   overflow: hidden;
+   vertical-align: middle;
+   text-align: center;
+}
+ .upload-options label span:hover i.material-icons {
+   color: lightgray;
+}
+ .js--image-preview {
+   height: 225px;
+   width: 100%;
+   position: relative;
+   overflow: hidden;
+   background-image: url('');
+   background-color: white;
+   background-position: center center;
+   background-repeat: no-repeat;
+   background-size: cover;
+}
+ .js--image-preview::after {
+   content: "photo_size_select_actual";
+   font-family: 'Material Icons';
+   position: relative;
+   font-size: 4.5em;
+   color: rgba(230, 230, 230, 1);
+   top: calc(50% - 3rem);
+   left: calc(50% - 2.25rem);
+   z-index: 0;
+}
+ .js--image-preview.js--no-default::after {
+   display: none;
+}
+ .js--image-preview:nth-child(2) {
+   background-image: url('http://bastianandre.at/giphy.gif');
+}
+ i.material-icons {
+   transition: color 100ms ease-in-out;
+   font-size: 2.25em;
+   line-height: 55px;
+   color: white;
+   display: block;
+}
+ .drop {
+   display: block;
+   position: absolute;
+   background: rgba(95, 158, 160, 0.2);
+   border-radius: 100%;
+   transform: scale(0);
+}
+ .animate {
+   animation: ripple 0.4s linear;
+}
+ @keyframes ripple {
+   100% {
+     opacity: 0;
+     transform: scale(2.5);
+  }
+}
+.listiner-banner {
+  background-image: url('https://skiski.ca/web/images/logged-in-hero.98b44030.jpg');
+  padding: 50px;
+  background-size: cover;
+  background-position: bottom;
+  background-repeat: no-repeat;
+  height: 400px;
+}
+.listiner-banner h1, .listiner-banner p {
+  color: #fff;
+}
+ /*j-css-close*/
