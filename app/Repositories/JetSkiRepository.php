@@ -16,6 +16,12 @@ class JetSkiRepository {
     		'description' => 'required|string',
             'price' => ['required', 'numeric'],
     		'captain' => 'numeric',
+    		'price_unit' => 'required',
+    		'make_id' => 'required | numeric',
+    		'model_id' => 'required | numeric',
+    		'year' => 'required | numeric',
+    		'insurance' => 'required',
+    		'cancel_policy_id' => 'required | numeric',
     		'capacity' => 'required',
     		'lat' => 'required',
     		'long' => 'required',
@@ -29,7 +35,7 @@ class JetSkiRepository {
             return $response_array = ['success' => false , 'message' => $errors, 'error_code' => 101];
 		}
 		
-		$data = array();
+		$images_data = array();
 		if($request->images && count($request->images) > 0)
 		{
 			$i = 1;
@@ -41,20 +47,27 @@ class JetSkiRepository {
 					$main_image = Image::make($image)->resize(362.2, 241.47)->save(public_path('images/jetski/'.$filename));
 				}
 				$photo = Image::make($image)->resize(1500, 600)->save(public_path('images/jetski/'.$filename));
-				$data[] = '/images/jetski/'.$filename;  
+				$images_data[] = '/images/jetski/'.$filename;  
 				$i++;
 			}
 		}
-
+// dump($images_data);
+// dd($main_image_name);
     	$jetski = new JetSki([
             'title' => $request->title,
             'slug' => str_slug($request->title),
             'description' => $request->description,
             'price' => $request->price,
+            'price_unit' => $request->price_unit,
+            'make_id' => $request->make_id,
+            'model_id' => $request->model_id,
+            'year' => (int)$request->year,
+            'insurance' => $request->insurance,
+            'cancel_policy_id' => $request->cancel_policy_id,
     		'captain' => $request->captain,
     		'capacity' => $request->capacity,
     		'image' => $main_image_name,
-    		'images' => json_encode($data),
+    		'images' => json_encode($images_data),
     		'lat' => $request->lat,
     		'long' => $request->long,
     		'city' => $request->city,

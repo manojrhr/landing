@@ -27,7 +27,7 @@
   </div>
   <div class="row _1W2S4 register-jet-row mb-5">
    <div class="col-lg-12 col-md-12 col-xs-12 col-sm-12">
-     <form action="" method="post" enctype="multipart/form-data">
+     <form enctype="multipart/form-data" method="post">
      @csrf
       <h4>Your Jetski</h4>
       <hr>
@@ -69,7 +69,7 @@
         </div>
         <div class="elem-group inlined">
           <label for="checkin-date">Make</label>
-          <select name="make" id="make" require>
+          <select name="make_id" id="make" require>
            <option value="" selected>--Select Make--</option>
            @foreach( App\Make::get() as $make )
            <option value="{{ $make->id }}">{{ $make->name }}</option>
@@ -78,7 +78,7 @@
        </div>
        <div class="elem-group inlined">
         <label for="checkin-date">Model</label>
-        <select name="model" id="model" require>
+        <select name="model_id" id="model" require>
         </select>
       </div>
       <hr>
@@ -141,7 +141,7 @@
   <p>Select how you want to handle trip cancellations. </p>
   @foreach($cancel_policies as $policy)
   <div class="form-check">
-    <input class="form-check-input" type="radio" name="cancel_policy" id="{{$policy->name}}" value="{{$policy->id}}">
+    <input class="form-check-input" type="radio" name="cancel_policy_id" id="{{$policy->name}}" value="{{$policy->id}}">
     <label class="form-check-label" for="{{$policy->name}}">
      {{$policy->name}}
      {!! $policy->description !!}
@@ -153,15 +153,39 @@
 <div class="row register-jet-form mb-4">
   <h4 class="">Jet Ski photos</h4>
   <p>It’s important for renters to see your Jet Ski before they request it.</p>
-    <div class="input-images" style="width: 100%"></div>
+  <div class="box">
+    <div class="js--image-preview"></div>
+    <div class="upload-options">
+      <label>
+        <input type="file" class="image-upload" name="images[]" accept="image/*" />
+      </label>
+    </div>
+  </div>
+
+  <div class="box">
+    <div class="js--image-preview"></div>
+    <div class="upload-options">
+      <label>
+        <input type="file" class="image-upload" name="images[]" accept="image/*" />
+      </label>
+    </div>
+  </div>
+
+  <div class="box">
+    <div class="js--image-preview"></div>
+    <div class="upload-options">
+      <label>
+        <input type="file" class="image-upload" name="images[]" accept="image/*" />
+      </label>
+    </div>
+  </div>
+</div>
   <hr>
 </div>
 <button type="submit" class="btn btn-primary py-3 px-5">Save Details</button>
-</form></div>
 </div>
-
-
-
+</div>
+</form>
 </div>
 @endsection
 
@@ -237,10 +261,126 @@ $('.input-images').imageUploader();
      error: function()
      {
              //handle errors
-             console.log('error...');
+             console.log('error... in Model updation Ajax');
            }
          });
    });
   });
 </script>
+<script>
+function myFunction() {
+  var dots = document.getElementById("dots");
+  var moreText = document.getElementById("more");
+  var btnText = document.getElementById("myBtn");
+
+  if (dots.style.display === "none") {
+    dots.style.display = "inline";
+    btnText.innerHTML = "Read full description"; 
+    moreText.style.display = "none";
+  } else {
+    dots.style.display = "none";
+    btnText.innerHTML = "Hide full description"; 
+    moreText.style.display = "inline";
+  }
+}
+</script>
+      <script>
+         window.dataLayer = window.dataLayer || [];
+         function gtag(){dataLayer.push(arguments);}
+         gtag('js', new Date());
+         gtag('config', 'UA-23581568-13');
+      </script>
+      <script type="text/javascript">
+        function initImageUpload(box) {
+  let uploadField = box.querySelector('.image-upload');
+
+  uploadField.addEventListener('change', getFile);
+
+  function getFile(e){
+    let file = e.currentTarget.files[0];
+    checkType(file);
+  }
+  
+  function previewImage(file){
+    let thumb = box.querySelector('.js--image-preview'),
+        reader = new FileReader();
+
+    reader.onload = function() {
+      thumb.style.backgroundImage = 'url(' + reader.result + ')';
+    }
+    reader.readAsDataURL(file);
+    thumb.className += ' js--no-default';
+  }
+
+  function checkType(file){
+    let imageType = /image.*/;
+    if (!file.type.match(imageType)) {
+      throw 'Datei ist kein Bild';
+    } else if (!file){
+      throw 'Kein Bild gewählt';
+    } else {
+      previewImage(file);
+    }
+  }
+  
+}
+
+// initialize box-scope
+var boxes = document.querySelectorAll('.box');
+
+for (let i = 0; i < boxes.length; i++) {
+  let box = boxes[i];
+  initDropEffect(box);
+  initImageUpload(box);
+}
+
+
+
+/// drop-effect
+function initDropEffect(box){
+  let area, drop, areaWidth, areaHeight, maxDistance, dropWidth, dropHeight, x, y;
+  
+  // get clickable area for drop effect
+  area = box.querySelector('.js--image-preview');
+  area.addEventListener('click', fireRipple);
+  
+  function fireRipple(e){
+    area = e.currentTarget
+    // create drop
+    if(!drop){
+      drop = document.createElement('span');
+      drop.className = 'drop';
+      this.appendChild(drop);
+    }
+    // reset animate class
+    drop.className = 'drop';
+    
+    // calculate dimensions of area (longest side)
+    areaWidth = getComputedStyle(this, null).getPropertyValue("width");
+    areaHeight = getComputedStyle(this, null).getPropertyValue("height");
+    maxDistance = Math.max(parseInt(areaWidth, 10), parseInt(areaHeight, 10));
+
+    // set drop dimensions to fill area
+    drop.style.width = maxDistance + 'px';
+    drop.style.height = maxDistance + 'px';
+    
+    // calculate dimensions of drop
+    dropWidth = getComputedStyle(this, null).getPropertyValue("width");
+    dropHeight = getComputedStyle(this, null).getPropertyValue("height");
+    
+    // calculate relative coordinates of click
+    // logic: click coordinates relative to page - parent's position relative to page - half of self height/width to make it controllable from the center
+    x = e.pageX - this.offsetLeft - (parseInt(dropWidth, 10)/2);
+    y = e.pageY - this.offsetTop - (parseInt(dropHeight, 10)/2) - 30;
+    
+    // position drop and animate
+    drop.style.top = y + 'px';
+    drop.style.left = x + 'px';
+    drop.className += ' animate';
+    e.stopPropagation();
+    
+  }
+}
+
+      </script>
 @endsection
