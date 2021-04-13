@@ -32,7 +32,8 @@ class JetSkiRepository {
 		
         if ($validator->fails()) {
             $errors = implode(',', $validator->messages()->all());
-            return $response_array = ['success' => false , 'message' => $errors, 'error_code' => 101];
+			$response_array = ['success' => false , 'message' => $errors, 'error_code' => 101];
+			return response()->json($response_array);
 		}
 		
 		$images_data = array();

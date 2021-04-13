@@ -16,8 +16,6 @@ class JetskiController extends Controller
 {
     public function index()
     {
-        // $rows = array([],[],[],[],[],[]);
-        // $rows = JetSki::all();
         return view('web.listing');
     }
 
@@ -27,7 +25,7 @@ class JetskiController extends Controller
         if(!$jetski){
             abort(404);
         }
-        // dd($jetski);
+        
         return view('web.details', compact('jetski'));
     }
 
@@ -58,17 +56,15 @@ class JetskiController extends Controller
 
     public function saveJetSki(Request $request)
     {
-        // dump((int)$request->year);
-        // dd($request->all());
-        $response_array = JetSkiRepo::create($request);
-        // $response_array = json_decode($response_array);
-        if($response_array['success'] === true){
+        $response_array = JetSkiRepo::create($request)->getData();
+        
+        if($response_array->success){
             $request->session()->flash('message.level', 'success');
             $request->session()->flash('message.content', 'Jet Ski added successfully!');
             return redirect('/user/profile');
         } else {
             $request->session()->flash('message.level', 'error');
-            $request->session()->flash('message.content', $response_array['message']);
+            $request->session()->flash('message.content', $response_array->message);
             return Redirect::back();
         }
     	return $response_array;
