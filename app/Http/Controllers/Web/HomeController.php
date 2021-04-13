@@ -26,7 +26,7 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $jetskies = JetSki::all()->take(6);
+        $jetskies = JetSki::select('id','slug','image','city','state','country')->groupBy('city')->get();
         return view('web.home', compact('jetskies'));
     }
 }
