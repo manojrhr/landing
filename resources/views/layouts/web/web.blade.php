@@ -5,6 +5,8 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
 	<title>{{ config('app.name') }} @yield('title')</title>
 	<meta charset="utf-8">
+	<meta name="robots" content="noindex">
+	<meta name="googlebot" content="noindex">
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 	<link href="https://fonts.googleapis.com/css?family=Oswald:400,700|Dancing+Script:400,700|Muli:300,400" rel="stylesheet">
 	<link rel="stylesheet" href="{{ asset('assets/web/fonts/icomoon/style.css') }}">
