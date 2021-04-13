@@ -35,7 +35,7 @@
 <body class="hold-transition login-page">
 <div class="login-box">
   <div class="login-logo">
-    <a href="{{ route('root') }}">
+    <a href="{{ route('home') }}">
       <img src="{{ asset('images/logo.png') }}" width="320px">
     </a>
   </div>
