@@ -83,15 +83,15 @@
 									<div class="captain-incld-detail col-12">{{ $jetski->capacity }} guests</div>
 							</div>
 						</div>
-						<!-- <div class="jet-ski-info">
+						<div class="jet-ski-info">
 								<div class="captain-incld">
 									<img src="https://skiski.ca/web/images/jet-ski-ico.png">
 						</div>
 						<div class="captain-incld-text row">
-								<div class="captain-incld-head col-12">Jetskis & Personal Watercraft</div>
-								<div class="captain-incld-detail col-12">Jet Ski</div>
+								<div class="captain-incld-head col-12">Jetskis - Make & Model</div>
+								<div class="captain-incld-detail col-12">{{$jetski->make->name}} | {{$jetski->model->name}} | {{$jetski->year}}</div>
 							</div>
-						</div> -->
+						</div>
 					</div>
 				</div>
 				<div class="owener-info-box mt-5">
@@ -115,7 +115,7 @@
 				</div>
 			</div>
 
-			<section class="wQZ5i mt-5">
+			<!-- <section class="wQZ5i mt-5">
 				<h2 class="_3kuNF">Features &amp; Details</h2>
 				<div class="_1zioW"></div>
 				<ul class="_3vXws">
@@ -123,16 +123,16 @@
 					<li class="yf0t7">Inboard Engine</li>
 					<li class="yf0t7">Single Engine</li>
 				</ul>
-			</section>
-
+			</section> -->
+			<section class="wQZ5i mt-5"></section>
 			<div class="mt-5">
 				<div class="">
 					<h3 class="a77sY">Cancellation Policy</h3>
-					<p class="_1VPsY">Full refund up to 5 days prior.</p>
+					<p class="_1VPsY">{!! $jetski->cancel_policy->description !!}</p>
 					<div class="_3cy0U">
 						<h3 class="_4Yb2b">Additional Terms &amp; Information</h3>
 					<div>
-					<p class="_1vO7e">Age Requirement:- 10+ years.</p>
+					<p class="_1vO7e">{{$jetski->insurance}}</p>
 					</div>
 					</div>
 				</div>
@@ -185,7 +185,7 @@
 						<div class="_2oHrE">
 							<sup class="_2Ev4T">From</sup>
 							<div class="_3JqG_">
-								<span class="_1qauV">$</span>{{ $jetski->price }}<sub class="_39y-F">/hour</sub>
+								<span class="_1qauV">$</span>{{ $jetski->price }}<sub class="_39y-F">/{{$jetski->price_unit}}</sub>
 							</div>
 						</div>
 					</div>
