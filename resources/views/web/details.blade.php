@@ -124,7 +124,7 @@
 					<li class="yf0t7">Single Engine</li>
 				</ul>
 			</section> -->
-			<section class="wQZ5i mt-5"></section>
+			<section class="wQZ5i mt-15"></section>
 			<div class="mt-5">
 				<div class="">
 					<h3 class="a77sY">Cancellation Policy</h3>
@@ -138,7 +138,7 @@
 				</div>
 			</div>
 
-			<section class="similar-listings-row mt-5">
+			<section class="similar-listings-row mt-20">
 				<h3 class="_2GGNL mb-3">Similar Listings</h3>
 				<div class="row">
 					
@@ -179,7 +179,9 @@
 			</div>
 			<div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
 				<div class="send-booking-inquiry _1W2S4">
-					<button class="send-booking-inquiry-btn btn-primary">Send a Booking Inquiry</button>
+					<a href="{{route('booking',$jetski->slug)}}">
+						<button class="send-booking-inquiry-btn btn-primary">Send a Booking Inquiry</button>
+					</a>
 					<p class="EA0Vq">You’ll get a custom price, itinerary and answers to your questions in the next step.</p>
 					<div class="_29j21">
 						<div class="_2oHrE">
