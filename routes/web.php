@@ -33,6 +33,9 @@ Auth::routes(['verify' => true]);
 
 Route::post('/get/models', 'Web\JetskiController@models')->name('loadModels');
 
+//Route for Static Pages
+Route::get('/page/{slug}', 'Web\pageController@show')->name('page');
+
 // Route::get('/profile', 'HomeController@index')->name('profile');
 Route::get('/home', 'Web\HomeController@index')->name('home');
 Route::get('/jetskies', 'Web\JetskiController@index')->name('listing');
