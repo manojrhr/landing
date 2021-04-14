@@ -2,8 +2,17 @@
 
 @section('title', '| Welcome to SkiSki')
 
+@section('styles')
+	<style>
+		.pac-container:after {
+			/* Disclaimer: not needed to show 'powered by Google' if also a Google Map is shown */
+			content:none !important;
+			background-image: none !important;
+			height: 0px;
+		}
+	</style>
+@endsection
 @section('content')
-
 		<div class="SearchHome">
 			<div class="Container--xl">
 			<div class="">
