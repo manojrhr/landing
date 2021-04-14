@@ -3,15 +3,40 @@
 @section('title', '| Welcome to SkiSki')
 
 @section('content')
+
+		<div class="SearchHome">
+			<div class="Container--xl">
+			<div class="">
+		    <form autocomplete="off">
+		    	<div class="Grid">
+		    	<div class="Grid-cell">
+		        <div class="SearchHome-content">
+		        	<div class="SearchForm-prefix">
+						<span class="icon-room ml-1"></span>
+						</div>
+		            <div class="u-flex u-flexJustifyCenter u-flexAlignItemsCenter">
+		            	<div class="SearchForm-inputLocationWrapper">
+		             <input class="SearchForm-inputLocation" type="text" name="Location" placeholder="Location">
+		         	</div>
+		            <div class="SearchForm-submit"> <button type="submit" class="btn SearchForm-inputsearch">Search</button>
+		            </div>
+		        </div>
+		    </div>
+		      </div>
+		    </div>
+		    </form>
+		</div>
+		</div>
+		</div>
 		<div class="hero-slide owl-carousel site-blocks-cover">
 			<!-- div class="intro-section" style="background-image: url('/assets/web/images/hero_1.jpg');"> -->
 			<div class="intro-section" style="background-image: url('{{ asset('assets/web/images/hero_1.jpg')}}');">
 				<div class="container">
 					<div class="row align-items-center">
-						<div class="col-lg-7 ml-auto text-right" data-aos="fade-up">
+						<div class="col-lg-12 text-center" data-aos="fade-up">
 							<h1>Explore, Discover The Ocean</h1>
 							<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quaerat, in distinctio nostrum laborum sed quisquam voluptate facilis non.</p>
-							<p><a href="#" class="btn btn-primary py-3 px-5">Read More</a></p>
+						
 						</div>
 					</div>
 				</div>
@@ -19,10 +44,10 @@
 			<div class="intro-section" style="background-image: url('{{ asset('assets/web/images/hero_2.jpg')}}');">
 				<div class="container">
 					<div class="row align-items-center">
-						<div class="col-lg-7 mx-auto text-center" data-aos="fade-up">
+						<div class="col-lg-12 text-center" data-aos="fade-up">
 							<h1>Enjoy The Ocean With Your Family</h1>
 							<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quaerat, in distinctio nostrum laborum sed quisquam voluptate facilis non.</p>
-							<p><a href="#" class="btn btn-primary py-3 px-5">Read More</a></p>
+						
 						</div>
 					</div>
 				</div>

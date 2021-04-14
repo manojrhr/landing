@@ -86,38 +86,6 @@
 							</div>
 						</div>
 					</div>
-			<!-- <div class="site-navbar py-2 js-sticky-header site-navbar-target d-none pl-0 d-lg-block" role="banner">
-				<div class="container-fluid">
-					<div class="d-flex">
-						<div class="col-6 col-lg-3">
-							<a class="logo" href="{{ route('home') }}">
-								<img src="{{ asset('assets/web/images/logo_white.png') }}" alt="Image">
-							</a>
-						</div>
-						<div class="col-6 col-lg-9">
-							<nav class="site-navigation position-relative text-right" role="navigation">
-								<ul class="site-menu main-menu js-clone-nav mr-auto d-none pl-0 d-lg-block navbar-nav ml-auto">
-									<li class="active">
-										<a href="index.html" class="nav-link text-left">List you car</a>
-									</li>
-									<li>
-										<a href="about.html" class="nav-link text-left">Learn more</a>
-									</li>
-									@guest
-									<li>
-										<a href="{{ route('login') }}" class="nav-link text-left">Login</a>
-									</li>
-									<li>
-										<a href="{{ route('register') }}" class="nav-link text-left">Sign up</a>
-									</li>
-			                        @endguest
-								</ul> </ul>
-							</nav>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div> -->
 
       	@include('includes.flash-message')
       	@yield('content')
@@ -141,14 +109,6 @@
 							<li><a href="#">Projects</a></li>
 						</ul>
 					</div>
-					<!-- <div class="col-lg-3 footer-content">
-						<h3 class="footer-heading"><span>Our Services</span></h3>
-						<ul class="list-unstyled">
-							<li><a href="#">Industrial</a></li>
-							<li><a href="#">Construction</a></li>
-							<li><a href="#">Remodeling</a></li>
-						</ul>
-					</div> -->
 					<div class="col-lg-3 footer-content">
 						<h3 class="footer-heading"><span>Contact</span></h3>
 						<ul class="list-unstyled">
@@ -160,15 +120,6 @@
 						</ul>
 					</div>
 				</div>
-				<!-- <div class="row">
-					<div class="col-12">
-						<div class="copyright">
-							<p>
-								Copyright &copy;<script data-cfasync="false" src="cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="icon-heart text-danger" aria-hidden="true"></i> by <a href="www_subdomain/index.html" target="_blank"> </a>
-							</p>
-						</div>
-					</div>
-				</div> -->
 			</div>
 		</div>
 	</div>
