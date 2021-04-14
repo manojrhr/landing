@@ -26,4 +26,10 @@ class BookingController extends Controller
         }
         return view('web.booking');
     }
+
+    public function save(Request $request, JetSki $jetski)
+    {
+        dump($jetski->all());
+        dd($request->all());
+    }
 }

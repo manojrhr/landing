@@ -15,6 +15,21 @@ class CreateBookingsTable extends Migration
     {
         Schema::create('bookings', function (Blueprint $table) {
             $table->id();
+            $table->foreign('jetski_id')->references('id')->on('jet_skis');
+            $table->foreign('user_id')->references('id')->on('users');
+            $table->foreign('seller_id')->references('id')->on('users');
+            $table->Integer('hours')->nullable();
+            $table->Integer('minutes')->nullable();
+            $table->Integer('nights')->nullable();
+            $table->date('checkin_date')->nullable();
+            $table->date('flex_start_date')->nullable();
+            $table->date('flex_end_date')->nullable();
+            $table->time('pickup_time')->nullable();
+            $table->Integer('adults');
+            $table->Integer('seniors');
+            $table->Integer('children');
+            $table->Integer('infants');
+            $table->Integer('visitor_message');
             $table->timestamps();
         });
     }

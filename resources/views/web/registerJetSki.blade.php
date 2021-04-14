@@ -191,7 +191,7 @@
 
 @section('scripts')
 <script src="{{ asset('assets/web/js/image-uploader.min.js') }}"></script>
-<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBWwDUV3bzFpJxhojq9JFaUCg2DX7da9rU&libraries=places"></script>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBaD7l4cML2F5NShPqSlkSzTDKQ4NF6ORQ&libraries=places"></script>
 <script>
 $(document).ready(function() { 
 
