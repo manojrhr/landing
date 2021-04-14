@@ -16,7 +16,17 @@
 						</div>
 		            <div class="u-flex u-flexJustifyCenter u-flexAlignItemsCenter">
 		            	<div class="SearchForm-inputLocationWrapper">
-		             <input class="SearchForm-inputLocation" type="text" name="Location" placeholder="Location">
+						<!-- <input class="SearchForm-inputLocation" type="text" name="Location" placeholder="Location"> -->
+						<input  class="SearchForm-inputLocation"type="text" id="address" name="Location" role="combobox"
+											aria-labelledby="label_search_location"
+											aria-expanded="true" aria-autocomplete="list" aria-owns="explore-location-suggest" 
+											placeholder="Search for a destination..." required="">
+						<input type="hidden" id="route" name="street" required="">
+						<input type="hidden" id="locality" name="city" required="">
+						<input type="hidden" id="administrative_area_level_1" name="state" required="">
+						<input type="hidden" id="country" name="country" required="">
+						<input type="hidden" id="lat" name="lat" required="">
+						<input type="hidden" id="long" name="long" required="">
 		         	</div>
 		            <div class="SearchForm-submit"> <button type="submit" class="btn SearchForm-inputsearch">Search</button>
 		            </div>
@@ -229,4 +239,53 @@
 				</div>
 			</div>
 		</div>
+@endsection
+
+@section('scripts')
+	@if(Request::is('/') || Request::is('/home'))
+		<script src="{{ asset('assets/web/js/image-uploader.min.js') }}"></script>
+		<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBaD7l4cML2F5NShPqSlkSzTDKQ4NF6ORQ&libraries=places"></script>
+		<script>
+		$(document).ready(function() { 
+
+		var input = document.getElementById('address');
+		var autocomplete = new google.maps.places.Autocomplete(input);
+
+		const componentForm = {
+			// street_number: "long_name",
+			route: "long_name",
+			locality: "long_name",
+			administrative_area_level_1: "long_name",
+			country: "long_name",
+			// postal_code: "short_name",
+		};
+
+		google.maps.event.addListener(autocomplete, 'place_changed', function () {
+				var place = autocomplete.getPlace();
+				console.log(place);
+
+				for (const component in componentForm) {
+				document.getElementById(component).value = "";
+				document.getElementById(component).disabled = false;
+				}
+
+				document.getElementById('lat').value = place.geometry.location.lat();
+				document.getElementById('long').value = place.geometry.location.lng();
+
+
+				for (const component of place.address_components) {
+				const addressType = component.types[0];
+
+				if (componentForm[addressType]) {
+					const val = component[componentForm[addressType]];
+					document.getElementById(addressType).value = val;
+				}
+				}
+				// alert(place.geometry.location.lat());
+				// alert(place.geometry.location.lng());
+			});
+
+		});
+	</script>
+	@endif
 @endsection
