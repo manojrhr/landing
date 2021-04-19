@@ -5,6 +5,8 @@ namespace App\Http\Controllers\Web;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\JetSki;
+use Redirect;
+use App\Repositories\BookingRepository as BookingRepo;
 
 class BookingController extends Controller
 {
@@ -27,9 +29,18 @@ class BookingController extends Controller
         return view('web.booking');
     }
 
-    public function save(Request $request, JetSki $jetski)
+    public function save(Request $request, $slug)
     {
-        dump($jetski->all());
-        dd($request->all());
+        $response_array = BookingRepo::create($request, $slug)->getData();
+
+        if($response_array->success){
+            $request->session()->flash('message.level', 'success');
+            $request->session()->flash('message.content', 'Booking Inquiry submitted successfully.!');
+            return redirect('/user/profile');
+        } else {
+            $request->session()->flash('message.level', 'error');
+            $request->session()->flash('message.content', $response_array->message);
+            return Redirect::back()->withInput();
+        }
     }
 }

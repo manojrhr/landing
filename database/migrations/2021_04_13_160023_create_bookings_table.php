@@ -15,9 +15,9 @@ class CreateBookingsTable extends Migration
     {
         Schema::create('bookings', function (Blueprint $table) {
             $table->id();
-            $table->foreign('jetski_id')->references('id')->on('jet_skis');
-            $table->foreign('user_id')->references('id')->on('users');
-            $table->foreign('seller_id')->references('id')->on('users');
+            $table->unsignedBigInteger('jetski_id');
+            $table->unsignedBigInteger('user_id');
+            $table->unsignedBigInteger('seller_id');
             $table->Integer('hours')->nullable();
             $table->Integer('minutes')->nullable();
             $table->Integer('nights')->nullable();
@@ -29,7 +29,7 @@ class CreateBookingsTable extends Migration
             $table->Integer('seniors');
             $table->Integer('children');
             $table->Integer('infants');
-            $table->Integer('visitor_message');
+            $table->text('visitor_message');
             $table->timestamps();
         });
     }

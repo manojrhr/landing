@@ -6,6 +6,6 @@
 
 @if(session()->has('message.level'))
 <script type="text/javascript">
-	alertify.{{ session('message.level') }}('{!! session('message.content') !!}');
+	alertify.{{ session('message.level') }}('{!! session('message.content') !!}', '', 5,);
 </script>
 @endif

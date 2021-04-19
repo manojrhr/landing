@@ -9,6 +9,43 @@
 @endsection
 
 @section('content')
+<style type="text/css">
+   .duraion-booking-time {
+  font-size: 14px;
+  padding-right: 5px;
+}
+.duraion-booking-time-head
+{
+  margin-bottom: 0;
+  font-weight: 600;
+  line-height: normal;
+}
+.duraion-booking {
+  padding: 0;
+  display: flex;
+}
+#booking-detail-modal .modal-body
+{
+   padding: 0;
+}
+#booking-detail-modal .modal-dialog {
+   max-width: 700px;
+}
+._121gM {
+   display: -webkit-box;
+   display: flex;
+   -webkit-box-orient: vertical;
+   -webkit-box-direction: normal;
+   flex-direction: column;
+   -webkit-box-align: start;
+   align-items: flex-start;
+   -webkit-box-pack: center;
+   justify-content: center;
+   height: 130px;
+   padding: 0 25px;
+   background-color: #f1fcff;
+}
+</style>
 <div class="profile-header" style="background-image: url('{{ asset('assets/web/images/profile-cover.jpg')}}');">
 	<!-- <img src="{{ asset('assets/web/images/profile-cover.jpg') }}"> -->
     <div class="container">
@@ -39,10 +76,6 @@
 				<div class="card mt-3">
 					<ul class="list-group list-group-flush">
 						<h5>Reviews from hosts</h5>
-						<li class="list-group-item d-flex justify-content-between align-items-center flex-wrap">
-							<h6 class="mb-0">No reviews yet</h6>
-						</li>
-
 					</ul>
 				</div>
 			</div>
@@ -84,7 +117,7 @@
 								{{ $user->phone }}
 							</div>
 						</div>
-						<!--<hr>
+						<hr>
 						<div class="row">
 							<div class="col-sm-3">
 								<h6 class="mb-0">Address</h6>
@@ -92,20 +125,12 @@
 							<div class="col-sm-9 text-secondary">
 								Bay Area, San Francisco, CA
 							</div>
-						</div> -->
+						</div> 
 					</div>
-				</div>
-				<div class="row gutters-sm">
-					<div class="col-sm-12 mb-3">
-						<div class="card h-100">
-							<div class="card-body">
-								<h6 class="d-flex align-items-center mb-3"><i class="material-icons text-info mr-2">Booking List</h6>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
+        </div>
+        <livewire:seller-bookings />
 			</div>
 		</div>
 	</div>
+
 @endsection

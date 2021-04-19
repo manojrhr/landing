@@ -13,26 +13,10 @@ class JetSki extends Model
      */
     protected $fillable = [
         'title', 'slug', 'description', 'price', 'captain', 'capacity', 'image', 'images', 'lat', 'long', 'city', 'state', 'country', 'user_id', 'price_unit', 'make_id', 'year', 'model_id', 'insurance', 'cancel_policy_id'
-
     ];
 
-    public function user()
+    public function booking()
     {
-        return $this->belongsTo(User::class);
-    }
-
-    public function model()
-    {
-        return $this->belongsTo('App\Models');
-    }
-
-    public function make()
-    {
-        return $this->belongsTo('App\make');
-    }
-
-    public function cancel_policy()
-    {
-        return $this->belongsTo('App\cancel_policy');
+        return $this->hasMany(Booking::class);
     }
 }
