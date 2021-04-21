@@ -2,6 +2,13 @@
 
 @section('content')
 
+@if(empty($playerlist))
+  <div class="searchResultsGrid">
+    <div class="text-center" style="margin: 30px">
+      <h1>Sorry! our services are not available on your location.</h1>
+    </div>
+  </div>
+@endif
 <div class="searchResultsGrid">
 @php
 //Columns must be a factor of 12 (1,2,3,4,6,12)
