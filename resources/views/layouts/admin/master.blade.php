@@ -149,7 +149,7 @@
         <li class="header">MAIN NAVIGATION</li>
         <li><a href="{{ route('admin.dashboard') }}"><i class="fa fa-book"></i><span>Dashboard</span></a></li>
         <li><a href="{{ route('admin.users') }}"><i class="fa fa-user"></i><span>Users</span></a></li>
-        <li><a href="{{ route('admin.jetski') }}"><i class="fa fa-user"></i><span>Jet Ski</span></a></li>
+        <li><a href="{{ route('admin.jetski') }}"><i class="fa fa-ship"></i><span>Jet Ski</span></a></li>
         <li><a href="{{ route('admin.makes') }}"><i class="fa fa-list"></i><span>Makes</span></a></li>
       </ul>
     </section>

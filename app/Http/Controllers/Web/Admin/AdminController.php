@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Web\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\User;
+use App\JetSki;
 
 class AdminController extends Controller
 {
@@ -26,7 +27,8 @@ class AdminController extends Controller
     public function index()
     {
         $user_count = User::count();
+        $jetski_count = JetSki::count();
 
-        return view('admin.dashboard', compact('user_count'));
+        return view('admin.dashboard', compact('user_count', 'jetski_count'));
     }
 }
