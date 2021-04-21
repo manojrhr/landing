@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class JetSki extends Model
 {
+    protected $table = 'jet_skis';
     /**
      * The attributes that are mass assignable.
      *
