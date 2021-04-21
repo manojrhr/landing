@@ -16,7 +16,7 @@
 		<div class="SearchHome">
 			<div class="Container--xl">
 			<div class="">
-		    <form autocomplete="off">
+		    <form autocomplete="off" action="{{route('nearbyjetski')}}" method="post">
 		    	<div class="Grid">
 		    	<div class="Grid-cell">
 		        <div class="SearchHome-content">
@@ -26,6 +26,7 @@
 		            <div class="u-flex u-flexJustifyCenter u-flexAlignItemsCenter">
 		            	<div class="SearchForm-inputLocationWrapper">
 						<!-- <input class="SearchForm-inputLocation" type="text" name="Location" placeholder="Location"> -->
+						@csrf
 						<input  class="SearchForm-inputLocation"type="text" id="address" name="Location" role="combobox"
 											aria-labelledby="label_search_location"
 											aria-expanded="true" aria-autocomplete="list" aria-owns="explore-location-suggest" 

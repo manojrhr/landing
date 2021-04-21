@@ -69,4 +69,22 @@ class JetskiController extends Controller
         }
     	return $response_array;
     }
+                            
+    public function nearByJetski(Request $request)
+    {
+        // dd($request->all());
+
+        $latitude       =       $request->lat;
+        $longitude      =       $request->long;
+
+        $jetskis          =       JetSki::select(DB::raw('*, ( 6367 * acos( cos( radians('.$latitude.') ) 
+                                                * cos( radians( lat ) ) * cos( radians( longitude ) 
+                                                - radians('.$longitude.') ) + sin( radians('.$latitude.') ) 
+                                                * sin( radians( lat ) ) ) ) AS distance'))
+                                    ->having('distance', '<', 25)
+                                    ->orderBy('distance')
+                                    ->get();
+
+        return view('shop-listing', compact("jetskis"));
+    }
 }

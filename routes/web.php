@@ -37,12 +37,13 @@ Route::post('/get/models', 'Web\JetskiController@models')->name('loadModels');
 Route::get('/page/{slug}', 'Web\pageController@show')->name('page');
 
 // Route::get('/profile', 'HomeController@index')->name('profile');
-Route::get('/home', 'Web\HomeController@index')->name('home');
+// Route::get('/home', 'Web\HomeController@index')->name('home');
 Route::get('/jetskies', 'Web\JetskiController@index')->name('listing');
 Route::get('/jetski/{slug}', 'Web\JetskiController@details')->name('jetski_detail');
 Route::get('/jetski/booking/{slug}', 'Web\BookingController@index')->name('booking');
 Route::post('/jetski/booking/{slug}', 'Web\BookingController@save')->name('save.booking');
 
+Route::post('/near_by/jetski/', 'Web\JetskiController@nearByJetski')->name('nearbyjetski');
 // Route::get('/admin', 'AdminController@index')->name('AdminHome');
 Route::get('/users/logout', 'Auth\LoginController@userLogout')->name('user.logout');
 
