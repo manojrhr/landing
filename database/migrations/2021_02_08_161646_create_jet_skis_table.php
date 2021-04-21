@@ -21,8 +21,8 @@ class CreateJetSkisTable extends Migration
             $table->tinyInteger('captain');
             $table->Integer('capacity');
             $table->text('images');
-            $table->decimal('lat', 10, 7);
-            $table->decimal('long', 10, 7);
+            $table->decimal('latitude', 10, 7);
+            $table->decimal('longitude', 10, 7);
             $table->string('city');
             $table->string('state');
             $table->string('country');

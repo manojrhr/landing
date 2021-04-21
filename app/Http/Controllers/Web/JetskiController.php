@@ -78,9 +78,9 @@ class JetskiController extends Controller
         $longitude      =       $request->long;
 
         $jetskis          =       JetSki::select(DB::raw('*, ( 6367 * acos( cos( radians('.$latitude.') ) 
-                                                * cos( radians( lat ) ) * cos( radians( longitude ) 
+                                                * cos( radians( latitude ) ) * cos( radians( longitude ) 
                                                 - radians('.$longitude.') ) + sin( radians('.$latitude.') ) 
-                                                * sin( radians( lat ) ) ) ) AS distance'))
+                                                * sin( radians( latitude ) ) ) ) AS distance'))
                                     ->having('distance', '<', 25)
                                     ->orderBy('distance')
                                     ->get();
