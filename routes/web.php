@@ -55,6 +55,8 @@ Route::group(['prefix' => 'user' , 'as' => 'user.'], function(){
 	Route::get('/profile', 'Web\UserController@show_profile')->name('profile');
 	Route::get('/update-profile', 'Web\UserController@edit_profile')->name('edit_profile');
 	Route::post('/update-profile', 'Web\UserController@update_profile')->name('update_profile');
+
+	Route::get('/seller/jetski', 'Web\SellerController@jetskis')->name('seller.jetski');
 	
 	Route::get('stripe/{id}', 'Web\SellerController@redirectToStripe')->name('redirect_stripe');
 	Route::get('connect/{token}', 'Web\SellerController@saveStripeAccount')->name('save_stripe');

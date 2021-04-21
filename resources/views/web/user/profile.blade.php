@@ -5,47 +5,46 @@
 	.profile-header{
 		height: 200px;
 	}
+
+	.duraion-booking-time {
+		font-size: 14px;
+		padding-right: 5px;
+	}
+	.duraion-booking-time-head
+	{
+		margin-bottom: 0;
+		font-weight: 600;
+		line-height: normal;
+	}
+	.duraion-booking {
+		padding: 0;
+		display: flex;
+	}
+	#booking-detail-modal .modal-body
+	{
+		padding: 0;
+	}
+	#booking-detail-modal .modal-dialog {
+		max-width: 700px;
+	}
+	._121gM {
+		display: -webkit-box;
+		display: flex;
+		-webkit-box-orient: vertical;
+		-webkit-box-direction: normal;
+		flex-direction: column;
+		-webkit-box-align: start;
+		align-items: flex-start;
+		-webkit-box-pack: center;
+		justify-content: center;
+		height: 130px;
+		padding: 0 25px;
+		background-color: #f1fcff;
+	}
 </style>
 @endsection
 
 @section('content')
-<style type="text/css">
-   .duraion-booking-time {
-  font-size: 14px;
-  padding-right: 5px;
-}
-.duraion-booking-time-head
-{
-  margin-bottom: 0;
-  font-weight: 600;
-  line-height: normal;
-}
-.duraion-booking {
-  padding: 0;
-  display: flex;
-}
-#booking-detail-modal .modal-body
-{
-   padding: 0;
-}
-#booking-detail-modal .modal-dialog {
-   max-width: 700px;
-}
-._121gM {
-   display: -webkit-box;
-   display: flex;
-   -webkit-box-orient: vertical;
-   -webkit-box-direction: normal;
-   flex-direction: column;
-   -webkit-box-align: start;
-   align-items: flex-start;
-   -webkit-box-pack: center;
-   justify-content: center;
-   height: 130px;
-   padding: 0 25px;
-   background-color: #f1fcff;
-}
-</style>
 <div class="profile-header" style="background-image: url('{{ asset('assets/web/images/profile-cover.jpg')}}');">
 	<!-- <img src="{{ asset('assets/web/images/profile-cover.jpg') }}"> -->
     <div class="container">
@@ -59,26 +58,7 @@
 <div class="container pt-5">
 	<div class="main-body">
 		<div class="row gutters-sm">
-			<div class="col-md-4 mb-3">
-				<div class="card">
-					<div class="card-body">
-						<div class="d-flex flex-column align-items-center text-center">
-							<img src="{{ url('/'.$user->avatar) }}" alt="Admin" class="rounded-circle" width="150">
-							<div class="mt-3">
-								<h4>{{ $user->name }}</h4>
-								<p class="text-muted font-size-sm">Joined {{ date('m Y', strtotime($user->created_at)) }}</p>
-								<button class="btn btn-outline-primary">Message</button>
-								@include('web.user.stripebutton')
-							</div>
-						</div>
-					</div>
-				</div>
-				<div class="card mt-3">
-					<ul class="list-group list-group-flush">
-						<h5>Reviews from hosts</h5>
-					</ul>
-				</div>
-			</div>
+		 	@include('web.user.userProfilePart')
 			<div class="col-md-8">
 				<div>
 				</div>

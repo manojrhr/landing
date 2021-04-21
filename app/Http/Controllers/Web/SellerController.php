@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Stripe\StripeClient;
 use Str;
+use Auth;
 use App\User;
 
 class SellerController extends Controller
@@ -78,5 +79,11 @@ class SellerController extends Controller
     	$seller->fresh();
 
     	return redirect()->route('user.profile');
-    }
+	}
+	
+	public function jetskis()
+	{
+		$user = Auth::user();
+		return view('web.user.seller_jetski', compact('user'));
+	}
 }
