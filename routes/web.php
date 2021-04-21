@@ -79,6 +79,9 @@ Route::group(['prefix' => 'admin' , 'as' => 'admin.'], function(){
 
 	Route::get('/jetski', 'Web\Admin\JetskiController@index')->name('jetski');
 	Route::get('/jetski/delete/{id}', 'Web\Admin\JetskiController@delete')->name('jetski.delete');
+
+	Route::get('/booking', 'Web\Admin\BookingController@index')->name('booking');
+	Route::get('/booking/delete/{id}', 'Web\Admin\BookingController@delete')->name('booking.delete');
 });
 
 
