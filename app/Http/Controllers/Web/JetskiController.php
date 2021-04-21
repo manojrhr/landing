@@ -77,7 +77,7 @@ class JetskiController extends Controller
         $latitude       =       $request->lat;
         $longitude      =       $request->long;
 
-        $jetskis          =       JetSki::select(DB::raw('*, ( 6367 * acos( cos( radians('.$latitude.') ) 
+        $rows          =       JetSki::select(DB::raw('*, ( 6367 * acos( cos( radians('.$latitude.') ) 
                                                 * cos( radians( latitude ) ) * cos( radians( longitude ) 
                                                 - radians('.$longitude.') ) + sin( radians('.$latitude.') ) 
                                                 * sin( radians( latitude ) ) ) ) AS distance'))
@@ -85,6 +85,6 @@ class JetskiController extends Controller
                                     ->orderBy('distance')
                                     ->get();
 
-        return view('shop-listing', compact("jetskis"));
+        return view('web.nearby', compact("rows"));
     }
 }
