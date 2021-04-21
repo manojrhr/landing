@@ -12,7 +12,9 @@ class Booking extends Model
      * @var array
      */
     protected $fillable = [
-        'jetski_id', 'user_id', 'seller_id', 'hours', 'minutes', 'nights', 'checkin_date', 'flex_start_date', 'flex_end_date', 'pickup_time', 'adult', 'senior', 'child', 'infants', 'visitor_message'
+        'jetski_id', 'user_id', 'seller_id', 'hours', 'minutes', 'nights', 'checkin_date', 'flex_start_date', 
+        'flex_end_date', 'pickup_time', 'adult', 'senior', 'child', 'infants', 'visitor_message', 'confirmed_date',
+        'confirmed_time', 'confirmed'
     ];
 
     public function jetski()

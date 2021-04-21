@@ -149,6 +149,7 @@
         <li class="header">MAIN NAVIGATION</li>
         <li><a href="{{ route('admin.dashboard') }}"><i class="fa fa-book"></i><span>Dashboard</span></a></li>
         <li><a href="{{ route('admin.users') }}"><i class="fa fa-user"></i><span>Users</span></a></li>
+        <li><a href="{{ route('admin.jetski') }}"><i class="fa fa-user"></i><span>Jet Ski</span></a></li>
         <li><a href="{{ route('admin.makes') }}"><i class="fa fa-list"></i><span>Makes</span></a></li>
       </ul>
     </section>
@@ -246,5 +247,7 @@
 <script src="dist/js/pages/dashboard.js"></script>
 <!-- AdminLTE for demo purposes -->
 <script src="{{ asset('assets/admin/dist/js/demo.js') }}"></script>
+<!-- Alertify -->
+<script src="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/alertify.min.js"></script>
 </body>
 </html>

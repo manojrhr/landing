@@ -30,6 +30,9 @@ class CreateBookingsTable extends Migration
             $table->Integer('children');
             $table->Integer('infants');
             $table->text('visitor_message');
+            $table->date('confirmed_date')->nullable();
+            $table->time('confirmed_time')->nullable();
+            $table->boolean('confirmed');
             $table->timestamps();
         });
     }
