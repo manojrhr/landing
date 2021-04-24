@@ -59,7 +59,7 @@
 										<a href="{{route('add.jetski')}}" class="nav-link text-left">List your Jet Ski</a>
 									</li>
 									<li>
-										<a href="#" class="nav-link text-left">Learn more</a>
+										<a href="{{ route('listing') }}" class="nav-link text-left">Explorer Jet Ski</a>
 									</li>
 									@guest
 									<li>
