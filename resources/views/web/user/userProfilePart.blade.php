@@ -7,7 +7,11 @@
 							<div class="mt-3">
 								<h4>{{ $user->name }}</h4>
 								<p class="text-muted font-size-sm">Joined {{ date('m Y', strtotime($user->created_at)) }}</p>
-								<button class="btn btn-outline-primary">Message</button>
+								@if(Auth::user()->jetskis)
+									<a href="{{ route('user.seller.jetski') }}">
+										<button class="btn btn-outline-primary">My Jet Ski</button>
+									</a>
+								@endif
 								@include('web.user.stripebutton')
 							</div>
 						</div>

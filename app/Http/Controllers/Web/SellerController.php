@@ -84,6 +84,7 @@ class SellerController extends Controller
 	public function jetskis()
 	{
 		$user = Auth::user();
-		return view('web.user.seller_jetski', compact('user'));
+		$jetskis = Auth::user()->jetskis;
+		return view('web.user.seller_jetski', compact('user', 'jetskis'));
 	}
 }

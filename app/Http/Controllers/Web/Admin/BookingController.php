@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Booking;
 use Redirect;
+use App\Repositories\BookingRepository as BookingRepo;
 
 class BookingController extends Controller
 {
@@ -38,5 +39,21 @@ class BookingController extends Controller
         $request->session()->flash('message.level', 'success');
         $request->session()->flash('message.content', 'Jet Ski Deleted Successfully.');
         return Redirect::back();
+    }
+
+    public function save(Request $request)
+    {
+        $response_array = BookingRepo::create($request)->getData();
+        
+        if($response_array->success){
+            $request->session()->flash('message.level', 'success');
+            $request->session()->flash('message.content', 'Booking Inquiry submitted successfully!');
+            return redirect('/user/profile');
+        } else {
+            $request->session()->flash('message.level', 'error');
+            $request->session()->flash('message.content', $response_array->message);
+            return Redirect::back()->withInput($request->input());
+        }
+    	return $response_array;
     }
 }

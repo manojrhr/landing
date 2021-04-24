@@ -34,36 +34,36 @@
       <div class="row register-jet-form mb-4">
         <div class="elem-group inlined">
           <label for="checkin-date">Add a title for your Jet Ski</label>
-          <input type="text" id="title" name="title" required="">
+          <input type="text" id="title" name="title" value="{{ old('title', "") }}" required="">
         </div>
         <div class="elem-group inlined">
           <label for="checkin-date">Passenger capacity</label>
-          <input type="text" id="capacity" name="capacity" required="">
+          <input type="text" id="capacity" value="{{ old('capacity', 0) }}" name="capacity" required="">
         </div>
         <div class="elem-group inlined">
           <label for="checkin-date">Price</label>
-          <input type="text" id="price" name="price" required="">
+          <input type="text" id="price" value="{{ old('price', "") }}" name="price" required="">
         </div>
         <div class="elem-group inlined">
           <label for="checkin-date">Price is per</label>
           <select name="price_unit" id="price_unit" require>
-           <option value="hour">Hour</option>
-           <option value="day">Day</option>
+           <option value="hour" @if(old('price_unit') == 'hour') selected="selected" @endif>Hour</option>
+           <option value="day" @if(old('price_unit') == 'day') selected="selected" @endif>Day</option>
          </select>
        </div>
         <div class="elem-group inlined">
           <label for="checkin-date">Year of Making</label>
           <select name="year" id="year" require>
             @for($i = date('Y') ; $i >= date('Y')-20; $i--){
-            <option value="{{$i}}">{{$i}}</option>
+            <option value="{{$i}}" @if(old('year') == $i) selected="selected" @endif>{{$i}}</option>
             @endfor
           </select>
         </div>
         <div class="elem-group inlined">
           <label for="checkin-date">Captain Included</label>
           <select name="captain" id="captain" require>
-           <option value="1">Yes</option>
-           <option value="0">No</option>
+           <option value="1" @if(old('captain') == "1") selected="selected" @endif >Yes</option>
+           <option value="0" @if(old('captain') == "0") selected="selected" @endif >No</option>
          </select>
        </div>
         </div>
@@ -72,7 +72,7 @@
           <select name="make_id" id="make" require>
            <option value="" selected>--Select Make--</option>
            @foreach( App\Make::get() as $make )
-           <option value="{{ $make->id }}">{{ $make->name }}</option>
+              <option value="{{ $make->id }}">{{ $make->name }}</option>
            @endforeach
          </select>
        </div>
@@ -89,14 +89,14 @@
       <p>You must have existing insurance in order for your Jet Ski to be approved. 
       This can be recreational Jet Ski insurance or commercial charter operator insurance.</p>
       <div class="form-check">
-        <input class="form-check-input" type="radio" name="insurance" id="personal" value="I have recreational Jet Ski insurance">
+        <input class="form-check-input" type="radio" name="insurance" id="personal" value="I have recreational Jet Ski insurance"  @if(old('captain') == "I have recreational Jet Ski insurance") checked="checked" @endif >
         <label class="form-check-label" for="personal">
          I have recreational Jet Ski insurance
          <p>Select this if you own a personal Jet Ski.</p>
        </label>
      </div>
      <div class="form-check">
-      <input class="form-check-input" type="radio" name="insurance" id="commercial" checked="" value="I have commercial charter insurance">
+      <input class="form-check-input" type="radio" name="insurance" id="commercial" value="I have commercial charter insurance"  @if(old('captain') == "I have commercial charter insurance") checked="checked" @endif >
       <label class="form-check-label" for="commercial">
         I have commercial charter insurance
         <p>Select this if you run a Jet Ski rental or charter business.</p>
@@ -132,7 +132,7 @@
   </div> -->
   <div class="elem-group inlined">
     <label for="checkin-date">Description</label>
-    <textarea name="description"></textarea>
+    <textarea name="description" required="">{{ old('description', "") }}</textarea>
   </div>
   <hr>
 </div>
@@ -141,7 +141,7 @@
   <p>Select how you want to handle trip cancellations. </p>
   @foreach($cancel_policies as $policy)
   <div class="form-check">
-    <input class="form-check-input" type="radio" name="cancel_policy_id" id="{{$policy->name}}" value="{{$policy->id}}">
+    <input class="form-check-input" type="radio" name="cancel_policy_id" id="{{$policy->name}}" value="{{$policy->id}}" @if(old('cancel_policy_id') == $policy->id) checked="checked" @endif>
     <label class="form-check-label" for="{{$policy->name}}">
      {{$policy->name}}
      {!! $policy->description !!}
@@ -182,7 +182,7 @@
 </div>
   <hr>
 </div>
-<button type="submit" class="btn btn-primary py-3 px-5">Save Details</button>
+<button type="submit" class="btn btn-primary py-3 px-5">Add Jet Ski</button>
 </div>
 </div>
 </form>

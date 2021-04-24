@@ -61,11 +61,11 @@ class JetskiController extends Controller
         if($response_array->success){
             $request->session()->flash('message.level', 'success');
             $request->session()->flash('message.content', 'Jet Ski added successfully!');
-            return redirect('/user/profile');
+            return redirect('/user/seller/jetski');
         } else {
             $request->session()->flash('message.level', 'error');
             $request->session()->flash('message.content', $response_array->message);
-            return Redirect::back();
+            return Redirect::back()->withInput($request->input());
         }
     	return $response_array;
     }

@@ -59,9 +59,36 @@
 	<div class="main-body">
 		<div class="row gutters-sm">
 		 	@include('web.user.userProfilePart')
-			<div class="col-md-8">
-                <!-- JETSKIS CODE WILL GO HERE -->
-			</div>
+            <div class="col-md-8">
+                <div class="card mb-3">
+                    <div class="row">
+                        @if($jetskis != null)
+                            @foreach($jetskis as $jetski)
+                                <div class="col-lg-6">
+                                    <div class="card-body">
+                                    <div id="5Yry0O3a" class="_31xXy ">
+                                        <div class="_17Omb">
+                                        <a draggable="false" class="_3Nbqm" href="{{ route('jetski_detail',$jetski->slug) }}">
+                                            <img alt="img" loading="lazy" class="_2Q0dI" src="{{ asset($jetski->image) }}" width="300"></a><div class="_1OY_t">
+                                            <small class="_3sgfF">{{ $jetski->price_unit }}</small>
+                                            <strong class="_2pShK _2oxgR">${{ $jetski->price }}</strong>
+                                            </div>
+                                        </div>
+                                        <h3 class="_2-oCe">
+                                            <a class="_3aa3R" href="{{ route('jetski_detail',$jetski->slug) }}">{{ Str::limit($jetski->description, 60) }}</a>
+                                        </h3>
+                                        <span class="_2-oCe">
+                                        <small class="_3sgfF"> Location of the jet ski:</small> 
+                                        <strong class="_2pShK _2oxgR">{{ $jetski->city }}-{{ $jetski->state }}</strong>
+                                        </span>
+                                    </div>
+                                    </div>
+                                </div>
+                            @endforeach
+                        @endif
+                    </div>
+                </div>
+            </div>
 		</div>
 	</div>
 </div>
