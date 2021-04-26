@@ -4,14 +4,17 @@ namespace App\Http\Controllers\Web;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Storage;
 
 class PageController extends Controller
 {
     public function show($slug,Request $request)
     {
+      $static_page_names = Storage::disk('static_pages')->files('');
+
       $data = array();
-      $static_page_names =  ['privacy_policy','terms_of_service.blade']; //array that contains all static pages name
-      if(in_array($slug, $static_page_names)){
+
+      if(in_array($slug.".blade.php", $static_page_names)){
         //static page code here 
         return view('web.pages.'.$slug,$data);
       }else{

@@ -64,6 +64,11 @@ return [
             'endpoint' => env('AWS_URL'),
         ],
 
+        'static_pages' => [
+            'driver' => 'local',
+            'root' => base_path('resources/views/web/pages/'),
+        ],
+
     ],
 
     /*
