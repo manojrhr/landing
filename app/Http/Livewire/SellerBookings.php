@@ -5,16 +5,21 @@ namespace App\Http\Livewire;
 use Livewire\Component;
 use Auth;
 use App\Booking;
+use Livewire\WithPagination;
 
 class SellerBookings extends Component
 {
-    public $bookings;
+    use WithPagination;
+
     public $duration, $date, $flex_start_date, $flex_end_date, $total_people, $adults,$seniors,$children,$infants; 
 
     public function render()
     {
-        $this->bookings = Auth::user()->seller_bookings;
-        return view('livewire.seller-bookings');
+        // $this->bookings = Auth::user()->seller_bookings->paginate(2);
+        $bookings = Booking::where('seller_id', Auth::user()->id)->latest()->paginate(2);
+        return view('livewire.seller-bookings', [
+            'bookings' => $bookings,
+        ]);
     }
 
     public function show($id)
@@ -32,5 +37,9 @@ class SellerBookings extends Component
 
         $this->dispatchBrowserEvent('showBookingModel');
 
+    }
+    public function paginationView()
+    {
+        return 'vendor.livewire.bootstrap';
     }
 }

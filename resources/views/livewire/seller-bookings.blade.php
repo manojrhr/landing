@@ -5,7 +5,7 @@
 							<div class="card-body">
 								<h5 class="d-flex align-items-center mb-3">Booking List</h5>
                   <hr>
-                  @if($bookings->count() > 0)
+                  @if($bookings->total() > 0)
                   @foreach($bookings as $booking)
                   <div class="booking-details-row _121gM">
                     <div class="row duraion-booking">
@@ -23,6 +23,9 @@
                 </div>
                 </div>
                 @endforeach
+                <div class="row text-center">
+                  {{ $bookings->links() }}
+                </div>
                 @else
                   <h6>You have 0 bookings.</h6>
                 @endif

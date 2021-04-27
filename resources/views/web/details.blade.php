@@ -89,7 +89,8 @@
 						</div>
 						<div class="captain-incld-text row">
 								<div class="captain-incld-head col-12">Jetskis - Make & Model</div>
-								<div class="captain-incld-detail col-12">{{$jetski->make->name}} | {{$jetski->model->name}} | {{$jetski->year}}</div>
+								<div class="captain-incld-detail col-12">{{$jetski->make->name}} | 
+								{{$jetski->model->name}} | {{$jetski->year}}</div>
 							</div>
 						</div>
 					</div>

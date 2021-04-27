@@ -8,6 +8,7 @@ use Illuminate\Foundation\Support\Providers\EventServiceProvider as ServiceProvi
 use Illuminate\Support\Facades\Event;
 use App\Events\NewUserRegisteredEvent;
 use App\Events\NewJetSkiAddedEvent;
+use App\Events\NewBookingEvent;
 
 class EventServiceProvider extends ServiceProvider
 {
@@ -22,6 +23,9 @@ class EventServiceProvider extends ServiceProvider
         ],
         NewJetSkiAddedEvent::class => [
             \App\Listeners\SendNewJetSkiAdminNotification::class,
+        ],
+        NewBookingEvent::class => [
+            \App\Listeners\SendNewBookingListner::class,
         ],
     ];
 

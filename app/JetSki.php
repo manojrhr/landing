@@ -27,4 +27,19 @@ class JetSki extends Model
     {
         return $this->belongsTo(User::class);
     }
+
+    public function make()
+    {
+        return $this->belongsTo(Make::class);
+    }
+
+    public function model()
+    {
+        return $this->belongsTo(Models::class);
+    }
+
+    public function cancel_policy()
+    {
+        return $this->belongsTo(cancel_policy::class);
+    }
 }

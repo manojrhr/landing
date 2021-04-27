@@ -5,6 +5,7 @@ namespace App\Repositories;
 use App\Booking;
 use App\JetSki;
 use Validator;
+use App\Events\NewBookingEvent;
 
 class BookingRepository {
 
@@ -32,9 +33,8 @@ class BookingRepository {
 		}
 	
         $jetski = JetSki::where('slug', $slug)->first();
-
     	$booking = new Booking([
-            'jetski_id' => $jetski->id,
+            'jet_ski_id' => $jetski->id,
             'user_id' => $request->user()->id,
             'seller_id' => $jetski->user_id,
             'hours' => (int)$request->hours,
@@ -53,7 +53,7 @@ class BookingRepository {
 
     	$booking->save();
 		
-		// event(new NewJetSkiAddedEvent($jetski));
+		event(new NewBookingEvent($booking));
 
     	return response()->json([
     		'success' => true,

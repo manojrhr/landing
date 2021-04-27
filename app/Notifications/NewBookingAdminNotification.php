@@ -6,21 +6,21 @@ use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Notifications\Messages\MailMessage;
 use Illuminate\Notifications\Notification;
-use App\JetSki;
+use App\Booking;
 
-class NewJetSkiAdminNotification extends Notification implements ShouldQueue
+class NewBookingAdminNotification extends Notification
 {
     use Queueable;
 
-    public $jetski;
+    protected $booking;
     /**
      * Create a new notification instance.
      *
      * @return void
      */
-    public function __construct(JetSki $jetski)
+    public function __construct(Booking $booking)
     {
-        $this->jetski = $jetski;
+        $this->booking = $booking;
     }
 
     /**
@@ -43,9 +43,10 @@ class NewJetSkiAdminNotification extends Notification implements ShouldQueue
     public function toMail($notifiable)
     {
         return (new MailMessage)
-                    ->line('New Ski Jet is added by '.$this->jetski->user->name)
-                    ->action('See Details', url('/admin/jetski'));
-                    // ->line('Thank you for using our application!');
+                    ->line("New Booking received for <b>".$this->booking->jetski->title."</b>")
+                    ->line("By User <b>".$this->booking->user->name."</b>")
+                    ->line("For Date <b>".$this->booking->date.' | '.$this->booking->time."</b>")
+                    ->action('See Details', url('/admin/'));
     }
 
     /**
@@ -57,9 +58,9 @@ class NewJetSkiAdminNotification extends Notification implements ShouldQueue
     public function toArray($notifiable)
     {
         return [
-            'message' => "New Ski Jet is added by ".$this->jetski->user->name,
+            'message' => "New Booking received for ".$this->booking->jetski->title,
             'link' => '#',
-            'icon' => 'fa fa-ship text-green',
+            'icon' => 'fa fa-shopping-cart text-green',
         ];
     }
 }

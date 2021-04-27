@@ -2,14 +2,14 @@
 
 namespace App\Listeners;
 
-use App\Events\NewJetSkiAddedEvent;
+use App\Events\NewBookingEvent;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Queue\InteractsWithQueue;
-use App\Notifications\NewJetSkiAdminNotification;
 use App\Admin;
 use Notification;
+use App\Notifications\NewBookingAdminNotification;
 
-class SendNewJetSkiAdminNotification
+class SendNewBookingListner
 {
     /**
      * Create the event listener.
@@ -24,17 +24,17 @@ class SendNewJetSkiAdminNotification
     /**
      * Handle the event.
      *
-     * @param  NewJetSkiAddedEvent  $event
+     * @param  NewBookingEvent  $event
      * @return void
      */
-    public function handle(NewJetSkiAddedEvent $event)
+    public function handle(NewBookingEvent $event)
     {
         $admins = Admin::all();
         $when = \Carbon\Carbon::now()->addSeconds(10);
 
         // $user->notify((new Notification($notification))
         Notification::send($admins, 
-            (new NewJetSkiAdminNotification($event->jetski))->delay($when)
+            (new NewBookingAdminNotification($event->booking))->delay($when)
         );
     }
 }
