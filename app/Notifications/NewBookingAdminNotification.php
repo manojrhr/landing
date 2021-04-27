@@ -43,9 +43,9 @@ class NewBookingAdminNotification extends Notification
     public function toMail($notifiable)
     {
         return (new MailMessage)
-                    ->line("New Booking received for <b>".$this->booking->jetski->title."</b>")
-                    ->line("By User <b>".$this->booking->user->name."</b>")
-                    ->line("For Date <b>".$this->booking->date.' | '.$this->booking->time."</b>")
+                    ->line("New Booking received for ".$this->booking->jetski->title)
+                    ->line("By User ".$this->booking->user->name)
+                    ->line("For Date ".$this->booking->date.' | '.$this->booking->time)
                     ->action('See Details', url('/admin/'));
     }
 
