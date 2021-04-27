@@ -96,7 +96,7 @@
    <textarea id="message" name="visitor_message" placeholder="Tell us anything else that might be important." required>{{ old('visitor_message') }}</textarea>
  </div>
 </div>
-<button type="submit" class="btn-primary">Book The Rooms</button>
+<button type="submit" class="btn-primary">Send Booking Inquiry</button>
 </form>
 </div>
 </div>	
