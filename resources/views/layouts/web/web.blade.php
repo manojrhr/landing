@@ -99,6 +99,13 @@
 						<p><a href="#">Learn More</a></p>
 					</div>
 					<div class="col-lg-3 footer-content">
+						<h3 class="footer-heading"><span>Legal</span></h3>
+						<ul class="list-unstyled">
+							<li><a href="{{route('page','privacy_policy')}}">Privacy Policy</a></li>
+							<li><a href="{{route('page','terms_of_service')}}">Terms of Use</a></li>
+						</ul>
+					</div>
+					<div class="col-lg-3 footer-content">
 						<h3 class="footer-heading"><span>Our Company</span></h3>
 						<ul class="list-unstyled">
 							<li><a href="#">About</a></li>

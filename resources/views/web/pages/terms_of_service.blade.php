@@ -5,12 +5,16 @@
    .profile-header{
       height: 200px;
    }
+     body
+   {
+   	font-size: 1rem;
+   }
 </style>
 @endsection
 
 @section('content')
 
-<div class="Grid-cell u-lg-size4of5">
+<div class="Grid-cell u-lg-size4of5 container mt-5 mb-5">
    <div class="Panel Panel--lg">
       <div class="u-mb2">
          <div class="Grid">
