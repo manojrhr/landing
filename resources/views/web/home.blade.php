@@ -82,9 +82,9 @@
 					<div class="col-md-6">
 						<span class="text-serif text-primary">About Us</span>
 						<h3 class="heading-92913 text-black">Welcome To SkiSki</h3>
-						<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ipsum, illum, quasi. Odit velit deserunt eligendi unde, enim. Enim fugiat.</p>
-						<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium eius ullam impedit architecto debitis facilis!</p>
-						<p><a href="{{ route('listing') }}" class="btn btn-primary py-3 px-4">Explore Jet Skies</a></p>
+						<p>With ski ski, you no longer need a friend with a jetski or to book from various jetski rental companies that offer limited jetski available . Ski ski let’s you Rent straight from the owner anytime you want and With thousands of jetski available for rent all across Canada.</p>
+						<p>Ski ski let’s you make money renting out your jetski. Insurance is included in every rental. You can also choose who to rent to.</p>
+						<p class="text-right"><a href="{{ route('listing') }}" class="btn btn-primary py-3 px-4">Learn More</a></p>
 					</div>
 				</div>
 			</div>
