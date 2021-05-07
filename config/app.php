@@ -237,4 +237,9 @@ return [
         '_SERVER' => array_keys($_SERVER),
         '_ENV' => array_keys($_ENV),        
     ],
+
+    'twilio' => [
+        'TWILIO_AUTH_TOKEN'  => env('TWILIO_AUTH_TOKEN'),
+        'TWILIO_ACCOUNT_SID' => env('TWILIO_ACCOUNT_SID')
+    ],
 ];

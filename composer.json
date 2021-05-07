@@ -21,7 +21,8 @@
         "laravel/ui": "^2.0",
         "lcobucci/jwt": "~3.3.3",
         "livewire/livewire": "^2.4",
-        "stripe/stripe-php": "^7.75"
+        "stripe/stripe-php": "^7.75",
+        "twilio/sdk": "^6.23"
     },
     "require-dev": {
         "facade/ignition": "^2.0",

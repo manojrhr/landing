@@ -98,3 +98,27 @@ Route::get('/testmail', function () {
     ->setBody('<h1>Hi, welcome user!</h1>', 'text/html'); // for HTML rich messages
 });
 })->name('testmail');
+/*
+use Twilio\Jwt\ClientToken;
+use Illuminate\Http\Request;
+use GuzzleHttp\Exception\GuzzleException;
+use GuzzleHttp\Client;
+Route::get('/testsms', function () {
+	$accountSid = config('app.twilio')['TWILIO_ACCOUNT_SID'];
+	$authToken = config('app.twilio')['TWILIO_AUTH_TOKEN'];
+	try
+	{
+		$client = new Client(['auth' => [$accountSid, $authToken]]);
+		$result = $client->post('https://api.twilio.com/2010-04-01/Accounts/'.$accountSid.'/Messages.json',
+		['form_params' => [
+		'Body' => 'CODE: 859654', //. $request->code, //set message body
+		'To' => '+919882270566',
+		'From' => '+919882270566' //we get this number from twilio
+		]]);
+		return $result;
+	}
+	catch (Exception $e)
+	{
+		echo "Error: " . $e->getMessage();
+	}
+})->name('testsms');
