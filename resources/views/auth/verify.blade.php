@@ -1,7 +1,22 @@
-@extends('layouts.app')
+@extends('layouts/web/web')
+
+@section('styles')
+<style>
+    body{
+        background-color: #f3f3f3;
+    }
+    .box-container{
+        padding-top: 50px;
+        padding-bottom: 50px;
+        background-color: #f3f3f3;
+        margin: 0;
+        max-width: 100%;
+    }
+</style>
+@endsection
 
 @section('content')
-<div class="container">
+<div class="container box-container">
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
