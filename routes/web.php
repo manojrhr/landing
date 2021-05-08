@@ -122,3 +122,4 @@ Route::get('/testsms', function () {
 		echo "Error: " . $e->getMessage();
 	}
 })->name('testsms');
+*/

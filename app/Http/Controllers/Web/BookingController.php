@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\JetSki;
 use Redirect;
 use App\Repositories\BookingRepository as BookingRepo;
+use DateTime;
 
 class BookingController extends Controller
 {
@@ -26,11 +27,14 @@ class BookingController extends Controller
         if(!$jetski){
             abort(404);
         }
-        return view('web.booking');
+        return view('web.booking', compact('jetski'));
     }
 
     public function save(Request $request, $slug)
     {
+        $time_input = $request->pickup_time;
+        $request->pickup_time = DateTime::createFromFormat( 'H:i', $time_input)->format( 'H:i:s');
+        // dd($request->pickup_time);
         $response_array = BookingRepo::create($request, $slug)->getData();
 
         if($response_array->success){

@@ -17,18 +17,22 @@
       <div class="row duration-row booking-requst-row mb-5">
        <h4>Duration</h4>
        <p>How long do you want your trip or rental to be?</p>
+       @if($jetski->price_unit == 'hour')
        <div class="elem-group inlined">
         <label for="hours">Hours</label>
-        <input type="number" id="hours" name="hours" value="{{ old('hours', 0) }}" placeholder="0" min="0" max="23">
+        <input type="number" id="hours" name="hours" value="{{ old('hours', 1) }}" onChange="changePrice(this.value);" placeholder="1" min="1" max="23" required>
       </div>
-      <div class="elem-group inlined">
+      @endif
+      <!-- <div class="elem-group inlined">
         <label for="minutes">Minutes</label>
         <input type="number" id="minutes" name="minutes" value="{{ old('minutes', 0) }}" placeholder="0" min="0" max="59">
-      </div>
+      </div> -->
+       @if($jetski->price_unit == 'day')
       <div class="elem-group inlined">
-       <label for="nights">Nights</label>
-       <input type="number" id="nights" name="nights" value="{{ old('nights', 0) }}" placeholder="0" min="0" max="100">
+       <label for="nights">Days</label>
+       <input type="number" id="nights" name="nights" value="{{ old('nights', 1) }}" onChange="changePrice(this.value);" placeholder="0" min="1" max="100" required>
      </div>
+      @endif
    </div>
    <hr>
    <div class="row preferred-dates-row booking-requst-row mb-5">
@@ -45,11 +49,11 @@
   <p>Provide additional dates if your dates are flexible and you have other possible options.</p>
   <div class="elem-group inlined">
     <label for="checkin-date">Duration:</label>
-    <input type="date" id="flex-start-date" name="flex_start_date" value="{{ old('flex_start_date') }}" required>
+    <input type="date" id="flex-start-date" name="flex_start_date" value="{{ old('flex_start_date') }}">
   </div>
   <div class="elem-group inlined">
     <label for="checkin-date">Duration:</label>
-    <input type="date" id="flex-end-date" name="flex_end_date" value="{{ old('flex_end_date') }}" required>
+    <input type="date" id="flex-end-date" name="flex_end_date" value="{{ old('flex_end_date') }}">
   </div>
 </div>
 <hr>
@@ -83,10 +87,10 @@
   <label for="child">Children</label>
   <input type="number" id="child" min="0" max="100" name="child" value="{{ old('child', 0) }}" placeholder="0" min="0">
 </div>
-<div class="elem-group inlined">
+<!-- <div class="elem-group inlined">
   <label for="infants">Infants</label>
   <input type="number" id="infants" min="0" max="100" name="infants" value="{{ old('infants', 0) }}" placeholder="0" min="0">
-</div>
+</div> -->
 </div>
 <hr>
 <div class="row Anything-size-row booking-requst-row mb-5">
@@ -96,7 +100,9 @@
    <textarea id="message" name="visitor_message" placeholder="Tell us anything else that might be important." required>{{ old('visitor_message') }}</textarea>
  </div>
 </div>
-<button type="submit" class="btn-primary">Send Booking Inquiry</button>
+<div><h4>Your Total Amount is: <span id='total'></span></h4></div>
+<input type="hidden" name="total_amount" id="total_amount" value="0">
+<button type="submit" class="btn-primary">Book Jet Ski</button>
 </form>
 </div>
 </div>	
@@ -104,5 +110,13 @@
 @endsection
 
 @section('scripts')
-
+<script type="text/javascript">
+  function changePrice(val) {
+    var value = val;
+    var price = {{$jetski->price}};
+    $('span#total').text('$'+value*price);
+    $('#total_amount').val(value*price);
+    // alert(value*price);
+  }
+</script>
 @endsection
