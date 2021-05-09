@@ -23,8 +23,10 @@
                 </div>
                 </div>
                 @endforeach
-                <div class="row text-center">
-                  {{ $bookings->links() }}
+                <div class="row">
+                    <div class="col-sm-12">
+                      {{ $bookings->links() }}
+                    </div>
                 </div>
                 @else
                   <h6>You have 0 bookings.</h6>

@@ -88,6 +88,9 @@
                         @endif
                     </div>
                 </div>
+                <div class="row">
+                        {{ $jetskis->links() }}
+                </div>
             </div>
 		</div>
 	</div>

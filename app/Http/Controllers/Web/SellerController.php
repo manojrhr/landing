@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\DB;
 use Stripe\StripeClient;
 use Str;
 use Auth;
+use App\JetSki;
 use App\User;
 
 class SellerController extends Controller
@@ -84,7 +85,7 @@ class SellerController extends Controller
 	public function jetskis()
 	{
 		$user = Auth::user();
-		$jetskis = Auth::user()->jetskis;
+		$jetskis = JetSki::where('user_id', $user->id)->paginate(10);
 		return view('web.user.seller_jetski', compact('user', 'jetskis'));
 	}
 }

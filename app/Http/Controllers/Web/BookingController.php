@@ -32,6 +32,12 @@ class BookingController extends Controller
 
     public function save(Request $request, $slug)
     {
+        if($request->total_amount == 0){
+            $request->session()->flash('message.level', 'error');
+            $request->session()->flash('message.content', "Something wrong with you booking. Please try again.");
+            return Redirect::back()->withInput();
+        }
+        
         $time_input = $request->pickup_time;
         $request->pickup_time = DateTime::createFromFormat( 'H:i', $time_input)->format( 'H:i:s');
         // dd($request->pickup_time);

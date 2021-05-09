@@ -44,11 +44,11 @@ class JetskiController extends Controller
 
     public function addJetSki(Request $request)
     {
-        // if(!Auth::user()->completed_stripe_onboarding){
-        //     $request->session()->flash('message.level', 'error');
-        //     $request->session()->flash('message.content', 'Please complete your stripe onboarding first!');
-        //     return Redirect::route('user.profile');
-        // }
+        if(!Auth::user()->completed_stripe_onboarding){
+            $request->session()->flash('message.level', 'error');
+            $request->session()->flash('message.content', 'Please complete your stripe onboarding first!');
+            return Redirect::route('user.profile');
+        }
 
         $cancel_policies = DB::table('cancel_policies')->get();
         return view('web.registerJetSki', compact('cancel_policies'));

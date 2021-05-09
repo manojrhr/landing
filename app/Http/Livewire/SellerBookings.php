@@ -16,7 +16,7 @@ class SellerBookings extends Component
     public function render()
     {
         // $this->bookings = Auth::user()->seller_bookings->paginate(2);
-        $bookings = Booking::where('seller_id', Auth::user()->id)->latest()->paginate(2);
+        $bookings = Booking::where('seller_id', Auth::user()->id)->latest()->paginate(10);
         return view('livewire.seller-bookings', [
             'bookings' => $bookings,
         ]);
