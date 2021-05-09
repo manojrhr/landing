@@ -100,9 +100,9 @@
    <textarea id="message" name="visitor_message" placeholder="Tell us anything else that might be important." required>{{ old('visitor_message') }}</textarea>
  </div>
 </div>
-<div><h4>Your Total Amount is: <span id='total'></span></h4></div>
-<input type="hidden" name="total_amount" id="total_amount" value="0">
-<button type="submit" class="btn-primary">Book Jet Ski</button>
+<div><h4>Your Total Amount is: <span id='total'>{{'$'.$jetski->price}}</span></h4></div>
+<input type="hidden" name="total_amount" id="total_amount" value="{{$jetski->price}}">
+<button type="submit" class="btn-primary" id="submit-btn">Pay and Book Jet Ski</button>
 </form>
 </div>
 </div>	
@@ -114,9 +114,12 @@
   function changePrice(val) {
     var value = val;
     var price = {{$jetski->price}};
-    $('span#total').text('$'+value*price);
-    $('#total_amount').val(value*price);
-    // alert(value*price);
+    var total = value*price;
+    $('span#total').text('$'+total);
+    $('#total_amount').val(total);
+    if(total == 0){
+      $('#submit-btn').prop('disabled', true);
+    }
   }
 </script>
 @endsection
