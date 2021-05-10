@@ -12,9 +12,9 @@ class Booking extends Model
      * @var array
      */
     protected $fillable = [
-        'jet_ski_id', 'user_id', 'seller_id', 'hours', 'minutes', 'nights', 'checkin_date', 'flex_start_date', 
+        'uid', 'jet_ski_id', 'user_id', 'seller_id', 'hours', 'minutes', 'nights', 'checkin_date', 'flex_start_date', 
         'flex_end_date', 'pickup_time', 'adult', 'senior', 'child', 'infants', 'visitor_message', 'confirmed_date',
-        'confirmed_time', 'confirmed'
+        'confirmed_time', 'confirmed', 'amount', 'charge_id', 'payment_success'
     ];
 
     public function jetski()
@@ -25,6 +25,11 @@ class Booking extends Model
     public function user()
     {
         return $this->belongsTo(User::class);
+    }
+
+    public function seller()
+    {
+        return $this->belongsTo(User::class, 'seller_id', 'id');
     }
 
 }

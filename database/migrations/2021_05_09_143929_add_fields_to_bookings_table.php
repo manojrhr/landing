@@ -14,6 +14,7 @@ class AddFieldsToBookingsTable extends Migration
     public function up()
     {
         Schema::table('bookings', function (Blueprint $table) {
+            $table->string('uid')->after('id');
             $table->float('amount')->after('confirmed')->nullable();
             $table->string('charge_id')->after('confirmed')->nullable();
             $table->boolean('payment_success')->after('confirmed')->default(0);
@@ -28,6 +29,7 @@ class AddFieldsToBookingsTable extends Migration
     public function down()
     {
         Schema::table('bookings', function (Blueprint $table) {
+            $table->dropColumn('uid');
             $table->dropColumn('amount');
             $table->dropColumn('charge_id');
             $table->dropColumn('payment_success');

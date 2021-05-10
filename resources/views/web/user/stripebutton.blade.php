@@ -11,9 +11,9 @@
 										<p><u><a href="{{ route('user.redirect_stripe', ['id' => $user->id]) }}" class="text-info font-weight-bold">Please Connect your Stripe Account</a></u></p>
 									@else
 										<p class="">Connected </p>
-										</br>
-										<p>{{$balance}}</a>
+										<p>Stripe Balance is: <b>${{$balance}}</b></p>
 									@endif 
+									<p>
 									<a href="{{ route('user.redirect_stripe', ['id' => $user->id]) }}" type="button" class="btn btn-primary">
 										@if($user->completed_stripe_onboarding)
 											View Stripe Account
@@ -21,4 +21,5 @@
 											Connect Stripe Account
 										@endif 										
 									</a>
+									</p>
 								@endif

@@ -10,4 +10,13 @@ if (!function_exists('null_safe')) {
         }
         return $newArr;
     }
+
+    function currency_sym(){
+        // return '$';
+        return 'CA$';
+    }
+
+    function admin_charges(){
+        return 10;
+    }
 }

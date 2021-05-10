@@ -42,6 +42,8 @@ Route::get('/jetskies', 'Web\JetskiController@index')->name('listing');
 Route::get('/jetski/{slug}', 'Web\JetskiController@details')->name('jetski_detail');
 Route::get('/jetski/booking/{slug}', 'Web\BookingController@index')->name('booking');
 Route::post('/jetski/booking/{slug}', 'Web\BookingController@save')->name('save.booking');
+Route::get('/booking/payment/{uid}', 'Web\BookingController@payment')->name('payment');
+Route::post('/booking/payment/{uid}', 'Web\BookingController@charge')->name('final.payment');
 
 Route::post('/near_by/jetski/', 'Web\JetskiController@nearByJetski')->name('nearbyjetski');
 // Route::get('/admin', 'AdminController@index')->name('AdminHome');

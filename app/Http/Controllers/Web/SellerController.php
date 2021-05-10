@@ -41,9 +41,13 @@ class SellerController extends Controller
 			if(is_null($seller->stripe_connect_id)){
 				// Create account
 				$account = $this->stripeClient->accounts->create([
-					'country' => 'US',
+					'country' => 'CA',
 					'type' => 'express',
-					'email' => $seller->email
+					'email' => $seller->email,
+					'capabilities' => [
+					  'card_payments' => ['requested' => true],
+					  'transfers' => ['requested' => true],
+					],
 				]);
 
 				$seller->update(['stripe_connect_id' => $account->id]);
