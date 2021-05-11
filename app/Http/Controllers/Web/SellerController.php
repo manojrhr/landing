@@ -92,4 +92,9 @@ class SellerController extends Controller
 		$jetskis = JetSki::where('user_id', $user->id)->paginate(10);
 		return view('web.user.seller_jetski', compact('user', 'jetskis'));
 	}
+	
+	public function bookings()
+	{
+		return view('web.user.sellerBookings');
+	}
 }

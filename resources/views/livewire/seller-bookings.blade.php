@@ -3,7 +3,7 @@
 					<div class="col-sm-12 mb-3">
 						<div class="card h-100">
 							<div class="card-body">
-								<h5 class="d-flex align-items-center mb-3">Booking List</h5>
+								<h5 class="d-flex align-items-center mb-3">Recieved Bookings</h5>
                   <hr>
                   @if($bookings->total() > 0)
                   @foreach($bookings as $booking)
@@ -13,7 +13,10 @@
                       <h6 class="duraion-booking-time"><b>{{$booking->user->name}}</b></h6>
                     </div>
                       <div class="col-sm-12">
-                      <h6 class="duraion-booking-time"><b>Rent the {{$booking->jetski->title}} in  {{$booking->jetski->city}} - {{$booking->jetski->state}}</b></h6>
+                        <h6 class="duraion-booking-time">Booking for : <b>{{$booking->jetski->title}}</b></h6>
+                        <h6 class="duraion-booking-time">Location: <b>{{$booking->jetski->city}} - {{$booking->jetski->state}}</b></h6>
+                        <h6 class="duraion-booking-time">Date - Time: <b>{{date('m-d-Y', strtotime($date))}} - {{ date('g:i A', strtotime($booking->pickup_time)) }}</b></h6>
+                        <h6 class="duraion-booking-time">Payment Status: <b>{{ $booking->payment_success ? 'Payment Complete' : 'Payment Pending' }}</b></h6>
                     </div>
                 </div>
                     <div class="row duraion-booking">
@@ -32,6 +35,7 @@
                   <h6>You have 0 bookings.</h6>
                 @endif
               </div>
+              @if($openModal)
                <!-- Modal -->
                <div class="modal fade" id="booking-detail-modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                  <div class="modal-dialog" role="document">
@@ -56,13 +60,14 @@
                            <hr>
                        <div class="row duraion-booking">
                            <div class="col-sm-4">
-                        Arrival Date
+                        Arrival Date/Time
                           </div>
                            <div class="col-sm-8 text-secondary">
-                              <span class="duraion-booking-time">{{date('m-d-Y', strtotime($date))}}</span>
+                              <span class="duraion-booking-time">{{date('m-d-Y', strtotime($date))}} {{ date('g:i A', strtotime($mybook->pickup_time)) }}</span>
                            </div>
                         </div>
                            <hr>
+                      @if($mybook->flex_start_date)
                           <div class="row duraion-booking">
                            <div class="col-sm-4">
                         Can Book from
@@ -81,6 +86,7 @@
                            </div>
                         </div>
                            <hr>
+                      @endif
                           <div class="row duraion-booking">
                            <div class="col-sm-4">
                         Group Size
@@ -99,7 +105,7 @@
                            Impotant Notes
                           </div>
                            <div class="col-sm-8 text-secondary">
-                              <span class="duraion-booking-time">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s</span>
+                              <span class="duraion-booking-time">{{$mybook->visitor_message}}</span>
                            </div>
                         </div>
                            <hr>
@@ -110,16 +116,17 @@
                         Name
                           </div>
                            <div class="col-sm-8 text-secondary">
-                              <span class="duraion-booking-time">Vikas Saini</span>
+                              <span class="duraion-booking-time">{{ $mybook->user->name }}</span>
                            </div>
                         </div>
                             <hr>
+                       @if($mybook->payment_success)
                             <div class="row duraion-booking">
                            <div class="col-sm-4">
                         Email
                           </div>
                            <div class="col-sm-8 text-secondary">
-                              <span class="duraion-booking-time">myemail.2gmail.com</span>
+                              <span class="duraion-booking-time">{{ $mybook->user->email }}</span>
                            </div>
                         </div>
                           <hr>
@@ -128,35 +135,36 @@
                         Mobile No.
                           </div>
                            <div class="col-sm-8 text-secondary">
-                              <span class="duraion-booking-time">9876543210</span>
+                              <span class="duraion-booking-time">{{ $mybook->user->phone }}</span>
                            </div>
                         </div>
                             <hr>
-                           <div class="row duraion-booking">
+                        @endif
+                           <!-- <div class="row duraion-booking">
                            <div class="col-sm-8 text-secondary">
                               <p class="mb-0">Without Captain</p>
                               <span class="duraion-booking-time">I want to book without a captain, guide or host.</span>
                            </div>
                         </div>
-                            <hr>
-                            <div class="row duraion-booking">
+                            <hr> -->
+                        <div class="row duraion-booking">
                            <div class="col-sm-8 text-secondary">
                               <p class="mb-0">Payment Status</p>
-                              <span class="duraion-booking-time">Payment Complete <i class="fa fa-check"></i></span>
+                              <span class="duraion-booking-time">{{ $mybook->payment_success ? 'Payment Complete' : 'Payment Pending' }}<i class="fa fa-check"></i></span>
                            </div>
                         </div>
                           
                         </div>
                         </div>
                         <div class="modal-footer d-block">
-                          <button type="button" class="btn btn-secondary float-left" data-dismiss="modal">Dicline</button>
-                          <button type="button" class="btn btn-primary float-right">Apporve</button>
+                          <button type="button" class="btn btn-secondary float-left" data-dismiss="modal">Close</button>
+                          <!-- <button type="button" class="btn btn-primary float-right">Apporve</button> -->
                         </div>
                       </div>
                     </div>
                   </div>   
                   <!-- Modal close -->
-
+                  @endif
                      </div>
 								</div>
 							</div>

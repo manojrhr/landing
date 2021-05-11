@@ -52,7 +52,7 @@ class BookingRepository {
 			$response_array = ['success' => false , 'message' => "Something wrong with you booking. Please try again.", 'error_code' => 101];
 			return response()->json($response_array);
 		}
-		// dd(uniqid('book_'));
+		
     	$booking = new Booking([
             'uid' => uniqid('book_'),
             'jet_ski_id' => $jetski->id,

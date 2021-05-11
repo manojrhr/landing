@@ -60,6 +60,7 @@ Route::group(['prefix' => 'user' , 'as' => 'user.'], function(){
 	Route::post('/update-profile', 'Web\UserController@update_profile')->name('update_profile');
 
 	Route::get('/seller/jetski', 'Web\SellerController@jetskis')->name('seller.jetski');
+	Route::get('/seller/bookings', 'Web\SellerController@bookings')->name('seller.bookings');
 	
 	Route::get('stripe/{id}', 'Web\SellerController@redirectToStripe')->name('redirect_stripe');
 	Route::get('connect/{token}', 'Web\SellerController@saveStripeAccount')->name('save_stripe');
