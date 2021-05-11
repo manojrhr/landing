@@ -13,7 +13,7 @@ class Booking extends Model
      */
     protected $fillable = [
         'uid', 'jet_ski_id', 'user_id', 'seller_id', 'hours', 'minutes', 'nights', 'checkin_date', 'flex_start_date', 
-        'flex_end_date', 'pickup_time', 'adult', 'senior', 'child', 'infants', 'visitor_message', 'confirmed_date',
+        'flex_end_date', 'pickup_time', 'adults', 'seniors', 'children', 'infants', 'visitor_message', 'confirmed_date',
         'confirmed_time', 'confirmed', 'amount', 'charge_id', 'payment_success'
     ];
 

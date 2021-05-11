@@ -4,6 +4,7 @@ namespace App\Repositories;
 
 use App\Booking;
 use App\JetSki;
+use App\User;
 use Validator;
 use App\Events\NewBookingEvent;
 
@@ -73,7 +74,7 @@ class BookingRepository {
     		'amount' => $request->total_amount,
     	]);
 
-    	$booking->save();
+		$booking->save();
 		
 		event(new NewBookingEvent($booking));
 

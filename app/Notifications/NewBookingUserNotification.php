@@ -8,7 +8,7 @@ use Illuminate\Notifications\Messages\MailMessage;
 use Illuminate\Notifications\Notification;
 use App\Booking;
 
-class NewBookingAdminNotification extends Notification
+class NewBookingUserNotification extends Notification
 {
     use Queueable;
 
@@ -31,7 +31,7 @@ class NewBookingAdminNotification extends Notification
      */
     public function via($notifiable)
     {
-        return ['mail', 'database'];
+        return ['mail'];
     }
 
     /**
@@ -43,11 +43,11 @@ class NewBookingAdminNotification extends Notification
     public function toMail($notifiable)
     {
         return (new MailMessage)
-                    ->subject('Admin: New Booking Received on Ski Ski')
+                    ->subject('New Booking Received on Ski Ski')
                     ->line("New Booking received for ".$this->booking->jetski->title)
                     ->line("By User ".$this->booking->user->name)
                     ->line("For Date ".date('F j, Y', strtotime($this->booking->checkin_date)) ."-". date('g:i A', strtotime($this->booking->pickup_time)) )
-                    ->action('See Details', url('/admin/'));
+                    ->action('See Details', route('user.seller.bookings'));
     }
 
     /**
@@ -59,9 +59,7 @@ class NewBookingAdminNotification extends Notification
     public function toArray($notifiable)
     {
         return [
-            'message' => "New Booking received for ".$this->booking->jetski->title,
-            'link' => '#',
-            'icon' => 'fa fa-shopping-cart text-green',
+            //
         ];
     }
 }
