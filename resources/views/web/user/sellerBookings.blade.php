@@ -41,6 +41,9 @@
    padding: 0 25px;
    background-color: #f1fcff;
 }
+._121gM {
+    height: 170px;
+}
 </style>
 @endsection
 
@@ -59,8 +62,11 @@
 	<div class="main-body">
 		<div class="row gutters-sm">
 		 	@include('web.user.userProfilePart')
-            <livewire:seller-bookings />
+			<div class="col-md-8">
+				<div>
+				</div>
+        <livewire:seller-bookings />
+			</div>
 		</div>
 	</div>
-</div>
 @endsection

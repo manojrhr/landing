@@ -37,7 +37,7 @@
 		align-items: flex-start;
 		-webkit-box-pack: center;
 		justify-content: center;
-		height: 130px;
+		height: 170px;
 		padding: 0 25px;
 		background-color: #f1fcff;
 	}
@@ -108,7 +108,7 @@
 						</div>  -->
 					</div>
         </div>
-        <livewire:seller-bookings />
+        <livewire:user-bookings />
 			</div>
 		</div>
 	</div>

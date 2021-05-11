@@ -3,19 +3,19 @@
 					<div class="col-sm-12 mb-3">
 						<div class="card h-100">
 							<div class="card-body">
-								<h5 class="d-flex align-items-center mb-3">Recieved Bookings</h5>
+								<h5 class="d-flex align-items-center mb-3">Your Bookings</h5>
                   <hr>
                   @if($bookings->total() > 0)
                   @foreach($bookings as $booking)
                   <div class="booking-details-row _121gM">
                     <div class="row duraion-booking">
-                    <div class="col-sm-12">
-                      <h6 class="duraion-booking-time">Customer Name: <b>{{$booking->user->name}}</b></h6>
-                    </div>
+                    <!-- <div class="col-sm-12">
+                      <h6 class="duraion-booking-time"><b>{{$booking->seller->name}}</b></h6>
+                    </div> -->
                       <div class="col-sm-12">
                         <h6 class="duraion-booking-time">Booking for : <b>{{$booking->jetski->title}}</b></h6>
                         <h6 class="duraion-booking-time">Location: <b>{{$booking->jetski->city}} - {{$booking->jetski->state}}</b></h6>
-                        <h6 class="duraion-booking-time">Date - Time: <b>{{date('m-d-Y', strtotime($date))}} - {{ date('g:i A', strtotime($booking->pickup_time)) }}</b></h6>
+                        <h6 class="duraion-booking-time">Date - Time: <b>{{date('F j, Y', strtotime($booking->checkin_date))}} - {{ date('g:i A', strtotime($booking->pickup_time)) }}</b></h6>
                         <h6 class="duraion-booking-time">Payment Status: <b>{{ $booking->payment_success ? 'Payment Complete' : 'Payment Pending' }}</b></h6>
                     </div>
                 </div>
@@ -110,14 +110,14 @@
                            </div>
                         </div>
                            <hr>
-                           <h5 class="d-flex align-items-center mb-3">Contact Details</h5>
+                           <h5 class="d-flex align-items-center mb-3">Host's Contact Details</h5>
                           <hr>
                            <div class="row duraion-booking">
                            <div class="col-sm-4">
-                        Name
+                        Host's Name
                           </div>
                            <div class="col-sm-8 text-secondary">
-                              <span class="duraion-booking-time">{{ $mybook->user->name }}</span>
+                              <span class="duraion-booking-time">{{ $mybook->seller->name }}</span>
                            </div>
                         </div>
                             <hr>
@@ -127,7 +127,7 @@
                         Email
                           </div>
                            <div class="col-sm-8 text-secondary">
-                              <span class="duraion-booking-time">{{ $mybook->user->email }}</span>
+                              <span class="duraion-booking-time">{{ $mybook->seller->email }}</span>
                            </div>
                         </div>
                           <hr>
@@ -136,7 +136,7 @@
                         Mobile No.
                           </div>
                            <div class="col-sm-8 text-secondary">
-                              <span class="duraion-booking-time">{{ $mybook->user->phone }}</span>
+                              <span class="duraion-booking-time">{{ $mybook->seller->phone }}</span>
                            </div>
                         </div>
                             <hr>
