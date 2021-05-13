@@ -33,6 +33,11 @@ class BookingController extends Controller
         if(!$jetski){
             abort(404);
         }
+        if(Auth::check() && Auth::user()->id == $jetski->user_id){
+            $request->session()->flash('message.level', 'error');
+            $request->session()->flash('message.content', "You cannot book your own Jet Ski");
+            return Redirect::route('user.profile');
+        }
         return view('web.booking', compact('jetski'));
     }
 

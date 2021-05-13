@@ -180,9 +180,13 @@
 			</div>
 			<div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
 				<div class="send-booking-inquiry _1W2S4">
+					@if(Auth::check() && Auth::user()->id == $jetski->user_id)
+						<button class="send-booking-inquiry-btn btn-primary" disabled>You cannot book your own Jet Ski</button>
+					@else
 					<a href="{{route('booking',$jetski->slug)}}">
 						<button class="send-booking-inquiry-btn btn-primary">Send a Booking Inquiry</button>
 					</a>
+					@endif
 					<p class="EA0Vq">You’ll get a custom price, itinerary and answers to your questions in the next step.</p>
 					<div class="_29j21">
 						<div class="_2oHrE">

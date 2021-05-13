@@ -33,6 +33,9 @@ class BookingRepository {
 			return response()->json($response_array);
 		}
 		
+        $time_input = $request->pickup_time;
+		$request->pickup_time = DateTime::createFromFormat( 'H:i', $time_input)->format( 'H:i:s');
+		
         if($request->total_amount == 0){
 			$response_array = ['success' => false , 'message' => "Something wrong with you booking. Please try again.", 'error_code' => 101];
 			return response()->json($response_array);
@@ -54,6 +57,11 @@ class BookingRepository {
 			return response()->json($response_array);
 		}
 		
+        if(Auth::check() && $request->user()->id == $jetski->user_id){
+			$response_array = ['success' => false , 'message' => "You Cannot Book you own Jet Ski", 'error_code' => 101];
+			return response()->json($response_array);
+		}
+
     	$booking = new Booking([
             'uid' => uniqid('book_'),
             'jet_ski_id' => $jetski->id,
