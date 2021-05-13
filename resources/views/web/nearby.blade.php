@@ -2,7 +2,7 @@
 
 @section('content')
 
-@if(empty($playerlist))
+@if(empty($rows))
   <div class="searchResultsGrid">
     <div class="text-center" style="margin: 30px">
       <h1>Sorry! our services are not available on your location.</h1>
