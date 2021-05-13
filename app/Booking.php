@@ -32,4 +32,8 @@ class Booking extends Model
         return $this->belongsTo(User::class, 'seller_id', 'id');
     }
 
+    public function scopePaid($query)
+    {
+      return $query->where('payment_success', true);
+    }
 }

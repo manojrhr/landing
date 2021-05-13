@@ -142,40 +142,19 @@
 			<section class="similar-listings-row mt-20">
 				<h3 class="_2GGNL mb-3">Similar Listings</h3>
 				<div class="row">
-					
+				@foreach($related as $rjetski)
 					<div class="box-similar col-4">
 						<div class="box-similar-img">
-						<img src="https://getmyboat-user-images1.imgix.net/images/54b1863d8d5e9/boat-rentals-vasco-da-gama-goa-rinker-ec-260-processed.jpg?auto=format%2Ccompress%2Cenhance&fit=crop&h=180&ixlib=react-9.0.2&q=80&w=300&lossless=true&faces=false&w=300&q=50&dpr=1">
-
+							<img src="{{asset($rjetski->image)}}">
+						</div>
+						<div class=""><span class="_1_8Lcx">{{currency_sym()}}{{ $rjetski->price }}/{{ $rjetski->price_unit }}</span></div>
+						<div class="_3Ob99"><span class="_1_8Lc">{{ $rjetski->capacity }} guests</span></div>
+						<p class="_2-oCe">
+							<a class="_3aa3R" href="{{ route('jetski_detail',$rjetski->slug) }}">{{ str_limit($rjetski->description, $limit = 50, $end = '...') }}</a>
+						</p>
 					</div>
-					<div class=""><span class="_1_8Lcx">$440/hour</span></div>
-					<div class="_3Ob99"><span class="_1_8Lc">2 guests</span></div>
-					<p class="_2-oCe">
-						<a class="_3aa3R" href="">Champions Party Cruiser Catamaran for Rent in Panjim</a>
-					</p>
+				@endforeach
 				</div>
-				<div class="box-similar col-4">
-						<div class="box-similar-img">
-						<img src="https://getmyboat-user-images1.imgix.net/images/54b1863d8d5e9/boat-rentals-vasco-da-gama-goa-rinker-ec-260-processed.jpg?auto=format%2Ccompress%2Cenhance&fit=crop&h=180&ixlib=react-9.0.2&q=80&w=300&lossless=true&faces=false&w=300&q=50&dpr=1">
-					</div>
-					<div class=""><span class="_1_8Lcx">$440/hour</span></div>
-					<div class="_3Ob99"><span class="_1_8Lc">2 guests</span></div>
-					<p class="_2-oCe">
-						<a class="_3aa3R" href="">Champions Party Cruiser Catamaran for Rent in Panjim</a>
-					</p>
-				</div>
-				<div class="box-similar col-4">
-						<div class="box-similar-img">
-						<img src="https://getmyboat-user-images1.imgix.net/images/54b1863d8d5e9/boat-rentals-vasco-da-gama-goa-rinker-ec-260-processed.jpg?auto=format%2Ccompress%2Cenhance&fit=crop&h=180&ixlib=react-9.0.2&q=80&w=300&lossless=true&faces=false&w=300&q=50&dpr=1">
-
-					</div>
-					<div class=""><span class="_1_8Lcx">$440/hour</span></div>
-					<div class="_3Ob99"><span class="_1_8Lc">2 guests</span></div>
-					<p class="_2-oCe">
-						<a class="_3aa3R" href="">Champions Party Cruiser Catamaran for Rent in Panjim</a>
-					</p>
-				</div>
-			</div>
 			</section>
 			</div>
 			<div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">

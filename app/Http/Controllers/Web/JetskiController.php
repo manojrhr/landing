@@ -26,7 +26,19 @@ class JetskiController extends Controller
             abort(404);
         }
         
-        return view('web.details', compact('jetski'));
+        $latitude       =       $jetski->latitude;
+        $longitude      =       $jetski->longitude;
+        
+        $related          =       JetSki::select(DB::raw('*, ( 6367 * acos( cos( radians('.$latitude.') ) 
+                                                * cos( radians( latitude ) ) * cos( radians( longitude ) 
+                                                - radians('.$longitude.') ) + sin( radians('.$latitude.') ) 
+                                                * sin( radians( latitude ) ) ) ) AS distance'))
+                                    ->having('distance', '<', 5)
+                                    ->orderBy('distance')
+                                    ->take(3)
+                                    ->get(); 
+
+        return view('web.details', compact('jetski', 'related'));
     }
 
     public function models( Request $request )
