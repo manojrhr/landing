@@ -43,7 +43,7 @@
 							<span><img class="" src="https://skiski.ca/web/images/review-stars.png" alt="reviews"> 6 reviews</span>
 						</div>
 						<div class="col-6">
-							<span><i class="fa fa-check-circle" aria-hidden="true"></i> 151 bookings</span>
+							<span><i class="fa fa-check-circle" aria-hidden="true"></i> {{$jetski->bookings->count()}} bookings</span>
 						</div>
 					</div>
 					<div class="row mt-5">

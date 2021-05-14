@@ -21,7 +21,7 @@ class UserBookings extends Component
     {
         // $this->bookings = Auth::user()->seller_bookings->paginate(2);
         // $this->mybook = new Booking();
-        $bookings = Booking::where('user_id', Auth::user()->id)->latest()->paginate(10);
+        $bookings = Booking::where('user_id', Auth::user()->id)->latest()->paginate(5);
         return view('livewire.user-bookings', [
             'bookings' => $bookings,
         ]);

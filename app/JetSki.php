@@ -18,7 +18,7 @@ class JetSki extends Model
         'model_id', 'insurance', 'cancel_policy_id'
     ];
 
-    public function booking()
+    public function bookings()
     {
         return $this->hasMany(Booking::class);
     }
