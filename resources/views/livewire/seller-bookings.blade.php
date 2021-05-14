@@ -177,6 +177,11 @@
           <script>
               window.addEventListener('showBookingModel', event => {
                 $('#booking-detail-modal').modal('show');
-              })
+              });
+              
+              $('body').on('hidden.bs.modal', '#booking-detail-modal', function(){ 
+                Livewire.emit('modalClosed');
+              });
+
           </script>
         @endsection

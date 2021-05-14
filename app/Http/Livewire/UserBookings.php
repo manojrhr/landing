@@ -11,6 +11,7 @@ use Livewire\WithPagination;
 class UserBookings extends Component
 {
     use WithPagination;
+    public $listeners = ['modalClosed' => 'close_modal'];
 
     public $duration, $date, $flex_start_date, $flex_end_date, $total_people, $adults,$seniors,$children,$infants; 
     public $mybook;
@@ -49,8 +50,14 @@ class UserBookings extends Component
         $this->dispatchBrowserEvent('showBookingModel');
 
     }
+
     public function paginationView()
     {
         return 'vendor.livewire.bootstrap';
+    }
+
+    public function close_modal()
+    {
+        $this->openModal = false;
     }
 }
