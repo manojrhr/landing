@@ -16,7 +16,7 @@
 		<div class="SearchHome">
 			<div class="Container--xl">
 			<div class="">
-		    <form autocomplete="off" action="{{route('nearbyjetski')}}" method="post">
+		    <form autocomplete="off" action="" method="post">
 		    	<div class="Grid">
 		    	<div class="Grid-cell">
 		        <div class="SearchHome-content">
@@ -84,7 +84,7 @@
 						<h3 class="heading-92913 text-black">Welcome To SkiSki</h3>
 						<p>With ski ski, you no longer need a friend with a jetski or to book from various jetski rental companies that offer limited jetski available . Ski ski let’s you Rent straight from the owner anytime you want and With thousands of jetski available for rent all across Canada.</p>
 						<p>Ski ski let’s you make money renting out your jetski. Insurance is included in every rental. You can also choose who to rent to.</p>
-						<p class="text-right"><a href="{{ route('listing') }}" class="btn btn-primary py-3 px-4">Learn More</a></p>
+						<p class="text-right"><a href="" class="btn btn-primary py-3 px-4">Learn More</a></p>
 					</div>
 				</div>
 			</div>
@@ -167,13 +167,12 @@
 					</div>
 				</div>
 				<div class="row">
-					@foreach($jetskies as $jetski)
 					<div class="col-md-6 col-lg-4 mb-4">
 						<div class="service-39381">
-							<a href="{{ route('jetski_detail',$jetski->slug) }}">
-								<img src=" {{ asset($jetski->image) }}" alt="Image" class="img-fluid">
+							<a href="">
+								<img src="" alt="Image" class="img-fluid">
 								<div class="p-4">
-									<h3><a href="{{ route('listing') }}"><span class="icon-room mr-1 text-primary"></span> {{$jetski->city}} &mdash; {{$jetski->state}}</a></h3>
+									<h3><a href=""><span class="icon-room mr-1 text-primary"></span></a></h3>
 									<!-- <div class="ml-auto price">
 										<span class="bg-primary">$600</span>
 									</div> -->
@@ -181,7 +180,6 @@
 							</a>
 						</div>
 					</div>
-					@endforeach
 				</div>
 			</div>
 		</div>

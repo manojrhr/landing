@@ -5,7 +5,6 @@ namespace App\Http\Controllers\Web;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\User;
-use App\JetSki;
 
 class HomeController extends Controller
 {
@@ -26,8 +25,6 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $jetskies = JetSki::all()->take(6);
-        // $jetskies = JetSki::select('id','slug','image','city','state','country')->groupBy('city')->get();
-        return view('web.home', compact('jetskies'));
+        return view('web.home');
     }
 }

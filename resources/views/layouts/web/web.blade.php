@@ -56,10 +56,10 @@
 						<nav class="site-navigation position-relative text-right" role="navigation">
 							<ul class="site-menu main-menu js-clone-nav mr-auto d-none pl-0 d-lg-block navbar-nav ml-auto">
 									<li>
-										<a href="{{route('add.jetski')}}" class="nav-link text-left">List your Jet Ski</a>
+										<a href="" class="nav-link text-left">List your Jet Ski</a>
 									</li>
 									<li>
-										<a href="{{ route('listing') }}" class="nav-link text-left">Explorer Jet Ski</a>
+										<a href="" class="nav-link text-left">Explorer Jet Ski</a>
 									</li>
 									@guest
 									<li>
