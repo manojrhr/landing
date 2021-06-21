@@ -108,7 +108,6 @@
 						</div>  -->
 					</div>
         </div>
-        <livewire:user-bookings />
 			</div>
 		</div>
 	</div>
