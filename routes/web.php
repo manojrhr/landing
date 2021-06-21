@@ -19,7 +19,7 @@ use App\JetSki;
 // })->name('root');
 Route::get('/', 'Web\HomeController@index')->name('home');
 
-Auth::routes();
+Auth::routes(['verify' => true]);
 
 //Route for Static Pages
 Route::get('/page/{slug}', 'Web\PageController@show')->name('page');
