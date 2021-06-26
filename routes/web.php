@@ -29,6 +29,9 @@ Route::group(['prefix' => 'user' , 'as' => 'user.'], function(){
 	Route::get('/profile', 'Web\UserController@show_profile')->name('profile');
 	Route::get('/update-profile', 'Web\UserController@edit_profile')->name('edit_profile');
 	Route::post('/update-profile', 'Web\UserController@update_profile')->name('update_profile');
+	
+	Route::get('/verify-otp', 'Web\UserController@show_otp_form')->name('show_otp_form');
+	Route::post('/verify-otp', 'Web\UserController@verify_otp')->name('verify_otp');
 });
 
 Route::group(['prefix' => 'admin' , 'as' => 'admin.'], function(){
@@ -48,3 +51,7 @@ Route::get('/testmail', function () {
     ->setBody('<h1>Hi, welcome user!</h1>', 'text/html'); // for HTML rich messages
 });
 })->name('testmail');
+
+Route::get('/testsms', function () {
+	sendSms();
+})->name('testsms');

@@ -18,6 +18,7 @@ Route::group(['prefix' => 'auth'], function () {
 	Route::post('login', 'Api\AuthController@login');
 	Route::post('signup', 'Api\AuthController@signup');
 	Route::post('signup', 'Api\AuthController@signup');
+	Route::post('verify_otp', 'Api\AuthController@verify_otp');
 	Route::post('forgot_password', 'Api\AuthController@forgot');
 
 	Route::group(['middleware' => 'auth:api'], function() {

@@ -19,7 +19,7 @@ class UserController extends Controller
      */
     public function __construct(StripeClient $stripeClient)
     {
-        $this->middleware(['auth:web','verified']);
+        $this->middleware(['auth:web'], ['except' => ['show_otp_form' ,'verify_otp']]);
     	$this->stripeClient = $stripeClient;
     }
 
@@ -63,4 +63,24 @@ class UserController extends Controller
         }
         // return view('web.user.profile');
     }
+
+    public function show_otp_form(){
+        return view('web.user.otp-form');
+    }
+
+    public function verify_otp(Request $request)
+    {
+        // dd($request->all());
+        $response_array = UserRepo::verifyOTP($request);
+        if($response_array['success'] === true){
+            $request->session()->flash('message.level', 'success');
+            $request->session()->flash('message.content', $response_array['message']);
+            return redirect('/user/profile');
+        } else {
+            $request->session()->flash('message.level', 'error');
+            $request->session()->flash('message.content', $response_array['message']);
+            return Redirect::back();
+        }
+    }
+    
 }

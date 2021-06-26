@@ -74,7 +74,7 @@ class RegisterController extends Controller
         if($user->email){
             $user->sendEmailVerificationNotification();
         }
-
+        sendOTP($user->id);
         return $user;
     }
 }

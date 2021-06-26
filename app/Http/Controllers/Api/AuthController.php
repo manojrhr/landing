@@ -9,6 +9,7 @@ use Carbon\Carbon;
 use App\User;
 use App\Http\Requests\ResetPasswordRequest;
 use Illuminate\Support\Facades\Password;
+use App\Repositories\UserRepository as UserRepo;
 
 class AuthController extends Controller
 {
@@ -25,7 +26,7 @@ class AuthController extends Controller
     {
     	$request->validate([
     		'name' => 'required|string',
-    		'email' => 'required|string|email|unique:users',
+    		'email' => 'string|email|unique:users',
             'phone' => ['required', 'numeric', 'min:10'],
     		'password' => 'required|string|confirmed'
     	]);
@@ -38,6 +39,10 @@ class AuthController extends Controller
     	]);
 
     	$user->save();
+        if($user->email){
+            $user->sendEmailVerificationNotification();
+        }
+        sendOTP($user->id);
 
     	return response()->json([
     		'success' => true,
@@ -111,5 +116,11 @@ class AuthController extends Controller
             "success" => true,
             "message" => "Reset password link sent on your email id."
         ]);
+    }
+
+    public function verify_otp(Request $request)
+    {
+        $response_array = UserRepo::verifyOTP($request);
+    	return $response_array;
     }
 }

@@ -67,4 +67,35 @@ class UserRepository {
         return $response_array;
 	}
 
+    /*
+    *   Verify User OTP
+    *
+    */    
+	public static function verifyOTP($request) {
+
+        $validator = Validator::make($request->all(), [
+            'id' => 'required|numeric',
+            'otp' => 'string|min:6|max:6',
+        ], $messages = [
+            'id.required' => 'User Not Valid.',
+            'otp.min' => 'OTP should be minimum of 6 characters.',
+            'otp.max' => 'OTP should be maximum of 6 characters.',
+        ]);
+
+        if ($validator->fails()) {
+            $errors = implode(',', $validator->messages()->all());
+            return $response_array = ['success' => false , 'message' => $errors, 'error_code' => 101];
+        }
+
+        $user = User::find($request->id);
+        if($user->otp == $request->otp)
+        {
+            $user->phone_verified_at = \Carbon\Carbon::now();
+            $user->save();
+            $response_array = ['success' => true, 'message' => 'Phone number verified successfully.'];
+        } else {
+            $response_array = ['success' => false, 'message' => 'OTP is not valid. Please enter valid OTP'];
+        }
+        return $response_array;
+    }
 }
