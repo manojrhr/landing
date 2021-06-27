@@ -11,6 +11,6 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        $this->call(CancelPolicySeeder::class);
+        $this->call(AdminSeeder::class);
     }
 }
