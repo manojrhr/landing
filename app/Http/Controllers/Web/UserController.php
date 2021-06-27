@@ -19,7 +19,7 @@ class UserController extends Controller
      */
     public function __construct(StripeClient $stripeClient)
     {
-        $this->middleware(['auth:web'], ['except' => ['show_otp_form' ,'verify_otp']]);
+        $this->middleware(['auth:web','VerifiedGuy'], ['except' => ['show_otp_form' ,'verify_otp']]);
     	$this->stripeClient = $stripeClient;
     }
 
@@ -31,17 +31,7 @@ class UserController extends Controller
     public function show_profile()
     {
         $user = Auth::user();
-        $balance = null;
-        \Stripe\Stripe::setApiKey(config('stripe.secret'));
-        if($user->completed_stripe_onboarding){
-            $params = ['stripe_account' => $user->stripe_connect_id];
-            // dd($params);
-            $balance = \Stripe\Balance::retrieve(
-                $params
-              )->available[0]->amount;
-        }
-        // dd($balance);
-        return view('web.user.profile', compact('user','balance'));
+        return view('web.user.profile', compact('user'));
     }
 
     public function edit_profile()

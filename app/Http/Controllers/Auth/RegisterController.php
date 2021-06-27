@@ -68,11 +68,19 @@ class RegisterController extends Controller
         $user = User::create([
             'name' => $data['name'],
             'email' => $data['email'],
+            // 'delivery_guy' => $data['delivery_guy'],
             'password' => Hash::make($data['password']),
             'phone' => $data['phone'],
         ]);
+
         if($user->email){
             $user->sendEmailVerificationNotification();
+        }
+        if(isset($data['delivery_guy']))
+        {
+            $user->delivery_guy = $data['delivery_guy'];
+            $user->verified = 0;
+            $user->save();
         }
         sendOTP($user->id);
         return $user;

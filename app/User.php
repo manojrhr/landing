@@ -18,7 +18,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password', 'phone', 'avatar', 'stripe_connect_id', 'completed_stripe_onboarding',
+        'name', 'email', 'password', 'delivery_guy', 'verified', 'otp', 'c_code', 'phone', 'avatar', 'stripe_connect_id', 'completed_stripe_onboarding',
     ];
 
     /**
@@ -43,17 +43,21 @@ class User extends Authenticatable
         'completed_stripe_onboarding' => 'bool',
     ];
 
-    public function jetskis()
+    public function isActivated()
     {
-        return $this->hasMany(JetSki::class);
+        return $this->verified ? true : false;
     }
+    // public function jetskis()
+    // {
+    //     return $this->hasMany(JetSki::class);
+    // }
 
-    public function bookings()
-    {
-        return $this->hasMany(Booking::class);
-    }
+    // public function bookings()
+    // {
+    //     return $this->hasMany(Booking::class);
+    // }
 
-    public function seller_bookings(){
-        return $this->hasMany('App\Booking', 'seller_id','id');
-    }
+    // public function seller_bookings(){
+    //     return $this->hasMany('App\Booking', 'seller_id','id');
+    // }
 }

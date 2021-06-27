@@ -35,12 +35,19 @@ class AuthController extends Controller
     		'name' => $request->name,
     		'email' => $request->email,
             'phone' => $request->phone,
+            'delivery_guy' => $request->delivery_guy,
     		'password' => bcrypt($request->password)
     	]);
 
     	$user->save();
         if($user->email){
             $user->sendEmailVerificationNotification();
+        }
+        if(isset($request->delivery_guy))
+        {
+            $user->delivery_guy = $request->delivery_guy;
+            $user->verified = 0;
+            $user->save();
         }
         sendOTP($user->id);
 
