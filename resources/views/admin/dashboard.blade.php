@@ -60,8 +60,8 @@
         <div class="col-lg-3 col-xs-6">
           <div class="small-box bg-red">
             <div class="inner">
-              <h3>{{$jetski_count}}</h3>
-              <p>Total Jet Ski Registered</p>
+              <h3>0</h3>
+              <p>Total Tickets Generated</p>
             </div>
             <div class="icon">
               <i class="fa fa-ship"></i>

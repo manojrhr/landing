@@ -39,7 +39,11 @@ Route::group(['prefix' => 'admin' , 'as' => 'admin.'], function(){
 	Route::post('/login', 'Auth\AdminLoginController@login')->name('login.submit');
 	Route::get('/', 'Web\Admin\AdminController@index')->name('dashboard');
 	Route::get('/logout', 'Auth\AdminLoginController@logout')->name('logout');
+
 	Route::get('/users', 'Web\Admin\UserController@index')->name('users');
+	Route::get('/user/{id}', 'Web\Admin\UserController@single')->name('user.single');
+	Route::post('/user-update/{id}', 'Web\Admin\UserController@updateDetails')->name('user.update');
+	Route::post('/user-password-update/{id}', 'Web\Admin\UserController@updatePassword')->name('user.password.update');
 	Route::get('/user/delete/{id}', 'Web\Admin\UserController@delete')->name('user.delete');
 });
 

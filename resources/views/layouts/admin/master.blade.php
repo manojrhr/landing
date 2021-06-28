@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>SkiSki | @yield('title')</title>
+  <title>Amaze | @yield('title')</title>
   <!-- Tell the browser to be responsive to screen width -->
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
   <!-- Bootstrap 3.3.7 -->
@@ -54,9 +54,9 @@
     <!-- Logo -->
     <a href="{{ route('admin.dashboard') }}" class="logo">
       <!-- mini logo for sidebar mini 50x50 pixels -->
-      <span class="logo-mini"><b>S</b>S</span>
+      <span class="logo-mini"><b>A</b></span>
       <!-- logo for regular state and mobile devices -->
-      <span class="logo-lg"><b>Ski</b>Ski</span>
+      <span class="logo-lg"><b>Ama</b>ze</span>
     </a>
     <!-- Header Navbar: style can be found in header.less -->
     <nav class="navbar navbar-static-top">
@@ -149,9 +149,9 @@
         <li class="header">MAIN NAVIGATION</li>
         <li><a href="{{ route('admin.dashboard') }}"><i class="fa fa-book"></i><span>Dashboard</span></a></li>
         <li><a href="{{ route('admin.users') }}"><i class="fa fa-user"></i><span>Users</span></a></li>
-        <li><a href="{{ route('admin.jetski') }}"><i class="fa fa-ship"></i><span>Jet Ski</span></a></li>
-        <li><a href="{{ route('admin.booking') }}"><i class="fa fa-ship"></i><span>Bookings</span></a></li>
-        <li><a href="{{ route('admin.makes') }}"><i class="fa fa-list"></i><span>Makes</span></a></li>
+        <!-- <li><a href=""><i class="fa fa-ship"></i><span>Jet Ski</span></a></li>
+        <li><a href=""><i class="fa fa-ship"></i><span>Bookings</span></a></li>
+        <li><a href=""><i class="fa fa-list"></i><span>Makes</span></a></li> -->
       </ul>
     </section>
     <!-- /.sidebar -->
