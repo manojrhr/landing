@@ -49,18 +49,13 @@
 				<div class="row align-items-center">
 					<div class="col-6 col-lg-3">
 						<a class="logo" href="{{ route('home') }}">
-							<img src="{{ asset('assets/web/images/logo.png') }}" alt="Image" class="img-fluid">
+							<h1>Amaze</h1>
+							<!-- <img src="{{ asset('assets/web/images/logo.png') }}" alt="Image" class="img-fluid"> -->
 						</a>
 					</div>
 					<div class="col-lg-9 d-none d-lg-block">
 						<nav class="site-navigation position-relative text-right" role="navigation">
 							<ul class="site-menu main-menu js-clone-nav mr-auto d-none pl-0 d-lg-block navbar-nav ml-auto">
-									<li>
-										<a href="" class="nav-link text-left">List your Jet Ski</a>
-									</li>
-									<li>
-										<a href="" class="nav-link text-left">Explorer Jet Ski</a>
-									</li>
 									@guest
 									<li>
 										<a href="{{ route('login') }}" class="nav-link text-left">Login</a>
@@ -94,37 +89,38 @@
 			<div class="container">
 				<div class="row">
 					<div class="col-lg-3 footer-content">
-						<p class="mb-4"><img src=" {{ asset('assets/web/images/logo.png') }}" alt="Image" class="img-fluid"></p>
+						<!-- <p class="mb-4"><img src=" {{ asset('assets/web/images/logo.png') }}" alt="Image" class="img-fluid"></p> -->
+						<h1>Amaze</h1>
 						<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Beatae nemo minima qui dolor, iusto iure.</p>
-						<p><a href="#">Learn More</a></p>
+						<!-- <p><a href="#">Learn More</a></p> -->
 					</div>
 					<div class="col-lg-3 footer-content">
 						<h3 class="footer-heading"><span>Legal</span></h3>
-						<ul class="list-unstyled">
+						<!-- <ul class="list-unstyled">
 							<li><a href="{{route('page','privacy_policy')}}">Privacy Policy</a></li>
 							<li><a href="{{route('page','terms_of_service')}}">Terms of Use</a></li>
-						</ul>
+						</ul> -->
 					</div>
 					<div class="col-lg-3 footer-content">
 						<h3 class="footer-heading"><span>Our Company</span></h3>
-						<ul class="list-unstyled">
+						<!-- <ul class="list-unstyled">
 							<li><a href="#">About</a></li>
 							<li><a href="#">News</a></li>
 							<li><a href="#">Services</a></li>
 							<li><a href="#">Our Team</a></li>
 							<li><a href="#">Careers</a></li>
 							<li><a href="#">Projects</a></li>
-						</ul>
+						</ul> -->
 					</div>
 					<div class="col-lg-3 footer-content">
 						<h3 class="footer-heading"><span>Contact</span></h3>
-						<ul class="list-unstyled">
+						<!-- <ul class="list-unstyled">
 							<li><a href="#">Help Center</a></li>
 							<li><a href="#">Support Community</a></li>
 							<li><a href="#">Press</a></li>
 							<li><a href="#">FAQ</a></li>
 							<li><a href="#">Our Partners</a></li>
-						</ul>
+						</ul> -->
 					</div>
 				</div>
 			</div>
