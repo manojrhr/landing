@@ -18,7 +18,7 @@
   <link rel="stylesheet" href="{{ asset('assets/admin/plugins/iCheck/square/blue.css') }}">
   <style type="text/css">
     .login-page {
-      background: linear-gradient(0deg, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("{{ asset('assets/coming/images/bg.jpg') }}") no-repeat center center fixed;
+      background: linear-gradient(0deg, rgba(0, 0, 0), rgba(0, 0, 0)), url("") no-repeat center center fixed;
       background-size: cover; 
     }
   </style>
@@ -36,7 +36,7 @@
 <div class="login-box">
   <div class="login-logo">
     <a href="{{ route('home') }}">
-      <img src="{{ asset('images/logo.png') }}" width="320px">
+      <img src="{{ asset('images/logo.jpeg') }}" width="320px">
     </a>
   </div>
   <!-- /.login-logo -->
