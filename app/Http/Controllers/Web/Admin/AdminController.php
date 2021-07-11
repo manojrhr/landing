@@ -25,7 +25,7 @@ class AdminController extends Controller
      */
     public function index()
     {
-        $user_count = User::count();
+        $user_count = User::where('delivery_guy', false)->count();
         return view('admin.dashboard', compact('user_count'));
     }
 }
