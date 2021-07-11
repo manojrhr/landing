@@ -47,6 +47,12 @@ class User extends Authenticatable
     {
         return $this->verified ? true : false;
     }
+
+    public function toggleVerification()
+    {
+        $this->verified= !$this->verified;
+        return $this;
+    }
     // public function jetskis()
     // {
     //     return $this->hasMany(JetSki::class);

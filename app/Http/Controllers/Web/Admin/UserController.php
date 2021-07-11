@@ -28,10 +28,11 @@ class UserController extends Controller
     public function index()
     {
         // $users = User::all();
+        $d_guy = false;
         $title = "User";
         $subTitle = "Registered Users";
         $users = User::where('delivery_guy', false)->get();
-        return view('admin.user.index', compact('users', 'title', 'subTitle'));
+        return view('admin.user.index', compact('users', 'title', 'subTitle', 'd_guy'));
     }
 
     /**
@@ -42,10 +43,11 @@ class UserController extends Controller
     public function dlivery_guy()
     {
         // $users = User::all();
+        $d_guy = true;
         $title = "Delivery Guys";
         $subTitle = "Registered Delivery Guys";
         $users = User::where('delivery_guy', true)->get();
-        return view('admin.user.index', compact('users', 'title', 'subTitle'));
+        return view('admin.user.index', compact('users', 'title', 'subTitle', 'd_guy'));
     }
     
     /**
@@ -93,6 +95,15 @@ class UserController extends Controller
         dd($request->all());
         $request->session()->flash('message.level', 'success');
         $request->session()->flash('message.content', 'User Deleted Successfully.');
+        return Redirect::back();
+    }
+
+    public function change_status($id, Request $request)
+    {
+        $user = User::findOrFail($id);
+        $user->toggleVerification()->save();
+        $request->session()->flash('message.level', 'success');
+        $request->session()->flash('message.content', 'User Status Changed Successfully.');
         return Redirect::back();
     }
 

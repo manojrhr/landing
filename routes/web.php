@@ -45,6 +45,7 @@ Route::group(['prefix' => 'admin' , 'as' => 'admin.'], function(){
 	Route::get('/user/{id}', 'Web\Admin\UserController@single')->name('user.single');
 	Route::post('/user-update/{id}', 'Web\Admin\UserController@updateDetails')->name('user.update');
 	Route::post('/user-password-update/{id}', 'Web\Admin\UserController@updatePassword')->name('user.password.update');
+	Route::get('/user/change_status/{id}', 'Web\Admin\UserController@change_status')->name('user.change_status');
 	Route::get('/user/delete/{id}', 'Web\Admin\UserController@delete')->name('user.delete');
 });
 

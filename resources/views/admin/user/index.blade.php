@@ -24,6 +24,9 @@
                             <th>Name</th>
                             <th>Email</th>
                             <th>Phone #</th>
+                            @if($d_guy)
+                                <th>Status</th>
+                            @endif
                             <th>Actions</th>
                         </tr>
                     </thead>
@@ -39,10 +42,36 @@
                                 </td>
                                 <td>{{ $user->email }}</td>
                                 <td>{{ $user->phone }}</td>
+                                @if($d_guy)
+                                    @if($user->verified)
+                                        <td><span class="badge badge-success">Verified</span></td>
+                                    @else
+                                        <td><span class="badge badge-danger">Not Verified</span></td>
+                                    @endif
+                                @endif
                                 <td>
+                                    <!-- Single button -->
+                                    <div class="btn-group">
+                                        <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                            Action <span class="caret"></span>
+                                        </button>
+                                        <ul class="dropdown-menu">
+                                            @if($d_guy)
+                                                @if($user->verified)
+                                                    <li><a href="{{route('admin.user.change_status',$user->id)}}">Un-verified</a></li>
+                                                @else
+                                                    <li><a href="{{route('admin.user.change_status',$user->id)}}">Verified</a></li>
+                                                @endif
+                                            @endif
+                                            <li><a href="{{route('admin.user.delete',$user->id)}}">Delete</a></li>
+                                            <!-- <li><a href="#">Something else here</a></li>
+                                            <li role="separator" class="divider"></li>
+                                            <li><a href="#">Separated link</a></li> -->
+                                        </ul>
+                                    </div>
                                     <!-- <a  class="btn btn-success" href="">View</a>
                                     <a  class="btn btn-primary" href="">Update</a> -->
-                                    <a  class="btn btn-danger" href="{{route('admin.user.delete',$user->id)}}" onclick="return confirm('Are you sure?')">Delete</a>
+                                    <!-- <a  class="btn btn-danger" href="" onclick="return confirm('Are you sure?')">Delete</a> -->
                                 </td>
                             </tr>
                             <?php $i++; ?>
