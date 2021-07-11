@@ -28,8 +28,24 @@ class UserController extends Controller
     public function index()
     {
         // $users = User::all();
+        $title = "User";
+        $subTitle = "Registered Users";
         $users = User::where('delivery_guy', false)->get();
-        return view('admin.user.index', compact('users'));
+        return view('admin.user.index', compact('users', 'title', 'subTitle'));
+    }
+
+    /**
+     * Show the application dashboard.
+     *
+     * @return \Illuminate\Contracts\Support\Renderable
+     */
+    public function dlivery_guy()
+    {
+        // $users = User::all();
+        $title = "Delivery Guys";
+        $subTitle = "Registered Delivery Guys";
+        $users = User::where('delivery_guy', true)->get();
+        return view('admin.user.index', compact('users', 'title', 'subTitle'));
     }
     
     /**

@@ -1,7 +1,7 @@
 @extends('layouts.admin.master')
 
-@section('title', 'Users')
-@section('subtitle', 'Users Registered')
+@section('title', $title)
+@section('subtitle', $subTitle)
 
 @section('style')
         <!-- Bootstrap CSS -->

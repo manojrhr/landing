@@ -46,7 +46,7 @@ if (!function_exists('null_safe')) {
         $user->otp = $otp;
         $user->save();
         $message = "Your OTP for ".getenv("APP_NAME")." is ".$otp;
-        // sendsms($user->c_code.$user->phone, $message);
+        sendsms($user->c_code.$user->phone, $message);
     }
 
     function currency_sym(){
