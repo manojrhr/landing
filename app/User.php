@@ -53,6 +53,16 @@ class User extends Authenticatable
         $this->verified= !$this->verified;
         return $this;
     }
+
+    public function addresses()
+    {
+        return $this->hasMany('App\Addresses', 'user_id');
+    }
+    
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
     // public function jetskis()
     // {
     //     return $this->hasMany(JetSki::class);
