@@ -144,7 +144,10 @@
 
 
   <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
-
+  <script
+  src="https://code.jquery.com/jquery-3.6.0.min.js"
+  integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
+  crossorigin="anonymous"></script>
   <!-- Vendor JS Files -->
   <script src="assets/web/vendor/aos/aos.js"></script>
   <script src="assets/web/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>

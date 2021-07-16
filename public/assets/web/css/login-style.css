@@ -187,8 +187,7 @@ h2 {
 
 .main {
   background: #cfe5f0;
-  padding: 100px 0; 
-  height: 100vh;
+  padding: 150px 0 100px 0; 
 }
 
 .clear {
@@ -202,7 +201,7 @@ body {
   font-weight: 400;
   font-family: "Philosopher", sans-serif; }
 
-.container {
+.login-box, .signup-box {
   background: #fff;
   margin: 0 auto;
   box-shadow: 0px 15px 16.83px 0.17px rgba(0, 0, 0, 0.08);
@@ -249,9 +248,6 @@ body {
   -webkit-transform: translate(-50%, -50%);
   -o-transform: translate(-50%, -50%);
   -ms-transform: translate(-50%, -50%); }
-
-.signup {
-  margin-bottom: 150px; }
 
 .signup-content {
   padding: 75px 0; }
