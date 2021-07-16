@@ -5,6 +5,7 @@ namespace App\Repositories;
 use Illuminate\Support\Facades\Auth;
 use Carbon\Carbon;
 use App\User;
+use App\Address;
 use Log;
 use Hash;
 use Image;
@@ -64,6 +65,69 @@ class UserRepository {
 
         if($user->save()){
             $response_array = ['success' => true, 'message' => 'Profile successfully updated!'];
+        } else {
+            $response_array = ['success' => false, 'message' => 'Something went wrong!'];
+        }
+        return $response_array;
+	}
+
+	public static function add_address($request) {
+
+        $validator = Validator::make($request->all(), [
+            'address1' => 'required|string|max:255',
+            'city' => 'required|string|max:255',
+            'state' => 'required|string|max:255',
+            'pin' => 'required|integer',
+        ]);
+
+        if ($validator->fails()) {
+
+            $errors = implode(',', $validator->messages()->all());
+            return $response_array = ['success' => false , 'message' => $errors, 'error_code' => 101];
+        }
+
+        $address = new Address();
+        $address->address1 = $request->address1;
+        $address->city = $request->city;
+        $address->state = $request->state;
+        $address->pin = $request->pin;
+        $address->user_id = $request->user()->id;
+        
+        if($request->has('address2')){
+            $address->address2 = $request->address2;
+        }
+
+        if($address->save()){
+            $response_array = ['success' => true, 'message' => 'Address added successfully!'];
+        } else {
+            $response_array = ['success' => false, 'message' => 'Something went wrong!'];
+        }
+        return $response_array;
+	}
+
+	public static function delete_address($request) {
+
+        $validator = Validator::make($request->all(), [
+            'address_id' => 'required|string|max:255',
+        ]);
+
+        if ($validator->fails()) {
+            $errors = implode(',', $validator->messages()->all());
+            return $response_array = ['success' => false , 'message' => $errors, 'error_code' => 101];
+        }
+
+        $address = Address::where([
+            ['user_id', $request->user()->id],
+            ['id', $request->address_id],
+        ])->first();
+
+        if ($address === null) {
+            $response_array = ['success' => false, 'message' => 'It seems like address does not exists or not belongs to you.'];
+            return $response_array;
+        }
+
+        if($address->delete()){
+            $response_array = ['success' => true, 'message' => 'Address deleted successfully!'];
         } else {
             $response_array = ['success' => false, 'message' => 'Something went wrong!'];
         }

@@ -13,6 +13,18 @@ class UserController extends Controller
         $response_array = UserRepo::update($request);
     	return response()->json($response_array, 201);
     }
+
+    public function add_address(Request $request)
+    {
+        $response_array = UserRepo::add_address($request);
+    	return response()->json($response_array, 201);
+    }
+
+    public function delete_address(Request $request)
+    {
+        $response_array = UserRepo::delete_address($request);
+    	return response()->json($response_array, 201);
+    }
     
     /**
      * Get the authenticated User

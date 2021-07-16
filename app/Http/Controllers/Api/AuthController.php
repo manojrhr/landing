@@ -28,7 +28,8 @@ class AuthController extends Controller
     		'name' => 'required|string',
     		'email' => 'string|email|unique:users',
             'phone' => ['required', 'numeric', 'min:10'],
-    		'password' => 'required|string|confirmed'
+    		'password' => 'required|string|confirmed',
+            'delivery_guy' => 'required|boolean',
     	]);
 
     	$user = new User([
@@ -43,6 +44,7 @@ class AuthController extends Controller
         if($user->email){
             $user->sendEmailVerificationNotification();
         }
+        
         if(isset($request->delivery_guy))
         {
             $user->delivery_guy = $request->delivery_guy;
@@ -53,7 +55,7 @@ class AuthController extends Controller
 
     	return response()->json([
     		'success' => true,
-    		'message' => 'Successfully created user!'
+    		'message' => 'An OTP is sent on your registered mobile number!'
     	], 201);
     }
 
