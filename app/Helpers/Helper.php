@@ -25,8 +25,8 @@ if (!function_exists('null_safe')) {
             $account_sid = Config::get("app.twilio.TWILIO_AUTH_TOKEN");
             $auth_token = Config::get("app.twilio.TWILIO_SID");
             $twilio_number = Config::get("app.twilio.TWILIO_FROM");
-            Log::info("Twilio credentials dump ". Config::get("app.twilio"));
-            Log::info("Twilio credentials dump ". $twilio_number);
+            Log::info("Twilio credentials dump ");
+            Log::info(print_r(Config::get("app.twilio", true)));
             
             $client = new Client($account_sid, $auth_token);
             $client->messages->create($receiverNumber, [
