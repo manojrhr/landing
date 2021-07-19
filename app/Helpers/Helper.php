@@ -22,10 +22,10 @@ if (!function_exists('null_safe')) {
         // $message = "This is testing from Delivery";
   
         try {
-            $account_sid = getenv("TWILIO_SID");
-            $auth_token = getenv("TWILIO_TOKEN");
-            $twilio_number = getenv("TWILIO_FROM");
-  
+            $account_sid = Config::get("app.twilio.TWILIO_AUTH_TOKEN");
+            $auth_token = Config::get("app.twilio.TWILIO_SID");
+            $twilio_number = Config::get("app.twilio.TWILIO_FROM");
+            
             $client = new Client($account_sid, $auth_token);
             $client->messages->create($receiverNumber, [
                 'from' => $twilio_number, 
