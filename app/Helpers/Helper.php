@@ -16,8 +16,8 @@ if (!function_exists('null_safe')) {
     function sendsms($phone, $message)
     {
         Log::info("Phone No. ".$phone);
-        $receiverNumber = "+919882270566";
-        // $receiverNumber = $phone;
+        // $receiverNumber = "+919882270566";
+        $receiverNumber = $phone;
         $message = $message;
         // $message = "This is testing from Delivery";
   
