@@ -22,19 +22,20 @@ if (!function_exists('null_safe')) {
         // $message = "This is testing from Delivery";
   
         try {
-            $account_sid = env('TWILIO_TOKEN');
-            $auth_token = env('TWILIO_SID');
+            $account_sid = env('TWILIO_SID');
+            $auth_token = env('TWILIO_TOKEN');
             $twilio_number = env('TWILIO_FROM');
             Log::info("Twilio token ". $auth_token);
             Log::info("Twilio credentials dump ". $account_sid.' '.$auth_token.' '.$twilio_number);
             $client = new Client($account_sid, $auth_token);
-            dump($client);
-            $message = $client->messages->create($receiverNumber, [
+            // dump($client);
+            $smessage = $client->messages->create($receiverNumber, [
                 'from' => $twilio_number, 
                 'body' => $message
             ]);
-  
-            // dd($message);
+            // dump($smessage);
+            // dump('here');
+            // dd($smessage->sid);
   
         } catch (Exception $e) {
             Log::info("Error: ". $e->getMessage());

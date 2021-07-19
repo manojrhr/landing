@@ -53,7 +53,7 @@ Route::group(['prefix' => 'admin' , 'as' => 'admin.'], function(){
 Route::get('/testmail', function () {
 	Mail::send([], [], function ($message) {
 		$message->to('manojrhr@gmail.com')
-		->subject('Testing email from skiski')
+		->subject('Testing email from a2zamaze')
     ->setBody('<h1>Hi, welcome user!</h1>', 'text/html'); // for HTML rich messages
 });
 })->name('testmail');
