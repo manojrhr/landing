@@ -1,51 +1,52 @@
-@extends('layouts/web/web')
+@extends('layouts/web/master')
+
+@section('styles')
+    <link href="{{ asset('assets/web/css/login-style.css') }}" rel="stylesheet">
+    <link rel="stylesheet" href="{{ asset('assets/web/fonts/material-icon/css/material-design-iconic-font.min.css') }}">
+@endsection
 
 @section('content')
 
-<div class="site-section login-register-main">
-    <div class="container" style="margin-top: 80px">
-        <div class="row justify-content-center">
-            <div class="col-md-8">
-                <div class="card">
-                    <div class="card-header">{{ __('Verify Your Phone Number') }}</div>
-
-                    <div class="card-body login-register-main">
-                        @if (session('status'))
-                        <div class="alert alert-success" role="alert">
-                            {{ session('status') }}
+<div class="main">
+    <!-- Sing in  Form -->
+    <section class="sign-in">
+        <div class="container login-box ">
+            <div class="signin-content">
+                <div class="signin-image">
+                    <figure><img src="{{ asset('assets/web/img/login-img/login-hero.png') }}" alt="sing up image"></figure>
+                    <a href="{{route('register')}}" class="signup-image-link">Create an account</a>
+                </div>
+                <div class="signin-form">
+                    <h2 class="form-title">Log in</h2>
+                    @if(count( $errors ) > 0)
+                        <div class="alert alert-danger" role="alert">
+                            <ul>
+                                @foreach ($errors->all() as $error)
+                                    <li>{{ $error }}</li>
+                                @endforeach
+                            </ul>
                         </div>
-                        @endif
-
-                        <form method="POST" action="{{ route('user.verify_otp') }}">
-                            @csrf
-                            <input type="hidden" name="id" value="{{Auth::Id()}}">
-
-                            <div class="form-group row">
-                                <label for="otp" class="col-md-4 col-form-label text-md-right">{{ __('OTP') }}</label>
-
-                                <div class="col-md-6">
-                                    <input id="otp" type="text" class="form-control @error('otp') is-invalid @enderror" name="otp" value="" min="6" max="6" required autofocus>
-
-                                    @error('otp')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                    @enderror
-                                </div>
-                            </div>
-
-                            <div class="form-group row mb-0">
-                                <div class="col-md-6 offset-md-4">
-                                    <button type="submit" class="btn btn-primary">
-                                        {{ __('Verify OTP') }}
-                                    </button>
-                                </div>
-                            </div>
-                        </form>
-                    </div>
+                    @endif
+                    <form method="POST" class="register-form" id="login-form" action="{{ route('user.verify_otp') }}">
+                        @csrf
+                        <input type="hidden" name="id" value="{{Auth::Id()}}">
+                        <div class="form-group">
+                            <label for="otp"><i class="zmdi zmdi-account material-icons-name"></i></label>
+                            <input type="text" name="otp" id="otp" placeholder="Please enter OTP sent on you mobile" min="6" max="6" required autofocus/>
+                            @error('email')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
+                        </div>
+                        <div class="form-group form-button">
+                            <input type="submit" name="signin" id="signin" class="form-submit" value="Log in"/>
+                        </div>
+                    </form>
                 </div>
             </div>
         </div>
-    </div>
+    </section>
 </div>
+
 @endsection

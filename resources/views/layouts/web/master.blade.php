@@ -12,21 +12,21 @@
   <meta content="" name="keywords">
 
   <!-- Favicons -->
-  <link href="assets/web/img/favicon.png" rel="icon">
-  <link href="assets/web/img/apple-touch-icon.png" rel="apple-touch-icon">
+  <link href="{{ asset('assets/web/img/favicon.png') }}" rel="icon">
+  <link href="{{ asset('assets/web/img/apple-touch-icon.png') }}" rel="apple-touch-icon">
 
   <!-- Google Fonts -->
   <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,700,700i|Roboto:100,300,400,500,700|Philosopher:400,400i,700,700i" rel="stylesheet">
 
   <!-- Vendor CSS Files -->
-  <link href="assets/web/vendor/aos/aos.css" rel="stylesheet">
-  <link href="assets/web/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-  <link href="assets/web/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
-  <link href="assets/web/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
-  <link href="assets/web/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+  <link href="{{ asset('assets/web/vendor/aos/aos.css') }}" rel="stylesheet">
+  <link href="{{ asset('assets/web/vendor/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet">
+  <link href="{{ asset('assets/web/vendor/bootstrap-icons/bootstrap-icons.css') }}" rel="stylesheet">
+  <link href="{{ asset('assets/web/vendor/glightbox/css/glightbox.min.css') }}" rel="stylesheet">
+  <link href="{{ asset('assets/web/vendor/swiper/swiper-bundle.min.css') }}" rel="stylesheet">
 
   <!-- Template Main CSS File -->
-  <link href="assets/web/css/style.css" rel="stylesheet">
+  <link href="{{ asset('assets/web/css/style.css') }}" rel="stylesheet">
 
 	@yield('styles')
   @livewireStyles
@@ -45,7 +45,7 @@
     <div class="container d-flex align-items-center justify-content-between">
 
       <div id="logo">
-        <h1><a href="{{ route('home') }}"><img src="assets/web/img/logo.png" alt="img"></a></h1>
+        <h1><a href="{{ route('home') }}"><img src="{{ asset('assets/web/img/logo.png') }}" alt="img"></a></h1>
       </div>
 
       <nav id="navbar" class="navbar">
@@ -91,7 +91,7 @@
         <div class="col-md-12 col-lg-4">
           <div class="footer-logo">
 
-            <a class="navbar-brand" href="#"><img src="assets/web/img/logo-white.png" alt="img"></a>
+            <a class="navbar-brand" href="#"><img src="{{ asset('assets/web/img/logo-white.png') }}" alt="img"></a>
             <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the.</p>
 
           </div>
@@ -149,14 +149,14 @@
   integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
   crossorigin="anonymous"></script>
   <!-- Vendor JS Files -->
-  <script src="assets/web/vendor/aos/aos.js"></script>
-  <script src="assets/web/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-  <script src="assets/web/vendor/glightbox/js/glightbox.min.js"></script>
-  <script src="assets/web/vendor/php-email-form/validate.js"></script>
-  <script src="assets/web/vendor/swiper/swiper-bundle.min.js"></script>
+  <script src="{{ asset('assets/web/vendor/aos/aos.js') }}"></script>
+  <script src="{{ asset('assets/web/vendor/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
+  <script src="{{ asset('assets/web/vendor/glightbox/js/glightbox.min.js') }}"></script>
+  <script src="{{ asset('assets/web/vendor/php-email-form/validate.js') }}"></script>
+  <script src="{{ asset('assets/web/vendor/swiper/swiper-bundle.min.js') }}"></script>
 
   <!-- Template Main JS File -->
-  <script src="assets/web/js/main.js"></script>
+  <script src="{{ asset('assets/web/js/main.js') }}"></script>
 
 	@include('includes.flash-message')
 	@yield('scripts')

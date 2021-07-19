@@ -2,9 +2,8 @@
 
 
 @section('styles')
-    <link href="assets/web/css/login-style.css" rel="stylesheet">
-    <link rel="stylesheet" href="assets/web/fonts/material-icon/css/material-design-iconic-font.min.css">
-
+    <link href="{{ asset('assets/web/css/login-style.css') }}" rel="stylesheet">
+    <link rel="stylesheet" href="{{ asset('assets/web/fonts/material-icon/css/material-design-iconic-font.min.css') }}">
 @endsection
 
 @section('content')
@@ -20,13 +19,17 @@
                         <figure><img src="assets/web/img/login-img/login-hero.png" alt="sing up image"></figure>
                         <a href="{{route('register')}}" class="signup-image-link">Create an account</a>
                     </div>
-                    @if(count( $errors ) > 0)
-    @foreach ($errors->all() as $error)
-       <h1>{{ $error }}</h1>
-    @endforeach
-@endif
                     <div class="signin-form">
                         <h2 class="form-title">Log in</h2>
+                        @if(count( $errors ) > 0)
+                            <div class="alert alert-danger" role="alert">
+                                <ul>
+                                    @foreach ($errors->all() as $error)
+                                        <li>{{ $error }}</li>
+                                    @endforeach
+                                </ul>
+                            </div>
+                        @endif
                         <form method="POST" class="register-form" id="login-form" action="{{route('login')}}">
                             @csrf
                             <div class="form-group">

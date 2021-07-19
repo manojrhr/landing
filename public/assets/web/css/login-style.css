@@ -589,3 +589,8 @@ label.valid {
     margin-bottom: 10px; } }
 
 /*# sourceMappingURL=style.css.map */
+
+.signup-as {
+  width: 50%;
+  float: left;
+}

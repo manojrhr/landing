@@ -26,7 +26,7 @@ class AddDefaultFieldToAddressesTable extends Migration
     public function down()
     {
         Schema::table('addresses', function (Blueprint $table) {
-            //
+            $table->dropColumn(['default']);
         });
     }
 }
