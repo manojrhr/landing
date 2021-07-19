@@ -58,6 +58,6 @@ Route::get('/testmail', function () {
 });
 })->name('testmail');
 
-Route::get('/testsms', function () {
-	sendSms();
+Route::get('/testsms/{phone}', function ($phone) {
+	sendSms($phone, 'testing sms on a2zamaze.');
 })->name('testsms');

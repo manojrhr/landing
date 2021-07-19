@@ -69,10 +69,37 @@
               <li><a href="#">Drop Down 3</a></li>
               <li><a href="#">Drop Down 4</a></li>
             </ul>
-          </li> -->
+          </li>
+          @guest
+            <li>
+              <a href="{{ route('login') }}" class="nav-link text-left">Login</a>
+            </li>
+            <li>
+              <a href="{{ route('register') }}" class="nav-link text-left">Sign up</a>
+            </li>
+          @else
+            <li>
+              <a href="{{ route('user.profile') }}" class="nav-link text-left">{{ Auth::user()->name }}</a>
+            </li>	
+            <li>
+              <a href="{{ route('user.logout') }}" class="nav-link text-left">{{ __('Logout') }}</a>
+            </li>	
+            @endguest
+         -->
           <li><a class="nav-link scrollto" href="#contact">Contact</a></li>
-           <li><a class="nav-link scrollto" href="{{ route('login') }}">Login</a></li>
-           <li><a class="nav-link scrollto order-btn" href="">Order</a></li>
+          @guest
+            <li><a class="nav-link scrollto" href="{{ route('login') }}">Login</a></li>
+          @else
+            <li>
+              <a href="{{ route('logout') }}" class="nav-link scrollto" onclick="event.preventDefault(); document.getElementById('frm-logout').submit();">
+                  Logout
+              </a>    
+              <form id="frm-logout" action="{{ route('logout') }}" method="POST" style="display: none;">
+                  {{ csrf_field() }}
+              </form>
+            </li>
+            <li><a class="nav-link scrollto order-btn" href="">Order</a></li>
+          @endguest
         </ul>
         <i class="bi bi-list mobile-nav-toggle"></i>
       </nav><!-- .navbar -->
