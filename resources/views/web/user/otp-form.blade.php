@@ -40,7 +40,7 @@
                             @enderror
                         </div>
                         <div class="form-group form-button">
-                            <input type="submit" name="signin" id="signin" class="form-submit" value="Log in"/>
+                            <input type="submit" name="signin" id="signin" class="form-submit" value="Verify OTP"/>
                         </div>
                     </form>
                 </div>
