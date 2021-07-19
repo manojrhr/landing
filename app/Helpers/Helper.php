@@ -15,26 +15,26 @@ if (!function_exists('null_safe')) {
 
     function sendsms($phone, $message)
     {
-        Log::info("Phone No. ".$phone);
+        Log::info("Phone No. ".$phone.$message);
         // $receiverNumber = "+919882270566";
         $receiverNumber = $phone;
         $message = $message;
         // $message = "This is testing from Delivery";
   
         try {
-            $account_sid = Config::get("app.twilio.TWILIO_AUTH_TOKEN");
-            $auth_token = Config::get("app.twilio.TWILIO_SID");
-            $twilio_number = Config::get("app.twilio.TWILIO_FROM");
-            Log::info("Twilio credentials dump ");
-            Log::info(print_r(Config::get("app.twilio", true)));
-            
+            $account_sid = env('TWILIO_TOKEN');
+            $auth_token = env('TWILIO_SID');
+            $twilio_number = env('TWILIO_FROM');
+            Log::info("Twilio token ". $auth_token);
+            Log::info("Twilio credentials dump ". $account_sid.' '.$auth_token.' '.$twilio_number);
             $client = new Client($account_sid, $auth_token);
-            $client->messages->create($receiverNumber, [
+            dump($client);
+            $message = $client->messages->create($receiverNumber, [
                 'from' => $twilio_number, 
                 'body' => $message
             ]);
   
-            // dd('SMS Sent Successfully.');
+            // dd($message);
   
         } catch (Exception $e) {
             Log::info("Error: ". $e->getMessage());
