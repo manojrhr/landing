@@ -7,6 +7,7 @@ use Illuminate\Queue\InteractsWithQueue;
 use App\Notifications\NewUserAdminNotification;
 use Notification;
 use App\Admin;
+use Log;
 
 class SendNewUserAdminNotification
 {
@@ -19,6 +20,7 @@ class SendNewUserAdminNotification
     public function handle($event)
     {
         $admins = Admin::all();    
+        Log::info('Admin user notification is being sending..');
         Notification::send($admins, new NewUserAdminNotification($event->user));
     }
 }

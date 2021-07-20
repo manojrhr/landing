@@ -41,7 +41,7 @@
                                     </a>
                                 </td>
                                 <td>{{ $user->email }}</td>
-                                <td>{{ $user->phone }}</td>
+                                <td>{{ $user->phone }} {{$user->verified}}</td>
                                 @if($d_guy)
                                     @if($user->verified)
                                         <td><span class="badge badge-success">Verified</span></td>

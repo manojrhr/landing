@@ -4,8 +4,10 @@ namespace App\Http\Controllers\Web\Admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Notifications\DeliverGuyActivated;
 use App\User;
 use Redirect;
+use Notification;
 use Validator;
 
 class UserController extends Controller
@@ -102,6 +104,11 @@ class UserController extends Controller
     {
         $user = User::findOrFail($id);
         $user->toggleVerification()->save();
+        if($user->verified){
+            dump('here');
+            // $user->notify(new DeliverGuyActivated($user));
+            Notification::send($user, new DeliverGuyActivated($user));
+        }
         $request->session()->flash('message.level', 'success');
         $request->session()->flash('message.content', 'User Status Changed Successfully.');
         return Redirect::back();
