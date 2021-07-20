@@ -40,6 +40,8 @@ Route::group(['prefix' => 'admin' , 'as' => 'admin.'], function(){
 	Route::get('/', 'Web\Admin\AdminController@index')->name('dashboard');
 	Route::get('/logout', 'Auth\AdminLoginController@logout')->name('logout');
 
+	Route::get('/mar-all-as-read', 'Web\Admin\AdminController@markAllasRead')->name('markAllasRead');
+
 	Route::get('/users', 'Web\Admin\UserController@index')->name('users');
 	Route::get('/delivery-guy', 'Web\Admin\UserController@dlivery_guy')->name('delivery_guy');
 	Route::get('/user/{id}', 'Web\Admin\UserController@single')->name('user.single');

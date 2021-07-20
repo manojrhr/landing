@@ -9,7 +9,7 @@ use Illuminate\Notifications\Notification;
 use App\User;
 use Log;
 
-class NewUserAdminNotification extends Notification implements ShouldQueue
+class NewUserAdminNotification extends Notification
 {
     use Queueable;
 
@@ -32,6 +32,7 @@ class NewUserAdminNotification extends Notification implements ShouldQueue
      */
     public function via($notifiable)
     {
+        Log::info('Admin notification');
         return ['mail', 'database'];
     }
 
@@ -44,7 +45,7 @@ class NewUserAdminNotification extends Notification implements ShouldQueue
     public function toMail($notifiable)
     {
         Log::info('Admin user notification is sent..');
-        if($user->delivery_guy){
+        if($this->user->delivery_guy){
             return (new MailMessage)
             ->line('New Delivery guy is registered on your website.')
             ->line('Please activate him from admin panel, in order to allow him to work on our plateform.')
@@ -67,7 +68,7 @@ class NewUserAdminNotification extends Notification implements ShouldQueue
     public function toArray($notifiable)
     {
         return [
-            'message' => $this->user->name." has registered on SkiSki",
+            'message' => $this->user->name." has registered on Amaze",
             'link' => '/admin/user/'.$this->user->id,
             'icon' => 'fa fa-user text-aqua',
         ];

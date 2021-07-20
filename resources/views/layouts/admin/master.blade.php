@@ -87,7 +87,7 @@
                 @endforeach
                 </ul>
               </li>
-              <li class="footer"><a href="#">Mark all as read</a></li>
+              <li class="footer"><a href="{{ route('admin.markAllasRead') }}">Mark all as read</a></li>
             </ul>
           </li>
           <!-- User Account: style can be found in dropdown.less -->

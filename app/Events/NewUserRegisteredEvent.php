@@ -10,6 +10,7 @@ use Illuminate\Contracts\Broadcasting\ShouldBroadcast;
 use Illuminate\Foundation\Events\Dispatchable;
 use Illuminate\Queue\SerializesModels;
 use App\User;
+use Log;
 
 class NewUserRegisteredEvent
 {
@@ -23,6 +24,7 @@ class NewUserRegisteredEvent
      */
     public function __construct(User $user)
     {
+        Log:info('New user event triggered.');
         $this->user = $user;
     }
 
