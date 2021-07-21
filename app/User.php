@@ -67,7 +67,7 @@ class User extends Authenticatable
     /* To let know twilio the phone no. filed of user table */
     public function routeNotificationForTwilio()
     {
-        return '+919882270566';
+        return $this->c_code.$this->phone;
     }
     // public function jetskis()
     // {
