@@ -58,9 +58,9 @@
                                         <ul class="dropdown-menu">
                                             @if($d_guy)
                                                 @if($user->verified)
-                                                    <li><a href="{{route('admin.user.change_status',$user->id)}}">Un-verified</a></li>
+                                                    <li><a href="{{route('admin.user.change_status',$user->id)}}">Deactive</a></li>
                                                 @else
-                                                    <li><a href="{{route('admin.user.change_status',$user->id)}}">Verified</a></li>
+                                                    <li><a href="{{route('admin.user.change_status',$user->id)}}">Verify</a></li>
                                                 @endif
                                             @endif
                                             <li><a href="{{route('admin.user.delete',$user->id)}}">Delete</a></li>

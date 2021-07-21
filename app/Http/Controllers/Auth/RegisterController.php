@@ -49,13 +49,17 @@ class RegisterController extends Controller
      */
     protected function validator(array $data)
     {
+        $messages = [
+            'c_code.required'      => 'Please select country code for your phone number.', 
+        ];
         return Validator::make($data, [
             'name' => ['required', 'string', 'max:255'],
             'email' => ['nullable', 'email', 'max:255', 'unique:users'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
             'phone' => ['required', 'unique:users', 'numeric', 'min:10'],
             'delivery_guy' => 'required|boolean',
-        ]);
+            'c_code' => 'required',
+        ], $messages);
     }
 
     /**
@@ -72,6 +76,7 @@ class RegisterController extends Controller
             'delivery_guy' => $data['delivery_guy'],
             'password' => Hash::make($data['password']),
             'phone' => $data['phone'],
+            'c_code' => $data['c_code'],
         ]);
 
         if($user->email){

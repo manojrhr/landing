@@ -44,8 +44,8 @@ class DeliverGuyActivated extends Notification
     public function toMail($notifiable)
     {
         return (new MailMessage)
-                    ->line("Hi, ".$this->user->name)
-                    ->line('Your account has been activated by admin. Now you can login to your account.')
+                    ->line("Hi, ".ucfirst($this->user->name))
+                    ->line('Congratulations!!, Your account has been activated by admin. Now you can login to your account.')
                     ->action('Login', url('/login'))
                     ->line('Thank you for using a2zamaze!');
     }
@@ -53,7 +53,7 @@ class DeliverGuyActivated extends Notification
     public function toTwilio($notifiable)
     {
         return (new TwilioSmsMessage())
-            ->content("Your a2zamaze account has approved. Please login to your account!");
+            ->content("Congratulations!! Your amaze account has been approved. Please login to your account.");
     }
 
     /**

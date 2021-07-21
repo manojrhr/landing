@@ -4,6 +4,7 @@
 
 @section('styles')
     <link href="{{ asset('assets/web/css/login-style.css') }}" rel="stylesheet">
+    <link rel="stylesheet" href="{{ asset('assets/web/css/intlTelInput.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/web/fonts/material-icon/css/material-design-iconic-font.min.css') }}">
 @endsection
 
@@ -49,8 +50,10 @@
                             @enderror
                         </div>
                         <div class="form-group">
-                            <label for="phone"><i class="zmdi zmdi-phone"></i></label>
-                            <input type="text" name="phone" id="phone" value="{{ old('phone') }}" placeholder="Phone"/>
+                            <!-- <label for="phone"><i class="zmdi zmdi-phone"></i></label> -->
+                            <input id="phone" name="phone" type="tel" placeholder="Phone">
+                            <input id="c_code" name="c_code" type="hidden" value="+91">
+                            <!-- <input type="text" name="phone" id="phone" value="{{ old('phone') }}" placeholder="Phone"/> -->
                             
                             @error('phone')
                                 <span class="invalid-feedback" role="alert">
@@ -103,4 +106,35 @@
 
 </div>
 
+@endsection
+
+@section('scripts')
+    <script src="{{ asset('assets/web/js/intlTelInput.js') }}"></script>
+  <script>
+    var input = document.querySelector("#phone");
+    window.intlTelInput(input, {
+      // allowDropdown: false,
+      // autoHideDialCode: false,
+      // autoPlaceholder: "off",
+      // dropdownContainer: document.body,
+      // excludeCountries: ["us"],
+      // formatOnDisplay: false,
+    //   initialCountry: "auto",
+    //     geoIpLookup: function(success, failure) {
+    //         $.get("https://ipinfo.io", function() {}, "jsonp").always(function(resp) {
+    //         var countryCode = (resp && resp.country) ? resp.country : "us";
+    //         success(countryCode);
+    //         });
+    //     },
+    //   hiddenInput: "full_number",
+      // localizedCountries: { 'de': 'Deutschland' },
+    //   nationalMode: true,
+      onlyCountries: ['in', 'us'],
+      // placeholderNumberType: "MOBILE",
+      preferredCountries: ['in'],
+      // separateDialCode: true,
+      utilsScript: "{{ asset('assets/web/js/utils.js') }}",
+      
+    });
+  </script>
 @endsection

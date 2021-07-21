@@ -145,12 +145,6 @@
 	<!-- <script async src="gtag/js_id_ua-23581568-13.js"></script> -->
 	<!-- Alertify -->
 	<script src="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/alertify.min.js"></script>
-	<script>
-		window.dataLayer = window.dataLayer || [];
-		function gtag(){dataLayer.push(arguments);}
-		gtag('js', new Date());
-		gtag('config', 'UA-23581568-13');
-	</script>
 	@include('includes.flash-message')
 	@yield('scripts')
     @livewireScripts

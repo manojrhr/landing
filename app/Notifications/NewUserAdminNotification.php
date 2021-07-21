@@ -47,14 +47,16 @@ class NewUserAdminNotification extends Notification
         Log::info('Admin user notification is sent..');
         if($this->user->delivery_guy){
             return (new MailMessage)
-            ->line('New Delivery guy is registered on your website.')
-            ->line('Please activate him from admin panel, in order to allow him to work on our plateform.')
-            ->line('Guy Name: '.$this->user->name)
-            ->action('See Deails', url('/admin/delivery-guy'));
+                ->line('New Delivery guy is registered on your website.')
+                ->line('Please activate him from admin panel, in order to allow him to work on our plateform.')
+                ->line('Guy Name: '.$this->user->name)
+                ->line('Phone Number: '.$this->user->phone)
+                ->action('See Deails', url('/admin/delivery-guy'));
         }else{
             return (new MailMessage)
                 ->line('New User registered on your website.')
                 ->line('User Name: '.$this->user->name)
+                ->line('Phone Number: '.$this->user->phone)
                 ->action('See Deails', url('/admin/users'));
         }
     }
