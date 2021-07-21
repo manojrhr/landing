@@ -44,9 +44,9 @@
                                 <td>{{ $user->phone }} {{$user->verified}}</td>
                                 @if($d_guy)
                                     @if($user->verified)
-                                        <td><span class="badge badge-success">Verified</span></td>
+                                        <td><span class="label label-success">Verified</span></td>
                                     @else
-                                        <td><span class="badge badge-danger">Not Verified</span></td>
+                                        <td><span class="label label-danger">Not Verified</span></td>
                                     @endif
                                 @endif
                                 <td>

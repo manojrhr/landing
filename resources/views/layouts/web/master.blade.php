@@ -50,7 +50,11 @@
 
       <nav id="navbar" class="navbar">
         <ul>
-          <li><a class="nav-link scrollto active" href="#hero">Home</a></li>
+          @if(Request::is('/'))
+              <li><a class="nav-link scrollto active" href="#hero">Home</a></li>
+          @else
+              <li><a class="nav-link scrollto active" href="{{ route('home') }}">Home</a></li>
+          @endif
           <li><a class="nav-link scrollto" href="#about-us">About</a></li>
           <li><a class="nav-link scrollto" href="#features">Features</a></li>
   <!--         <li class="dropdown"><a href="#"><span>Drop Down</span> <i class="bi bi-chevron-down"></i></a>
@@ -89,11 +93,12 @@
           <li><a class="nav-link scrollto" href="#contact">Contact</a></li>
           @guest
             <li><a class="nav-link scrollto" href="{{ route('login') }}">Login</a></li>
+            <li><a class="nav-link scrollto" href="{{ route('register') }}">Signup</a></li>
           @else
             <li>
               <a href="{{ route('logout') }}" class="nav-link scrollto" onclick="event.preventDefault(); document.getElementById('frm-logout').submit();">
                   Logout
-              </a>    
+              </a>
               <form id="frm-logout" action="{{ route('logout') }}" method="POST" style="display: none;">
                   {{ csrf_field() }}
               </form>
