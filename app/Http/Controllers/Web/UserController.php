@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers\Web;
 
-use Stripe\StripeClient;
 use App\Http\Controllers\Controller;
 use App\Repositories\UserRepository as UserRepo;
 use Illuminate\Http\Request;
@@ -11,16 +10,14 @@ use Auth;
 
 class UserController extends Controller
 {
-	protected $stripeClient;
     /**
      * Create a new controller instance.
      *
      * @return void
      */
-    public function __construct(StripeClient $stripeClient)
+    public function __construct()
     {
         $this->middleware(['auth:web','VerifiedGuy'], ['except' => ['show_otp_form' ,'verify_otp']]);
-    	$this->stripeClient = $stripeClient;
     }
 
     /**

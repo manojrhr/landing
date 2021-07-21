@@ -4,7 +4,6 @@ namespace App\Http\Controllers\Web;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use Stripe\StripeClient;
 use App\JetSki;
 use App\Booking;
 use Redirect;
@@ -15,16 +14,14 @@ use Stripe\Exception\ApiErrorException;
 
 class BookingController extends Controller
 {
-	protected $stripeClient;
     /**
      * Create a new controller instance.
      *
      * @return void
      */
-    public function __construct(StripeClient $stripeClient)
+    public function __construct()
     {
         $this->middleware(['auth:web', 'verified']);
-    	$this->stripeClient = $stripeClient;
     }
 
     public function index($slug)
@@ -111,33 +108,11 @@ class BookingController extends Controller
             return Redirect::back();
         }
 
-        try{
-            $charge = $this->stripeClient->charges->create([
-                'amount' => (int)$booking->amount*100,
-                'currency' => 'cad',
-                'source' => $request->token,
-                'description' => 'payment done for booking id '.$booking->id,
-            ]);
-        }catch(ApiErrorException $exception){
-            abort(500, $exception->getMessage());
-            return;
-        }
 
         $booking->update(['charge_id' => $charge->id, 'payment_success' => true]);
         // $booking->update(['payment_success' => true]);
         $booking->fresh();
 
-        try{
-            $this->stripeClient->transfers->create([
-                'amount' => $seller_amount,
-                'currency' => 'cad',
-                'source_transaction' => $charge->id,
-                'destination' => $booking->seller->stripe_connect_id,
-            ]);
-        }catch(ApiErrorException $exception){
-            abort(500, $exception->getMessage());
-            return;
-        }
         $request->session()->flash('message.level', 'success');
         $request->session()->flash('message.content', 'Booking payment is succesful.');
         return Redirect::route('user.profile');
