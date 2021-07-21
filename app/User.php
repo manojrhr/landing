@@ -63,6 +63,12 @@ class User extends Authenticatable
     {
         return $this->belongsTo(User::class);
     }
+
+    /* To let know twilio the phone no. filed of user table */
+    public function routeNotificationForTwilio()
+    {
+        return '+919882270566';
+    }
     // public function jetskis()
     // {
     //     return $this->hasMany(JetSki::class);

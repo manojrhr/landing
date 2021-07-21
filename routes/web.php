@@ -2,7 +2,8 @@
 
 use Illuminate\Support\Facades\Route;
 use App\JetSki;
-
+use App\User;
+use App\Notifications\DeliverGuyActivated;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -63,3 +64,8 @@ Route::get('/testmail', function () {
 Route::get('/testsms/{phone}', function ($phone) {
 	sendSms($phone, 'testing sms on a2zamaze.');
 })->name('testsms');
+
+Route::get('testnot', function(){
+	$user = User::findOrFail(1);
+	Notification::send($user, new DeliverGuyActivated($user));
+});

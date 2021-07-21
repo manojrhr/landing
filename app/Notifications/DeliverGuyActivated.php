@@ -5,6 +5,8 @@ namespace App\Notifications;
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Notifications\Messages\MailMessage;
+use NotificationChannels\Twilio\TwilioChannel;
+use NotificationChannels\Twilio\TwilioSmsMessage;
 use Illuminate\Notifications\Notification;
 
 class DeliverGuyActivated extends Notification
@@ -30,7 +32,7 @@ class DeliverGuyActivated extends Notification
      */
     public function via($notifiable)
     {
-        return ['mail'];
+        return ['mail',TwilioChannel::class];
     }
 
     /**
@@ -46,6 +48,12 @@ class DeliverGuyActivated extends Notification
                     ->line('Your account has been activated by admin. Now you can login to your account.')
                     ->action('Login', url('/login'))
                     ->line('Thank you for using a2zamaze!');
+    }
+
+    public function toTwilio($notifiable)
+    {
+        return (new TwilioSmsMessage())
+            ->content("Your a2zamaze account has approved. Please login to your account!");
     }
 
     /**

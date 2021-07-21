@@ -22,8 +22,8 @@ if (!function_exists('null_safe')) {
         // $message = "This is testing from Delivery";
   
         try {
-            $account_sid = env('TWILIO_SID');
-            $auth_token = env('TWILIO_TOKEN');
+            $account_sid = env('TWILIO_ACCOUNT_SID');
+            $auth_token = env('TWILIO_AUTH_TOKEN');
             $twilio_number = env('TWILIO_FROM');
             Log::info("Twilio token ". $auth_token);
             Log::info("Twilio credentials dump ". $account_sid.' '.$auth_token.' '.$twilio_number);
