@@ -28,6 +28,15 @@
   <!-- Template Main CSS File -->
   <link href="{{ asset('assets/web/css/style.css') }}" rel="stylesheet">
 
+  <!-- CSS -->
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/css/alertify.min.css"/>
+  <!-- Default theme -->
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/css/themes/default.min.css"/>
+  <!-- Semantic UI theme -->
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/css/themes/semantic.min.css"/>
+  <!-- Bootstrap theme -->
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/css/themes/bootstrap.min.css"/>
+  
 	@yield('styles')
   @livewireStyles
   <!-- =======================================================
@@ -112,7 +121,6 @@
     </div>
   </header><!-- End Header -->
 
-  @include('includes.flash-message')
   @yield('content')
 
   <!-- ======= Footer ======= -->

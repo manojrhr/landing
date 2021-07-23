@@ -183,7 +183,6 @@
     <!-- Main content -->
     <section class="content">
     
-      @include('includes.flash-message')
       @yield('content')
     </section>
     <!-- /.content -->
@@ -254,10 +253,12 @@
 <!-- AdminLTE App -->
 <script src="{{ asset('assets/admin/dist/js/adminlte.min.js') }}"></script>
 <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
-<script src="dist/js/pages/dashboard.js"></script>
+<script src="{ asset('assets/admin/dist/js/pages/dashboard.js') }}"></script>
 <!-- AdminLTE for demo purposes -->
 <script src="{{ asset('assets/admin/dist/js/demo.js') }}"></script>
 <!-- Alertify -->
 <script src="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/alertify.min.js"></script>
+@yield('scripts')
+@include('includes.flash-message')
 </body>
 </html>
