@@ -34,7 +34,7 @@
                     </div>
                   </div>
                 </form>
-                      <button class="btn btn-primary">Rebuild</button>
+                      <!-- <button class="btn btn-primary">Rebuild</button> -->
               </div>
               <!-- /.tab-pane -->
             </div>
@@ -48,12 +48,12 @@
 @endsection
 
 @section('scripts')
-<script type="text/javascript">
+<!-- <script type="text/javascript">
 $(document).ready(function() {
       $('button.btn-primary').click(function(){
           console.log('triggered');
           alertify.error('It is working..');
       });
  });
-</script>
+</script> -->
 @endsection
