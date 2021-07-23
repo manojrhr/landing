@@ -36,7 +36,7 @@
       <div class="container" data-aos="fade-up">
         <div class="section-title text-center">
 
-          <h2>simple systeme fordiscount </h2>
+          <h2>simple system for discount </h2>
           <p class="separator">Relax and order. We deliver.</p>
 
         </div>
