@@ -17,7 +17,6 @@
                 <div class="signin-content">
                     <div class="signin-image">
                         <figure><img src="assets/web/img/login-img/login-hero.png" alt="sing up image"></figure>
-                        <a href="{{route('register')}}" class="signup-image-link">Create an account</a>
                     </div>
                     <div class="signin-form">
                         <h2 class="form-title">Log in</h2>
@@ -58,6 +57,7 @@
                             </div>
                             <div class="form-group form-button">
                                 <input type="submit" name="signin" id="signin" class="form-submit" value="Log in"/>
+                                <a href="{{route('register')}}" class="signup-image-link mt-2">Create an account</a>
                             </div>
                         </form>
                     </div>
