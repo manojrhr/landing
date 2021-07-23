@@ -25,6 +25,7 @@ Auth::routes(['verify' => true]);
 //Route for Static Pages
 Route::get('/page/{slug}', 'Web\PageController@show')->name('page');
 Route::get('/users/logout', 'Auth\LoginController@userLogout')->name('user.logout');
+Route::view('/terms', 'pages.terms')->name('terms');
 
 Route::group(['prefix' => 'user' , 'as' => 'user.'], function(){
 	Route::get('/profile', 'Web\UserController@show_profile')->name('profile');
