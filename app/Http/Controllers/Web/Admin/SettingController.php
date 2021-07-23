@@ -32,7 +32,7 @@ class SettingController extends Controller
 		$user->email = $request->email;
 		$user->save();
         $request->session()->flash('message.level', 'success');
-        $request->session()->flash('message.content', 'Marked all notification as readed.');
+        $request->session()->flash('message.content', 'Email changed successfully.');
         return Redirect::back();
 		
 	}
