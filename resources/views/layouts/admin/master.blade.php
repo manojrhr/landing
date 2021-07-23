@@ -116,7 +116,7 @@
               <!-- Menu Footer-->
               <li class="user-footer">
                 <div class="pull-left">
-                  <a href="#" class="btn btn-default btn-flat">Change Password</a>
+                  <a href="{{ route('admin.getChangePassword') }}" class="btn btn-default btn-flat">Change Password</a>
                 </div>
                 <div class="pull-right">
                   <!-- <a  class="btn btn-default btn-flat" href="http://sms.ihmshimla.org/logout"onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Logout</a>
