@@ -105,6 +105,14 @@
                   Admin
                 </p>
               </li>
+              <li class="user-body">
+                <div class="row">
+                  <div class="col-xs-12 text-center">
+                    <a href="{{ route('admin.getUpdateEmailForm') }}">Change Email Address</a>
+                  </div>
+                </div>
+                <!-- /.row -->
+              </li>
               <!-- Menu Footer-->
               <li class="user-footer">
                 <div class="pull-left">
