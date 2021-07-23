@@ -57,7 +57,8 @@ class SettingController extends Controller
             $request->session()->flash('message.content', 'Current Password not matched');
         }
    
-        User::find(Auth::user()->id)->update(['password'=> Hash::make($request->new_password)]);
+        $user = Auth::user();
+        $user->update(['password'=> Hash::make($request->new_password)]);
    
         $request->session()->flash('message.level', 'success');
         $request->session()->flash('message.content', 'Password changed successfully.');
