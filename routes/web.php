@@ -54,6 +54,9 @@ Route::group(['prefix' => 'admin' , 'as' => 'admin.'], function(){
 
 	Route::get('update-email', 'Web\Admin\SettingController@getEmailUpdate')->name('getUpdateEmailForm');
 	Route::post('update-email', 'Web\Admin\SettingController@updateAdminEmail')->name('updateEmail');
+
+	Route::get('change-password', 'Web\Admin\SettingController@getChangePassword')->name('getChangePassword');
+	Route::post('change-password', 'Web\Admin\SettingController@changePassword')->name('changePassword');
 });
 
 
