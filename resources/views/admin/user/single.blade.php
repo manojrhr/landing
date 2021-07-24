@@ -1,7 +1,7 @@
 @extends('layouts.admin.master')
 
-@section('title', 'Users')
-@section('subtitle', 'User Profile')
+@section('title', $title)
+@section('subtitle', $subTitle)
 
 @section('style')
 
@@ -41,7 +41,7 @@
                   <b>Friends</b> <a class="pull-right">13,287</a>
                 </li> -->
               </ul>
-              <a href="#" class="btn btn-primary btn-block"><b>Follow</b></a>
+              <!-- <a href="#" class="btn btn-primary btn-block"><b>Follow</b></a> -->
             </div>
             <!-- /.box-body -->
           </div>

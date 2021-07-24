@@ -44,7 +44,8 @@ class DeliverGuyActivated extends Notification
     public function toMail($notifiable)
     {
         return (new MailMessage)
-                    ->line("Hi, ".ucfirst($this->user->name))
+                    ->greeting('Hello '.ucfirst($this->user->name))
+                    // ->line("Hi, ".ucfirst($this->user->name))
                     ->line('Congratulations!!, Your account has been activated by admin. Now you can login to your account.')
                     ->action('Login', url('/login'))
                     ->line('Thank you for using a2zamaze!');

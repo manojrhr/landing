@@ -33,7 +33,7 @@ class UserController extends Controller
         $d_guy = false;
         $title = "Customers";
         $subTitle = "Registered Customers";
-        $users = User::where('delivery_guy', false)->get();
+        $users = User::where('delivery_guy', false)->latest()->get();
         return view('admin.user.index', compact('users', 'title', 'subTitle', 'd_guy'));
     }
 
@@ -48,7 +48,7 @@ class UserController extends Controller
         $d_guy = true;
         $title = "Delivery Guys";
         $subTitle = "Registered Delivery Guys";
-        $users = User::where('delivery_guy', true)->get();
+        $users = User::where('delivery_guy', true)->latest()->get();
         return view('admin.user.index', compact('users', 'title', 'subTitle', 'd_guy'));
     }
     
@@ -60,7 +60,10 @@ class UserController extends Controller
     public function single($id)
     {
         $user = User::findOrFail($id);
-        return view('admin.user.single', compact('user'));
+
+        $title = $user->delivery_guy ? "Delivery Guys" : "Customer";
+        $subTitle = $title. " Profile";
+        return view('admin.user.single', compact('user', 'title', 'subTitle'));
     }
 
     public function updateDetails(Request $request, $id)

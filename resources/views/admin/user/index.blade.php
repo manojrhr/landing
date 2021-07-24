@@ -23,8 +23,8 @@
                             <th>#</th>
                             <th>Name</th>
                             <th>Email</th>
-                            <th>Registered Dated</th>
                             <th>Phone #</th>
+                            <th>Registered Dated</th>
                             @if($d_guy)
                                 <th>Status</th>
                             @endif
@@ -43,7 +43,7 @@
                                 </td>
                                 <td>{{ $user->email }}</td>
                                 <td>{{ $user->c_code }}{{ $user->phone }}</td>
-                                <td>{{ $user->email }}</td> 
+                                <td>{{ date('d M Y', strtotime($user->created_at)) }}</td> 
                                 @if($d_guy)
                                     @if($user->verified)
                                         <td><span class="label label-success">Verified</span></td>
@@ -52,8 +52,18 @@
                                     @endif
                                 @endif
                                 <td>
+                                    @if($user->delivery_guy)
+                                        @if($user->verified)
+                                            <a class="btn btn-danger" href="{{route('admin.user.change_status',$user->id)}}">Deactive</a>
+                                        @else
+                                            <a class="btn btn-primary" href="{{route('admin.user.change_status',$user->id)}}">Verify</a>
+                                            <a class="btn btn-primary" href="{{route('admin.user.change_status',$user->id)}}">Verify</a>
+                                        @endif
+                                    @else
+                                            <a class="btn btn-primary" href="{{ route('admin.user.single',$user->id) }}">View</a>      
+                                    @endif
                                     <!-- Single button -->
-                                    <div class="btn-group">
+                                    <!-- <div class="btn-group">
                                         <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                             Action <span class="caret"></span>
                                         </button>
@@ -66,11 +76,8 @@
                                                 @endif
                                             @endif
                                             <li><a href="{{route('admin.user.delete',$user->id)}}">Delete</a></li>
-                                            <!-- <li><a href="#">Something else here</a></li>
-                                            <li role="separator" class="divider"></li>
-                                            <li><a href="#">Separated link</a></li> -->
                                         </ul>
-                                    </div>
+                                    </div> -->
                                     <!-- <a  class="btn btn-success" href="">View</a>
                                     <a  class="btn btn-primary" href="">Update</a> -->
                                     <!-- <a  class="btn btn-danger" href="" onclick="return confirm('Are you sure?')">Delete</a> -->
