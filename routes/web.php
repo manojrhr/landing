@@ -19,6 +19,7 @@ use App\Notifications\DeliverGuyActivated;
 //     return view('coming');
 // })->name('root');
 Route::get('/', 'Web\HomeController@index')->name('home');
+Route::post('/contact', 'Web\HomeController@contact')->name('post.contact');
 
 Auth::routes(['verify' => true]);
 

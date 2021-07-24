@@ -56,6 +56,7 @@
       headers: {'X-Requested-With': 'XMLHttpRequest'}
     })
     .then(response => {
+      var data = response.clone().json();
       if( response.ok ) {
         return response.text()
       } else {
@@ -64,11 +65,14 @@
     })
     .then(data => {
       thisForm.querySelector('.loading').classList.remove('d-block');
-      if (data.trim() == 'OK') {
+      console.log(data);
+      var d =  $.parseJSON(data);
+      console.log(d.message);
+      if (d.status) {
         thisForm.querySelector('.sent-message').classList.add('d-block');
         thisForm.reset(); 
       } else {
-        throw new Error(data ? data : 'Form submission failed and no error message returned from: ' + action); 
+        throw new Error(d.status === false ? d.message : 'Form submission failed and no error message returned from: ' + action); 
       }
     })
     .catch((error) => {
