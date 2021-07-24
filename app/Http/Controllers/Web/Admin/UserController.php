@@ -31,8 +31,8 @@ class UserController extends Controller
     {
         // $users = User::all();
         $d_guy = false;
-        $title = "User";
-        $subTitle = "Registered Users";
+        $title = "Customers";
+        $subTitle = "Registered Customers";
         $users = User::where('delivery_guy', false)->get();
         return view('admin.user.index', compact('users', 'title', 'subTitle', 'd_guy'));
     }
@@ -105,7 +105,7 @@ class UserController extends Controller
         $user = User::findOrFail($id);
         $user->toggleVerification()->save();
         if($user->verified){
-            dump('here');
+            // dump('here');
             // $user->notify(new DeliverGuyActivated($user));
             Notification::send($user, new DeliverGuyActivated($user));
         }

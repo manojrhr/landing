@@ -23,6 +23,7 @@
                             <th>#</th>
                             <th>Name</th>
                             <th>Email</th>
+                            <th>Registered Dated</th>
                             <th>Phone #</th>
                             @if($d_guy)
                                 <th>Status</th>
@@ -41,7 +42,8 @@
                                     </a>
                                 </td>
                                 <td>{{ $user->email }}</td>
-                                <td>{{ $user->phone }} {{$user->verified}}</td>
+                                <td>{{ $user->c_code }}{{ $user->phone }}</td>
+                                <td>{{ $user->email }}</td> 
                                 @if($d_guy)
                                     @if($user->verified)
                                         <td><span class="label label-success">Verified</span></td>
@@ -109,7 +111,7 @@
       'info'        : true,
       'autoWidth'   : false,
       'language': {
-            "emptyTable": "There is no Business User"
+            "emptyTable": "There is no Customer"
        },
     })
   })
