@@ -112,7 +112,7 @@
                   {{ csrf_field() }}
               </form>
             </li>
-            <li><a class="nav-link scrollto order-btn" href="">Order</a></li>
+            <li><a class="nav-link scrollto order-btn" href="">Tickets</a></li>
           @endguest
         </ul>
         <i class="bi bi-list mobile-nav-toggle"></i>
