@@ -47,7 +47,7 @@
             <div class="inner">
               <h3>{{ $user_count }}</h3>
 
-              <p>User Registrations</p>
+              <p>Customer Registrations</p>
             </div>
             <div class="icon">
               <i class="ion ion-person-add"></i>

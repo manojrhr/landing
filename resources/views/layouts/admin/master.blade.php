@@ -156,7 +156,7 @@
       <ul class="sidebar-menu" data-widget="tree">
         <li class="header">MAIN NAVIGATION</li>
         <li class="{{ request()->is('admin') ? 'active' : '' }}"><a href="{{ route('admin.dashboard') }}"><i class="fa fa-book"></i><span>Dashboard</span></a></li>
-        <li class="{{ request()->is('admin/users') ? 'active' : '' }}"><a href="{{ route('admin.users') }}"><i class="fa fa-user"></i><span>Users</span></a></li>
+        <li class="{{ request()->is('admin/users') ? 'active' : '' }}"><a href="{{ route('admin.users') }}"><i class="fa fa-user"></i><span>Customer</span></a></li>
         <li class="{{ request()->is('admin/delivery-guy') ? 'active' : '' }}"><a href="{{ route('admin.delivery_guy') }}"><i class="fa fa-user"></i><span>Delivery Guys</span></a></li>
         <!-- <li><a href=""><i class="fa fa-ship"></i><span>Jet Ski</span></a></li>
         <li><a href=""><i class="fa fa-ship"></i><span>Bookings</span></a></li>
