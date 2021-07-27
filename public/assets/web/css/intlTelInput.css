@@ -929,3 +929,7 @@
 
 .iti__flag.iti__np {
   background-color: transparent; }
+
+  .iti__flag-container {
+    width: 100%;
+  }

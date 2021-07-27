@@ -1145,3 +1145,7 @@ section {
   margin-right: 90px;
   margin-left: 80px;
 }
+
+.singup-mobile {
+	overflow: initial;
+}

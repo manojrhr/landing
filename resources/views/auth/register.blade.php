@@ -51,7 +51,7 @@
                         </div>
                         <div class="form-group">
                             <!-- <label for="phone"><i class="zmdi zmdi-phone"></i></label> -->
-                            <input id="phone" name="phone" type="tel" placeholder="Phone*">
+                            <input class="singup-mobile" id="phone" name="phone" type="tel" placeholder="Phone*">
                             <input id="c_code" name="c_code" type="hidden" value="+91">
                             <!-- <input type="text" name="phone" id="phone" value="{{ old('phone') }}" placeholder="Phone"/> -->
                             
