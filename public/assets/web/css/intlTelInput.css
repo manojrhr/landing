@@ -2,7 +2,6 @@
   position: relative;
   display: inline-block; 
   width: 100%;
-  margin-bottom: 25px;
 }
   .iti * {
     box-sizing: border-box;
@@ -42,6 +41,7 @@
       border-top: none;
       border-bottom: 4px solid #555; }
   .iti__country-list {
+    width: 100%;
     position: absolute;
     z-index: 2;
     list-style: none;

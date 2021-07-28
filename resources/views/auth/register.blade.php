@@ -49,9 +49,9 @@
                                 </span>
                             @enderror
                         </div>
-                        <div class="form-group">
+                        <div class="form-group singup-mobile">
                             <!-- <label for="phone"><i class="zmdi zmdi-phone"></i></label> -->
-                            <input class="singup-mobile" id="phone" name="phone" type="tel" placeholder="Phone*">
+                            <input id="phone" name="phone" type="tel" placeholder="Phone*">
                             <input id="c_code" name="c_code" type="hidden" value="+91">
                             <!-- <input type="text" name="phone" id="phone" value="{{ old('phone') }}" placeholder="Phone"/> -->
                             
@@ -131,7 +131,7 @@
     //   nationalMode: true,
       onlyCountries: ['in', 'us'],
       // placeholderNumberType: "MOBILE",
-      preferredCountries: ['in'],
+      preferredCountries: [''],
       // separateDialCode: true,
       utilsScript: "{{ asset('assets/web/js/utils.js') }}",
       

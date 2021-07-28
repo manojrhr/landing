@@ -1147,5 +1147,5 @@ section {
 }
 
 .singup-mobile {
-	overflow: initial;
+	overflow: initial !important;
 }
