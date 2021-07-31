@@ -45,7 +45,7 @@ if (!function_exists('null_safe')) {
     function sendOTP($id)
     {
         $user = User::find($id);
-        $otp = rand(111111,999999);
+        $otp = rand(1111,9999);
         $user->otp = $otp;
         $user->save();
         $message = "Your OTP for ".getenv("APP_NAME")." is ".$otp;
