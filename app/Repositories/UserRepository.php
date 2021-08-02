@@ -98,7 +98,7 @@ class UserRepository {
         $address->user_id = $request->user()->id;
 
         if($address->save()){
-            $response_array = ['success' => true, 'message' => 'Address added successfully!'];
+            $response_array = ['success' => true, 'data' => $address, 'message' => 'Address added successfully!'];
         } else {
             $response_array = ['success' => false, 'message' => 'Something went wrong!'];
         }
@@ -108,7 +108,7 @@ class UserRepository {
 	public static function update_address($request) {
 
         $validator = Validator::make($request->all(), [
-            'id' => 'required|exists:addresses,id',
+            'address_id' => 'required|exists:addresses,id',
             'house_no' => 'required|string|max:255',
             'city' => 'required|string|max:255',
             'state' => 'required|string|max:255',
@@ -121,7 +121,7 @@ class UserRepository {
             return $response_array = ['success' => false , 'message' => $errors, 'error_code' => 101];
         }
 
-        $address = Address::find($id);
+        $address = Address::find($request->address_id);
         $address->house_no = $request->house_no;
         $address->area = $request->area;
         $address->landmark = $request->landmark;
@@ -132,7 +132,7 @@ class UserRepository {
         $address->user_id = $request->user()->id;
 
         if($address->save()){
-            $response_array = ['success' => true, 'message' => 'Address updated successfully!'];
+            $response_array = ['success' => true, 'data' => $address, 'message' => 'Address updated successfully!'];
         } else {
             $response_array = ['success' => false, 'message' => 'Something went wrong!'];
         }
@@ -167,6 +167,31 @@ class UserRepository {
         }
         return $response_array;
 	}
+
+    /*
+    *   Get addres by id
+    *
+    */    
+	public static function get_address($request) {
+
+        $validator = Validator::make($request->all(), [
+            'address_id' => 'required|exists:addresses,id'
+        ]);
+
+        if ($validator->fails()) {
+            $errors = implode(',', $validator->messages()->all());
+            return $response_array = ['success' => false , 'message' => $errors, 'error_code' => 101];
+        }
+
+        $address = Address::find($request->address_id);
+        if($address)
+        {
+            $response_array = ['success' => true, 'data' => $address, 'message' => 'Phone number verified successfully.'];
+        } else {
+            $response_array = ['success' => false, 'message' => 'OTP is not valid. Please enter valid OTP'];
+        }
+        return $response_array;
+    }
 
     /*
     *   Verify User OTP

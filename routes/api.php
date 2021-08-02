@@ -30,7 +30,9 @@ Route::group(['middleware' => 'auth:api'], function() {
 	Route::get('profile', 'Api\UserController@profile');
 	Route::post('update_profile', 'Api\UserController@update_profile');
 	Route::post('add_address', 'Api\UserController@add_address');
+	Route::post('update_address', 'Api\UserController@update_address');
 	Route::post('delete_address', 'Api\UserController@delete_address');
+	Route::post('get_address', 'Api\UserController@get_address');
 	Route::post('change_password', 'Api\UserController@change_password');
 	
 	Route::post('create_ticket', 'Api\TicketController@create_ticket');
