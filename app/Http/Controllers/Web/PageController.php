@@ -8,7 +8,7 @@ use Storage;
 
 class PageController extends Controller
 {
-    public function show($slug,Request $request)
+    public function show($slug, Request $request)
     {
       $static_page_names = Storage::disk('static_pages')->files('');
 

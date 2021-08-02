@@ -74,9 +74,10 @@ class UserRepository {
 	public static function add_address($request) {
 
         $validator = Validator::make($request->all(), [
-            'address1' => 'required|string|max:255',
+            'house_no' => 'required|string|max:255',
             'city' => 'required|string|max:255',
             'state' => 'required|string|max:255',
+            'tag' => 'required|string|max:50',
             'pin' => 'required|integer',
         ]);
 
@@ -87,18 +88,51 @@ class UserRepository {
         }
 
         $address = new Address();
-        $address->address1 = $request->address1;
+        $address->house_no = $request->house_no;
+        $address->area = $request->area;
+        $address->landmark = $request->landmark;
         $address->city = $request->city;
         $address->state = $request->state;
         $address->pin = $request->pin;
+        $address->tag = $request->tag;
         $address->user_id = $request->user()->id;
-        
-        if($request->has('address2')){
-            $address->address2 = $request->address2;
-        }
 
         if($address->save()){
             $response_array = ['success' => true, 'message' => 'Address added successfully!'];
+        } else {
+            $response_array = ['success' => false, 'message' => 'Something went wrong!'];
+        }
+        return $response_array;
+	}
+
+	public static function update_address($request) {
+
+        $validator = Validator::make($request->all(), [
+            'id' => 'required|exists:addresses,id',
+            'house_no' => 'required|string|max:255',
+            'city' => 'required|string|max:255',
+            'state' => 'required|string|max:255',
+            'tag' => 'required|string|max:50',
+            'pin' => 'required|integer',
+        ]);
+
+        if ($validator->fails()) {
+            $errors = implode(',', $validator->messages()->all());
+            return $response_array = ['success' => false , 'message' => $errors, 'error_code' => 101];
+        }
+
+        $address = Address::find($id);
+        $address->house_no = $request->house_no;
+        $address->area = $request->area;
+        $address->landmark = $request->landmark;
+        $address->city = $request->city;
+        $address->state = $request->state;
+        $address->pin = $request->pin;
+        $address->tag = $request->tag;
+        $address->user_id = $request->user()->id;
+
+        if($address->save()){
+            $response_array = ['success' => true, 'message' => 'Address updated successfully!'];
         } else {
             $response_array = ['success' => false, 'message' => 'Something went wrong!'];
         }
@@ -164,5 +198,35 @@ class UserRepository {
             $response_array = ['success' => false, 'message' => 'OTP is not valid. Please enter valid OTP'];
         }
         return $response_array;
+    }
+
+	public static function change_password($request) {
+
+        $request->validate([
+            'current_password' => ['required'],
+            'new_password' => ['required'],
+            'new_confirm_password' => ['same:new_password'],
+        ]);
+        $user = $request->user();
+        if(!$user)
+        {
+            $response_array = ['success' => false, 'message' => 'Please login to do this action.'];
+            return $response_array;
+        }
+
+        if(!Hash::check($request->current_password, $user->password))
+        {
+            $response_array = ['success' => false, 'message' => 'Current Password not matched'];
+            return $response_array;
+        }
+   
+        $user->update(['password'=> Hash::make($request->new_password)]);
+
+        if($user->save()){
+            $response_array = ['success' => true, 'message' => 'Password successfully changed!'];
+        } else {
+            $response_array = ['success' => false, 'message' => 'Something went wrong!'];
+        }
+    	return $response_array;    
     }
 }

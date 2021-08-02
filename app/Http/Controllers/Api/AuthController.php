@@ -10,6 +10,7 @@ use App\User;
 use App\Http\Requests\ResetPasswordRequest;
 use Illuminate\Support\Facades\Password;
 use App\Repositories\UserRepository as UserRepo;
+use Hash;
 
 class AuthController extends Controller
 {
@@ -26,36 +27,39 @@ class AuthController extends Controller
     {
     	$request->validate([
     		'name' => 'required|string',
-    		'email' => 'string|email|unique:users',
-            'phone' => ['required', 'numeric', 'min:10'],
+    		'email' => 'string|email|unique:users,email',
+            'c_code' => ['required', 'numeric'],
+            'phone' => ['required', 'numeric', 'unique:users,phone', 'min:10'],
     		'password' => 'required|string|confirmed',
             'delivery_guy' => 'required|boolean',
     	]);
 
     	$user = new User([
     		'name' => $request->name,
+    		'c_code' => $request->c_code,
     		'email' => $request->email,
+            'phone' => $request->phone,
             'phone' => $request->phone,
             'delivery_guy' => $request->delivery_guy,
     		'password' => bcrypt($request->password)
     	]);
 
-    	$user->save();
-        if($user->email){
-            $user->sendEmailVerificationNotification();
-        }
-        
         if(isset($request->delivery_guy))
         {
             $user->delivery_guy = $request->delivery_guy;
             $user->verified = 0;
-            $user->save();
         }
+        $user->save();
         sendOTP($user->id);
+
+        if($user->email){
+            $user->sendEmailVerificationNotification();
+        }
 
     	return response()->json([
     		'success' => true,
-    		'message' => 'An OTP is sent on your registered mobile number!'
+    		'message' => 'An OTP is sent on your registered mobile number!',
+    		'user' => $user
     	], 201);
     }
 
@@ -72,12 +76,18 @@ class AuthController extends Controller
     public function login(Request $request)
     {
     	$request->validate([
-    		'email' => 'required|string|email',
+    		'email' => 'required',
     		'password' => 'required|string',
     		'remember_me' => 'boolean'
     	]);
 
-    	$credentials = request(['email', 'password']);
+        if(is_numeric($request->get('email'))){
+            // return ['phone'=>$request->get('email'),'password'=>$request->get('password')];
+            $credentials = ['phone'=>$request->get('email'),'password'=>$request->get('password')];
+        } else {
+            $credentials = request(['email', 'password']);
+        }
+
     	if(!Auth::attempt($credentials))
     		return response()->json([
 	    		'success' => false,
@@ -131,5 +141,21 @@ class AuthController extends Controller
     {
         $response_array = UserRepo::verifyOTP($request);
     	return $response_array;
+    }
+
+    public function resend_otp(Request $request)
+    {
+        $request->validate([
+            'phone' => ['required', 'numeric', 'exists:users,phone', 'min:10']
+        ]);
+
+        $user = User::where('phone',$request->phone)->first();
+        sendOTP($user->id);
+        $response_array = [
+            'success' => true, 
+            'message' => 'OTP Sent on your registered mobile',
+            'user_id' => $user->id
+        ];
+        return $response_array;
     }
 }

@@ -1,7 +1,6 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\JetSki;
 use App\User;
 use App\Notifications\DeliverGuyActivated;
 /*

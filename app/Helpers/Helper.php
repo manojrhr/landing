@@ -15,7 +15,6 @@ if (!function_exists('null_safe')) {
 
     function sendsms($phone, $message)
     {
-        Log::info("Phone No. ".$phone.$message);
         // $receiverNumber = "+919882270566";
         $receiverNumber = $phone;
         $message = $message;
@@ -25,8 +24,6 @@ if (!function_exists('null_safe')) {
             $account_sid = env('TWILIO_ACCOUNT_SID');
             $auth_token = env('TWILIO_AUTH_TOKEN');
             $twilio_number = env('TWILIO_FROM');
-            Log::info("Twilio token ". $auth_token);
-            Log::info("Twilio credentials dump ". $account_sid.' '.$auth_token.' '.$twilio_number);
             $client = new Client($account_sid, $auth_token);
             // dump($client);
             $smessage = $client->messages->create($receiverNumber, [

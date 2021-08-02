@@ -58,10 +58,35 @@ class User extends Authenticatable
     {
         return $this->hasMany('App\Addresses', 'user_id');
     }
-    
-    public function user()
+
+    public function closedTickets()
     {
-        return $this->belongsTo(User::class);
+        return $this->hasMany(Ticket::class)->where('status', 'Cancelled')->orWhere('status', 'closed');
+    }
+
+    public function openTickets()
+    {
+        return $this->hasMany(Ticket::class)->where('status', 'Open');
+    }
+
+    public function activeTickets()
+    {
+        return $this->hasMany(Ticket::class)->where('status', 'Active');
+    }
+    /**
+     * Get the tickets for the user.
+     */
+    public function tickets()
+    {
+        return $this->hasMany(Ticket::class);
+    }
+    
+    /**
+     * Get the tickets for the delivery_guy.
+     */
+    public function delivery_tickets()
+    {
+        return $this->hasMany(Ticket::class, 'delivery_guy_id', 'id');
     }
 
     /* To let know twilio the phone no. filed of user table */

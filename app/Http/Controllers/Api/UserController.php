@@ -35,4 +35,10 @@ class UserController extends Controller
     {
         return response()->json($request->user());
     }
+
+    public function change_password(Request $request)
+    {
+        $response_array = UserRepo::change_password($request);
+    	return response()->json($response_array, 201);
+    }
 }
