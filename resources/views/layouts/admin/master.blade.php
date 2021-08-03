@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>Amaze | @yield('title')</title>
+  <title>Kiuki | @yield('title')</title>
   <!-- Tell the browser to be responsive to screen width -->
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
   <!-- Bootstrap 3.3.7 -->
@@ -56,7 +56,7 @@
       <!-- mini logo for sidebar mini 50x50 pixels -->
       <span class="logo-mini"><b>A</b></span>
       <!-- logo for regular state and mobile devices -->
-      <span class="logo-lg"><b>Ama</b>ze</span>
+      <span class="logo-lg"><b>Kiu</b>ki</span>
     </a>
     <!-- Header Navbar: style can be found in header.less -->
     <nav class="navbar navbar-static-top">
@@ -156,8 +156,8 @@
       <ul class="sidebar-menu" data-widget="tree">
         <li class="header">MAIN NAVIGATION</li>
         <li class="{{ request()->is('admin') ? 'active' : '' }}"><a href="{{ route('admin.dashboard') }}"><i class="fa fa-book"></i><span>Dashboard</span></a></li>
+        <li class=""><a href=""><i class="fa fa-user"></i><span>Category</span></a></li>
         <li class="{{ request()->is('admin/users') ? 'active' : '' }}"><a href="{{ route('admin.users') }}"><i class="fa fa-user"></i><span>Customer</span></a></li>
-        <li class="{{ request()->is('admin/delivery-guy') ? 'active' : '' }}"><a href="{{ route('admin.delivery_guy') }}"><i class="fa fa-user"></i><span>Delivery Guys</span></a></li>
         <!-- <li><a href=""><i class="fa fa-ship"></i><span>Jet Ski</span></a></li>
         <li><a href=""><i class="fa fa-ship"></i><span>Bookings</span></a></li>
         <li><a href=""><i class="fa fa-list"></i><span>Makes</span></a></li> -->

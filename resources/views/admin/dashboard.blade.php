@@ -64,12 +64,12 @@
             <div class="inner">
               <h3>{{ $d_guy_count }}</h3>
 
-              <p>Delivery Guys Registrations</p>
+              <p>Categories</p>
             </div>
             <div class="icon">
-              <i class="ion ion-person-add"></i>
+              <i class="fa fa-list"></i>
             </div>
-            <a href="{{ route('admin.delivery_guy') }}" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+            <a href="" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
           </div>
         </div>
         <!-- ./col -->
@@ -78,10 +78,10 @@
           <div class="small-box bg-red">
             <div class="inner">
               <h3>0</h3>
-              <p>Total Tickets Generated</p>
+              <p>Sub Categories</p>
             </div>
             <div class="icon">
-              <i class="fa fa-ship"></i>
+              <i class="fa fa-list"></i>
             </div>
             <a href="#" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
           </div>
