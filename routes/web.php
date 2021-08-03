@@ -18,23 +18,8 @@ use App\Notifications\DeliverGuyActivated;
 //     return view('coming');
 // })->name('root');
 Route::get('/', 'Web\HomeController@index')->name('home');
-Route::post('/contact', 'Web\HomeController@contact')->name('post.contact');
 
 Auth::routes(['verify' => true]);
-
-//Route for Static Pages
-Route::get('/page/{slug}', 'Web\PageController@show')->name('page');
-Route::get('/users/logout', 'Auth\LoginController@userLogout')->name('user.logout');
-Route::view('/terms', 'pages.terms')->name('terms');
-
-Route::group(['prefix' => 'user' , 'as' => 'user.'], function(){
-	Route::get('/profile', 'Web\UserController@show_profile')->name('profile');
-	Route::get('/update-profile', 'Web\UserController@edit_profile')->name('edit_profile');
-	Route::post('/update-profile', 'Web\UserController@update_profile')->name('update_profile');
-	
-	Route::get('/verify-otp', 'Web\UserController@show_otp_form')->name('show_otp_form');
-	Route::post('/verify-otp', 'Web\UserController@verify_otp')->name('verify_otp');
-});
 
 Route::group(['prefix' => 'admin' , 'as' => 'admin.'], function(){
 	Route::get('/login', 'Auth\AdminLoginController@showLoginForm')->name('login');
@@ -58,6 +43,23 @@ Route::group(['prefix' => 'admin' , 'as' => 'admin.'], function(){
 	Route::get('change-password', 'Web\Admin\SettingController@getChangePassword')->name('getChangePassword');
 	Route::post('change-password', 'Web\Admin\SettingController@changePassword')->name('changePassword');
 });
+
+Route::post('/contact', 'Web\HomeController@contact')->name('post.contact');
+Route::get('/page/{slug}', 'Web\PageController@show')->name('page');
+Route::get('/users/logout', 'Auth\LoginController@userLogout')->name('user.logout');
+
+//Route for Static Pages
+Route::view('/terms', 'pages.terms')->name('terms');
+
+Route::group(['prefix' => 'user' , 'as' => 'user.'], function(){
+	Route::get('/profile', 'Web\UserController@show_profile')->name('profile');
+	Route::get('/update-profile', 'Web\UserController@edit_profile')->name('edit_profile');
+	Route::post('/update-profile', 'Web\UserController@update_profile')->name('update_profile');
+	
+	Route::get('/verify-otp', 'Web\UserController@show_otp_form')->name('show_otp_form');
+	Route::post('/verify-otp', 'Web\UserController@verify_otp')->name('verify_otp');
+});
+
 
 
 Route::get('/testmail', function () {
