@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers\Web\Admin;
 
+use App\Category;
 use App\Http\Controllers\Controller;
+use App\SubCategory;
 use Illuminate\Http\Request;
 use App\User;
 use Auth;
@@ -27,9 +29,10 @@ class AdminController extends Controller
      */
     public function index()
     {
-        $user_count = User::where('delivery_guy', false)->count();
-        $d_guy_count = User::where('delivery_guy', true)->count();
-        return view('admin.dashboard', compact('user_count','d_guy_count'));
+        $user_count = User::count();
+        $category_count = Category::count();
+        $sub_category_count = SubCategory::count();
+        return view('admin.dashboard', compact('user_count','category_count','sub_category_count'));
     }
 
     public function markAllasRead(Request $request)

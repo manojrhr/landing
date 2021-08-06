@@ -45,6 +45,14 @@ Route::group(['prefix' => 'admin' , 'as' => 'admin.'], function(){
 	Route::get('/category', 'Web\Admin\CategoryController@index')->name('category');
 	Route::get('/category/delete/{id}', 'Web\Admin\CategoryController@delete')->name('category.delete');
 
+	Route::get('/subcategory/create', 'Web\Admin\SubCategoryController@showForm')->name('subcategory.create');
+	Route::post('/subcategory/create', 'Web\Admin\SubCategoryController@create')->name('subcategory.create.post');
+	Route::get('/subcategory/{id}/edit', 'Web\Admin\SubCategoryController@edit')->name('subcategory.edit');
+	Route::post('/subcategory/{id}/edit', 'Web\Admin\SubCategoryController@update')->name('subcategory.edit.post');
+	Route::get('/subcategory/{id}/delete', 'Web\Admin\SubCategoryController@delete')->name('subcategory.delete');
+	Route::get('/subcategory', 'Web\Admin\SubCategoryController@index')->name('subcategory');
+	Route::get('/subcategory/delete/{id}', 'Web\Admin\SubCategoryController@delete')->name('subcategory.delete');
+
 	Route::get('update-email', 'Web\Admin\SettingController@getEmailUpdate')->name('getUpdateEmailForm');
 	Route::post('update-email', 'Web\Admin\SettingController@updateAdminEmail')->name('updateEmail');
 

@@ -18,7 +18,7 @@
             <!-- /.box-header -->
             <div class="box-body">
                 <div class="text-right">
-                    <a href="{{ route('admin.category.create') }}" class="btn btn-primary">Add Category</a>
+                    <a href="{{ route('admin.subcategory.create') }}" class="btn btn-primary">Add Sub Category</a>
                 </div>
                 <table id="example1" class="table table-bordered table-striped">
                     <thead>
@@ -32,11 +32,11 @@
                         </tr>
                     </thead>
                     <tbody>
-                        @if (!$categories)
+                        @if (!$subcategories)
                             <h2><l>There is no category added. Please add a category.</l></h2>
                         @else
                         <?php $i=1 ?>
-                            @foreach($categories as $category)
+                            @foreach($subcategories as $category)
                                 <tr>
                                     <td>{{ $i }}</td>
                                     <td>
