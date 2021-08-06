@@ -17,13 +17,17 @@
             </div> -->
             <!-- /.box-header -->
             <div class="box-body">
+                <div class="text-right">
+                    <a href="" class="btn btn-primary">Add Category</a>
+                </div>
                 <table id="example1" class="table table-bordered table-striped">
                     <thead>
                         <tr>
                             <th>#</th>
                             <th>Title</th>
+                            <th>Sub Title</th>
                             <th>Slug</th>
-                            <th>Registered Dated</th>
+                            <th>Image</th>
                             <th>Actions</th>
                         </tr>
                     </thead>
@@ -36,15 +40,18 @@
                                 <tr>
                                     <td>{{ $i }}</td>
                                     <td>
-                                        <a href="{{ route('admin.user.single',$category->id) }}">
+                                        {{-- <a href="{{ route('admin.user.single',$category->id) }}"> --}}
                                             {{ $category->title }}
-                                        </a>
+                                        {{-- </a> --}}
                                     </td>
+                                    <td>{{ $category->subtitle }}</td>
                                     <td>{{ $category->slug }}</td>
-                                    <td>{{ $category->image }}</td>
                                     <td>
-                                        <a class="btn btn-primary" href="{{ route('admin.cateogry.edit',$category->id) }}">Edit</a>
-                                        <a  class="btn btn-danger" href="" onclick="return confirm('Are you sure?')">Delete</a>
+                                        <img src="{{ asset($category->image) }}" height="50px"/>
+                                    </td>
+                                    <td>
+                                        <a class="btn btn-primary" href="{{ route('admin.category.edit', $category->id) }}">Edit</a>
+                                        <a  class="btn btn-danger" href="{{ route('admin.category.delete', $category->id) }}" onclick="return confirm('Are you sure?')">Delete</a>
                                     </td>
                                 </tr>
                                 <?php $i++; ?>

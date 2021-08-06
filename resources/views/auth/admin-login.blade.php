@@ -43,6 +43,15 @@
   <div class="login-box-body">
     <p class="login-box-msg">Sign in to start your session</p>
 
+    @if(count( $errors ) > 0)
+      <div class="alert alert-danger" role="alert">
+          <ul>
+              @foreach ($errors->all() as $error)
+                  <li>{{ $error }}</li>
+              @endforeach
+          </ul>
+      </div>
+    @endif
     <form method="POST" action="{{ route('admin.login.submit') }}" aria-label="{{ __('Login') }}">
       @csrf
       <div class="form-group has-feedback">

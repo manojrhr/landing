@@ -37,6 +37,11 @@ Route::group(['prefix' => 'admin' , 'as' => 'admin.'], function(){
 	Route::get('/user/change_status/{id}', 'Web\Admin\UserController@change_status')->name('user.change_status');
     Route::get('/user/delete/{id}', 'Web\Admin\UserController@delete')->name('user.delete');
 
+	Route::get('/category/create', 'Web\Admin\CategoryController@showForm')->name('category.create');
+	Route::post('/category/create', 'Web\Admin\CategoryController@create')->name('category.create.post');
+	Route::get('/category/{id}/edit', 'Web\Admin\CategoryController@edit')->name('category.edit');
+	Route::post('/category/{id}/edit', 'Web\Admin\CategoryController@update')->name('category.edit.post');
+	Route::get('/category/{id}/delete', 'Web\Admin\CategoryController@delete')->name('category.delete');
 	Route::get('/category', 'Web\Admin\CategoryController@index')->name('category');
 	Route::get('/category/delete/{id}', 'Web\Admin\CategoryController@delete')->name('category.delete');
 
