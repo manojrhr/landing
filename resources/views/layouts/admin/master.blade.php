@@ -129,7 +129,7 @@
               </li>
             </ul>
           </li>
-          <!-- Control Sidebar Toggle Button 
+          <!-- Control Sidebar Toggle Button
           <li>
             <a href="#" data-toggle="control-sidebar"><i class="fa fa-gears"></i></a>
           </li>-->
@@ -141,7 +141,7 @@
   <aside class="main-sidebar">
     <!-- sidebar: style can be found in sidebar.less -->
     <section class="sidebar">
-      <!-- search form 
+      <!-- search form
       <form action="#" method="get" class="sidebar-form">
         <div class="input-group">
           <input type="text" name="q" class="form-control" placeholder="Search...">
@@ -156,7 +156,7 @@
       <ul class="sidebar-menu" data-widget="tree">
         <li class="header">MAIN NAVIGATION</li>
         <li class="{{ request()->is('admin') ? 'active' : '' }}"><a href="{{ route('admin.dashboard') }}"><i class="fa fa-book"></i><span>Dashboard</span></a></li>
-        <li class=""><a href=""><i class="fa fa-user"></i><span>Category</span></a></li>
+        <li class=""><a href="{{ route('admin.category') }}"><i class="fa fa-user"></i><span>Category</span></a></li>
         <li class="{{ request()->is('admin/users') ? 'active' : '' }}"><a href="{{ route('admin.users') }}"><i class="fa fa-user"></i><span>Customer</span></a></li>
         <!-- <li><a href=""><i class="fa fa-ship"></i><span>Jet Ski</span></a></li>
         <li><a href=""><i class="fa fa-ship"></i><span>Bookings</span></a></li>
@@ -182,7 +182,7 @@
 
     <!-- Main content -->
     <section class="content">
-    
+
       @yield('content')
     </section>
     <!-- /.content -->

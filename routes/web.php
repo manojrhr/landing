@@ -35,7 +35,10 @@ Route::group(['prefix' => 'admin' , 'as' => 'admin.'], function(){
 	Route::post('/user-update/{id}', 'Web\Admin\UserController@updateDetails')->name('user.update');
 	Route::post('/user-password-update/{id}', 'Web\Admin\UserController@updatePassword')->name('user.password.update');
 	Route::get('/user/change_status/{id}', 'Web\Admin\UserController@change_status')->name('user.change_status');
-	Route::get('/user/delete/{id}', 'Web\Admin\UserController@delete')->name('user.delete');
+    Route::get('/user/delete/{id}', 'Web\Admin\UserController@delete')->name('user.delete');
+
+	Route::get('/category', 'Web\Admin\CategoryController@index')->name('category');
+	Route::get('/category/delete/{id}', 'Web\Admin\CategoryController@delete')->name('category.delete');
 
 	Route::get('update-email', 'Web\Admin\SettingController@getEmailUpdate')->name('getUpdateEmailForm');
 	Route::post('update-email', 'Web\Admin\SettingController@updateAdminEmail')->name('updateEmail');
@@ -55,7 +58,7 @@ Route::group(['prefix' => 'user' , 'as' => 'user.'], function(){
 	Route::get('/profile', 'Web\UserController@show_profile')->name('profile');
 	Route::get('/update-profile', 'Web\UserController@edit_profile')->name('edit_profile');
 	Route::post('/update-profile', 'Web\UserController@update_profile')->name('update_profile');
-	
+
 	Route::get('/verify-otp', 'Web\UserController@show_otp_form')->name('show_otp_form');
 	Route::post('/verify-otp', 'Web\UserController@verify_otp')->name('verify_otp');
 });

@@ -19,7 +19,7 @@
   <style type="text/css">
     .login-page {
       background: linear-gradient(0deg, rgba(0, 0, 0), rgba(0, 0, 0)), url("") no-repeat center center fixed;
-      background-size: cover; 
+      background-size: cover;
     }
   </style>
   <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
@@ -36,7 +36,7 @@
 <div class="login-box">
   <div class="login-logo">
     <a href="{{ route('home') }}">
-      <img src="{{ asset('images/logo.jpeg') }}" width="320px">
+      <img src="{{ asset('assets/web/images/kiuki-tours-logo-1-ws.svg') }}" width="320px">
     </a>
   </div>
   <!-- /.login-logo -->
@@ -60,7 +60,7 @@
         <!-- <input type="password" class="form-control" placeholder="Password"> -->
         <input id="password" placeholder="Password" type="password" class="form-control{{ $errors->has('password') ? ' is-invalid' : '' }}" name="password" required>
         <span class="glyphicon glyphicon-lock form-control-feedback"></span>
-        
+
         @if ($errors->has('password'))
             <span class="invalid-feedback" role="alert">
                 <strong>{{ $errors->first('password') }}</strong>
