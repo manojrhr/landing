@@ -17,13 +17,24 @@
             </ul>
             <div class="tab-content">
               <div class="active tab-pane" id="add">
-                <form class="form-horizontal" method="post" action="{{ route('admin.category.edit.post', $category->id)}}" enctype="multipart/form-data">
+                <form class="form-horizontal" method="post" action="{{ route('admin.subcategory.edit.post', $subcategory->id)}}" enctype="multipart/form-data">
                 @csrf
+                  <div class="form-group">
+                    <label for="category_id" class="col-sm-2 control-label">Select Category</label>
+                      <div class="col-sm-10">
+                        <select class="form-control" name="category_id" id="category_id" required>
+                          {{-- <option value="" selected>-- Select Category --</option> --}}
+                          @foreach($categories as $category)
+                            <option value="{{$category->id}}"{{ $category->id === $subcategory->category->id ? 'selected' : '' }}>{{$category->title}}</option>
+                          @endforeach
+                        </select>
+                      </div>
+                  </div>
                   <div class="form-group">
                     <label for="inputName" class="col-sm-2 control-label">Title</label>
 
                     <div class="col-sm-10">
-                      <input type="text" class="form-control" id="inputName" name="title" placeholder="Title" value="{{ $category->title }}">
+                      <input type="text" class="form-control" id="inputName" name="title" placeholder="Title" value="{{ $subcategory->title }}">
 
                         @error('title')
                             <span class="invalid-feedback text-danger" role="alert">
@@ -36,7 +47,7 @@
                     <label for="subtitle" class="col-sm-2 control-label">Subtitle</label>
 
                     <div class="col-sm-10">
-                      <input type="text" class="form-control" id="subtitle" name="subtitle" placeholder="Subtitle" value="{{ $category->subtitle }}">
+                      <input type="text" class="form-control" id="subtitle" name="subtitle" placeholder="Subtitle" value="{{ $subcategory->subtitle }}">
 
                         @error('subtitle')
                             <span class="invalid-feedback text-danger" role="alert">
@@ -46,7 +57,7 @@
                     </div>
                   </div>
                   <div class="form-group">
-                    <img src="{{ asset($category->image) }}"/>
+                    <img src="{{ asset($subcategory->image) }}"/>
                     <label for="inputPhone" class="col-sm-2 control-label">Change Image</label>
 
                     <div class="col-sm-10">
@@ -61,7 +72,7 @@
                   </div>
                   <div class="form-group">
                     <div class="col-sm-offset-2 col-sm-10">
-                      <button type="submit" class="btn btn-danger">Update Category</button>
+                      <button type="submit" class="btn btn-danger">Update Sub Category</button>
                     </div>
                   </div>
                 </form>

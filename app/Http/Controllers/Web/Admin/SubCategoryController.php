@@ -40,7 +40,8 @@ class SubCategoryController extends Controller
 
     public function showForm()
     {
-        return view('admin.subcategory.create');
+        $categories = Category::all(['id', 'title']);
+        return view('admin.subcategory.create',compact('categories'));
     }
 
     public function create(Request $request)
@@ -71,10 +72,12 @@ class SubCategoryController extends Controller
         } else {
             $request->session()->flash('message.level', 'error');
             $request->session()->flash('message.content', 'SubCategory Image is requried.');
+            return Redirect::back();
         }
 
         $subcategory = new SubCategory();
         $subcategory->title = $request->title;
+        $subcategory->category_id = $request->category_id;
         $subcategory->subtitle = $request->subtitle;
         $subcategory->slug = str_slug($request->title);
         $subcategory->image = $fileName;
@@ -86,19 +89,21 @@ class SubCategoryController extends Controller
             $request->session()->flash('message.level', 'error');
             $request->session()->flash('message.content', 'Something went wrong.');
         }
-        return Redirect::back();
+        return redirect()->route('admin.subcategory');
     }
 
     public function edit($id)
     {
         // dd($id);
+        $categories = Category::all(['id', 'title']);
         $subcategory = SubCategory::findOrFail($id);
-        return view('admin.subcategory.edit', compact('subcategory'));
+        return view('admin.subcategory.edit', compact('subcategory', 'categories'));
     }
 
     public function delete($id, Request $request)
     {
         $subcategory = SubCategory::findOrFail($id);
+        unlink($subcategory->image);
         if($subcategory->delete()){
             $request->session()->flash('message.level', 'success');
             $request->session()->flash('message.content', 'SubCategory created successfully.');
@@ -126,7 +131,8 @@ class SubCategoryController extends Controller
         
         $subcategory = SubCategory::findOrFail($id);
         $subcategory->title = $request->title;
-        $category->subtitle = $request->subtitle;
+        $subcategory->category_id = $request->category_id;
+        $subcategory->subtitle = $request->subtitle;
         $subcategory->slug = str_slug($request->title);
 
         if($request->hasFile('img')){
@@ -141,9 +147,6 @@ class SubCategoryController extends Controller
 
             $fileName = 'images/subcategory/'.$filename;
             $subcategory->image = $fileName;
-        } else {
-            $request->session()->flash('message.level', 'error');
-            $request->session()->flash('message.content', 'SubCategory Image is requried.');
         }
 
         if($subcategory->save()){
@@ -153,20 +156,6 @@ class SubCategoryController extends Controller
             $request->session()->flash('message.level', 'error');
             $request->session()->flash('message.content', 'Something went wrong.');
         }
-        return Redirect::back();
-    
-
-
-
-
-        $subcategory = SubCategory::findOrFail($id);
-        if($subcategory->delete()){
-            $request->session()->flash('message.level', 'success');
-            $request->session()->flash('message.content', 'Category created successfully.');
-        } else {
-            $request->session()->flash('message.level', 'error');
-            $request->session()->flash('message.content', 'Something went wrong.');
-        }
-        return Redirect::back();
+        return redirect()->route('admin.subcategory');
     }
 }

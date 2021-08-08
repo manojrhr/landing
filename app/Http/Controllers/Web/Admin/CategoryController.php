@@ -85,7 +85,7 @@ class CategoryController extends Controller
             $request->session()->flash('message.level', 'error');
             $request->session()->flash('message.content', 'Something went wrong.');
         }
-        return Redirect::back();
+        return redirect()->route('admin.category');
     }
 
     public function edit($id)
@@ -143,6 +143,7 @@ class CategoryController extends Controller
         } else {
             $request->session()->flash('message.level', 'error');
             $request->session()->flash('message.content', 'Category Image is requried.');
+            return Redirect::back();
         }
 
         if($category->save()){
@@ -152,20 +153,6 @@ class CategoryController extends Controller
             $request->session()->flash('message.level', 'error');
             $request->session()->flash('message.content', 'Something went wrong.');
         }
-        return Redirect::back();
-    
-
-
-
-
-        $category = Category::findOrFail($id);
-        if($category->delete()){
-            $request->session()->flash('message.level', 'success');
-            $request->session()->flash('message.content', 'Category created successfully.');
-        } else {
-            $request->session()->flash('message.level', 'error');
-            $request->session()->flash('message.content', 'Something went wrong.');
-        }
-        return Redirect::back();
+        return redirect()->route('admin.category');
     }
 }

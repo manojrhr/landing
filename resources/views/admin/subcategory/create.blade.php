@@ -17,9 +17,19 @@
             </ul>
             <div class="tab-content">
               <div class="active tab-pane" id="add">
-                <form class="form-horizontal" method="post" action="{{ route('admin.category.create.post')}}" enctype="multipart/form-data">
+                <form class="form-horizontal" method="post" action="{{ route('admin.subcategory.create.post')}}" enctype="multipart/form-data">
                 @csrf
-                  <input type="hidden" value="{{ $category->category_id }}"/>
+                  <div class="form-group">
+                    <label for="category_id" class="col-sm-2 control-label">Select Category</label>
+                      <div class="col-sm-10">
+                        <select class="form-control" name="category_id" id="category_id" required>
+                          <option value="" selected>-- Select Category --</option>
+                          @foreach($categories as $category)
+                            <option value="{{$category->id}}">{{$category->title}}</option>
+                          @endforeach
+                        </select>
+                      </div>
+                  </div>
                   <div class="form-group">
                     <label for="inputName" class="col-sm-2 control-label">Title</label>
 
