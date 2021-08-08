@@ -5,12 +5,13 @@ namespace App\Http\Controllers\Web\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Category;
+use App\SubCategory;
+use App\Tour;
 use Validator;
 use Redirect;
 use Image;
 
-
-class CategoryController extends Controller
+class TourController extends Controller
 {
     /**
      * Create a new controller instance.
@@ -31,15 +32,16 @@ class CategoryController extends Controller
     {
         // $users = User::all();
         $d_guy = false;
-        $title = "Categories";
-        $subTitle = "Tour Categories";
-        $categories = Category::all();
-        return view('admin.category.index', compact('categories', 'title', 'subTitle', 'd_guy'));
+        $title = "Sub Categories";
+        $subTitle = "Tour Sub Categories";
+        $subcategories = SubCategory::all();
+        return view('admin.subcategory.index', compact('subcategories', 'title', 'subTitle', 'd_guy'));
     }
 
     public function showForm()
     {
-        return view('admin.category.create');
+        $categories = Category::all(['id', 'title']);
+        return view('admin.subcategory.create',compact('categories'));
     }
 
     public function create(Request $request)
@@ -60,44 +62,51 @@ class CategoryController extends Controller
         if($request->hasFile('img')){
             $avatar = $request->file('img');
             $filename = time() .'.'. $avatar->getClientOriginalExtension();
-            $photo  = Image::make($avatar->getRealPath())->save(public_path('images/category/'.$filename));
+            $photo  = Image::make($avatar->getRealPath())->resize(307, 146, function($constraint)
+            {
+                $constraint->aspectRatio();
+            })->save(public_path('images/subcategory/'.$filename));
             // $photo = Image::make($avatar)->resize(307, 146)->save(public_path('images/category/'.$filename));
 
-            $fileName = 'images/category/'.$filename;
+            $fileName = 'images/subcategory/'.$filename;
         } else {
             $request->session()->flash('message.level', 'error');
-            $request->session()->flash('message.content', 'Category Image is requried.');
+            $request->session()->flash('message.content', 'SubCategory Image is requried.');
+            return Redirect::back();
         }
 
-        $category = new Category();
-        $category->title = $request->title;
-        $category->subtitle = $request->subtitle;
-        $category->slug = str_slug($request->title);
-        $category->image = $fileName;
+        $subcategory = new SubCategory();
+        $subcategory->title = $request->title;
+        $subcategory->category_id = $request->category_id;
+        $subcategory->subtitle = $request->subtitle;
+        $subcategory->slug = str_slug($request->title);
+        $subcategory->image = $fileName;
 
-        if($category->save()){
+        if($subcategory->save()){
             $request->session()->flash('message.level', 'success');
-            $request->session()->flash('message.content', 'Category created successfully.');
+            $request->session()->flash('message.content', 'SubCategory created successfully.');
         } else {
             $request->session()->flash('message.level', 'error');
             $request->session()->flash('message.content', 'Something went wrong.');
         }
-        return redirect()->route('admin.category');
+        return redirect()->route('admin.subcategory');
     }
 
     public function edit($id)
     {
         // dd($id);
-        $category = Category::findOrFail($id);
-        return view('admin.category.edit', compact('category'));
+        $categories = Category::all(['id', 'title']);
+        $subcategory = SubCategory::findOrFail($id);
+        return view('admin.subcategory.edit', compact('subcategory', 'categories'));
     }
 
     public function delete($id, Request $request)
     {
-        $category = Category::findOrFail($id);
-        if($category->delete()){
+        $subcategory = SubCategory::findOrFail($id);
+        unlink($subcategory->image);
+        if($subcategory->delete()){
             $request->session()->flash('message.level', 'success');
-            $request->session()->flash('message.content', 'Category created successfully.');
+            $request->session()->flash('message.content', 'SubCategory created successfully.');
         } else {
             $request->session()->flash('message.level', 'error');
             $request->session()->flash('message.content', 'Something went wrong.');
@@ -120,29 +129,34 @@ class CategoryController extends Controller
             return Redirect::back();
         }
         
-        $category = Category::findOrFail($id);
-        $category->title = $request->title;
-        $category->subtitle = $request->subtitle;
-        $category->slug = str_slug($request->title);
+        $subcategory = SubCategory::findOrFail($id);
+        $subcategory->title = $request->title;
+        $subcategory->category_id = $request->category_id;
+        $subcategory->subtitle = $request->subtitle;
+        $subcategory->slug = str_slug($request->title);
 
         if($request->hasFile('img')){
-            unlink($category->image);
+            unlink($subcategory->image);
             $avatar = $request->file('img');
             $filename = time() .'.'. $avatar->getClientOriginalExtension();
-            $photo  = Image::make($avatar->getRealPath())->save(public_path('images/category/'.$filename));
+            $photo  = Image::make($avatar->getRealPath())->resize(307, 146, function($constraint)
+            {
+                $constraint->aspectRatio();
+            })->save(public_path('images/subcategory/'.$filename));
             // $photo = Image::make($avatar)->resize(307, 146)->save(public_path('images/category/'.$filename));
 
-            $fileName = 'images/category/'.$filename;
-            $category->image = $fileName;
+            $fileName = 'images/subcategory/'.$filename;
+            $subcategory->image = $fileName;
         }
 
-        if($category->save()){
+        if($subcategory->save()){
             $request->session()->flash('message.level', 'success');
-            $request->session()->flash('message.content', 'Category created successfully.');
+            $request->session()->flash('message.content', 'SubCategory created successfully.');
         } else {
             $request->session()->flash('message.level', 'error');
             $request->session()->flash('message.content', 'Something went wrong.');
         }
-        return redirect()->route('admin.category');
+        return redirect()->route('admin.subcategory');
     }
+
 }

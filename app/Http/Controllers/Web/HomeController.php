@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Notifications\ContactFormSubmitted;
 use App\User;
 use App\Admin;
+use App\Category;
 use Validator;
 use Notification;
 
@@ -29,7 +30,8 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('web.home');
+        $categories = Category::all();
+        return view('web.home', compact('categories'));
     }
 
     public function contact(Request $request)

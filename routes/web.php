@@ -52,6 +52,8 @@ Route::group(['prefix' => 'admin' , 'as' => 'admin.'], function(){
 	Route::get('/subcategory/{id}/delete', 'Web\Admin\SubCategoryController@delete')->name('subcategory.delete');
 	Route::get('/subcategory', 'Web\Admin\SubCategoryController@index')->name('subcategory');
 	Route::get('/subcategory/delete/{id}', 'Web\Admin\SubCategoryController@delete')->name('subcategory.delete');
+	
+	Route::get('/tour', 'Web\Admin\TourController@index')->name('tour');
 
 	Route::get('update-email', 'Web\Admin\SettingController@getEmailUpdate')->name('getUpdateEmailForm');
 	Route::post('update-email', 'Web\Admin\SettingController@updateAdminEmail')->name('updateEmail');

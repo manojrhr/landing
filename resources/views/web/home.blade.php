@@ -33,43 +33,30 @@
     <div class="small-container">
     
     <div class="row align-items-end home-one">
-    <div class="col-md-4 block-order1">
-    <div class="inner-block">
-    <div class="images-block" data-aos="zoom-in-left">
-    <img src="{{ asset('assets/web/images/kiuki-hiace.png') }}" alt="" />
+        @php $i=1; @endphp
+        @foreach ($categories as $category)
+        <div class="col-md-4 block-order{{ $i }}">
+            <div class="inner-block">
+                <div class="images-block" data-aos="zoom-in-left">
+                    <img src="{{ asset($category->image) }}" alt="" />
+                </div>
+                <div class="content-div-col {{ $i === 1 ? "one-block" : "" }}" data-aos="fade-left">
+                    @if($i === 1)
+                      <h3><i>{{ $category->title }}</i></h3>
+                      <h2>{{ $category->subtitle }}</h2>
+                    @else
+                      <h2>{{ $category->title }}</h2>
+                      <h4><i>{{ $category->subtitle }}</i></h4>
+                    @endif
+                </div>
+            </div>
+        </div>
+        @php $i++; @endphp
+        @endforeach
     </div>
-    <div class="content-div-col one-block" data-aos="fade-left">
-    <h3><i>The Best In</i></h3>
-    <h2>All Island Tours</h2>
+
     </div>
-    </div>
-    </div>
-    
-    <div class="col-md-4 block-order2">
-    <div class="inner-block">
-    <div class="images-block" data-aos="zoom-in-left">
-    <img src="{{ asset('assets/web/images/bus.png') }}" alt="" />
-    </div>
-    <div class="content-div-col" data-aos="fade-up">
-    <h2>Airport transfers</h2>
-    <h4><i>Shared/Private</i></h4>
-    </div>
-    </div>
-    </div>
-    
-    <div class="col-md-4 block-order3">
-    <div class="inner-block">
-    <div class="images-block" data-aos="zoom-in-left">
-    <img src="{{ asset('assets/web/images/crown.png') }}" alt="" width="280" />
-    </div>
-    <div class="content-div-col" data-aos="fade-right">
-    <h2>Vehicle Rentals</h2>
-    <h4><i>With Driver</i></h4>
-    </div>
-    </div>
-    </div>
-    </div>
-    
+
     </div>
     </div>
     </div>
