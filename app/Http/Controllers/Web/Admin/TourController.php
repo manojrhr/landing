@@ -209,7 +209,7 @@ class TourController extends Controller
             $request->session()->flash('message.level', 'error');
             $request->session()->flash('message.content', 'Something went wrong.');
         }
-        return redirect()->route('admin.subcategory');
+        return redirect()->route('admin.tour');
     }
 
 }

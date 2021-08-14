@@ -21,7 +21,9 @@ Route::get('/', 'Web\HomeController@index')->name('home');
 
 Auth::routes(['verify' => true]);
 
-Route::get('/tour/single', 'Web\TourController@single')->name('tour.single');
+Route::get('/tours', 'Web\TourController@tours')->name('tours');
+Route::get('/tour/{slug}', 'Web\TourController@single')->name('tour.single');
+
 
 Route::group(['prefix' => 'admin' , 'as' => 'admin.'], function(){
 	Route::get('/login', 'Auth\AdminLoginController@showLoginForm')->name('login');

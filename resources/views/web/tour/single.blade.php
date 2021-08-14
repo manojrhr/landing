@@ -1,5 +1,6 @@
 @extends('layouts.web.master')
 
+@section('title', $tour->title)
 
 @section('content')
 <!-- #Main Content-->
