@@ -25,7 +25,7 @@
                         <select class="form-control" name="category_id" id="category_id" required>
                           {{-- <option value="" selected>-- Select Category --</option> --}}
                           @foreach($categories as $category)
-                            <option value="{{$category->id}}"{{ $category->id === $subcategory->category->id ? 'selected' : '' }}>{{$category->title}}</option>
+                            <option value="{{$category->id}}" {{ $category->id === $subcategory->category->id ? 'selected' : '' }}>{{$category->title}}</option>
                           @endforeach
                         </select>
                       </div>

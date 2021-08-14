@@ -21,6 +21,8 @@ Route::get('/', 'Web\HomeController@index')->name('home');
 
 Auth::routes(['verify' => true]);
 
+Route::get('/tour/single', 'Web\TourController@single')->name('tour.single');
+
 Route::group(['prefix' => 'admin' , 'as' => 'admin.'], function(){
 	Route::get('/login', 'Auth\AdminLoginController@showLoginForm')->name('login');
 	Route::post('/login', 'Auth\AdminLoginController@login')->name('login.submit');
@@ -54,6 +56,11 @@ Route::group(['prefix' => 'admin' , 'as' => 'admin.'], function(){
 	Route::get('/subcategory/delete/{id}', 'Web\Admin\SubCategoryController@delete')->name('subcategory.delete');
 	
 	Route::get('/tour', 'Web\Admin\TourController@index')->name('tour');
+	Route::get('/tour/create', 'Web\Admin\TourController@showForm')->name('tour.create');
+	Route::post('/tour/create', 'Web\Admin\TourController@create')->name('tour.create.post');
+	Route::get('/tour/{id}/edit', 'Web\Admin\TourController@edit')->name('tour.edit');
+	Route::post('/tour/{id}/edit', 'Web\Admin\TourController@update')->name('tour.edit.post');
+	Route::get('/tour/delete/{id}', 'Web\Admin\TourController@delete')->name('tour.delete');
 
 	Route::get('update-email', 'Web\Admin\SettingController@getEmailUpdate')->name('getUpdateEmailForm');
 	Route::post('update-email', 'Web\Admin\SettingController@updateAdminEmail')->name('updateEmail');
