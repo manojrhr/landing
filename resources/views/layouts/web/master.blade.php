@@ -117,7 +117,7 @@
                                 id="navbarCollapse">
                                 <ul class="navbar-nav align-items-center">
                                     <li class="nav-item active">
-                                        <a class="nav-link" href="tours.html">Tours</a>
+                                        <a class="nav-link" href="{{ route('tours') }}">Tours</a>
                                     </li>
                                     <li class="nav-item">
                                         <a class="nav-link" href="transfers.html">Transfers</a>
