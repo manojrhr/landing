@@ -66,6 +66,9 @@ class TourController extends Controller
         $tour->description = $request->description;
         $tour->included = $request->included;
         $tour->add_info = $request->add_info;
+        $tour->meta_title = $request->meta_title;
+        $tour->meta_description = $request->meta_description;
+        $tour->meta_keywords = $request->meta_keywords;
 
         if($request->hasFile('image')){
             $avatar = $request->file('image');
@@ -161,6 +164,9 @@ class TourController extends Controller
         $tour->description = $request->description;
         $tour->included = $request->included;
         $tour->add_info = $request->add_info;
+        $tour->meta_title = $request->meta_title;
+        $tour->meta_description = $request->meta_description;
+        $tour->meta_keywords = $request->meta_keywords;
 
         if($request->hasFile('image')){
             unlink($tour->image);

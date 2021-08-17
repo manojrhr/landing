@@ -71,8 +71,11 @@ class CategoryController extends Controller
 
         $category = new Category();
         $category->title = $request->title;
-        $category->subtitle = $request->subtitle;
         $category->slug = str_slug($request->title);
+        $category->subtitle = $request->subtitle;
+        $category->meta_title = $request->meta_title;
+        $category->meta_description = $request->meta_description;
+        $category->meta_keywords = $request->meta_keywords;
         $category->image = $fileName;
 
         if($category->save()){
@@ -95,7 +98,9 @@ class CategoryController extends Controller
     public function delete($id, Request $request)
     {
         $category = Category::findOrFail($id);
+        $image = $category->image;
         if($category->delete()){
+            unlink($image);
             $request->session()->flash('message.level', 'success');
             $request->session()->flash('message.content', 'Category created successfully.');
         } else {
@@ -122,8 +127,11 @@ class CategoryController extends Controller
         
         $category = Category::findOrFail($id);
         $category->title = $request->title;
-        $category->subtitle = $request->subtitle;
         $category->slug = str_slug($request->title);
+        $category->subtitle = $request->subtitle;
+        $category->meta_title = $request->meta_title;
+        $category->meta_description = $request->meta_description;
+        $category->meta_keywords = $request->meta_keywords;
 
         if($request->hasFile('img')){
             unlink($category->image);

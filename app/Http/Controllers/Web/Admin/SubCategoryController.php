@@ -77,9 +77,12 @@ class SubCategoryController extends Controller
 
         $subcategory = new SubCategory();
         $subcategory->title = $request->title;
+        $subcategory->slug = str_slug($request->title);
         $subcategory->category_id = $request->category_id;
         $subcategory->subtitle = $request->subtitle;
-        $subcategory->slug = str_slug($request->title);
+        $subcategory->meta_title = $request->meta_title;
+        $subcategory->meta_description = $request->meta_description;
+        $subcategory->meta_keywords = $request->meta_keywords;
         $subcategory->image = $fileName;
 
         if($subcategory->save()){
@@ -103,8 +106,9 @@ class SubCategoryController extends Controller
     public function delete($id, Request $request)
     {
         $subcategory = SubCategory::findOrFail($id);
-        unlink($subcategory->image);
+        $image = $subcategory->image;
         if($subcategory->delete()){
+            unlink($image);
             $request->session()->flash('message.level', 'success');
             $request->session()->flash('message.content', 'SubCategory created successfully.');
         } else {
@@ -131,9 +135,12 @@ class SubCategoryController extends Controller
         
         $subcategory = SubCategory::findOrFail($id);
         $subcategory->title = $request->title;
+        $subcategory->slug = str_slug($request->title);
         $subcategory->category_id = $request->category_id;
         $subcategory->subtitle = $request->subtitle;
-        $subcategory->slug = str_slug($request->title);
+        $subcategory->meta_title = $request->meta_title;
+        $subcategory->meta_description = $request->meta_description;
+        $subcategory->meta_keywords = $request->meta_keywords;
 
         if($request->hasFile('img')){
             unlink($subcategory->image);
