@@ -117,3 +117,7 @@
       </div>
       <!-- /.row -->
 @endsection
+
+@section('scripts')
+
+@endsection

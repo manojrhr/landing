@@ -49,6 +49,15 @@ Route::group(['prefix' => 'admin' , 'as' => 'admin.'], function(){
 	Route::get('/category', 'Web\Admin\CategoryController@index')->name('category');
 	Route::get('/category/delete/{id}', 'Web\Admin\CategoryController@delete')->name('category.delete');
 
+	Route::get('/location/{id?}', 'Web\Admin\LocationController@index')->name('location');
+	Route::post('/location/create', 'Web\Admin\LocationController@create')->name('location.create.post');
+	Route::post('/location/{id?}', 'Web\Admin\LocationController@update')->name('location.update');
+	// Route::post('/location/{id}/edit', 'Web\Admin\LocationController@update')->name('location.update');
+
+	Route::get('/location/{id}/edit', 'Web\Admin\LocationController@edit')->name('location.edit');
+	Route::get('/location/{id}/delete', 'Web\Admin\LocationController@delete')->name('location.delete');
+	Route::get('/location/delete/{id}', 'Web\Admin\LocationController@delete')->name('location.delete');
+
 	Route::get('/subcategory/create', 'Web\Admin\SubCategoryController@showForm')->name('subcategory.create');
 	Route::post('/subcategory/create', 'Web\Admin\SubCategoryController@create')->name('subcategory.create.post');
 	Route::get('/subcategory/{id}/edit', 'Web\Admin\SubCategoryController@edit')->name('subcategory.edit');

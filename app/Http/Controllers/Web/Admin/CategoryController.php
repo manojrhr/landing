@@ -30,7 +30,7 @@ class CategoryController extends Controller
     public function index()
     {
         // $users = User::all();
-        $d_guy = false;
+        // $d_guy = false;
         $title = "Categories";
         $subTitle = "Tour Categories";
         $categories = Category::all();
