@@ -139,7 +139,7 @@
                                             <i class="fas fa-search"></i>
                                         </a>
                                         <div class="search-divblock">
-                                            <form role="search" method="get" id="searchform" class="searchform"
+                                            <form role="search" method="get" id="searchform1" class="searchform"
                                                 action="https://kiukitours.com/">
                                                 <input type="search" class="searchform-input" name="s" value=""
                                                     placeholder="Search …" title="Press enter to search">
@@ -178,7 +178,7 @@
                                         <i class="fas fa-search"></i>
                                     </a>
                                     <div class="search-divblock">
-                                        <form role="search" method="get" id="searchform" class="searchform"
+                                        <form role="search" method="get" id="searchform2" class="searchform"
                                             action="https://kiukitours.com/">
                                             <input type="search" class="searchform-input" name="s" value=""
                                                 placeholder="Search …" title="Press enter to search">

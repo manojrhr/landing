@@ -5,8 +5,10 @@ namespace App\Http\Controllers\Web\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Category;
+use App\Location;
 use App\SubCategory;
 use App\Tour;
+use App\TourOption;
 use Validator;
 use Redirect;
 use Image;
@@ -124,17 +126,33 @@ class TourController extends Controller
         $categories = Category::all(['id', 'title', 'subtitle']);
         $subcategories = SubCategory::all(['id', 'title', 'subtitle']);
         $tour = Tour::findOrFail($id);
-        return view('admin.tour.edit', compact('tour','subcategories', 'categories'));
+        $locations = Location::all();
+        $options = TourOption::with('location')->where('tour_id',$tour->id)->get();
+        return view('admin.tour.edit', compact('tour','subcategories', 'categories', 'locations', 'options'));
     }
 
     public function delete($id, Request $request)
     {
         $tour = Tour::findOrFail($id);
+        $tour_option = TourOption::where('tour_id', $tour->id)->delete();
         $image = $tour->image;
         if($tour->delete()){
             unlink($image);
             $request->session()->flash('message.level', 'success');
-            $request->session()->flash('message.content', 'Tour created successfully.');
+            $request->session()->flash('message.content', 'Tour deleted successfully.');
+        } else {
+            $request->session()->flash('message.level', 'error');
+            $request->session()->flash('message.content', 'Something went wrong.');
+        }
+        return Redirect::back();
+    }
+
+    public function tour_option_delete($id, Request $request)
+    {
+        $option = TourOption::findOrFail($id);
+        if($option->delete()){
+            $request->session()->flash('message.level', 'success');
+            $request->session()->flash('message.content', 'Option deleted successfully.');
         } else {
             $request->session()->flash('message.level', 'error');
             $request->session()->flash('message.content', 'Something went wrong.');
@@ -218,4 +236,34 @@ class TourController extends Controller
         return redirect()->route('admin.tour');
     }
 
+    public function add_tour_options($id, Request $request)
+    {
+        $validator = Validator::make($request->all(), [
+            'location' => ['required'],
+            'child_rate' => ['required'],
+            'adult_rate' => ['required']
+        ]);
+
+        if ($validator->fails()) {
+            $errors = implode(',', $validator->messages()->all());
+            $request->session()->flash('message.level', 'error');
+            $request->session()->flash('message.content', $errors);
+            return Redirect::back();
+        }
+
+        $option = new TourOption();
+        $option->tour_id = $id;
+        $option->location_id = $request->location;
+        $option->child_rate = $request->child_rate;
+        $option->adult_rate = $request->adult_rate;
+
+        if($option->save()){
+            $request->session()->flash('message.level', 'success');
+            $request->session()->flash('message.content', 'Tour option updated successfully.');
+        } else {
+            $request->session()->flash('message.level', 'error');
+            $request->session()->flash('message.content', 'Something went wrong.');
+        }
+        return Redirect::back();
+    }
 }

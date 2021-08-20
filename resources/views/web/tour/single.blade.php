@@ -111,123 +111,11 @@
                                     <div class="form-row-block">
                                         <span class="label-span">Pickup Location</span>
                                         <div class="select-form-input-div">
-                                            <select class="form-control select2">
-                                                <option value="montego bay" data-select2-id="2">Breathless Montego Bay
-                                                    Resort &amp; Spa | Montego Bay</option>
-                                                <option value="trelawny" data-select2-id="9">Breezes Resort &amp; Spa
-                                                    Trelawny | Trelawny</option>
-                                                <option value="montego bay" data-select2-id="10">Caribbean Fairways |
-                                                    Montego Bay</option>
-                                                <option value="montego bay" data-select2-id="11">Caribic House | Montego
-                                                    Bay</option>
-                                                <option value="montego bay" data-select2-id="12">Cariblue Beach Hotel |
-                                                    Montego Bay</option>
-                                                <option value="montego bay" data-select2-id="13">Coral Cliff Hotel |
-                                                    Montego Bay</option>
-                                                <option value="montego bay" data-select2-id="14">Coyaba Beach Resort
-                                                    &amp; Club | Montego Bay</option>
-                                                <option value="montego bay" data-select2-id="15">Doctor's Cave Beach |
-                                                    Montego Bay</option>
-                                                <option value="montego bay" data-select2-id="16">El Greco All Suites
-                                                    Resort | Montego Bay</option>
-                                                <option value="montego bay" data-select2-id="17">Emerald View Resort
-                                                    Villa | Montego Bay</option>
-                                                <option value="montego bay" data-select2-id="18">Fairway Manor | Montego
-                                                    Bay</option>
-                                                <option value="trelawny" data-select2-id="19">Fisherman's Inn | Trelawny
-                                                </option>
-                                                <option value="lucea" data-select2-id="20">Grand Palladium Jamaica
-                                                    Resort &amp; Spa | Lucea</option>
-                                                <option value="lucea" data-select2-id="21">Grand Palladium Lady Hamilton
-                                                    Resort &amp; Spa | Lucea</option>
-                                                <option value="montego bay" data-select2-id="22">Half Moon | Montego Bay
-                                                </option>
-                                                <option value="montego bay" data-select2-id="23">Hilton Rose Hall Resort
-                                                    &amp; Spa | Montego Bay</option>
-                                                <option value="montego bay" data-select2-id="24">Holiday Inn Resort,
-                                                    Montego Bay | Montego Bay</option>
-                                                <option value="trelawny" data-select2-id="25">Excellence Oyster Bay |
-                                                    Trelawny</option>
-                                                <option value="montego bay" data-select2-id="26">Hotel Gloriana |
-                                                    Montego Bay</option>
-                                                <option value="montego bay" data-select2-id="27">Hyatt Ziva Rosehall |
-                                                    Montego Bay</option>
-                                                <option value="montego bay" data-select2-id="28">Iberostar Grand Rose
-                                                    Hall | Montego Bay</option>
-                                                <option value="montego bay" data-select2-id="29">Iberostar Rose Hall
-                                                    Beach | Montego Bay</option>
-                                                <option value="montego bay" data-select2-id="30">Iberostar Rose Hall
-                                                    Suites | Montego Bay</option>
-                                                <option value="montego bay" data-select2-id="31">Jamaica Grandiosa
-                                                    Resort | Montego Bay</option>
-                                                <option value="montego bay" data-select2-id="32">Jewel Grande Montego
-                                                    Bay | Montego Bay</option>
-                                                <option value="trelawny" data-select2-id="33">Mangos Jamaica | Trelawny
-                                                </option>
-                                                <option value="montego bay" data-select2-id="34">Melia Braco Village |
-                                                    Montego Bay</option>
-                                                <option value="montego bay" data-select2-id="35">Montego Bay Club Resort
-                                                    | Montego Bay</option>
-                                                <option value="montego bay" data-select2-id="36">Oasis At Sunset Hotel |
-                                                    Montego Bay</option>
-                                                <option value="montego bay" data-select2-id="37">Palm View Guest House |
-                                                    Montego Bay</option>
-                                                <option value="montego bay" data-select2-id="38">Paradise Clarridge View
-                                                    | Montego Bay</option>
-                                                <option value="montego bay" data-select2-id="39">Paradise Coconut
-                                                    Cottage | Montego Bay</option>
-                                                <option value="montego bay" data-select2-id="40">Polkerris Bed &amp;
-                                                    Breakfast | Montego Bay</option>
-                                                <option value="montego bay" data-select2-id="41">Relax Resort | Montego
-                                                    Bay</option>
-                                                <option value="montego bay" data-select2-id="42">Ridgeway Guest House |
-                                                    Montego Bay</option>
-                                                <option value="montego bay" data-select2-id="43">RIU Montego Bay |
-                                                    Montego Bay</option>
-                                                <option value="montego bay" data-select2-id="44">Riu Palace Montego Bay
-                                                    | Montego Bay</option>
-                                                <option value="montego bay" data-select2-id="45">RIU Reggae | Montego
-                                                    Bay</option>
-                                                <option value="montego bay" data-select2-id="46">Round Hill Hotel &amp;
-                                                    Villas | Montego Bay</option>
-                                                <option value="montego bay" data-select2-id="47">Royal Decameron Montego
-                                                    Bay | Montego Bay</option>
-                                                <option value="montego bay" data-select2-id="48">Royalton Blue Waters |
-                                                    Montego Bay</option>
-                                                <option value="montego bay" data-select2-id="49">Royalton White Sands
-                                                    Resort | Montego Bay</option>
-                                                <option value="montego bay" data-select2-id="50">Sandals Inn Luxury
-                                                    Resort | Montego Bay</option>
-                                                <option value="montego bay" data-select2-id="51">Sandals Montego Bay |
-                                                    Montego Bay</option>
-                                                <option value="montego bay" data-select2-id="52">Sandals Royal Caribbean
-                                                    Resort | Montego Bay</option>
-                                                <option value="montego bay" data-select2-id="53">Secrets St. James
-                                                    Montego Bay | Montego Bay</option>
-                                                <option value="montego bay" data-select2-id="54">Silent Waters Villa |
-                                                    Montego Bay</option>
-                                                <option value="trelawny" data-select2-id="55">Silver Sands Hotel |
-                                                    Trelawny</option>
-                                                <option value="montego bay" data-select2-id="56">Sunscape Splash Montego
-                                                    Bay Resort And Spa | Montego Bay</option>
-                                                <option value="montego bay" data-select2-id="57">Sunscape Cove | Montego
-                                                    Bay</option>
-                                                <option value="montego bay" data-select2-id="58">The Atrium | Montego
-                                                    Bay</option>
-                                                <option value="montego bay" data-select2-id="59">The Palmyra A Solis
-                                                    Resort &amp; Spa | Montego Bay</option>
-                                                <option value="montego bay" data-select2-id="60">The Wexford Hotel |
-                                                    Montego Bay</option>
-                                                <option value="montego bay" data-select2-id="61">Toby's Resort | Montego
-                                                    Bay</option>
-                                                <option value="montego bay" data-select2-id="62">The Tryall Club |
-                                                    Montego Bay</option>
-                                                <option value="montego bay" data-select2-id="63">Other Location (not
-                                                    listed) | Montego Bay</option>
-                                                <option value="trelawny" data-select2-id="64">Other Location (not
-                                                    listed) | Trelawny</option>
-                                                <option value="lucea" data-select2-id="65">Other Location (not listed) |
-                                                    Lucea</option>
+                                            <select class="form-control select2" id="location">
+                                                @foreach ($options as $option)
+                                                    <option value="{{ $option->location->id }}" data-adult="{{ $option->location->adult_rate }}
+                                                         data-child="{{ $option->location->child_rate }}">{{ $option->location->name }}</option>
+                                                @endforeach
                                             </select>
                                         </div>
                                     </div>
@@ -296,7 +184,7 @@
                     <div class="col-md-3 item-tours-like">
                         <div class="inner-item-tours">
                             <div class="image-tour-item">
-                                <a class="img-tour-link" href="#"><img src="images/1.jpg" alt=""></a>
+                                <a class="img-tour-link" href="#"><img src="{{ asset('assets/web/images/1.jpg') }}" alt=""></a>
                                 <div class="tour-quick-view-cover">
                                     <!-- Button trigger modal -->
                                     <div type="button" class="tour-quick-view" data-toggle="modal"
@@ -314,7 +202,7 @@
                     <div class="col-md-3 item-tours-like">
                         <div class="inner-item-tours">
                             <div class="image-tour-item">
-                                <a class="img-tour-link" href="#"><img src="images/1.jpg" alt=""></a>
+                                <a class="img-tour-link" href="#"><img src="{{ asset('assets/web/images/1.jpg') }}" alt=""></a>
                                 <div class="tour-quick-view-cover">
                                     <!-- Button trigger modal -->
                                     <div type="button" class="tour-quick-view" data-toggle="modal"
@@ -332,7 +220,7 @@
                     <div class="col-md-3 item-tours-like">
                         <div class="inner-item-tours">
                             <div class="image-tour-item">
-                                <a class="img-tour-link" href="#"><img src="images/1.jpg" alt=""></a>
+                                <a class="img-tour-link" href="#"><img src="{{ asset('assets/web/images/1.jpg') }}" alt=""></a>
                                 <div class="tour-quick-view-cover">
                                     <!-- Button trigger modal -->
                                     <div type="button" class="tour-quick-view" data-toggle="modal"
@@ -350,7 +238,7 @@
                     <div class="col-md-3 item-tours-like">
                         <div class="inner-item-tours">
                             <div class="image-tour-item">
-                                <a class="img-tour-link" href="#"><img src="images/1.jpg" alt=""></a>
+                                <a class="img-tour-link" href="#"><img src="{{ asset('assets/web/images/1.jpg') }}" alt=""></a>
                                 <div class="tour-quick-view-cover">
                                     <!-- Button trigger modal -->
                                     <div type="button" class="tour-quick-view" data-toggle="modal"
@@ -381,6 +269,24 @@
 @endsection
 
 @section('scripts')
+<script>
+$(document).ready(function() {
+    $('select#location').select2({
+        templateResult: formatOutput
+    });
+});
+function formatOutput (item) {
+    var $state = $(item.element).data('adult') + ' ' + item.text;
+    return $state;
+};
+        // $('#location').on("change", function() {
+
+        //     console.log($('option:selected',this).data('width'));
+        //     console.log($('option:selected',this).data('height'));
+        // })
+    // // console.log($('option:selected',this).data('width'));
+    // // console.log($('option:selected',this).data('height'));
+</script>
 <script>
     
             //Date Picker

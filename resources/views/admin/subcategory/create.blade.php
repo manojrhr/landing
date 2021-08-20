@@ -31,12 +31,25 @@
                       </div>
                   </div>
                   <div class="form-group">
-                    <label for="inputName" class="col-sm-2 control-label">Title</label>
+                    <label for="title" class="col-sm-2 control-label">Title</label>
 
                     <div class="col-sm-10">
-                      <input type="text" class="form-control" id="inputName" name="title" placeholder="Title" value="">
+                      <input type="text" class="form-control" id="title" name="title" placeholder="Title" value="">
 
                         @error('title')
+                            <span class="invalid-feedback text-danger" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                        @enderror
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label for="slug" class="col-sm-2 control-label">Slug</label>
+
+                    <div class="col-sm-10">
+                      <input type="text" class="form-control" id="slug" name="slug" placeholder="Slug" value="">
+
+                        @error('slug')
                             <span class="invalid-feedback text-danger" role="alert">
                                 <strong>{{ $message }}</strong>
                             </span>
@@ -127,4 +140,16 @@
         <!-- /.col -->
       </div>
       <!-- /.row -->
+@endsection
+
+@section('scripts')
+<script>
+  $('#title').on('input', function() {
+      var slug =  $('#title').val()
+                            .toLowerCase()
+                            .replace(/[^\w ]+/g,'')
+                            .replace(/ +/g,'-');
+      $('#slug').val(slug);
+  });
+</script>
 @endsection

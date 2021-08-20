@@ -12,7 +12,8 @@
         <div class="col-md-12">
           <div class="nav-tabs-custom">
             <ul class="nav nav-tabs">
-              <li class="active"><a href="#add" data-toggle="tab">Add Category</a></li>
+              <li class="active"><a href="#add" data-toggle="tab">Add Tour</a></li>
+              <li><a href="#options" data-toggle="tab">Add Tour Options</a></li>
               {{-- <li><a href="#password" data-toggle="tab">Change User Password</a></li> --}}
             </ul>
             <div class="tab-content">
@@ -180,6 +181,91 @@
                     </div>
                   </div>
                 </form>
+              </div>
+              <!-- /.tab-pane -->
+              <div class="active tab-pane" id="options">
+                <form class="form-horizontal" method="post" action="{{ route('admin.add_tour_options', $tour->id)}}" enctype="multipart/form-data">
+                @csrf
+                  <div class="form-group">
+                    <label for="location" class="col-sm-2 control-label">Location</label>
+                    <div class="col-sm-10">
+                      <select class="form-control" id="location" name="location">
+                        {{-- <option value="">-- Select Category for this Tour --</option> --}}
+                          @foreach ($locations as $location)
+                              <option value="{{ $location->id }}">{{ $location->name }}</option>
+                          @endforeach
+                      </select>
+                        @error('title')
+                            <span class="invalid-feedback text-danger" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                        @enderror
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label for="child_rate" class="col-sm-2 control-label">Price for Child</label>
+
+                    <div class="col-sm-10">
+                      <input type="text" class="form-control" id="child_rate" name="child_rate" placeholder="Price for Child" value="">
+
+                        @error('child_rate')
+                            <span class="invalid-feedback text-danger" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                        @enderror
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label for="adult_rate" class="col-sm-2 control-label">Price for Adult</label>
+
+                    <div class="col-sm-10">
+                      <input type="text" class="form-control" id="adult_rate" name="adult_rate" placeholder="Price for Adult" value="">
+
+                        @error('adult_rate')
+                            <span class="invalid-feedback text-danger" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                        @enderror
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <div class="col-sm-offset-2 col-sm-10">
+                      <button type="submit" class="btn btn-danger">Update Tour Option</button>
+                    </div>
+                  </div>
+                </form>
+                
+                <table id="example1" class="table table-bordered table-striped">
+                  <thead>
+                      <tr>
+                          <th>#</th>
+                          <th>Location</th>
+                          <th>Price for Child</th>
+                          <th>Price for Adult</th>
+                          <th>Actions</th>
+                      </tr>
+                  </thead>
+                  <tbody>
+                      <?php $i=1 ?>
+                          @foreach($options as $option)
+                              <tr>
+                                  <td>{{ $i }}</td>
+                                  <td>
+                                      {{-- <a href="{{ route('admin.user.single',$category->id) }}"> --}}
+                                          {{ $option->location->name }}
+                                      {{-- </a> --}}
+                                  </td>
+                                  <td>{{ $option->child_rate }}</td>
+                                  <td>{{ $option->adult_rate }}</td>
+                                  <td>
+                                      <a class="btn btn-primary" href="{{ route('admin.tour.edit', $option->id) }}">Edit</a>
+                                      <a  class="btn btn-danger" href="{{ route('admin.tour_option_delete', $option->id) }}" onclick="return confirm('Are you sure?')">Delete</a>
+                                  </td>
+                              </tr>
+                              <?php $i++; ?>
+                          @endforeach
+                  </tbody>
+              </table>
               </div>
               <!-- /.tab-pane -->
             </div>

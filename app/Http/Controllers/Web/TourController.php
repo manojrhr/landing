@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Web;
 
 use App\Http\Controllers\Controller;
 use App\Tour;
+use App\TourOption;
 use Illuminate\Http\Request;
 
 class TourController extends Controller
@@ -20,6 +21,7 @@ class TourController extends Controller
         if(!$tour){
             abort(404);
         }
-        return view('web.tour.single', compact('tour'));
+        $options = TourOption::where('tour_id', $tour->id)->get();
+        return view('web.tour.single', compact('tour', 'options'));
     }
 }

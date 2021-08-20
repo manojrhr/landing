@@ -34,7 +34,7 @@ class CategoryController extends Controller
         $title = "Categories";
         $subTitle = "Tour Categories";
         $categories = Category::all();
-        return view('admin.category.index', compact('categories', 'title', 'subTitle', 'd_guy'));
+        return view('admin.category.index', compact('categories', 'title', 'subTitle'));
     }
 
     public function showForm()
@@ -71,7 +71,7 @@ class CategoryController extends Controller
 
         $category = new Category();
         $category->title = $request->title;
-        $category->slug = str_slug($request->title);
+        $category->slug = $request->slug;
         $category->subtitle = $request->subtitle;
         $category->meta_title = $request->meta_title;
         $category->meta_description = $request->meta_description;
@@ -127,7 +127,7 @@ class CategoryController extends Controller
         
         $category = Category::findOrFail($id);
         $category->title = $request->title;
-        $category->slug = str_slug($request->title);
+        $category->slug = $request->slug;
         $category->subtitle = $request->subtitle;
         $category->meta_title = $request->meta_title;
         $category->meta_description = $request->meta_description;

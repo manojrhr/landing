@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Web\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Location;
+use App\TourOption;
 use Illuminate\Http\Request;
 use Redirect;
 use Validator;
@@ -43,8 +44,8 @@ class LocationController extends Controller
         }
 
         $location = new Location();
-        $location->name = ucfirst($request->name);
-        $location->name = str_slug($request->name);
+        $location->name = $request->name;
+        $location->slug = str_slug($request->name);
 
         if($location->save()){
             $request->session()->flash('message.level', 'success');
@@ -70,12 +71,26 @@ class LocationController extends Controller
         }
 
         $location = Location::findOrFail($id);
-        $location->name = ucfirst($request->name);
-        $location->name = str_slug($request->name);
+        $location->name = $request->name;
+        $location->slug = str_slug($request->name);
 
         if($location->save()){
             $request->session()->flash('message.level', 'success');
             $request->session()->flash('message.content', 'Location updated successfully.');
+        } else {
+            $request->session()->flash('message.level', 'error');
+            $request->session()->flash('message.content', 'Something went wrong.');
+        }
+        return Redirect::back();
+    }
+
+    public function delete($id, Request $request)
+    {
+        $location = Location::findOrFail($id);
+        $tour_option = TourOption::where('location_id', $location->id)->delete();
+        if($location->delete()){
+            $request->session()->flash('message.level', 'success');
+            $request->session()->flash('message.content', 'Location deleted successfully.');
         } else {
             $request->session()->flash('message.level', 'error');
             $request->session()->flash('message.content', 'Something went wrong.');
