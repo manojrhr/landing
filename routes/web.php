@@ -26,6 +26,10 @@ Route::get('/tour/{slug}', 'Web\TourController@single')->name('tour.single');
 
 Route::post('/tour/get_prices', 'Web\TourController@get_prices')->name('tour.get_prices');
 
+// PAYPAL ROUTES
+Route::get('paywithpaypal', array('as' => 'paywithpaypal','uses' => 'PaypalController@payWithPaypal',));
+Route::post('paypal', array('as' => 'paypal','uses' => 'PaypalController@postPaymentWithpaypal',));
+Route::get('paypal', array('as' => 'status','uses' => 'PaypalController@getPaymentStatus',));
 
 Route::group(['prefix' => 'admin' , 'as' => 'admin.'], function(){
 	Route::get('/login', 'Auth\AdminLoginController@showLoginForm')->name('login');

@@ -98,9 +98,11 @@
                             <h3 class="tour-booking-form-title">Book This Tour Below</h3>
 
                             <div class="form-tour-booking-block">
-                                <form>
+                                <form method="POST" id="payment-form" role="form" action="{!! URL::route('paypal') !!}" >
+                                {{ csrf_field() }}
                                     <input type="hidden" name="adult_rate" id="adult_rate" value=""/>
                                     <input type="hidden" name="child_rate" id="child_rate" value=""/>
+                                    <input type="hidden" name="amount" id="amount" value="{{ $tour->option[0]->adult_rate }}"/>
                                     <div class="wc-bookings-booking-form">
                                         <div
                                             class="wc-bookings-date-picker wc-bookings-date-picker-booking wc_bookings_field_start_date">
@@ -310,10 +312,11 @@ function price_count(){
     var childs = jQuery('#pickup_num_children').val();
     var adult_price = jQuery('#adult_rate').val();
     var child_price = jQuery('#child_rate').val();
-
+    
     var adult_total = adults * adult_price;
     var child_total = childs * child_price;
     var GTotal = adult_total + child_total;
+    jQuery('#amount').val(GTotal);
     jQuery('#total_price').html(GTotal);
 }
 
