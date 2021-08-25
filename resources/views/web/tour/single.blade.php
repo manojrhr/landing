@@ -99,6 +99,8 @@
 
                             <div class="form-tour-booking-block">
                                 <form>
+                                    <input type="hidden" name="adult_rate" id="adult_rate" value=""/>
+                                    <input type="hidden" name="child_rate" id="child_rate" value=""/>
                                     <div class="wc-bookings-booking-form">
                                         <div
                                             class="wc-bookings-date-picker wc-bookings-date-picker-booking wc_bookings_field_start_date">
@@ -111,7 +113,7 @@
                                     <div class="form-row-block">
                                         <span class="label-span">Pickup Location</span>
                                         <div class="select-form-input-div">
-                                            <select class="form-control select2" id="location">
+                                            <select class="form-control" id="location">
                                                 @foreach ($options as $option)
                                                     <option value="{{ $option->location->id }}" data-adult="{{ $option->location->adult_rate }}
                                                          data-child="{{ $option->location->child_rate }}">{{ $option->location->name }}</option>
@@ -124,14 +126,14 @@
                                             <div class="one-half left-one-half">
                                                 <span class="label-span">Number of Adults (Ages 12+)</span>
                                                 <input class="input-box" type="number" value="1" min="1" step="1"
-                                                    max="100" id="pickup_num_adults" required="">
-                                                <span class="cost_per_text">$110 per Adult</span>
+                                                    max="100" id="pickup_num_adults" onchange="price_count();" required="">
+                                                <span class="cost_per_text">$<span id="adult_price">{{ $tour->option[0]->adult_rate }}</span> per Adult</span>
                                             </div>
                                             <div class="one-half right-one-half">
                                                 <span class="label-span">Number of Children (Ages 3-11)</span>
                                                 <input class="input-box" type="number" value="0" min="0" step="1"
-                                                    max="100" id="pickup_num_children" required="">
-                                                <span class="cost_per_text">$83 per Child</span>
+                                                    max="100" id="pickup_num_children" onchange="price_count();" required="">
+                                                <span class="cost_per_text">$<span id="child_price">{{ $tour->option[0]->child_rate }}</span> per Child</span>
                                             </div>
                                         </div>
                                     </div>
@@ -143,10 +145,10 @@
                                     </div>
                                     <div class="tour_total_pricing">
                                         <h4 class="price_title">Total Tour Pricing</h4>
-                                        <h4 class="price" id="tour_price">$110.00</h4>
+                                        <h4 class="price" id="tour_price">$<span id="total_price">{{ $tour->option[0]->adult_rate }}</span>.00</h4>
                                     </div>
                                     <div class="submit-button-cover"><button type="submit"
-                                            class="form-tour-booking-button single_add_to_cart_button button disabled"
+                                            class="form-tour-booking-button single_add_to_cart_button button"
                                             style="">Book now</button></div>
                                 </form>
                             </div>
@@ -269,12 +271,52 @@
 @endsection
 
 @section('scripts')
+{{-- <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script> --}}
+
 <script>
-$(document).ready(function() {
-    $('select#location').select2({
-        templateResult: formatOutput
+
+jQuery(document).ready(function() {
+    jQuery("#location").change(function () {
+        var location_id = this.value;
+        var tour_id = {{ $tour->id }};
+        jQuery.ajax({
+            headers: {
+                'X-CSRF-TOKEN': '{{ csrf_token() }}'
+            },
+            url: "{{ route('tour.get_prices') }}",
+            type: 'POST',
+            data: {
+                "_token": "{{ csrf_token() }}",
+                "location_id": location_id,
+                "tour_id": tour_id
+            },
+            dataType: 'JSON',
+            success: function (data) {
+                if(data.success === true){
+                    jQuery('#adult_price').html(data.option.adult_rate);
+                    jQuery('#child_price').html(data.option.child_rate);
+                    jQuery('#adult_rate').val(data.option.adult_rate);
+                    jQuery('#child_rate').val(data.option.child_rate);
+                    price_count();
+                } else {
+                }
+            }
+        });
     });
 });
+
+function price_count(){
+    var adults = jQuery('#pickup_num_adults').val();
+    var childs = jQuery('#pickup_num_children').val();
+    var adult_price = jQuery('#adult_rate').val();
+    var child_price = jQuery('#child_rate').val();
+
+    var adult_total = adults * adult_price;
+    var child_total = childs * child_price;
+    var GTotal = adult_total + child_total;
+    jQuery('#total_price').html(GTotal);
+}
+
 function formatOutput (item) {
     var $state = $(item.element).data('adult') + ' ' + item.text;
     return $state;

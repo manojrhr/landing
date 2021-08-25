@@ -24,6 +24,8 @@ Auth::routes(['verify' => true]);
 Route::get('/tours', 'Web\TourController@tours')->name('tours');
 Route::get('/tour/{slug}', 'Web\TourController@single')->name('tour.single');
 
+Route::post('/tour/get_prices', 'Web\TourController@get_prices')->name('tour.get_prices');
+
 
 Route::group(['prefix' => 'admin' , 'as' => 'admin.'], function(){
 	Route::get('/login', 'Auth\AdminLoginController@showLoginForm')->name('login');

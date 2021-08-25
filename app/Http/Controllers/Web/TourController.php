@@ -24,4 +24,17 @@ class TourController extends Controller
         $options = TourOption::where('tour_id', $tour->id)->get();
         return view('web.tour.single', compact('tour', 'options'));
     }
+
+    public function get_prices(Request $request)
+    {
+        // dump($request->all());
+        $option = TourOption::where(['tour_id' => $request->tour_id, 'location_id' => $request->location_id])->first();
+        // dd($option);
+        if($option){
+            $response = ['success' => true, 'option' => $option];
+        } else {
+            $response = ['success' => true, 'message' => 'Tour not available for selected location'];
+        }
+        return json_encode($response);
+    }
 }
