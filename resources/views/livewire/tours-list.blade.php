@@ -7,7 +7,7 @@
 							<div class="search-tour">
 								<form class="d-flex flex-wrap justify-content-center">
 									<input class="tour-search-input" type="search" autocomplete="off" value=""
-										placeholder="Search our Tours...">
+										placeholder="Search our Tours..." wire:model="searchTerm" >
 									<button type="button" class="tour-filter-submit">
 										<i class="fa fa-search"></i>
 									</button>
