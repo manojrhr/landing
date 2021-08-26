@@ -78,12 +78,16 @@ Route::group(['prefix' => 'admin' , 'as' => 'admin.'], function(){
 	Route::get('/tour/{id}/edit', 'Web\Admin\TourController@edit')->name('tour.edit');
 	Route::post('/tour/{id}/edit', 'Web\Admin\TourController@update')->name('tour.edit.post');
 	Route::get('/tour/delete/{id}', 'Web\Admin\TourController@delete')->name('tour.delete');
-
+	
 	Route::post('/tour-option/{id}', 'Web\Admin\TourController@add_tour_options')->name('add_tour_options');
 	Route::get('/tour-option/{id}/delete', 'Web\Admin\TourController@tour_option_delete')->name('tour_option_delete');
-
+	
 	Route::get('update-email', 'Web\Admin\SettingController@getEmailUpdate')->name('getUpdateEmailForm');
 	Route::post('update-email', 'Web\Admin\SettingController@updateAdminEmail')->name('updateEmail');
+	
+	Route::get('/blog', 'Web\Admin\BlogController@index')->name('blog');
+	Route::get('/blog/create', 'Web\Admin\BlogController@create')->name('blog.create');
+	Route::post('/blog/create', 'Web\Admin\BlogController@store')->name('blog.store');
 
 	Route::get('change-password', 'Web\Admin\SettingController@getChangePassword')->name('getChangePassword');
 	Route::post('change-password', 'Web\Admin\SettingController@changePassword')->name('changePassword');
