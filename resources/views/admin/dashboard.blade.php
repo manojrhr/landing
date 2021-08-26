@@ -56,7 +56,6 @@
           </div>
         </div>
         <!-- ./col -->
-        -->
         <!-- ./col -->
         <div class="col-lg-3 col-xs-6">
           <!-- small box -->
@@ -83,7 +82,21 @@
             <div class="icon">
               <i class="fa fa-list"></i>
             </div>
-            <a href="#" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+            <a href="{{ route('admin.subcategory') }}" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+          </div>
+        </div>
+        <!-- col -->
+        <!-- small box -->
+        <div class="col-lg-3 col-xs-6">
+          <div class="small-box bg-green">
+            <div class="inner">
+              <h3>{{ $tour_count }}</h3>
+              <p>Tours</p>
+            </div>
+            <div class="icon">
+              <i class="fa fa-plane"></i>
+            </div>
+            <a href="{{ route('admin.tour') }}" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
           </div>
         </div>
         <!-- ./col -->

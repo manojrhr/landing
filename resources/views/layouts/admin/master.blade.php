@@ -157,7 +157,7 @@
         <li class="header">MAIN NAVIGATION</li>
         <li class="{{ request()->is('admin') ? 'active' : '' }}" {{ request()->is('dashboard') ? 'active' : ''}}><a href="{{ route('admin.dashboard') }}"><i class="fa fa-book"></i><span>Dashboard</span></a></li>
         <li class=""><a href="{{ route('admin.category') }}" {{ request()->is('admin/category') ? 'active' : ''}}><i class="fa fa-list"></i><span>Category</span></a></li>
-        <li class=""><a href="{{ route('admin.subcategory') }}"><i class="fa fa-list"></i><span>subcategory</span></a></li>
+        <li class=""><a href="{{ route('admin.subcategory') }}"><i class="fa fa-list"></i><span>Subcategory</span></a></li>
         {{-- <li class=""><a href="{{ route('admin.tour') }}"><i class="fa fa-list"></i><span>Tours</span></a></li> --}}
         <li class="treeview">
           <a href="{{ route('admin.tour') }}">
@@ -173,6 +173,7 @@
             {{-- <li><a href="pages/charts/morris.html"><i class="fa fa-circle-o"></i> Tours Attributes</a></li> --}}
           </ul>
         </li>
+        <li class=""><a href="{{ route('admin.blog') }}"><i class="fa fa-list"></i><span>Blog Post</span></a></li>
         {{-- <li class="{{ request()->is('admin/users') ? 'active' : '' }}"><a href="{{ route('admin.users') }}"><i class="fa fa-user"></i><span>Customer</span></a></li> --}}
         <!-- <li><a href=""><i class="fa fa-ship"></i><span>Jet Ski</span></a></li>
         <li><a href=""><i class="fa fa-ship"></i><span>Bookings</span></a></li>

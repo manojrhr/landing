@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Web\Admin;
 use App\Category;
 use App\Http\Controllers\Controller;
 use App\SubCategory;
+use App\Tour;
 use Illuminate\Http\Request;
 use App\User;
 use Auth;
@@ -32,7 +33,8 @@ class AdminController extends Controller
         $user_count = User::count();
         $category_count = Category::count();
         $sub_category_count = SubCategory::count();
-        return view('admin.dashboard', compact('user_count','category_count','sub_category_count'));
+        $tour_count = Tour::count();
+        return view('admin.dashboard', compact('user_count','category_count','sub_category_count','tour_count'));
     }
 
     public function markAllasRead(Request $request)
