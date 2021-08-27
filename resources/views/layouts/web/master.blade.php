@@ -107,7 +107,7 @@
                     <div class="row justify-content-right">
                         <div class="col-md-4">
                             <div class="logo">
-                                <a href="index.html"><img
+                                <a href="{{ route('home') }}"><img
                                         src="{{ asset('assets/web/images/kiuki-tours-logo-1-ws.svg') }}"
                                         alt="Kiuki Tours &amp; Transportation Jamaica"
                                         title="Kiuki Tours &amp; Transportation Jamaica" itemprop="logo" /></a>
@@ -135,7 +135,7 @@
                                                 class="menu-item-count"><i class="fas fa-caret-left"></i>0</span>
                                         </a>
                                     </li>
-                                    <li class="nav-item">
+                                    {{-- <li class="nav-item">
                                         <a class="search-link" href="#" title="search">
                                             <i class="fas fa-search"></i>
                                         </a>
@@ -147,7 +147,7 @@
                                                 <div class="buttonsearch"><i class="fas fa-times"></i></div>
                                             </form>
                                         </div>
-                                    </li>
+                                    </li> --}}
                                 </ul>
                             </div>
                         </div>
@@ -161,7 +161,7 @@
                     <div class="d-flex justify-content-between align-items-center mobile-nav-row">
                         <div class="mobile-one-half">
                             <div class="mobile-logo">
-                                <a href="index.html"><img src="{{ asset('assets/web/images/kiuki-tours-logo-ws.svg') }}"
+                                <a href="{{ route('home') }}"><img src="{{ asset('assets/web/images/kiuki-tours-logo-ws.svg') }}"
                                         alt="Kiuki Tours &amp; Transportation Jamaica"
                                         title="Kiuki Tours &amp; Transportation Jamaica" itemprop="logo" /></a>
                             </div>
@@ -174,7 +174,7 @@
                                             class="menu-item-count"><i class="fas fa-caret-left"></i>0</span>
                                     </a>
                                 </li>
-                                <li>
+                                {{-- <li>
                                     <a class="search-link" href="#" title="search">
                                         <i class="fas fa-search"></i>
                                     </a>
@@ -186,7 +186,7 @@
                                             <div class="buttonsearch"><i class="fas fa-times"></i></div>
                                         </form>
                                     </div>
-                                </li>
+                                </li> --}}
                                 <li>
                                     <a href="#responsive_menu" class="mobile-main navbar-toggle mobile-menu-toggle"><i
                                             class="fas fa-align-justify"></i></a>
@@ -431,13 +431,13 @@
                 <div class="footer-bottom">
                     <div class="container">
                         <div class="row">
-                            <div class="col-md-6">
+                            <div class="col-md-12 text-center">
                                 <p>© 2019 Kiuki Tours &amp; Transportation Ltd. All rights reserved.</p>
                             </div>
-                            <div class="col-md-6">
+                            {{-- <div class="col-md-6">
                                 <div class="text-clearfix">Powered by <a href="#" rel="nofollow"
                                         style="color: #fff;"><strong>Salcon</strong></a>.</div>
-                            </div>
+                            </div> --}}
                         </div>
                     </div>
                 </div>
@@ -594,6 +594,32 @@
                     }
                 ]
             });
+
+            
+			//Product Slider
+			jQuery('.product-slider').slick({
+				dots: false,
+				prevArrow: '<span class="slick-slide-arrow prev-arrow"><i class="fa fa-chevron-left" style=""></i></span>',
+				nextArrow: '<span class="slick-slide-arrow next-arrow"><i class="fa fa-chevron-right" style=""></i></span>',
+				infinite: true,
+				slidesToShow: 2,
+				slidesToScroll: 1,
+				responsive: [{
+						breakpoint: 768,
+						settings: {
+							slidesToShow: 1,
+							slidesToScroll: 1
+						}
+					},
+					{
+						breakpoint: 767,
+						settings: {
+							slidesToShow: 1,
+							slidesToScroll: 1
+						}
+					}
+				]
+			});
         });
     </script>
     @yield('scripts')
