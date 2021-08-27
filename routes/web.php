@@ -55,6 +55,14 @@ Route::group(['prefix' => 'admin' , 'as' => 'admin.'], function(){
 	Route::get('/category', 'Web\Admin\CategoryController@index')->name('category');
 	Route::get('/category/delete/{id}', 'Web\Admin\CategoryController@delete')->name('category.delete');
 
+	Route::get('/blogcategory/create', 'Web\Admin\BlogCategoryController@showForm')->name('blogcategory.create');
+	Route::post('/blogcategory/create', 'Web\Admin\BlogCategoryController@create')->name('blogcategory.create.post');
+	Route::get('/blogcategory/{id}/edit', 'Web\Admin\BlogCategoryController@edit')->name('blogcategory.edit');
+	Route::post('/blogcategory/{id}/edit', 'Web\Admin\BlogCategoryController@update')->name('blogcategory.edit.post');
+	Route::get('/blogcategory/{id}/delete', 'Web\Admin\BlogCategoryController@delete')->name('blogcategory.delete');
+	Route::get('/blogcategory', 'Web\Admin\BlogCategoryController@index')->name('blogcategory');
+	Route::get('/blogcategory/delete/{id}', 'Web\Admin\BlogCategoryController@delete')->name('blogcategory.delete');
+
 	Route::get('/location/{id?}', 'Web\Admin\LocationController@index')->name('location');
 	Route::post('/location/create', 'Web\Admin\LocationController@create')->name('location.create.post');
 	Route::post('/location/{id?}', 'Web\Admin\LocationController@update')->name('location.update');
