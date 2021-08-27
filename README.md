@@ -1,7 +1,6 @@
-## Delivery Project in Laravel
+## Kiuki Tours in Laravel
 
-Delivery Project in Laravel with APIs and Web:
+Kiuki Project in Laravel with APIs and Web:
 
-- User and Delivery Guy Login
+- User and Tours
 - Admin Area
-- App APIs

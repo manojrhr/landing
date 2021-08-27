@@ -26,6 +26,8 @@ Route::get('/tour/{slug}', 'Web\TourController@single')->name('tour.single');
 
 Route::post('/tour/get_prices', 'Web\TourController@get_prices')->name('tour.get_prices');
 
+Route::get('/blog', 'Web\BlogController@index')->name('blog');
+
 // PAYPAL ROUTES
 Route::get('paywithpaypal', array('as' => 'paywithpaypal','uses' => 'PaypalController@payWithPaypal',));
 Route::post('paypal', array('as' => 'paypal','uses' => 'PaypalController@postPaymentWithpaypal',));

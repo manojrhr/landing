@@ -176,7 +176,7 @@
         <li class="treeview">
           <a href="{{ route('admin.blog') }}">
             <i class="fa fa-comment"></i>
-            <span>Tours</span>
+            <span>Blog Posts</span>
             <span class="pull-right-container">
               <i class="fa fa-angle-left pull-right"></i>
             </span>
