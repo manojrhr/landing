@@ -22,6 +22,17 @@
                     enctype="multipart/form-data">
                     @csrf
                     <div class="form-group">
+                      <label for="category_id" class="col-sm-2 control-label">Select Blog Category</label>
+                        <div class="col-sm-10">
+                          <select class="form-control" name="category_id" id="category_id" required>
+                            {{-- <option value="" selected>-- Select Category --</option> --}}
+                            @foreach($categories as $category)
+                              <option value="{{$category->id}}" {{ $category->id === $blog->blog_category_id ? 'selected' : '' }}>{{$category->title}}</option>
+                            @endforeach
+                          </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
                         <label for="title" class="col-sm-2 control-label">Title</label>
 
                         <div class="col-sm-10">
@@ -51,14 +62,17 @@
                     <div class="form-group">
                       <label for="feature_image" class="col-sm-2 control-label">Featured Image</label>
   
-                      <div class="col-sm-10">
-                        <input type="file" name="feature_image" id="feature_image" required>
-  
+                      <div class="col-sm-4">
+                          <input type="file" name="feature_image" id="feature_image">
+                          
                           @error('feature_image')
                               <span class="invalid-feedback text-danger" role="alert">
                                   <strong>{{ $message }}</strong>
                               </span>
                           @enderror
+                      </div>
+                      <div class="col-sm-6">
+                          <img src="{{ asset($blog->feature_image) }}" width="200px"/>
                       </div>
                     </div>
                     <div class="form-group">

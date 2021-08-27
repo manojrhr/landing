@@ -173,7 +173,21 @@
             {{-- <li><a href="pages/charts/morris.html"><i class="fa fa-circle-o"></i> Tours Attributes</a></li> --}}
           </ul>
         </li>
-        <li class=""><a href="{{ route('admin.blog') }}"><i class="fa fa-list"></i><span>Blog Post</span></a></li>
+        <li class="treeview">
+          <a href="{{ route('admin.blog') }}">
+            <i class="fa fa-comment"></i>
+            <span>Tours</span>
+            <span class="pull-right-container">
+              <i class="fa fa-angle-left pull-right"></i>
+            </span>
+          </a>
+          <ul class="treeview-menu">
+            <li><a href="{{ route('admin.blog') }}"><i class="fa fa-comment"></i> Blog Posts</a></li>
+            <li><a href="{{ route('admin.blogcategory') }}"><i class="fa fa-circle-o"></i> Blog Category</a></li>
+            {{-- <li><a href="pages/charts/morris.html"><i class="fa fa-circle-o"></i> Tours Attributes</a></li> --}}
+          </ul>
+        </li>
+        {{-- <li class=""><a href="{{ route('admin.blog') }}"><i class="fa fa-list"></i><span>Blog Post</span></a></li> --}}
         {{-- <li class="{{ request()->is('admin/users') ? 'active' : '' }}"><a href="{{ route('admin.users') }}"><i class="fa fa-user"></i><span>Customer</span></a></li> --}}
         <!-- <li><a href=""><i class="fa fa-ship"></i><span>Jet Ski</span></a></li>
         <li><a href=""><i class="fa fa-ship"></i><span>Bookings</span></a></li>

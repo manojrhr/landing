@@ -102,7 +102,7 @@ class CategoryController extends Controller
         if($category->delete()){
             unlink($image);
             $request->session()->flash('message.level', 'success');
-            $request->session()->flash('message.content', 'Category created successfully.');
+            $request->session()->flash('message.content', 'Category deleted successfully.');
         } else {
             $request->session()->flash('message.level', 'error');
             $request->session()->flash('message.content', 'Something went wrong.');

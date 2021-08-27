@@ -110,7 +110,7 @@ class SubCategoryController extends Controller
         if($subcategory->delete()){
             unlink($image);
             $request->session()->flash('message.level', 'success');
-            $request->session()->flash('message.content', 'SubCategory created successfully.');
+            $request->session()->flash('message.content', 'SubCategory deleted successfully.');
         } else {
             $request->session()->flash('message.level', 'error');
             $request->session()->flash('message.content', 'Something went wrong.');

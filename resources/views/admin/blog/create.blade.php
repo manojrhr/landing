@@ -22,6 +22,17 @@
                     enctype="multipart/form-data">
                     @csrf
                     <div class="form-group">
+                      <label for="category_id" class="col-sm-2 control-label">Select Blog Category</label>
+                        <div class="col-sm-10">
+                          <select class="form-control" name="category_id" id="category_id" required>
+                            <option value="" selected>-- Select Blog Category --</option>
+                            @foreach($categories as $category)
+                              <option value="{{$category->id}}">{{$category->title}}</option>
+                            @endforeach
+                          </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
                         <label for="title" class="col-sm-2 control-label">Title</label>
 
                         <div class="col-sm-10">
