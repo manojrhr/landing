@@ -18,7 +18,7 @@
             </div>
             <!-- /.box-header -->
             <div class="box-body pad">
-                <form class="form-horizontal" method="post" action="{{ route('admin.blog.store')}}"
+                <form class="form-horizontal" method="post" action="{{ route('admin.blog.update', $blog->id)}}"
                     enctype="multipart/form-data">
                     @csrf
                     <div class="form-group">
@@ -26,7 +26,7 @@
 
                         <div class="col-sm-10">
                             <input type="text" class="form-control" id="title" name="title" placeholder="Title"
-                                value="{{ old('title') }}">
+                                value="{{ old('title', $blog->title) }}">
 
                             @error('title')
                             <span class="invalid-feedback text-danger" role="alert">
@@ -39,7 +39,7 @@
                         <label for="slug" class="col-sm-2 control-label">Slug</label>
 
                         <div class="col-sm-10">
-                            <input type="text" class="form-control" id="slug" name="slug" placeholder="Slug" value="{{ old('slug') }}">
+                            <input type="text" class="form-control" id="slug" name="slug" placeholder="Slug" value="{{ old('slug', $blog->slug) }}">
 
                             @error('slug')
                             <span class="invalid-feedback text-danger" role="alert">
@@ -66,7 +66,7 @@
     
                         <div class="col-sm-10">
                             <textarea id="editor1" name="body" rows="10" cols="80"
-                                style="visibility: hidden; display: none;">{{ old('body') }}</textarea>
+                                style="visibility: hidden; display: none;">{{ old('body', $blog->body) }}</textarea>
                             <div class="form-group">
                                 
                             @error('body')
@@ -81,7 +81,7 @@
                         <label for="meta_title" class="col-sm-2 control-label">Meta Title</label>
     
                         <div class="col-sm-10">
-                        <textarea type="text" class="form-control" id="meta_title" name="meta_title" placeholder="Meta Title" value="">{{ old('meta_title') }}</textarea>
+                        <textarea type="text" class="form-control" id="meta_title" name="meta_title" placeholder="Meta Title" value="">{{ old('meta_title', $blog->meta_title) }}</textarea>
                         {{-- <input type="text" class="form-control" id="description" name="description" placeholder="Description" value=""> --}}
     
                             @error('meta_title')
@@ -95,7 +95,7 @@
                         <label for="meta_description" class="col-sm-2 control-label">Meta Description</label>
     
                         <div class="col-sm-10">
-                        <textarea type="text" class="form-control" id="meta_description" name="meta_description" placeholder="Meta Description" value=""><{{ old('meta_description') }}/textarea>
+                        <textarea type="text" class="form-control" id="meta_description" name="meta_description" placeholder="Meta Description" value="">{{ old('meta_description', $blog->meta_description) }}</textarea>
                         {{-- <input type="text" class="form-control" id="description" name="description" placeholder="Description" value=""> --}}
     
                             @error('meta_description')
@@ -109,7 +109,7 @@
                         <label for="meta_keywords" class="col-sm-2 control-label">Meta Keywords</label>
     
                         <div class="col-sm-10">
-                        <textarea type="text" class="form-control" id="meta_keywords" name="meta_keywords" placeholder="Meta Keywords" value="">{{ old('meta_keywords') }}</textarea>
+                        <textarea type="text" class="form-control" id="meta_keywords" name="meta_keywords" placeholder="Meta Keywords" value="">{{ old('meta_keywords', $blog->meta_keywords) }}</textarea>
                         {{-- <input type="text" class="form-control" id="description" name="description" placeholder="Description" value=""> --}}
     
                             @error('meta_keywords')
@@ -121,7 +121,7 @@
                     </div>
                     <div class="form-group" style="margin-top: 15px">
                         <div class="col-sm-offset-2 col-sm-10">
-                        <button type="submit" class="btn btn-lg btn-danger">Create Post</button>
+                        <button type="submit" class="btn btn-lg btn-danger">Update Post</button>
                         </div>
                     </div>
                 </form>
@@ -142,9 +142,9 @@
   $(function () {
     // Replace the <textarea id="editor1"> with a CKEditor
     // instance, using default configuration.
-    CKEDITOR.replace('editor1')
+    CKEDITOR.replace('editor1');
     //bootstrap WYSIHTML5 - text editor
-    $('.textarea').wysihtml5()
+    $('.textarea').wysihtml5();
   })
   
 //   CKEDITOR.replace('wysiwyg-editor', {

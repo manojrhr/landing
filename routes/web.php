@@ -66,8 +66,6 @@ Route::group(['prefix' => 'admin' , 'as' => 'admin.'], function(){
 	Route::get('/location/{id?}', 'Web\Admin\LocationController@index')->name('location');
 	Route::post('/location/create', 'Web\Admin\LocationController@create')->name('location.create.post');
 	Route::post('/location/{id?}', 'Web\Admin\LocationController@update')->name('location.update');
-	// Route::post('/location/{id}/edit', 'Web\Admin\LocationController@update')->name('location.update');
-
 	Route::get('/location/{id}/edit', 'Web\Admin\LocationController@edit')->name('location.edit');
 	Route::get('/location/{id}/delete', 'Web\Admin\LocationController@delete')->name('location.delete');
 	Route::get('/location/delete/{id}', 'Web\Admin\LocationController@delete')->name('location.delete');
@@ -96,6 +94,9 @@ Route::group(['prefix' => 'admin' , 'as' => 'admin.'], function(){
 	Route::get('/blog', 'Web\Admin\BlogController@index')->name('blog');
 	Route::get('/blog/create', 'Web\Admin\BlogController@create')->name('blog.create');
 	Route::post('/blog/create', 'Web\Admin\BlogController@store')->name('blog.store');
+	Route::get('/blog/{id}/update', 'Web\Admin\BlogController@edit')->name('blog.edit');
+	Route::post('/blog/{id}/update', 'Web\Admin\BlogController@update')->name('blog.update');
+	Route::get('/blog/{id}/delete', 'Web\Admin\BlogController@delete')->name('blog.delete');
 
 	Route::get('change-password', 'Web\Admin\SettingController@getChangePassword')->name('getChangePassword');
 	Route::post('change-password', 'Web\Admin\SettingController@changePassword')->name('changePassword');

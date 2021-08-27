@@ -48,8 +48,8 @@
                                         <img src="{{ asset($post->feature_image) }}" height="50px"/>
                                     </td>
                                     <td>
-                                        {{-- <a class="btn btn-primary" href="{{ route('admin.category.edit', $category->id) }}">Edit</a>
-                                        <a  class="btn btn-danger" href="{{ route('admin.category.delete', $category->id) }}" onclick="return confirm('Are you sure?')">Delete</a> --}}
+                                        <a class="btn btn-primary" href="{{ route('admin.blog.edit', $post->id) }}">Edit</a>
+                                        <a  class="btn btn-danger" href="{{ route('admin.blog.delete', $post->id) }}" onclick="return confirm('Are you sure?')">Delete</a>
                                     </td>
                                 </tr>
                                 <?php $i++; ?>

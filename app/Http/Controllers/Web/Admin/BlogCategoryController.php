@@ -136,7 +136,7 @@ class BlogCategoryController extends Controller
         
         if($request->hasFile('img')){
             $image = $category->image;
-            if(file_exists(public_path().$image)){
+            if(file_exists($image)){
                 unlink($image);
             }
             $avatar = $request->file('img');
