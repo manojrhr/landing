@@ -13,4 +13,13 @@ class BlogController extends Controller
         $blogs = Blog::all();
         return view('web.blog.blog', compact('blogs'));
     }
+
+    public function single($slug)
+    {
+        $post = Blog::where('slug', $slug)->first();
+        if(!$post){
+            abort(404);
+        }
+        return view('web.blog.single', compact('post'));
+    }
 }

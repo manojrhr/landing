@@ -26,27 +26,27 @@
                             <div class="blog-post-list">
                                 <div class="blog-post-item">
                                     <div class="blog-post-img">
-                                        <a href="hello-world.html" class="blog-post-background-cover" title="Hello world!" 
+                                        <a href="{{ route('blog.single', $post->slug) }}" class="blog-post-background-cover" title="Hello world!" 
                                                 style="background-image:url({{ asset($post->feature_image) }})"></a>
                                         <a class="post-category-button" href="uncategorized.html" rel="category tag">{{ $post->category->title }}</a>
                                     </div>
                                     <div class="blog-post-content">
                                         <div class="post-grid-desc">
                                             <h2 class="post-grid-title">
-                                                <a href="hello-world.html" class="bdt-post-grid-link"
+                                                <a href="{{ route('blog.single', $post->slug) }}" class="bdt-post-grid-link"
                                                     title="Hello world!">{{ $post->title }}</a>
                                             </h2>
                                             <div class="post-grid-excerpt">
                                                 <p>{!! $post->body !!}</p>
                                             </div>
-                                            <a href="#" class="post-grid-readmore">
+                                            <a href="{{ route('blog.single', $post->slug) }}" class="post-grid-readmore">
                                                 Read More
                                                 <i aria-hidden="true" class="fa-fw fas fa-caret-right"></i>
                                             </a>
                                         </div>
                                         <div
                                             class="d-flex flex-wrap align-items-center justify-content-center post-grid-meta">
-                                            <span class="post-grid-date">October 25, 2019</span>
+                                            <span class="post-grid-date">{{ date("F j, Y", strtotime($post->created_at)) }}</span>
                                             <span class="post-grid-comments"><i class="far fa-comment"></i> 1</span>
                                         </div>
                                     </div>
@@ -142,8 +142,4 @@
 @endsection
 
 @section('scripts')
-<script>
-    jQuery("body").attr('class', 'bg-fixed banner-news');
-    console.log('here')
-</script>
 @endsection

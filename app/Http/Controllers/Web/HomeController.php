@@ -30,7 +30,7 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $categories = Category::all();
+        $categories = Category::all()->take(3);
         return view('web.home', compact('categories'));
     }
 
