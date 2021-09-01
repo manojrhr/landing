@@ -4,10 +4,10 @@ namespace App\Http\Controllers\Web;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\JetSki;
 use App\Booking;
 use Redirect;
 use App\Repositories\BookingRepository as BookingRepo;
+use App\Tour;
 use DateTime;
 use Validator;
 use Stripe\Exception\ApiErrorException;
@@ -21,100 +21,88 @@ class BookingController extends Controller
      */
     public function __construct()
     {
-        $this->middleware(['auth:web', 'verified']);
+        // $this->middleware(['auth:web', 'verified']);
     }
 
     public function index($slug)
     {
-        $jetski = JetSki::with(['user'])->where('slug', '=', $slug)->first();
-        if(!$jetski){
-            abort(404);
-        }
-        if(Auth::check() && Auth::user()->id == $jetski->user_id){
-            $request->session()->flash('message.level', 'error');
-            $request->session()->flash('message.content', "You cannot book your own Jet Ski");
-            return Redirect::route('user.profile');
-        }
-        return view('web.booking', compact('jetski'));
+
     }
 
-    public function save(Request $request, $slug)
-    {        
-        $time_input = $request->pickup_time;
-        $request->pickup_time = DateTime::createFromFormat( 'H:i', $time_input)->format( 'H:i:s');
-        // dd($request->pickup_time);
-        $response_array = BookingRepo::create($request, $slug)->getData();
-
-        if($response_array->success){
-            $request->session()->flash('message.level', 'success');
-            $request->session()->flash('message.content', 'Booking Inquiry submitted successfully.!');
-            return Redirect::route('payment',$response_array->booking->uid);
-        } else {
-            $request->session()->flash('message.level', 'error');
-            $request->session()->flash('message.content', $response_array->message);
-            return Redirect::back()->withInput();
-        }
-    }
-
-    public function payment($uid)
+    public function save($slug, Request $request)
     {
-        $booking = Booking::where('uid', $uid)->with(['jetski', 'seller'])->first();
-        if($booking->payment_success && $booking->charge_id){
-            $request->session()->flash('message.level', 'success');
-            $request->session()->flash('message.content', 'Booking payment is already done.');
-            return Redirect::route('user.profile');
-        }
-        // dump($booking->jetski);
-        // dd($booking);
-        return view('web.payment', compact('booking'));
-    }
+        $validator = Validator::make($request->all(), [
+            'location_id' => 'required|integer',
+            'date' => 'required',
+            'adult_rate' => 'required|integer',
+            'child_rate' => 'required|integer',
+            'amount' => 'required|integer',
+            'adult_count' => 'required|integer',
+            'child_count' => 'required|integer'
+        ], $messages = [
+            'location_id.required' => 'Something went wrong. Please refresh the page.',
+            'date.required' => 'Something went wrong. Please refresh the page.',
+            'adult_rate.required' => 'Something went wrong. Please refresh the page.',
+            'child_rate.required' => 'Something went wrong. Please refresh the page.',
+            'amount.required' => 'Something went wrong. Please refresh the page.',
+            'adult_count.required' => 'Number of adults required.',
+            'child_count.required' => 'Number of childs required.',
+            
+            'location_id.integer' => 'Something went wrong. Please refresh the page.',
+            'adult_rate.integer' => 'Something went wrong. Please refresh the page.',
+            'child_rate.integer' => 'Something went wrong. Please refresh the page.',
+            'amount.integer' => 'Something went wrong. Please refresh the page.',
+            'adult_count.integer' => 'Number of adults are invalid.',
+            'child_count.integer' => 'Number of childs are invalid.',
+        ]);
 
-    public function charge($uid, Request $request)
-    {
-    	$validator = Validator::make($request->all(), [
-    		'token' => 'required | string',
-		]);
-		
         if ($validator->fails()) {
             $errors = implode(',', $validator->messages()->all());
             $request->session()->flash('message.level', 'error');
             $request->session()->flash('message.content', $errors);
             return Redirect::back();
         }
-        
-        $booking = Booking::where('uid', $uid)->with(['jetski', 'seller'])->first();
-        if($booking->payment_success && $booking->charge_id){
-            $request->session()->flash('message.level', 'success');
-            $request->session()->flash('message.content', 'Booking payment is already done.');
-            return Redirect::route('user.profile');
+
+        $tour = Tour::where('slug', $slug)->first();
+        if(!$tour){
+            abort(404);
         }
-
-        $admin_charges = admin_charges();
-        $seller_percent = 100-$admin_charges;
-        $seller_amount = ((int)$booking->amount*100)*$seller_percent/100;
-
-// dump($booking->seller->stripe_connect_id);
-// dump($admin_charges);
-// dump($seller_amount);
-// dump($booking->seller->completed_stripe_onboarding);
-// dump($request->token);
-// dump((int)$booking->amount);
-// dump((int)$booking->amount*100);
-// dd($request);
-
-        if(!$booking->seller->completed_stripe_onboarding){
+        
+        $adult_total = $request->adult_count * $request->adult_rate;
+        $child_total = $request->child_count * $request->child_rate;
+        $total_amount = $adult_total + $child_total;
+        if ($total_amount != $request->amount) {
             $request->session()->flash('message.level', 'error');
-            $request->session()->flash('message.content', 'Cannot book this Jet Ski. Please try other one');
+            $request->session()->flash('message.content', 'Something went wrong. Please refresh the page.');
             return Redirect::back();
         }
 
+        $booking = new Booking();
+        $booking->tour_id = $tour->id;
+        // $booking-> = $request->
+        $booking->location_id = $request->location_id;
+        $booking->date = $request->date;
+        $booking->adult_rate = $request->adult_rate;
+        $booking->child_rate = $request->child_rate;
+        $booking->total_amount = $request->amount;
+        $booking->adult_count = $request->adult_count;
+        $booking->child_count = $request->child_count;
+        if($request->has('pickup_info')){
+            $booking->pickup_info = $request->pickup_info;
+        }
+        $booking->save();
 
-        $booking->update(['charge_id' => $charge->id, 'payment_success' => true]);
-        // $booking->update(['payment_success' => true]);
-        $booking->fresh();
+        if($booking->save()){
+            return Redirect::route('checkout', $slug);
+        } else {
+            $request->session()->flash('message.level', 'error');
+            $request->session()->flash('message.content', 'Something went wrong.');
+            return Redirect::back()->withInput();
+        }
+    }
 
-        $request->session()->flash('message.level', 'success');
-        $request->session()->flash('message.content', 'Booking payment is succesful.');
-        return Redirect::route('user.profile');
+    public function checkout($slug)
+    {
+        return view('web.booking.checkout');
     }
 }

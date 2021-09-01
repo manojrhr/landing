@@ -8,64 +8,77 @@
 
 @section('content')
 
-    <div class="main">
+<!-- #Main Content-->
+<div id="main-content">
 
 
-        <!-- Sing in  Form -->
-        <section class="sign-in">
-            <div class="container login-box ">
-                <div class="signin-content">
-                    <div class="signin-image">
-                        <figure><img src="assets/web/img/login-img/login-hero.png" alt="sing up image"></figure>
-                    </div>
-                    <div class="signin-form">
-                        <h2 class="form-title">Log in</h2>
-                        @if(count( $errors ) > 0)
-                            <div class="alert alert-danger" role="alert">
-                                <ul>
-                                    @foreach ($errors->all() as $error)
-                                        <li>{{ $error }}</li>
-                                    @endforeach
-                                </ul>
+    <!-- Section Login One -->
+    <div class="section-login-one">
+        <div class="container">
+        
+            <div class="main-user-form">
+                <h1 class="form-title">Login</h1>
+                <div class="inner-form-user">
+                    @if(count( $errors ) > 0)
+                        <div class="alert alert-danger" role="alert">
+                            <ul>
+                                @foreach ($errors->all() as $error)
+                                    <li>{{ $error }}</li>
+                                @endforeach
+                            </ul>
+                        </div>
+                    @endif
+                    <form method="POST" class="needs-validation" id="login-form" action="{{route('login')}}" novalidate>
+                        @csrf
+                        <div class="form-group">
+                            <label class="form-label" for="username">Username or email address&nbsp;<span class="required">*</span></label>
+                            {{-- <input type="text" class="form-control form-Input-text" name="username" id="username" autocomplete="username" value="" required> --}}
+                            <input type="text" class="form-control form-Input-text" name="email" id="email" placeholder="Email/Phone" autocomplete="username" value="" required/>
+                            @error('email')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label" for="password">Password &nbsp;<span class="required">*</span></label>
+                            {{-- <input type="text" class="form-control form-Input-text" name="password" id="password" autocomplete="password" value="" required> --}}
+                            <input type="password" class="form-control form-Input-text" name="password" id="password" placeholder="Password"/>
+                            @error('password')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
+                        </div>
+                        
+                        <div class="form-group form-check form-check-inline">
+                           {{-- <input class="form-check-input" type="checkbox" id="rememberme" value="forever">
+                           <label class="form-check-label" for="rememberme">Remember me</label> --}}
+                           <input type="checkbox" name="remember" id="remember" class="form-check-input" {{ old('remember') ? 'checked' : '' }}/>
+                           <label for="remember" class="form-check-label"><span><span></span></span>Remember me</label>
+                        </div>
+                        <div class="form-group user-submit-cover">
+                            <button type="submit" class="form-submit" id="login-button">Log in</button>
+                        </div>
+                        <div class="row justify-content-between">
+                            {{-- <div class="col-md-6 sign-up">
+                                Don't have an account? <a href="{{route('register')}}">Sign Up</a>
+                            </div> --}}
+                            <div class="col-md-12 lost-password text-right">
+                                <a href="{{ route('password.request') }}">Lost your password?</a>
                             </div>
-                        @endif
-                        <form method="POST" class="register-form" id="login-form" action="{{route('login')}}">
-                            @csrf
-                            <div class="form-group">
-                                <label for="email"><i class="zmdi zmdi-account material-icons-name"></i></label>
-                                <input type="text" name="email" id="email" placeholder="Email/Phone"/>
-                                @error('email')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                            </div>
-
-                            <div class="form-group">
-                                <label for="password"><i class="zmdi zmdi-lock"></i></label>
-                                <input type="password" name="password" id="password" placeholder="Password"/>
-                                @error('password')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                            </div>
-                            <div class="form-group">
-                                <input type="checkbox" name="remember" id="remember" class="agree-term" {{ old('remember') ? 'checked' : '' }}/>
-                                <!-- <input class="form-check-input" type="checkbox" name="remember" id="remember" {{ old('remember') ? 'checked' : '' }}> -->
-                                <label for="remember" class="label-agree-term"><span><span></span></span>Remember me</label>
-                            </div>
-                            <div class="form-group form-button">
-                                <input type="submit" name="signin" id="signin" class="form-submit" value="Log in"/>
-                                <a href="{{route('register')}}" class="signup-image-link mt-2">Create an account</a>
-                            </div>
-                        </form>
-                    </div>
+                        </div>
+                    </form>
                 </div>
             </div>
-        </section>
+        
+        </div>
     </div>
-
+    
+    
+    </div>
+    <!-- End #Main Content-->
+@endsection
 
 @section('scripts')
 

@@ -1,50 +1,59 @@
-@extends('layouts/web/web')
+@extends('layouts/web/master')
+
+
+@section('styles')
+    <link href="{{ asset('assets/web/css/login-style.css') }}" rel="stylesheet">
+    <link rel="stylesheet" href="{{ asset('assets/web/fonts/material-icon/css/material-design-iconic-font.min.css') }}">
+@endsection
 
 @section('content')
 
-<div class="site-section login-register-main">
-    <div class="container" style="margin-top: 80px">
-        <div class="row justify-content-center">
-            <div class="col-md-8">
-                <div class="card">
-                    <div class="card-header">{{ __('Reset Password') }}</div>
-
-                    <div class="card-body login-register-main">
-                        @if (session('status'))
-                        <div class="alert alert-success" role="alert">
-                            {{ session('status') }}
-                        </div>
-                        @endif
-
-                        <form method="POST" action="{{ route('password.email') }}">
-                            @csrf
-
-                            <div class="form-group row">
-                                <label for="email" class="col-md-4 col-form-label text-md-right">{{ __('Phone/E-Mail Address') }}</label>
-
-                                <div class="col-md-6">
-                                    <input id="email" type="text" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus>
-
-                                    @error('email')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                    @enderror
-                                </div>
-                            </div>
-
-                            <div class="form-group row mb-0">
-                                <div class="col-md-6 offset-md-4">
-                                    <button type="submit" class="btn btn-primary">
-                                        {{ __('Send Password Reset Link') }}
-                                    </button>
-                                </div>
-                            </div>
-                        </form>
+<!-- #Main Content-->
+<div id="main-content">
+    <!-- Section Login One -->
+    <div class="section-login-one">
+        <div class="container">
+            <div class="main-user-form">
+                <h1 class="form-title">Lost Password</h1>
+                <p>Lost your password? Please enter your username or email address. You will receive a link to create a
+                    new password via email.</p>
+                <div class="inner-form-user inner-form-lost">
+                    @if(count( $errors ) > 0)
+                    <div class="alert alert-danger" role="alert">
+                        <ul>
+                            @foreach ($errors->all() as $error)
+                            <li>{{ $error }}</li>
+                            @endforeach
+                        </ul>
                     </div>
+                    @endif
+                    <form class="needs-validation" method="POST" action="{{ route('password.email') }}" novalidate>
+                        @csrf
+                        <div class="form-group">
+                            <label class="form-label" for="email">Username or email address</label>
+                            <input type="text" class="form-control form-Input-text" name="email" id="email"
+                                autocomplete="email" value="{{ old('email') }}" required>
+                            @error('email')
+                            <span class="invalid-feedback" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                            @enderror
+                        </div>
+                        <div class="form-group user-submit-cover">
+                            <button type="submit" class="form-submit">Reset password</button>
+                        </div>
+                        <div class="log-in">
+                            Remembered your password? <a href="{{ route('login') }}">Login here</a>
+                        </div>
+                    </form>
                 </div>
             </div>
         </div>
     </div>
 </div>
+<!-- End #Main Content-->
+@endsection
+
+@section('scripts')
+
 @endsection
