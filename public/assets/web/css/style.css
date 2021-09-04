@@ -833,12 +833,13 @@ p{ margin-bottom:20px;}
 .inner-form-user .form-group{ margin:0 0 10px;}
 .inner-form-user .form-group label{ font-size:14px; font-weight:700; line-height:2.2; margin:0;}
 .inner-form-user .form-group .form-label-checkbox input, .inner-form-user .form-row .form-label-checkbox span{ vertical-align:middle;}
-.inner-form-user .form-group .required{ color:#ff0000;}
+.form-group .required{ color:#ff0000;}
 .form-Input-text{ width:100%; padding:13px 15px; border:1px solid #dedee5;}
-.form-submit{ background:#f85a08; border-radius:50px; color:#fff; line-height:1; padding:14px 16px; font-weight:700; border:0;}
+.form-submit{ background:#f85a08; border-radius:0px; color:#fff; line-height:1; padding:12px 30px; font-weight:700; border:0;}
 .form-submit:hover{ background:#e25306; color:#fff;}
-.inner-form-user .form-control.is-invalid, .inner-form-user .was-validated .form-control:invalid{ background-image:none;}
-.inner-form-user .form-control.is-valid, .inner-form-user .was-validated .form-control:valid{ background-image:none; border-color:#dedee5;}
+.form-control.is-invalid, .was-validated .form-control:invalid{ background-image:none;}
+.form-control.is-valid, .was-validated .form-control:valid{ background-image:none;}
+.form-check-input.is-valid~.form-check-label, .was-validated .form-check-input:valid~.form-check-label{}
 /*Lost Password*/
 .inner-form-lost{ border:0; padding:0; margin:0;}
 
@@ -850,11 +851,74 @@ p{ margin-bottom:20px;}
 .policy-content h2{ color:#f85a08; font-size:37px; font-weight:400; margin:0 0 20px; line-height:1.2;}
 .policy-content h3{ color:#f85a08; font-size:24px; font-weight:400; margin:0 0 20px; line-height:1.2;}
 
+/*Checout Page*/
+.section-checkout-one{ margin:60px 0;}
+.toggle-login-checout i, .toggle-login-coupon{ margin-right:5px;}
+.checout-login-button, .coupon-login-button{ border:0; background:transparent; color:#f85a08; text-decoration:underline;}
+.checout-login-button:hover, .coupon-login-button:hover{ color:#e25306;}
+.checout-login-button:focus, .coupon-login-button:focus{ outline:0;}
+.block-form-login{ border:1px solid #dedee5; padding:30px; margin:24px 0;}
+.toggle-login-coupon{ margin:23px 0;}
+.block-form-coupon{}
+.block-form-coupon p{ margin-bottom:13px;}
+.block-form-coupon .form-Input-text{ width:100%; max-width:350px;}
+.customer_details{ padding-top:30px;}
+.note-form{ font-weight:bold; color:red; line-height:normal;}
+.order-review{ border:2px solid #f85a08; padding:22px 25px 25px;}
+.checkout-payment{ padding-top:23px; border-top:1px solid #e1e1e1;}
+.checkout-step-title{ font-size:16px; font-weight:600; margin-bottom:16px; padding-bottom:16px; border-bottom:1px solid #e1e1e1; text-transform:uppercase; color:#f85a08;}
 
+.form-submit-checkout{ background:#f85a08; border-radius:0px; color:#fff; line-height:1; padding:14px 16px; border:0; width:100%;}
+.form-submit-checkout:hover{ background:#e25306; color:#fff;}
+
+.payment_methods{ padding:0; margin:0; text-align:right;}
+.payment_methods li{ list-style:none; margin-bottom:23px;}
+.payment_methods label{ margin:0; color:#f85a08;}
+.payment_methods .payment_box{ font-size:87%;}
+
+.product_cart_head{ border-bottom:1px solid #e1e1e1; margin-bottom:12px; color:#f85a08; padding-bottom:12px;}
+.product_cart_head .product-head-label{ padding-right:10px;}
+.product_cart_head .product-head-label-total{ padding-left:10px;}
+.product_cart_item{ border-bottom:1px solid #e1e1e1; margin-bottom:12px;}
+.product_cart_item .product-name{ padding-right:10px; padding-bottom:12px; color:#0c3c60;}
+.product_cart_item .product-total{ padding-left:10px; padding-bottom:12px;}
+.product_cart_item .product-total .price-amount{}
+.product_cart_item dl{ font-size:82%; line-height:normal; color:#6d7680; margin:0;}
+.product_cart_item dd, .product_cart_item dt{ display:inline-block; font-weight:normal; margin:0;}
+.product_cart_item dd p, .product_cart_item dt p{ display:inline-block; margin:0;}
+
+.cart-subtotal, .order-total{}
+.cart-subtotal .subtotal-label, .order-total .order-total-label{ padding-right:10px; padding-bottom:12px;}
+.product_cart_head{ color:#f85a08;}
+.cart-payment-method .payment-method-label{ padding-right:10px; padding-bottom:12px;}
+.cart-payment-method .payment-method-by{ padding-left:10px; padding-bottom:12px;}
+.cart-subtotal .subtotal-amount, .order-total .order-total-amount{ padding-left:10px; padding-bottom:12px; font-weight:600;}
+.order-total{ font-size:23px; color:#f85a08;}
+
+/*Order Recived*/
+.section-order-recived-one{ margin:60px 0;}
+.order-received{ color:#f85a08; text-transform:uppercase; font-size:25px; margin:0 0 23px; text-align:center; line-height:1;}
+.order-overview-wrapper{ text-align:center;}
+.order-overview{ padding:1vw 2.7vw; margin-bottom:30px; border:1px dashed #e1e1e1; display:inline-block; color:#f85a08;}
+.order-overview li strong{ color:#888; font-weight:400;}
+.order-details-title{ font-size:28px; color:#f85a08; font-weight:600;}
+.block-order-details .order-total{ font-size:15px;}
+
+.cart-checkout-nav{ padding-bottom:2.3vw; margin-bottom:2.3vw; font-size:21px; line-height:1.4; text-transform:uppercase; text-align:center; counter-reset:css-counter 0;}
+.cart-checkout-nav .link-nav-step{ color:#888; display:-webkit-inline-box; display:-ms-inline-flexbox; display:inline-flex; -webkit-box-align:center; -ms-flex-align:center; align-items:center; counter-increment:css-counter 1;}
+.cart-checkout-nav .link-nav-step:before{ content:counter(css-counter); font-size:18px; color:#888; border:1px solid #888; width:30px; height:30px; border-radius:100%; margin-right:7px; display:-webkit-inline-box; display:-ms-inline-flexbox; display:inline-flex; -webkit-box-align:center; -ms-flex-align:center; align-items:center; -webkit-box-pack:center; -ms-flex-pack:center; justify-content:center;}
+.cart-checkout-nav .link-nav-step:not(:last-child):after{content:''; display:-webkit-inline-box; display:-ms-inline-flexbox; display:inline-flex; border-bottom:1px solid #e1e1e1; min-width:120px; vertical-align:middle; margin:0 20px;}
+
+.cart-checkout-nav .link-nav-step.active{ color:#f85a08;}
+.cart-checkout-nav .link-nav-step.active:before{ background:#f85a08; color:#fff; border-color:#f85a08;}
+.pointer-none{ pointer-events:none;}
 
 /*Responsive*/
 @media (min-width: 1200px){
 .post-grid-desc{ padding:40px;}	
+}
+@media (max-width:991px) {
+.cart-checkout-nav{ display:none!important;}
 }
 /* IPHONE
 
@@ -957,8 +1021,9 @@ p{ margin-bottom:20px;}
 .search-result-data{ padding-left:22px; padding-right:22px;}
 .post-thumbnail-div-link{ width:100%; padding-right:0;}
 .search-post-text{ width:100%;}
+.form-title{ font-size:30px;}
+.order-review{ margin-top:30px;}
 }
-
 
 @media (max-width:438px) {
 .transfer-div.shared-transfer{ max-width:50%;}
@@ -998,6 +1063,8 @@ p{ margin-bottom:20px;}
 .divider-block-new{ padding:0;}
 .divider-block-new:last-child{ display:none;}
 }
+
+
 
 
 
