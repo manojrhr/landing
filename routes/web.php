@@ -107,6 +107,10 @@ Route::group(['prefix' => 'admin' , 'as' => 'admin.'], function(){
 
 	Route::get('change-password', 'Web\Admin\SettingController@getChangePassword')->name('getChangePassword');
 	Route::post('change-password', 'Web\Admin\SettingController@changePassword')->name('changePassword');
+
+	Route::get('booking', 'Web\Admin\BookingController@index')->name('bookings');
+	Route::get('booking/single/{booking_id}', 'Web\Admin\BookingController@single')->name('booking.single');
+
 });
 
 Route::post('/contact', 'Web\HomeController@contact')->name('post.contact');

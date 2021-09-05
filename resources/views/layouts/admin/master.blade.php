@@ -187,6 +187,7 @@
             {{-- <li><a href="pages/charts/morris.html"><i class="fa fa-circle-o"></i> Tours Attributes</a></li> --}}
           </ul>
         </li>
+        <li class=""><a href="{{ route('admin.bookings') }}"><i class="fa fa-graph"></i><span>Bookings</span></a></li>
         {{-- <li class=""><a href="{{ route('admin.blog') }}"><i class="fa fa-list"></i><span>Blog Post</span></a></li> --}}
         {{-- <li class="{{ request()->is('admin/users') ? 'active' : '' }}"><a href="{{ route('admin.users') }}"><i class="fa fa-user"></i><span>Customer</span></a></li> --}}
         <!-- <li><a href=""><i class="fa fa-ship"></i><span>Jet Ski</span></a></li>
