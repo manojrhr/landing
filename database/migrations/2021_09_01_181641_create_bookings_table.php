@@ -15,6 +15,7 @@ class CreateBookingsTable extends Migration
     {
         Schema::create('bookings', function (Blueprint $table) {
             $table->id();
+            $table->integer('booking_id')->unique();
             $table->unsignedBigInteger('user_id')->nullable();
             $table->unsignedBigInteger('tour_id');
             $table->unsignedBigInteger('location_id');
@@ -24,6 +25,11 @@ class CreateBookingsTable extends Migration
             $table->integer('total_amount');
             $table->integer('adult_count');
             $table->integer('child_count');
+            $table->string('amount_charged')->nullable();
+            $table->string('payment_id')->nullable();
+            $table->string('token')->nullable();
+            $table->string('payer_id')->nullable();
+            $table->string('payment_status')->nullable();
             $table->text('pickup_info')->nullable();
             $table->timestamps();
         });

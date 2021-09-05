@@ -5,11 +5,13 @@ namespace App\Http\Controllers\Web;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Booking;
+use App\Location;
 use Redirect;
 use App\Repositories\BookingRepository as BookingRepo;
 use App\Tour;
 use DateTime;
 use Validator;
+use Session;
 use Stripe\Exception\ApiErrorException;
 
 class BookingController extends Controller
@@ -77,32 +79,64 @@ class BookingController extends Controller
             return Redirect::back();
         }
 
-        $booking = new Booking();
-        $booking->tour_id = $tour->id;
-        // $booking-> = $request->
-        $booking->location_id = $request->location_id;
-        $booking->date = $request->date;
-        $booking->adult_rate = $request->adult_rate;
-        $booking->child_rate = $request->child_rate;
-        $booking->total_amount = $request->amount;
-        $booking->adult_count = $request->adult_count;
-        $booking->child_count = $request->child_count;
-        if($request->has('pickup_info')){
-            $booking->pickup_info = $request->pickup_info;
-        }
-        $booking->save();
+        // $latest_booking = Booking::latest()->first();
+        // if($latest_booking){
+        //     $booking_id = $latest_booking->booking_id + 1;
+        // } else {
+        //     $booking_id = 10001;
+        // }
 
-        if($booking->save()){
-            return Redirect::route('checkout', $slug);
-        } else {
-            $request->session()->flash('message.level', 'error');
-            $request->session()->flash('message.content', 'Something went wrong.');
-            return Redirect::back()->withInput();
+        // $booking[];
+        $booking['tour_id'] = (int)$tour->id;
+        // $booking['booking_id'] = $booking_id;
+        $booking['location_id'] = (int)$request->location_id;
+        $booking['date'] = date('Y-m-d', strtotime($request->date));
+        $booking['adult_rate'] = (int)$request->adult_rate;
+        $booking['child_rate'] = (int)$request->child_rate;
+        $booking['total_amount'] = (int)$request->amount;
+        $booking['adult_count'] = (int)$request->adult_count;
+        $booking['child_count'] = (int)$request->child_count;
+        if($request->has('pickup_info')){
+            $booking['pickup_info'] = $request->pickup_info;
         }
+        // $booking->save();
+        $request->session()->forget('booking');
+        $request->session()->push('booking', $booking);
+        $request->session()->put('tour_slug', $slug);
+        return Redirect::route('checkout', $slug);
+        // if($request->session()->push('booking', $booking)){
+        //     return Redirect::route('checkout', [$booking->booking_id, $slug]);
+        // } else {
+        //     $request->session()->flash('message.level', 'error');
+        //     $request->session()->flash('message.content', 'Something went wrong.');
+        //     return Redirect::back()->withInput();
+        // }
     }
 
-    public function checkout($slug)
+    public function checkout($slug, Request $request)
     {
-        return view('web.booking.checkout');
+        $booking = (object)$request->session()->get('booking')[0];
+        // dd($booking);
+        // $booking = Booking::where('booking_id', $booking_id)->firstOrFail();
+        $tour = Tour::where('slug', $slug)->firstOrFail();
+        $location = Location::findOrFail($booking->location_id);
+        return view('web.booking.checkout', compact('booking', 'tour', 'location'));
+    }
+
+    public function paymentSuccess(Request $request)
+    {
+        // dump($request->session());
+        $tour_slug = $request->session()->get('tour_slug');
+        // dd($tour_slug);
+        Session::flush();
+        // dd($request->session());
+        // $booking = (object)$request->session()->get('booking')[0];
+        // // dd($booking);
+        // // $booking = Booking::where('booking_id', $booking_id)->firstOrFail();
+        // $tour = Tour::where('slug', $slug)->firstOrFail();
+        // $location = Location::findOrFail($booking->location_id);
+        $request->session()->flash('message.level', 'success');
+        $request->session()->flash('message.content', 'Payment success !!');
+        return view('web.booking.success', compact('tour_slug'));
     }
 }

@@ -31,7 +31,7 @@
                     <form method="POST" class="needs-validation" id="login-form" action="{{route('login')}}" novalidate>
                         @csrf
                         <div class="form-group">
-                            <label class="form-label" for="username">Username or email address&nbsp;<span class="required">*</span></label>
+                            <label class="form-label" for="username">Email address&nbsp;<span class="required">*</span></label>
                             {{-- <input type="text" class="form-control form-Input-text" name="username" id="username" autocomplete="username" value="" required> --}}
                             <input type="text" class="form-control form-Input-text" name="email" id="email" placeholder="Email/Phone" autocomplete="username" value="" required/>
                             @error('email')

@@ -5,23 +5,20 @@ namespace App\Notifications;
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Notifications\Messages\MailMessage;
-use NotificationChannels\Twilio\TwilioChannel;
-use NotificationChannels\Twilio\TwilioSmsMessage;
 use Illuminate\Notifications\Notification;
 
-class DeliverGuyActivated extends Notification
+class CustomerPaymentSuccessNotification extends Notification
 {
     use Queueable;
 
-    public $user;
     /**
      * Create a new notification instance.
      *
      * @return void
      */
-    public function __construct($user)
+    public function __construct()
     {
-        $this->user = $user;
+        //
     }
 
     /**
@@ -32,7 +29,7 @@ class DeliverGuyActivated extends Notification
      */
     public function via($notifiable)
     {
-        return ['mail',TwilioChannel::class];
+        return ['mail'];
     }
 
     /**
@@ -44,17 +41,9 @@ class DeliverGuyActivated extends Notification
     public function toMail($notifiable)
     {
         return (new MailMessage)
-                    ->greeting('Hello '.ucfirst($this->user->name))
-                    // ->line("Hi, ".ucfirst($this->user->name))
-                    ->line('Congratulations!!, Your account has been activated by admin. Now you can login to your account.')
-                    ->action('Login', url('/login'))
-                    ->line('Thank you for using a2zamaze!');
-    }
-
-    public function toTwilio($notifiable)
-    {
-        return (new TwilioSmsMessage())
-            ->content("Congratulations!! Your amaze account has been approved. Please login to your account.");
+                    ->line('The introduction to the notification.')
+                    ->action('Notification Action', url('/'))
+                    ->line('Thank you for using our application!');
     }
 
     /**

@@ -31,6 +31,7 @@ Route::get('/blog/{slug}', 'Web\BlogController@single')->name('blog.single');
 
 Route::post('booking/save/{slug}', 'Web\BookingController@save')->name('booking.save');
 Route::get('booking/checkout/{slug}', 'Web\BookingController@checkout')->name('checkout');
+Route::get('booking/paymentSuccess', 'Web\BookingController@paymentSuccess')->name('paymentSuccess');
 
 // PAYPAL ROUTES
 Route::get('paywithpaypal', array('as' => 'paywithpaypal','uses' => 'PaypalController@payWithPaypal',));

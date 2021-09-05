@@ -53,8 +53,9 @@ class RegisterController extends Controller
             'c_code.required'      => 'Please select country code for your phone number.', 
         ];
         return Validator::make($data, [
-            'name' => ['required', 'string', 'max:255'],
-            'email' => ['nullable', 'email', 'max:255', 'unique:users'],
+            'first_name' => ['required', 'string', 'max:255'],
+            'last_name' => ['required', 'string', 'max:255'],
+            'email' => ['required', 'email', 'max:255', 'unique:users'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
             'phone' => ['required', 'unique:users', 'numeric', 'min:10'],
             'delivery_guy' => 'required|boolean',
@@ -82,13 +83,8 @@ class RegisterController extends Controller
         if($user->email){
             $user->sendEmailVerificationNotification();
         }
-        if(isset($data['delivery_guy']))
-        {
-            $user->delivery_guy = $data['delivery_guy'];
-            $user->verified = 0;
-            $user->save();
-        }
-        sendOTP($user->id);
+        
+        // sendOTP($user->id);
         return $user;
     }
 }

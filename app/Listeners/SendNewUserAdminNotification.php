@@ -19,8 +19,7 @@ class SendNewUserAdminNotification
      */
     public function handle($event)
     {
-        $admins = Admin::all();    
-        Log::info('Admin user notification is being sending..');
+        $admins = Admin::all();
         Notification::send($admins, new NewUserAdminNotification($event->user));
     }
 }
