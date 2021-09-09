@@ -139,6 +139,17 @@
                                     <li class="nav-item">
                                         <a class="nav-link" href="contact-us.html">Contact Us</a>
                                     </li>
+                                    @guest
+                                        <li class="nav-item">
+                                            <a class="nav-link" href="{{ route('login') }}">Login</a>
+                                        </li>    
+                                    @endguest
+                                    @auth
+                                        <li class="nav-item">
+                                            <a class="nav-link" href="{{ route('user.profile') }}">My Account</a>
+                                        </li>    
+                                    @endauth
+                                    
                                     <li class="nav-item">
                                         <a href="#" title="Shopping Cart">
                                             <img src="{{ asset('assets/web/images/cart.png') }}" alt="cart" /><span
