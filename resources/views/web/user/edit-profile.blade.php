@@ -1,156 +1,84 @@
-@extends('layouts/web/web')
+@extends('layouts/web/master')
 
 @section('styles')
-<style type="text/css">
-	.profile-header{
-		height: 200px;
-	}
-</style>
 @endsection
 
 @section('content')
-<div class="profile-header" style="background-image: url('{{ asset('assets/web/images/profile-cover.jpg')}}');">
-	<!-- <img src="{{ asset('assets/web/images/profile-cover.jpg') }}"> -->
-    <div class="container">
-        <div class="row align-items-center text-center">
-            <div class="col-lg-12 mt-5" data-aos="fade-up">
-                <h1 style="color: white;">Update Profile</h1>
+
+<!-- #Main Content-->
+<div id="main-content">
+    <!-- Section Account One -->
+    <div class="section-account-one">
+        <div class="container">
+            <h1 Class="title-main-page">My account</h1>
+            <div class="d-flex flex-wrap justify-content-between row-account-user">
+                @include('includes.user.profile-menu')
+                <div class="user-info-data">
+                    <div class="inner-user-info-data">
+                        <div class="ecommerce-editaccountform">
+							@if(count( $errors ) > 0)
+								<div class="alert alert-danger" role="alert">
+									<ul>
+										@foreach ($errors->all() as $error)
+											<li>{{ $error }}</li>
+										@endforeach
+									</ul>
+								</div>
+							@endif
+                            <form class="needs-validation" method="POST" action="{{ route('user.update_profile') }}" novalidate>
+								@csrf
+                                <div class="d-flex justify-content-between row-form-block">
+                                    <div class="form-half-row">
+                                        <div class="form-group">
+                                            <label class="form-label" for="first_name">First name&nbsp;<span
+                                                    class="required">*</span></label>
+                                            <input type="text" class="form-control form-Input-text"
+                                                name="first_name" id="first_name"
+                                                autocomplete="first_name" value="{{ $user->first_name }}" required>
+                                        </div>
+                                    </div>
+                                    <div class="form-half-row">
+                                        <div class="form-group">
+                                            <label class="form-label" for="last_name">Last name&nbsp;<span
+                                                    class="required">*</span></label>
+                                            <input type="text" class="form-control form-Input-text"
+                                                name="last_name" id="last_name"
+                                                autocomplete="last_name" value="{{ $user->last_name }}" required>
+                                        </div>
+                                    </div>
+                                </div>
+                                {{-- <div class="form-group">
+                                    <label class="form-label" for="account_display_name">Last name&nbsp;<span
+                                            class="required">*</span></label>
+                                    <input type="text" class="form-control form-Input-text" name="account_display_name"
+                                        id="account_display_name" autocomplete="account_display_name"
+                                        value="Another One" required>
+                                    <p>This will be how your name will be displayed in the account section and in
+                                        reviews</p>
+                                </div> --}}
+                                <div class="form-group">
+                                    <label class="form-label" for="email">Email<span
+                                            class="required">*</span></label>
+                                    <input type="email" class="form-control form-Input-text" name="email"
+                                        id="email" autocomplete="email"
+                                        value="{{ $user->email }}" required>
+                                </div>
+                                <div class="form-group">
+                                    <label class="form-label" for="phone">Phone #</label>
+                                    <input type="email" class="form-control form-Input-text" name="phone"
+                                        id="phone" autocomplete="phone"
+                                        value="{{ $user->phone ? $user->phone : "" }}" required>
+                                </div>
+                                <div class="form-group">
+                                    <button type="submit" class="form-submit" id="save-changes">Save changes</button>
+                                </div>
+                                <form>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
 </div>
-<div class="container pt-5">
-	<div class="main-body">
-		<div class="row gutters-sm">
-			<div class="col-md-4 mb-3">
-				<div class="card">
-					<div class="card-body">
-					<form method="post" enctype='multipart/form-data'>
-					@csrf
-						<div class="d-flex flex-column align-items-center text-center">
-							<img src="{{ url('/'.Auth::user()->avatar) }}" alt="Admin" class="rounded-circle" width="150">
-							<input type="file" name="avatar" id="avatar">
-							<div class="mt-3">
-								<h4>{{ Auth::user()->name }}</h4>
-								<p class="text-muted font-size-sm">{{ date('d M Y', strtotime(Auth::user()->created_at)) }}</p>
-								<button class="btn btn-outline-primary">Message</button>
-							</div>
-						</div>
-					</div>
-				</div>
-				<div class="card mt-3">
-					<ul class="list-group list-group-flush">
-						<h5>Reviews from hosts</h5>
-						<li class="list-group-item d-flex justify-content-between align-items-center flex-wrap">
-							<h6 class="mb-0">No reviews yet</h6>
-						</li>
-
-					</ul>
-				</div>
-			</div>
-			<div class="col-md-8">
-				<div class="card mb-3">
-					<div class="card-body">
-						<div class="row">
-							<div class="col-sm-3">
-								<h6 class="mb-0">Full Name</h6>
-							</div>
-							<div class="col-sm-9 text-secondary">
-                                <input type="text" class="form-control" 
-                                    id="name" name="name" placeholder="Full Name" value="{{ Auth::user()->name }}">
-							</div>
-						</div>
-						<hr>
-						<div class="row">
-							<div class="col-sm-3">
-								<h6 class="mb-0">Email</h6>
-							</div>
-							<div class="col-sm-9 text-secondary">
-                                <input type="email" class="form-control" 
-                                    id="email" name="email" placeholder="Email" value="{{ Auth::user()->email }}" readonly="">
-							</div>
-						</div>
-						<hr>
-						<div class="row">
-							<div class="col-sm-3">
-								<h6 class="mb-0">Phone</h6>
-							</div>
-							<div class="col-sm-9 text-secondary">
-                                <input type="text" class="form-control" 
-                                    id="phone" name="phone" placeholder="Phone" value="{{ Auth::user()->phone }}">
-							</div>
-						</div>
-						<hr>
-						<div class="row">
-							<div class="col-sm-3">
-								<h6 class="mb-0">Current Password</h6>
-							</div>
-							<div class="col-sm-9 text-secondary">
-                                <input type="password" class="form-control" 
-                                    id="current_password" name="current_password" placeholder="Current Password" value="">
-							</div>
-						</div>
-						<hr>
-						<div class="row">
-							<div class="col-sm-3">
-								<h6 class="mb-0">New Password</h6>
-							</div>
-							<div class="col-sm-9 text-secondary">
-                                <input type="password" class="form-control" 
-                                    id="new_password" name="new_password" placeholder="New Password" value="">
-							</div>
-						</div>
-						<hr>
-						<div class="row">
-							<div class="col-sm-3">
-								<h6 class="mb-0">Confirm Password</h6>
-							</div>
-							<div class="col-sm-9 text-secondary">
-                                <input type="password" class="form-control" 
-                                    id="new_confirm_password" name="new_confirm_password" placeholder="Confirm New Password" value="">
-							</div>
-						</div>
-						<!-- <hr>
-						<div class="row">
-							<div class="col-sm-3">
-								<h6 class="mb-0">Address</h6>
-							</div>
-							<div class="col-sm-9 text-secondary">
-                                <input type="text" class="form-control" 
-                                    id="phone" placeholder="Phone" value="Bay Area, San Francisco, CA">
-							</div>
-						</div> -->
-						<!-- <hr>
-						<div class="row">
-							<div class="col-sm-3">
-								<h6 class="mb-0">About</h6>
-							</div>
-							<div class="col-sm-9 text-secondary">
-								<textarea id="about" name="about" rows="4" cols="50">{{ Auth::user()->about }}</textarea>
-							</div>
-						</div> -->
-						<hr>
-						<div class="row">
-							<div class="col-sm-3">
-							</div>
-							<div class="col-sm-9 text-secondary">
-								<button type="submit" class="btn btn-primary">Update Profile</button>
-							</div>
-						</div>
-					</div>
-				</div>
-				</form>
-				<!-- <div class="row gutters-sm">
-					<div class="col-sm-12 mb-3">
-						<div class="card h-100">
-							<div class="card-body">
-								<h6 class="d-flex align-items-center mb-3"><i class="material-icons text-info mr-2">Booking List</h6>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div> -->
-			</div>
-		</div>
-	</div>
+<!-- End #Main Content-->
 @endsection

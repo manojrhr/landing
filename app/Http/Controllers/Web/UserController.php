@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Web;
 
+use App\Booking;
 use App\Http\Controllers\Controller;
 use App\Repositories\UserRepository as UserRepo;
 use Illuminate\Http\Request;
@@ -33,7 +34,8 @@ class UserController extends Controller
 
     public function edit_profile()
     {
-        return view('web.user.edit-profile');
+        $user = Auth::user();
+        return view('web.user.edit-profile', compact('user'));
     }
 
     public function update_profile(Request $request)
@@ -42,7 +44,7 @@ class UserController extends Controller
         if($response_array['success'] === true){
             $request->session()->flash('message.level', 'success');
             $request->session()->flash('message.content', 'Profile updated successfully!');
-            return redirect('/user/profile');
+            return Redirect::back();
         } else {
             $request->session()->flash('message.level', 'error');
             $request->session()->flash('message.content', $response_array['message']);
@@ -70,4 +72,26 @@ class UserController extends Controller
         }
     }
     
+    public function bookings(Request $request){
+        $bookings = Booking::where('user_id',Auth::user()->id)->get();
+        return view('web.user.bookings', compact('bookings'));
+    }
+    
+    public function get_password_form(Request $request){
+        return view('web.user.change-password');
+    }
+
+    public function change_password(Request $request)
+    {
+        $response_array = UserRepo::change_password($request);
+        if($response_array['success'] === true){
+            $request->session()->flash('message.level', 'success');
+            $request->session()->flash('message.content', $response_array['message']);
+            return Redirect::back();
+        } else {
+            $request->session()->flash('message.level', 'error');
+            $request->session()->flash('message.content', $response_array['message']);
+            return Redirect::back();
+        }
+    }
 }

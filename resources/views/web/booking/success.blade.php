@@ -28,7 +28,7 @@
                     </div>
                 @endif
                 <div class="checkout-form-cover">
-                    <h1>Contrats!! Your payment is successful. We will get back to your for updates.  Thanks.</h1>
+                    <h1>Contrats!! Your payment is successful. We will get back to your for updates. Goto your <a href="{{ route('user.profile') }}">profile's page</a> for check booking details.  Thanks.</h1>
                 </div>
             </div>
         </div>

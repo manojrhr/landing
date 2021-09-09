@@ -127,6 +127,11 @@ Route::group(['prefix' => 'user' , 'as' => 'user.'], function(){
 
 	Route::get('/verify-otp', 'Web\UserController@show_otp_form')->name('show_otp_form');
 	Route::post('/verify-otp', 'Web\UserController@verify_otp')->name('verify_otp');
+
+	Route::get('/change-password', 'Web\UserController@get_password_form')->name('get_password_form');
+	Route::post('/update-password', 'Web\UserController@change_password')->name('change_password');
+
+	Route::get('/bookings', 'Web\UserController@bookings')->name('bookings');
 });
 
 

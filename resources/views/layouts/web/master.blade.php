@@ -171,7 +171,7 @@
                     <div class="d-flex justify-content-between align-items-center mobile-nav-row">
                         <div class="mobile-one-half">
                             <div class="mobile-logo">
-                                <a href="{{ route('home') }}"><img src="{{ asset('assets/web/images/kiuki-tours-logo-ws.svg') }}"
+                                <a href="index.html"><img src="{{ asset('assets/web/images/kiuki-tours-logo-ws.svg') }}"
                                         alt="Kiuki Tours &amp; Transportation Jamaica"
                                         title="Kiuki Tours &amp; Transportation Jamaica" itemprop="logo" /></a>
                             </div>
@@ -180,23 +180,23 @@
                             <ul class="d-flex justify-content-end align-items-center mobile-navul">
                                 <li>
                                     <a href="#" title="Shopping Cart">
-                                        <img src="{{ asset('assets/web/images/cart-icon.png') }}" alt="cart" /><span
-                                            class="menu-item-count"><i class="fas fa-caret-left"></i>0</span>
+                                        <img src="images/cart-icon.png" alt="cart" /><span class="menu-item-count"><i
+                                                class="fas fa-caret-left"></i>0</span>
                                     </a>
                                 </li>
-                                {{-- <li>
+                                <li>
                                     <a class="search-link" href="#" title="search">
                                         <i class="fas fa-search"></i>
                                     </a>
                                     <div class="search-divblock">
-                                        <form role="search" method="get" id="searchform2" class="searchform"
-                                            action="https://kiukitours.com/">
+                                        <form role="search" method="get" id="searchform" class="searchform"
+                                            action="{{ route('home') }}">
                                             <input type="search" class="searchform-input" name="s" value=""
                                                 placeholder="Search …" title="Press enter to search">
                                             <div class="buttonsearch"><i class="fas fa-times"></i></div>
                                         </form>
                                     </div>
-                                </li> --}}
+                                </li>
                                 <li>
                                     <a href="#responsive_menu" class="mobile-main navbar-toggle mobile-menu-toggle"><i
                                             class="fas fa-align-justify"></i></a>
@@ -216,7 +216,10 @@
                     </div>
                 </div>
             </div>
-        </header>
+            </header>
+
+            <!-- #Main Content-->
+            </header>
         @yield('content')
         <!-- Footer -->
         <footer id="footer">

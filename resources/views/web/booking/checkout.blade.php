@@ -18,6 +18,7 @@
                 <a class="link-nav-step pointer-none" href="#"> Order status</a>
             </div>
             <div class="checkout-form">
+                @guest
                 <div class="toggle-login-checout"><i class="far fa-user"></i> Returning customer? <button
                         class="checout-login-button collapsed" type="button" data-toggle="collapse"
                         data-target="#login-form-open" aria-expanded="false" aria-controls="login-form-open">Click here
@@ -73,6 +74,7 @@
                         </form>
                     </div>
                 </div>
+                @endguest
                 <div class="toggle-login-coupon"><i class="fas fa-ticket-alt"></i> Have a coupon? <button
                         class="coupon-login-button collapsed" type="button" data-toggle="collapse"
                         data-target="#coupon-form-open" aria-expanded="false" aria-controls="coupon-form-open">Click
@@ -112,7 +114,7 @@
                                                 <label class="form-label" for="first_name">First name&nbsp;<span
                                                         class="required">*</span></label>
                                                 <input type="text" class="form-control form-Input-text"
-                                                    name="first_name" id="first_name" autocomplete="first_name" value="{{  old('first_name') }}" required>
+                                                    name="first_name" id="first_name" autocomplete="first_name" value="{{  old('first_name', Auth::user() ? Auth::user()->first_name : "") }}" required>
                                             </div>
                                         </div>
                                         <div class="col-md-6">
@@ -120,7 +122,7 @@
                                                 <label class="form-label" for="last_name">Last name&nbsp;<span
                                                         class="required">*</span></label>
                                                 <input type="text" class="form-control form-Input-text"
-                                                    name="last_name" id="last_name" autocomplete="last_name" value="{{  old('last_name') }}" required>
+                                                    name="last_name" id="last_name" autocomplete="last_name" value="{{  old('last_name', Auth::user() ? Auth::user()->last_name : "") }}" required>
                                             </div>
                                         </div>
                                         {{-- <div class="col-md-12">
@@ -138,7 +140,7 @@
                                                 <label class="form-label" for="phone">Phone&nbsp;<span
                                                         class="required">*</span></label>
                                                 <input type="tel" class="form-control form-Input-text"
-                                                    name="phone" id="phone" autocomplete="phone" value="{{  old('phone') }}" required>
+                                                    name="phone" id="phone" autocomplete="phone" value="{{  old('phone', Auth::user() ? Auth::user()->phone : "") }}" required>
                                             </div>
                                         </div>
                                         <div class="col-md-12">
@@ -146,7 +148,7 @@
                                                 <label class="form-label" for="email">Email&nbsp;<span
                                                         class="required">*</span></label>
                                                 <input type="email" class="form-control form-Input-text"
-                                                    name="email" id="email" autocomplete="email" value="{{  old('email') }}" required>
+                                                    name="email" id="email" autocomplete="email" value="{{  old('email', Auth::user() ? Auth::user()->email : "") }}" required>
                                             </div>
                                         </div>
                                         @guest

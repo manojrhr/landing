@@ -12,6 +12,7 @@ use App\Tour;
 use DateTime;
 use Validator;
 use Session;
+use Auth;
 use Stripe\Exception\ApiErrorException;
 
 class BookingController extends Controller
@@ -125,7 +126,7 @@ class BookingController extends Controller
 
     public function paymentSuccess(Request $request)
     {
-        // dump($request->session());
+        // dump(Auth::user());
         $tour_slug = $request->session()->get('tour_slug');
         // dd($tour_slug);
         Session::flush();

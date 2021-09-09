@@ -15,15 +15,14 @@ use Validator;
 class UserRepository {
 
 	public static function update($request) {
-
+        $user = $request->user();
         $validator = Validator::make($request->all(), [
-            'name' => 'required|string|max:255',
+            'first_name' => 'required|string|max:255',
+            'last_name' => 'required|string|max:255',
             'password' => 'string',
             'avatar' => 'image:jpeg,png,jpg|max:2048',
-            'phone' => 'required|integer',
-            'new_confirm_password' => 'same:new_password'
-        ], $messages = [
-            'new_confirm_password.same' => 'New Password and Confirm Password must be same.',
+            'phone' => 'integer|unique:users,phone,'.$user->id,
+            'email' => 'required|unique:users,email,'.$user->id,
         ]);
 
         if ($validator->fails()) {
@@ -32,11 +31,13 @@ class UserRepository {
             return $response_array = ['success' => false , 'message' => $errors, 'error_code' => 101];
         }
 
-        $m_c_code = $request->c_code !='' ? $request->c_code : '+1';
+        // $m_c_code = $request->c_code !='' ? $request->c_code : '+91';
 
         $user = $request->user();
-        $user->name = $request->name;
-        $user->phone = $m_c_code.$request->phone;
+        $user->first_name = $request->first_name;
+        $user->last_name = $request->last_name;
+        $user->email = $request->email;
+        // $user->phone = $request->phone;
 
         if($request->has('new_password') && $request->current_password != "" && $request->new_password != "") {
             // dd((Hash::check($request->current_password, $user->password)));

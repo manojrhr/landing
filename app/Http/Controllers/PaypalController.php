@@ -13,6 +13,7 @@ use Hash;
 use Session;
 use Redirect;
 use Input;
+use Symfony\Component\Console\Input\Input as Inpt;
 use PayPal\Rest\ApiContext;
 use PayPal\Auth\OAuthTokenCredential;
 use PayPal\Api\Amount;
@@ -88,6 +89,8 @@ class PaypalController extends Controller
         } else {
             $user = $userCheck;
         }
+        Auth::loginUsingId($user->id);
+
         // dd($request->all());
         $latest_booking = Booking::latest()->first();
         if($latest_booking){
@@ -166,6 +169,16 @@ class PaypalController extends Controller
 
     public function getPaymentStatus(Request $request)
     {
+        if($request->has('token') && !$request->has('paymentId')){
+            $booking = Booking::where('token',$request->token)->first();
+            $tour_slug = $booking->tour->slug;
+            $request->session()->put('tour_slug', $tour_slug);
+            if($booking){
+                return Redirect::route('paymentSuccess');
+            } else {
+                abort(404);
+            }
+        }
         $slug = $request->session()->get('tour_slug');
         $payment_id = $request->session()->get('paypal_payment_id');
 
