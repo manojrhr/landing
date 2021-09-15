@@ -89,78 +89,78 @@
                         </div>
                     </div>
                     <div class="col-details-sidebar">
-                        <div id="tour-form-button-cover" class="tour-form-button-cover">
-                            <a href="#tour-booking-form" class="saltella tour-booking-button tour-booking-form-button"
-                                role="button">Book this Tour!</a>
-                        </div>
-                        <div id="tour-form-button-fixed" class="tour-form-button-fixed" style="display:none;">
-                            <a href="#tour-booking-form" class="tour-booking-button tour-booking-button-fixed"
-                                role="button">Book this Tour!</a>
-                        </div>
-                        @if($tour->option)
-                        <div id="tour-booking-form" class="tour-booking-form-block">
-                            <h3 class="tour-booking-form-title">Book This Tour Below</h3>
-
-                            <div class="form-tour-booking-block">
-                                <form method="POST" id="payment-form" role="form" action="{{ route('booking.save', $tour->slug) }}" >
-                                {{ csrf_field() }}
-                                    <input type="hidden" name="date" id="date" value="{{ date('d-m-Y') }}"/>
-                                    <input type="hidden" name="adult_rate" id="adult_rate" value="{{ $tour->option[0]->adult_rate }}"/>
-                                    <input type="hidden" name="child_rate" id="child_rate" value="{{ $tour->option[0]->child_rate }}"/>
-                                    <input type="hidden" name="amount" id="amount" value="{{ $tour->option[0]->adult_rate }}"/>
-                                    <div class="wc-bookings-booking-form">
-                                        <div
-                                            class="wc-bookings-date-picker wc-bookings-date-picker-booking wc_bookings_field_start_date">
-                                            <div id="datepicker"></div>
-                                        </div>
-                                        <div class="wc-bookings-booking-cost"><strong>This booking date is
-                                                available!</strong></div>
-                                    </div>
-
-                                    <div class="form-row-block">
-                                        <span class="label-span">Pickup Location</span>
-                                        <div class="select-form-input-div">
-                                            <select class="form-control" name="location_id" id="location">
-                                                @foreach ($options as $option)
-                                                    <option value="{{ $option->location->id }}" data-adult="{{ $option->location->adult_rate }}
-                                                         data-child="{{ $option->location->child_rate }}">{{ $option->location->name }}</option>
-                                                @endforeach
-                                            </select>
-                                        </div>
-                                    </div>
-                                    <div class="form-row-block">
-                                        <div class="d-flex flex-wrap row-form-div">
-                                            <div class="one-half left-one-half">
-                                                <span class="label-span">Number of Adults (Ages 12+)</span>
-                                                <input class="input-box" type="number" name="adult_count" value="1" min="1" step="1"
-                                                    max="100" id="pickup_num_adults" onchange="price_count();" required="">
-                                                <span class="cost_per_text">$<span id="adult_price">{{ $tour->option[0]->adult_rate }}</span> per Adult</span>
-                                            </div>
-                                            <div class="one-half right-one-half">
-                                                <span class="label-span">Number of Children (Ages 3-11)</span>
-                                                <input class="input-box" type="number" name="child_count" value="0" min="0" step="1"
-                                                    max="100" id="pickup_num_children" onchange="price_count();" required="">
-                                                <span class="cost_per_text">$<span id="child_price">{{ $tour->option[0]->child_rate }}</span> per Child</span>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <div class="form-row-block">
-                                        <span class="label-span">Additional Pickup Information</span>
-                                        <textarea class="textarea-box" rows="4" maxlength="500"
-                                            id="adtl_pickup_info_input" name="pickup_info"></textarea>
-                                    </div>
-                                    <div class="tour_total_pricing">
-                                        <h4 class="price_title">Total Tour Pricing</h4>
-                                        <h4 class="price" id="tour_price">$<span id="total_price">{{ $tour->option[0]->adult_rate }}</span>.00</h4>
-                                    </div>
-                                    <div class="submit-button-cover"><button type="submit"
-                                            class="form-tour-booking-button single_add_to_cart_button button"
-                                            style="">Book now</button></div>
-                                </form>
+                        @if(count($tour->option) > 0)
+                            <div id="tour-form-button-cover" class="tour-form-button-cover">
+                                <a href="#tour-booking-form" class="saltella tour-booking-button tour-booking-form-button"
+                                    role="button">Book this Tour!</a>
                             </div>
+                            <div id="tour-form-button-fixed" class="tour-form-button-fixed" style="display:none;">
+                                <a href="#tour-booking-form" class="tour-booking-button tour-booking-button-fixed"
+                                    role="button">Book this Tour!</a>
+                            </div>
+                            <div id="tour-booking-form" class="tour-booking-form-block">
+                                <h3 class="tour-booking-form-title">Book This Tour Below</h3>
 
-                        </div>
+                                <div class="form-tour-booking-block">
+                                    <form method="POST" id="payment-form" role="form" action="{{ route('booking.save', $tour->slug) }}" >
+                                    {{ csrf_field() }}
+                                        <input type="hidden" name="date" id="date" value="{{ date('d-m-Y') }}"/>
+                                        <input type="hidden" name="adult_rate" id="adult_rate" value="{{ $tour->option[0]->adult_rate }}"/>
+                                        <input type="hidden" name="child_rate" id="child_rate" value="{{ $tour->option[0]->child_rate }}"/>
+                                        <input type="hidden" name="amount" id="amount" value="{{ $tour->option[0]->adult_rate }}"/>
+                                        <div class="wc-bookings-booking-form">
+                                            <div
+                                                class="wc-bookings-date-picker wc-bookings-date-picker-booking wc_bookings_field_start_date">
+                                                <div id="datepicker"></div>
+                                            </div>
+                                            <div class="wc-bookings-booking-cost"><strong>This booking date is
+                                                    available!</strong></div>
+                                        </div>
+
+                                        <div class="form-row-block">
+                                            <span class="label-span">Pickup Location</span>
+                                            <div class="select-form-input-div">
+                                                <select class="form-control" name="location_id" id="location">
+                                                    @foreach ($options as $option)
+                                                        <option value="{{ $option->location->id }}" data-adult="{{ $option->location->adult_rate }}
+                                                            data-child="{{ $option->location->child_rate }}">{{ $option->location->name }}</option>
+                                                    @endforeach
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="form-row-block">
+                                            <div class="d-flex flex-wrap row-form-div">
+                                                <div class="one-half left-one-half">
+                                                    <span class="label-span">Number of Adults (Ages 12+)</span>
+                                                    <input class="input-box" type="number" name="adult_count" value="1" min="1" step="1"
+                                                        max="100" id="pickup_num_adults" onchange="price_count();" required="">
+                                                    <span class="cost_per_text">$<span id="adult_price">{{ $tour->option[0]->adult_rate }}</span> per Adult</span>
+                                                </div>
+                                                <div class="one-half right-one-half">
+                                                    <span class="label-span">Number of Children (Ages 3-11)</span>
+                                                    <input class="input-box" type="number" name="child_count" value="0" min="0" step="1"
+                                                        max="100" id="pickup_num_children" onchange="price_count();" required="">
+                                                    <span class="cost_per_text">$<span id="child_price">{{ $tour->option[0]->child_rate }}</span> per Child</span>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="form-row-block">
+                                            <span class="label-span">Additional Pickup Information</span>
+                                            <textarea class="textarea-box" rows="4" maxlength="500"
+                                                id="adtl_pickup_info_input" name="pickup_info"></textarea>
+                                        </div>
+                                        <div class="tour_total_pricing">
+                                            <h4 class="price_title">Total Tour Pricing</h4>
+                                            <h4 class="price" id="tour_price">$<span id="total_price">{{ $tour->option[0]->adult_rate }}</span>.00</h4>
+                                        </div>
+                                        <div class="submit-button-cover"><button type="submit"
+                                                class="form-tour-booking-button single_add_to_cart_button button"
+                                                style="">Book now</button></div>
+                                    </form>
+                                </div>
+
+                            </div>
                         @endif
                         <hr class="divider-tour-border" />
                         <div class="social-share-cover">

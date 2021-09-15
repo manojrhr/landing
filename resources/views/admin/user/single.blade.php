@@ -14,9 +14,9 @@
           <!-- Profile Image -->
           <div class="box box-primary">
             <div class="box-body box-profile">
-              <img class="profile-user-img img-responsive img-circle" src="{{ asset($user->avatar) }}" alt="User profile picture">
+              {{-- <img class="profile-user-img img-responsive img-circle" src="{{ asset($user->avatar) }}" alt="User profile picture"> --}}
 
-              <h3 class="profile-username text-center">{{ $user->name }}</h3>
+              <h3 class="profile-username text-center">{{ $user->first_name.' '.$user->last_name }}</h3>
 
               <p class="text-muted text-center">
                 {{ $user->c_code.$user->phone }}
@@ -32,7 +32,7 @@
 
               <ul class="list-group list-group-unbordered">
                 <li class="list-group-item">
-                  <b>Total Tickets</b> <a class="pull-right">15</a>
+                  <b>Total Bookings</b> <a class="pull-right">15</a>
                 </li>
                 <!-- <li class="list-group-item">
                   <b>Following</b> <a class="pull-right">543</a>
@@ -54,10 +54,10 @@
             </div>
             <!-- /.box-header -->
             <div class="box-body">
-              <strong><i class="fa fa-book margin-r-5"></i> Education</strong>
+              <strong><i class="fa fa-book margin-r-5"></i> Home</strong>
 
               <p class="text-muted">
-                B.S. in Computer Science from the University of Tennessee at Knoxville
+                Tennessee at Knoxville
               </p>
               <hr>
             </div>
