@@ -1,6 +1,7 @@
 <?php
 use Twilio\Rest\Client;
 use App\User;
+use App\Country;
 
 if (!function_exists('null_safe')) {
 
@@ -56,5 +57,9 @@ if (!function_exists('null_safe')) {
 
     function admin_charges(){
         return 10;
+    }
+
+    function get_countries_list(){
+        return Country::all();
     }
 }

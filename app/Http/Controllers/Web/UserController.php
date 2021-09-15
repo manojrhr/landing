@@ -73,7 +73,7 @@ class UserController extends Controller
     }
     
     public function bookings(Request $request){
-        $bookings = Booking::where('user_id',Auth::user()->id)->get();
+        $bookings = Booking::where('user_id',Auth::user()->id)->latest()->get();
         return view('web.user.bookings', compact('bookings'));
     }
     

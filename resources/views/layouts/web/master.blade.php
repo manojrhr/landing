@@ -112,7 +112,7 @@
                 </div>
             </div>
             <!-- Nav Bar -->
-            <nav class="navbar-expand-sm navbar-block">
+            <nav id="navbar_top" class="navbar-expand-sm navbar-block">
                 <div class="navbar-container">
                     <div class="row justify-content-right">
                         <div class="col-md-4">
@@ -484,6 +484,7 @@
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/js/select2.min.js"></script>
     <script type="text/javascript" src="{{ asset('assets/web/js/jquery.mmenu.js') }}"></script>
+	<script type="text/javascript" src="{{ asset('assets/web/js/custom.js') }}"></script>	
 
     <!-- Alertify -->
     <script src="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/alertify.min.js"></script>

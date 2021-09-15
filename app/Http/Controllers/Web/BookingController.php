@@ -116,8 +116,11 @@ class BookingController extends Controller
 
     public function checkout($slug, Request $request)
     {
+        if(!$request->session()->get('booking')){
+            return Redirect::route('tour.single',$slug);
+        }
         $booking = (object)$request->session()->get('booking')[0];
-        // dd($booking);
+        // dd($request->session());
         // $booking = Booking::where('booking_id', $booking_id)->firstOrFail();
         $tour = Tour::where('slug', $slug)->firstOrFail();
         $location = Location::findOrFail($booking->location_id);

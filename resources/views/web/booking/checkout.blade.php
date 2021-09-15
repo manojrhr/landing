@@ -135,6 +135,67 @@
                                                     placeholder="Please Provide Your Room Number" value="">
                                             </div>
                                         </div> --}}
+										<div class="col-md-12">
+											<div class="form-group">
+												<label class="form-label" for="billing_company">Company name (optional)</label>
+												<input type="text" class="form-control form-Input-text" name="company" id="billing_company" autocomplete="billing_company" value="">
+											</div>
+										</div>
+										<div class="col-md-12">
+											<div class="form-group">
+												<label class="form-label" for="select_country">Country / Region&nbsp;<span class="required">*</span></label>
+												<select class="custom-select select2 form-Input-select" name="country" id="select_country" required>
+													@foreach (get_countries_list() as $country)
+														<option value="{{ $country->id }}">{{ $country->name }}</option>
+													@endforeach
+												</select>
+											</div>
+										</div>
+										<div class="col-md-12">
+											<div class="form-group">
+												<label class="form-label" for="billing_address_1">Street address&nbsp;<span class="required">*</span></label>
+												<input type="text" class="form-control form-Input-text" name="address_1" id="billing_address_1" autocomplete="billing_address_1" value="" required>
+											</div>
+										</div>
+										<div class="col-md-12">
+											<div class="form-group">
+												<input type="text" class="form-Input-text" name="address_2" id="billing_address_2" autocomplete="billing_address_2" value="">
+											</div>
+										</div>
+										<div class="col-md-12">
+											<div class="form-group">
+												<label class="form-label" for="billing_city">Town / City / Post Office&nbsp;<span class="required">*</span></label>
+												<input type="text" class="form-control form-Input-text" name="city" id="billing_city" autocomplete="billing_city" value="" required>
+											</div>
+										</div>
+										{{-- <div class="col-md-12">
+											<div class="form-group">
+												<label class="form-label" for="select_parish">Parish&nbsp;<span class="required">*</span></label>
+												<select class="custom-select select2 form-Input-select" id="select_parish" required>
+													<option>Kingston</option>   
+													<option>Saint Andrew</option>
+													<option>Saint Thomas</option>  
+													<option>Portland</option>   
+													<option>Saint Mary</option>   
+													<option>Saint Ann</option>   
+													<option>Trelawny</option>   
+													<option>Saint James</option>   
+													<option>Hanover</option>  
+													<option>Westmoreland</option>   
+													<option>Saint Elizabeth</option>   
+													<option>Manchester</option>  
+													<option>Clarendon</option>  
+													<option>Saint Catherine</option>
+												</select>
+
+											</div>
+										</div> --}}
+										<div class="col-md-12">
+											<div class="form-group">
+												<label class="form-label" for="billing_postcode">Postal Code (optional)</label>
+												<input type="text" class="form-control form-Input-text" name="postcode" id="billing_postcode" autocomplete="billing_postcode" value="">
+											</div>
+										</div>
                                         <div class="col-md-12">
                                             <div class="form-group">
                                                 <label class="form-label" for="phone">Phone&nbsp;<span
@@ -180,11 +241,11 @@
                                             </div>
                                         </div> --}}
                                     </div>
-                                    <div class="note-form"> Please Note : - <br>1. It’s a Charted/Private Taxi and
+                                    {{-- <div class="note-form"> Please Note : - <br>1. It’s a Charted/Private Taxi and
                                         Minimum Total Cost to Book is 4 times Price per Person for Upto 4 Persons. <br>
                                         2. For more than 4 Persons Total Cost increases per additional Person.<br>
                                         3. For Groups 10 or more Persons you will get 10 % Discount.<br>
-                                    </div>
+                                    </div> --}}
                                 </div>
                             </div>
                             <div class="col-md-5 cart-order-details">
@@ -244,25 +305,45 @@
                                         </div>
                                     </div>
                                     <div id="payment" class="checkout-payment">
-                                        <ul class="payment_methods">
+                                        <ul class="payment_methods payment-methods-background">
                                             <li class="payment_method_cod">
-                                                <label>Pay by Cash or Card When We Pick You Up</label>
-                                                <div class="payment_box">
-                                                    <p class="no-margin">Pay by Cash or Card When We Pick You Up</p>
+                                                <div class="pay-by-cash active-pay">
+                                                    <div class="form-check">
+                                                        <input class="form-check-input radios-pay" type="radio" name="payment_method" id="pay-cash" value="cash_on_delivery" checked required>
+                                                        <label class="form-check-label" for="pay-cash">
+                                                        Cash on delivery
+                                                        </label>
+                                                    </div>
+                                                    <span class="payment_box_info">
+                                                        <span class="inner_payment_box_info">
+                                                            <span class="payment_box_info_text">Pay with cash upon delivery.</span>
+                                                        </span>
+                                                    </span>
+                                                </div>
+                                                <div class="pay-by-paypal">
+                                                    <div class="form-check pay-by-paypal">
+                                                        <input class="form-check-input radios-pay" type="radio" name="payment_method" id="pay-paypal" value="paypal" required>
+                                                        <label class="form-check-label" for="pay-paypal">
+                                                        PayPal <img class="pay-paypal-img" src="{{  asset('assets/web/images/paypal.png') }}" alt="PayPal acceptance mark">
+                                                        </label
+                                                        <a href="https://www.paypal.com/jm/cgi-bin/webscr?cmd=xpt/Marketing/general/WIPaypal-outside" class="about_paypal about_paypal_right" onclick="javascript:window.open('https://www.paypal.com/jm/cgi-bin/webscr?cmd=xpt/Marketing/general/WIPaypal-outside','WIPaypal','toolbar=no, location=no, directories=no, status=no, menubar=no, scrollbars=yes, resizable=yes, width=1060, height=700'); return false;">What is PayPal?</a>
+                                                    </div>
+                                                    <span class="payment_box_info">
+                                                        <span class="inner_payment_box_info">
+                                                            <span class="payment_box_info_text">Pay via PayPal; you can pay with your credit card if you don’t have a PayPal account.</span>
+                                                        </span>
+                                                    </span>
                                                 </div>
                                             </li>
                                         </ul>
+        
                                         <div class="place-order">
-                                            <p>Your personal data will be used to process your order, support your
-                                                experience throughout this website, and for other purposes described in
-                                                our <a href="privacy-policy.html" class="privacy-policy-link"
-                                                    target="_blank">privacy policy</a>.</p>
+                                        <p>Your personal data will be used to process your order, support your experience throughout this website, and for other purposes described in our <a href="privacy-policy.html" class="privacy-policy-link" target="_blank">privacy policy</a>.</p>
                                         </div>
                                         <div class="checkout-submit-cover">
-                                            <button type="submit" class="form-submit-checkout" id="login-button">Place
-                                                order</button>
+                                            <button type="submit" class="form-submit-checkout" id="login-button">Place order</button>
                                         </div>
-
+                                        
                                     </div>
                                 </div>
                             </div>

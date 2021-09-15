@@ -37,7 +37,11 @@
                                                 <td><a href="view-order-3655.html">{{ $booking->booking_id }}</a></td>
                                                 <td><time>{{ date('F j, Y', strtotime($booking->date)) }}</time></td>
                                                 {{-- <td><time>May 13, 2021</time></td> --}}
-                                                <td>{{ $booking->payment_status ? "Paid" : "Unpaid" }}</td>
+                                                @if($booking->is_cod)
+                                                    <td>Cash on delivery</td>
+                                                @else
+                                                    <td>{{ $booking->payment_status ? "Paid" : "Unpaid" }}</td>
+                                                @endif
                                             </tr>
                                         @endforeach
                                     </tbody>

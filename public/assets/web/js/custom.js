@@ -4,7 +4,7 @@ AOS.init({
  easing: 'ease-out-back',
  duration: 2000
 });
-jQuery(window).load(function() {
+jQuery(window).on('load', function() {
 	jQuery('.object-wppu-preview').hide();
 });
 
@@ -65,7 +65,7 @@ jQuery(document).ready(function() {
 	});
 	
 	//Book Tour Form 
-	jQuery(".tour-booking-form-button").click(function(){
+	jQuery(".tour-booking-button").click(function(){
 		jQuery("#tour-form-button-cover").addClass("hide");
 		jQuery("#tour-booking-form").addClass("active");
 		jQuery('html, body').animate({
@@ -209,7 +209,13 @@ jQuery('#createaccount').change(function () {
 		jQuery("#createaccount-password .form-control").attr("disabled", true);
     }
 });
-	
+
+
+// Input Select Airline Number
+	jQuery('.radios-pay').click(function () {
+        jQuery('.radios-pay:not(:checked)').parent().parent().removeClass("active-pay");
+        jQuery('.radios-pay:checked').parent().parent().addClass("active-pay");
+    }); 	
 });
 
 // Example starter JavaScript for disabling form submissions if there are invalid fields
@@ -244,7 +250,7 @@ document.addEventListener("DOMContentLoaded", function(){
 			console.log(mobile_navbar_height+'1');
 		}else{
 			document.body.style.paddingTop = navbar_height + 'px';
-			console.log(navbar_height+'2');
+			// console.log(navbar_height+'2');
 		}
 		
       } else {

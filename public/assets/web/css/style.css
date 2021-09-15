@@ -27,6 +27,7 @@ mark{ background:yellow; color:black;}
 /*Transition*/
 .gallery-col .gallery-img, .btn-more-tour .arrow-span, .btn-more-tour .text-span, .product-item-content, .post-read-more, .search-divblock, .social-links ul li a, .contact-info-box .icon-box-icon .icon-animation-float, .tour-text-editor, .more-details-btn, .tour-quick-view-cover, .more-button-link .text-lable-link, .more-button-link .icon-link, .blog-post-background-cover, .post-grid-readmore{ -webkit-transition:all 0.4s ease-in-out; -moz-transition:all 0.4s ease-in-out; -o-transition:all 0.4s ease-in-out; transition:all 0.4s ease-in-out;}
 
+.payment_box_info{ -webkit-transition:all 0.5s ease-in-out; -moz-transition:all 0.5s ease-in-out; -o-transition:all 0.5s ease-in-out; transition:all 0.5s ease-in-out;}
 /*bg-fixed*/
 .bg-fixed{ background-size:cover!important; background-attachment:fixed!important;}
 .bg-color{ background-color:#f4f4f4;}
@@ -497,7 +498,8 @@ mark{ background:yellow; color:black;}
 .select-form-input-div{}
 .form-control{ height:48px; border:1px solid #dedee5; border-radius:0;}
 .select2-container{ width:100%!important; border-radius:4px;}
-.select2-container--default .select2-selection--single{ height:48px; border:1px solid #aaa; border-radius:4px; background-color:#fff;}
+.select2-container--default .select2-selection--single{ height:48px; border:1px solid #dedee5; border-radius:0px; background-color:#fff;}
+.form-tour-booking-block .select2-container--default .select2-selection--single, .book-airport-transfers-form .select2-container--default .select2-selection--single{ border-color:#aaa; border-radius:4px; background-color:#fff;}
 .select2-container--default .select2-selection--single .select2-selection__rendered{ line-height:48px; color:#444; font-size:16px;}
 .select2-container--default .select2-selection--single .select2-selection__arrow{ height:48px; line-height:48px;}
 .input-box{ width:100%; height:48px; padding:13px 15px; border:1px solid #dedee5; font-size:16px;}
@@ -875,8 +877,16 @@ mark{ background:yellow; color:black;}
 
 .payment_methods{ padding:0; margin:0; text-align:right;}
 .payment_methods li{ list-style:none; margin-bottom:23px;}
-.payment_methods label{ margin:0; color:#f85a08;}
+.payment_methods label{ margin:0;}
+.payment_methods label.pay-1{ color:#f85a08;}
 .payment_methods .payment_box{ font-size:87%;}
+
+.payment-methods-background{ background:#F5F5F7; text-align:left; padding:15px;}
+.payment_box_info{ max-height:0; display:block; visibility:hidden;}
+.active-pay .payment_box_info{ max-height:65em; visibility:visible;}
+.inner_payment_box_info{ background:#d9d9e0; color:#6d7680; padding:20px; margin:20px 0; display:block; font-size:14px; position:relative;}
+.inner_payment_box_info:before{ border:16px solid #d9d9e0; border-left-color:transparent; border-right-color:transparent; border-top-color:transparent; position:absolute; top:-15px; left:0; margin:-10px 0 0 10px; display:block; content:"";}
+.about_paypal_right{ float:right;}
 
 .product_cart_head{ border-bottom:1px solid #e1e1e1; margin-bottom:12px; color:#f85a08; padding-bottom:12px;}
 .product_cart_head .product-head-label{ padding-right:10px;}
@@ -1133,9 +1143,9 @@ legend {
 .transfers-heading-title{ font-size:24px;}
 .bus-image-div{ left:50%; top:28%; transform:translate(-50%, -50%);}
 .transfer-div.shared-transfer{ left:53%; top:0%; transform:translate(-50%, -50%);}
-.book-transfer .book-arrow{ width:36px;}
+.book-transfer .book-arrow{ width:24px;}
 .book-transfer a{ font-size:13px;}
-.book-transfer{ right:-34%;}
+.book-transfer{ right:0%; left:72%;}
 .transfers-book-instantly{ display:none;}
 .transfers-book-instantly-fixed{ display:block!important;}
 .busimg-block-title{ display:block!important; margin:-78px 0 20px;}
@@ -1197,6 +1207,9 @@ table.cart-table-responsive tr:nth-child(2n) td{ background:rgba(0,0,0,0.025);}
 .transfer-div.private-transfer{ max-width:50%;}
 .transfer-div.luxury-transfer{ max-width:50%;}
 }
+@media (max-width:438px) {
+/* .book-transfer{ right:-39%;} */
+}
 /* Samsung Tab
 ----------------------------------------------- */
 @media only screen and (min-device-width : 600px) and (max-device-width : 700px) {}
@@ -1219,6 +1232,7 @@ table.cart-table-responsive tr:nth-child(2n) td{ background:rgba(0,0,0,0.025);}
 .footer-row .div-three{ width:50%; padding:10px;}
 .row-tour-item .tour-item{ max-width:50%; flex:0 0 50%;}
 .item-tours-like{ max-width:33.333%; flex:0 0 33.333%;}
+.block-airport-transfers{ max-width:700px;}
 .left-airport-transfers{ padding:16px;}
 .right-airport-transfers{ padding:0;}
 .post-share-col-block{ display:none;}
@@ -1229,6 +1243,7 @@ table.cart-table-responsive tr:nth-child(2n) td{ background:rgba(0,0,0,0.025);}
 .post-blog-items-cover .post-blog-item .post__thumbnail{ width:100%; margin:0;}
 .divider-block-new{ padding:0;}
 .divider-block-new:last-child{ display:none;}
+
 }
 
 

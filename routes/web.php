@@ -140,8 +140,8 @@ Route::get('/testmail', function () {
 	Mail::send([], [], function ($message) {
 		$message->to('manojrhr@gmail.com')
 		->subject('Testing email from a2zamaze')
-    ->setBody('<h1>Hi, welcome user!</h1>', 'text/html'); // for HTML rich messages
-});
+    	->setBody('<h1>Hi, welcome user!</h1>', 'text/html'); // for HTML rich messages
+	});
 })->name('testmail');
 
 Route::get('/testsms/{phone}', function ($phone) {

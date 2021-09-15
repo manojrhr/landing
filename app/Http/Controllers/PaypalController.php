@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Address;
 use App\Booking;
 use App\Http\Requests;
 use App\User;
@@ -68,6 +69,7 @@ class PaypalController extends Controller
         } else {
             $userCheck = User::where('email', $request->email)->first();
         }
+
         if(!$userCheck){
             if($request->has('createaccount') && $request->createaccount === "1"){
                 if($request->has('password')){
@@ -91,7 +93,22 @@ class PaypalController extends Controller
         }
         Auth::loginUsingId($user->id);
 
-        // dd($request->all());
+        $address = new Address();
+        $address->company = $request->company;
+        $address->country_id = $request->country;
+        $address->address_1 = $request->address_1;
+        $address->address_2 = $request->address_2;
+        $address->city = $request->city;
+        $address->postal_code = $request->postcode;
+        $address->user_id = $user->id;
+        $address->save();
+
+        if($request->payment_method === "paypal"){
+            $cod = 0;
+        } else {
+            $cod = 1;
+        }
+
         $latest_booking = Booking::latest()->first();
         if($latest_booking){
             $booking_id = $latest_booking->booking_id + 1;
@@ -101,9 +118,20 @@ class PaypalController extends Controller
         $booking = $request->booking;
         $booking['booking_id'] = $booking_id;
         $booking['user_id'] = $user->id;
+        $booking['address_id'] = $address->id;
         $booking = Booking::create($booking);
 
         $request->session()->put('booking_id', $booking->booking_id);
+        if($cod) {
+            $booking->is_cod = 1;
+            $booking->save();
+            // $booking = Booking::where('booking_id', $booking->booking_id)->first();
+            // $tour_slug = $request->session()->put('tour_slug');
+            // $request->session()->put('tour_slug', $tour_slug);
+            $request->session()->flash('message.level', 'success');
+            $request->session()->flash('message.content', 'Payment success !!');
+            return Redirect::route('paymentSuccess');
+        }
         $payer = new Payer();
         $payer->setPaymentMethod('paypal');
 
