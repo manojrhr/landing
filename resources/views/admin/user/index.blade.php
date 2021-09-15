@@ -38,7 +38,7 @@
                                 <td>{{ $i }}</td>
                                 <td>
                                     <a href="{{ route('admin.user.single',$user->id) }}">
-                                        {{ $user->name }}
+                                        {{ $user->first_name }} {{ $user->last_name }}
                                     </a>
                                 </td>
                                 <td>{{ $user->email }}</td>

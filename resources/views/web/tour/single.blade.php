@@ -97,6 +97,7 @@
                             <a href="#tour-booking-form" class="tour-booking-button tour-booking-button-fixed"
                                 role="button">Book this Tour!</a>
                         </div>
+                        @if($tour->option)
                         <div id="tour-booking-form" class="tour-booking-form-block">
                             <h3 class="tour-booking-form-title">Book This Tour Below</h3>
 
@@ -160,6 +161,7 @@
                             </div>
 
                         </div>
+                        @endif
                         <hr class="divider-tour-border" />
                         <div class="social-share-cover">
                             <div class="social-share-title">Share with friends.</div>

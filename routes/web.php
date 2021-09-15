@@ -47,7 +47,6 @@ Route::group(['prefix' => 'admin' , 'as' => 'admin.'], function(){
 	Route::get('/mar-all-as-read', 'Web\Admin\AdminController@markAllasRead')->name('markAllasRead');
 
 	Route::get('/users', 'Web\Admin\UserController@index')->name('users');
-	Route::get('/delivery-guy', 'Web\Admin\UserController@dlivery_guy')->name('delivery_guy');
 	Route::get('/user/{id}', 'Web\Admin\UserController@single')->name('user.single');
 	Route::post('/user-update/{id}', 'Web\Admin\UserController@updateDetails')->name('user.update');
 	Route::post('/user-password-update/{id}', 'Web\Admin\UserController@updatePassword')->name('user.password.update');

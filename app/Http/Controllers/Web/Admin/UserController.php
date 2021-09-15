@@ -33,22 +33,7 @@ class UserController extends Controller
         $d_guy = false;
         $title = "Customers";
         $subTitle = "Registered Customers";
-        $users = User::where('delivery_guy', false)->latest()->get();
-        return view('admin.user.index', compact('users', 'title', 'subTitle', 'd_guy'));
-    }
-
-    /**
-     * Show the application dashboard.
-     *
-     * @return \Illuminate\Contracts\Support\Renderable
-     */
-    public function dlivery_guy()
-    {
-        // $users = User::all();
-        $d_guy = true;
-        $title = "Delivery Guys";
-        $subTitle = "Registered Delivery Guys";
-        $users = User::where('delivery_guy', true)->latest()->get();
+        $users = User::latest()->get();
         return view('admin.user.index', compact('users', 'title', 'subTitle', 'd_guy'));
     }
     
