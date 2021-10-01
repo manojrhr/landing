@@ -19,7 +19,7 @@ if (!function_exists('null_safe')) {
     function get_latest_temp()
     {
         
-        $url="https://api.openweathermap.org/data/2.5/onecall?lat=18.1096&lon=77.2975&exclude=minutely,hourly.daily,alerts&appid=28f6c380a7c1905b50a97e289869b2fe&units=metric";
+        $url="https://api.openweathermap.org/data/2.5/weather?q=Kingston,JM&appid=28f6c380a7c1905b50a97e289869b2fe&units=metric";
 
         $ch = curl_init();
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
@@ -28,7 +28,7 @@ if (!function_exists('null_safe')) {
         curl_close($ch);
 
         $data = (object)json_decode($result, true);
-        return $data->current['temp'];
+        return $data->main['temp'];
     }
 
     function get_latest_blog_post()

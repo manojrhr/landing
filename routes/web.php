@@ -151,22 +151,17 @@ Route::get('/testsms/{phone}', function ($phone) {
 })->name('testsms');
 
 Route::get('testnot', function(){
-	$url="https://api.openweathermap.org/data/2.5/onecall?lat=18.1096&lon=77.2975&exclude=minutely,hourly.daily,alerts&appid=28f6c380a7c1905b50a97e289869b2fe&units=metric";
+	$url="https://api.openweathermap.org/data/2.5/weather?q=Kingston,JM&appid=28f6c380a7c1905b50a97e289869b2fe&units=metric";
 
-	//  Initiate curl
 	$ch = curl_init();
-	// Will return the response, if false it print the response
 	curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-	// Set the url
 	curl_setopt($ch, CURLOPT_URL,$url);
-	// Execute
 	$result=curl_exec($ch);
-	// Closing
 	curl_close($ch);
 
 	// Will dump a beauty json :3
 	$data = (object)json_decode($result, true);
 	dump($data);
-	dump($data->current['temp']);
+	dump($data->main['temp']);
 	dd(json_decode($result, true));
 });
