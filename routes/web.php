@@ -38,6 +38,12 @@ Route::get('paywithpaypal', array('as' => 'paywithpaypal','uses' => 'PaypalContr
 Route::post('paypal', array('as' => 'paypal','uses' => 'PaypalController@postPaymentWithpaypal',));
 Route::get('paypal', array('as' => 'status','uses' => 'PaypalController@getPaymentStatus',));
 
+//Route for Static Pages
+Route::view('terms', 'pages.terms')->name('terms');
+Route::view('contact-us', 'web.pages.contact')->name('contact_us');
+Route::view('about', 'web.pages.about')->name('about');
+
+
 Route::group(['prefix' => 'admin' , 'as' => 'admin.'], function(){
 	Route::get('/login', 'Auth\AdminLoginController@showLoginForm')->name('login');
 	Route::post('/login', 'Auth\AdminLoginController@login')->name('login.submit');
@@ -115,9 +121,6 @@ Route::group(['prefix' => 'admin' , 'as' => 'admin.'], function(){
 Route::post('/contact', 'Web\HomeController@contact')->name('post.contact');
 Route::get('/page/{slug}', 'Web\PageController@show')->name('page');
 Route::get('/users/logout', 'Auth\LoginController@userLogout')->name('user.logout');
-
-//Route for Static Pages
-Route::view('/terms', 'pages.terms')->name('terms');
 
 Route::group(['prefix' => 'user' , 'as' => 'user.'], function(){
 	Route::get('/my-account', 'Web\UserController@show_profile')->name('profile');

@@ -131,13 +131,13 @@
                                         <a class="nav-link" href="{{ route('tours') }}">Tours</a>
                                     </li>
                                     <li class="nav-item">
-                                        <a class="nav-link" href="transfers.html">Transfers</a>
+                                        <a class="nav-link" href="#">Transfers</a>
                                     </li>
                                     <li class="nav-item">
-                                        <a class="nav-link" href="promotions.html">Promotions</a>
+                                        <a class="nav-link" href="#">Promotions</a>
                                     </li>
                                     <li class="nav-item">
-                                        <a class="nav-link" href="contact-us.html">Contact Us</a>
+                                        <a class="nav-link" href="{{ route('contact_us') }}">Contact Us</a>
                                     </li>
                                     @guest
                                         <li class="nav-item">
@@ -358,12 +358,12 @@
                         <div class="div-three">
                             <h4 class="footer-col-title">Quick Links</h4>
                             <ul class="list-menu">
-                                <li><a href="#">My account</a></li>
-                                <li><a href="tours.html">Tours</a></li>
-                                <li><a href="transfers.html">Transfers</a></li>
-                                <li><a href="news.html">News</a></li>
-                                <li><a href="contact-us.html">Contact Us</a></li>
-                                <li><a href="about.html">About Us</a></li>
+                                <li><a href="{{ route('user.profile') }}">My account</a></li>
+                                <li><a href="{{ route('tours') }}">Tours</a></li>
+                                <li><a href="#">Transfers</a></li>
+                                <li><a href="#">News</a></li>
+                                <li><a href="{{ route('contact_us') }}">Contact Us</a></li>
+                                <li><a href="{{ route('about') }}">About Us</a></li>
                             </ul>
                         </div>
                     </div>

@@ -1,73 +1,115 @@
-@extends('layouts/web/web')
+@extends('layouts/web/master')
 
 @section('styles')
-<style type="text/css">
-   .profile-header{
-      height: 200px;
-   }
-   body
-   {
-      font-size: 1rem;
-   }
-   .Container--md {
-   max-width: 960px;
-}
-</style>
+
 @endsection
 
 @section('content')
-<div class="cms Container mt-5 mb-5">
-   <div class="container u-bgWhite u-textCenter u-lg-pv4">
-      <div class="Container Container--md u-lg-sizeFull u-pv1">
-         <div class="u-textCenter u-pv2">
-            <div class="u-mb1_5">
-               <h2 class="u-display2 u-sm-display1 u-mb05">What We Do</h2>
-               <div class="Divider Divider--blue"></div>
+
+<!-- #Main Content-->
+<div id="main-content">
+    <!-- Banner -->
+    <div class="bg-fixed banner">
+        <div class="banner-shape-bottom" data-negative="false">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 283.5 19.6" preserveAspectRatio="none">
+                <path class="elementor-shape-fill" style="opacity:0.33" d="M0 0L0 18.8 141.8 4.1 283.5 18.8 283.5 0z">
+                </path>
+                <path class="elementor-shape-fill" style="opacity:0.33" d="M0 0L0 12.6 141.8 4 283.5 12.6 283.5 0z">
+                </path>
+                <path class="elementor-shape-fill" style="opacity:0.33" d="M0 0L0 6.4 141.8 4 283.5 6.4 283.5 0z">
+                </path>
+                <path class="elementor-shape-fill" d="M0 0L0 1.2 141.8 4 283.5 1.2 283.5 0z"></path>
+            </svg>
+        </div>
+        <div class="inner-banner">
+            <div class="container">
+                <div class="banner-content" data-aos="fade-right">
+                    <h1 class="page-heading-title">About Us</h1>
+                    <ul class="social-icon-banner">
+                        <li><a href="#" target="_blank"><i class="fab fa-facebook-f"></i></a></li>
+                        <li><a href="#" target="_blank"><i class="fab fa-instagram"></i></a></li>
+                    </ul>
+                </div>
             </div>
-            <p>Founded in 2012, we are happy to call South Florida our home and base of the #1 BOAT RENTAL COMMUNITY. <br>We bridge the boating world in a way it has never been connected before. Whether you're looking for a boat rental for a day or a week-long charter, we provide the largest marketplace for any boating experience, with over 17,000 boats in over 600 locations to choose from.</p>
-         </div>
+        </div>
+    </div>
 
-         <div class="container">
-            <img class="u-sizeFull" src="//cdn-production.boatsetter.com/assets/boatsetter/about-us/map.svg" alt="">
-         </div>
-
-      </div>
-   </div>
-
-
-   <div class="Hero u-flex u-flexAlignItemsStart container">
-      <div class="Hero-content u-pv4">
-         <div class="Container Container--sm u-flex u-flexAlignItemsStart u-flexJustifyCenter">
-            <div class="u-textCenter u-textWhite">
-               <div class="u-mb1_5">
-                  <h2 class="u-display2 u-sm-display1 u-mb05">Our Mission</h2>
-               </div>
-                <p>We are passionate about creating a world where anyone can set sail on a boating adventure. We hustle every day to make boating accessible for everyone.</p>
+    <!-- Section About One -->
+    <div class="section-about-one">
+        <div class="container">
+            <div class="sub-heading-content">About Us</div>
+            <h2 class="about-heading-title">Our Mission</h2>
+            <div class="row no-margin">
+                <div class="col-md-6 about-one-half">
+                    <p>Kuiki Tours provides quality and excellent service without compromise of customer service and
+                        safety. Our mantra “Shine with Excellence” allows us to collaborate with various entities to
+                        provide effective and efficient service, all to serve you better.</p>
+                    <p>Our modern fleet management system can mobilize over 1500 seats for your conference or special
+                        event. Town cars with drivers can help you to explore the island or do it on your time and at
+                        your pace. We are here to help you make the best of your vacation, meeting or event in Jamaica.
+                    </p>
+                </div>
+                <div class="col-md-6 about-one-half">
+                </div>
             </div>
-         </div>
-      </div>
-   </div>
+        </div>
+    </div>
+
+
+    <!-- Section About Two -->
+    <div class="section-about-two">
+        <div class="container">
+
+            <div class="middle-container">
+                <div class="row no-margin row-about-blog">
+                    <div class="blockleft-block">
+                        @php $post = get_latest_blog_post(); @endphp
+                        @if($post)
+                        <h4 class="heading-title-small">News &amp; Blogs</h4>
+                        <div class="d-flex flex-wrap post-blog-item">
+                            <div class="flex-shrink-0 post__thumbnail">
+                                <a class="post-thumbnail-block" href="#">
+                                    <img src="{{ asset($post->feature_image) }}">
+                                </a>
+                            </div>
+                            <div class="flex-grow-2 blog_post_text">
+                                <h4 class="post_title">
+                                    <a href="#">{{ $post->title }}</a>
+                                </h4>
+                                <div class="blog_post_meta_data">
+                                    <span class="blog-post-date">{{ date("F j, Y", strtotime($post->created_at)) }}<</span>
+                                </div>
+                                <a class="blog_post_read-btn"
+                                    href="{{ route('blog.single', $post->slug) }}">Read More »</a>
+                            </div>
+                        </div>
+                        @endif
+                    </div>
+                    <div class="blockright-block">
+                        <h4 class="heading-title-small">CONNECT WITH US.</h4>
+                        <p>Stay connected with us on social media about our latest news &amp; blogs.</p>
+                        <ul class="link-social-icons-wrapper">
+                            <li>
+                                <a href="#" class="link-social-icon" target="_blank" rel="noopener">
+                                    <i class="fab fa-facebook-f"></i></a>
+                            </li>
+                            <li>
+                                <a href="#" class="link-social-icon insta-icon" target="_blank" rel="noopener">
+                                    <i class="fab fa-instagram"></i></a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
+    </div>
+
 
 
 </div>
-   <div class="Hero u-flex u-flexAlignItemsStart container">
-      <div class="Hero-content u-pv4">
-         <div class="Container Container--sm u-flex u-flexAlignItemsStart u-flexJustifyCenter">
-            <div class="u-textCenter u-textWhite">
-               <div class="u-mb1_5">
-                  <h2 class="u-display2 u-sm-display1 u-mb05">Our Team</h2>
-               </div>
-               <p>We're a group of fun, hard-working, creative, and experienced professionals who also happen to be boaters; our
-                  team hails from all over the world, just like our boats do. The love of boating is in the drinking water at Boatsetter
-                  and we've made it our mission to get everyone onboard.
-               </p>
-            </div>
-         </div>
-      </div>
-   </div>
-
-
-</div>
+<!-- End #Main Content-->
 
 
 @endsection
