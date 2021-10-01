@@ -361,7 +361,7 @@
                                 <li><a href="{{ route('user.profile') }}">My account</a></li>
                                 <li><a href="{{ route('tours') }}">Tours</a></li>
                                 <li><a href="#">Transfers</a></li>
-                                <li><a href="#">News</a></li>
+                                <li><a href="{{ route('blog') }}">Blog</a></li>
                                 <li><a href="{{ route('contact_us') }}">Contact Us</a></li>
                                 <li><a href="{{ route('about') }}">About Us</a></li>
                             </ul>
