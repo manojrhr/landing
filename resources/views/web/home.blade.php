@@ -229,7 +229,7 @@
                 </section>
             </div>
             <div class="more-tour-cover">
-                <a href="#" class="btn-more-tour"><span class="arrow-span"><i aria-hidden="true"
+                <a href="{{ route('tours') }}" class="btn-more-tour"><span class="arrow-span"><i aria-hidden="true"
                             class="fas fa-long-arrow-alt-right"></i></span><span class="text-span">More
                         Tours <i aria-hidden="true" class="fas fa-long-arrow-alt-right"></i></span></a>
             </div>
