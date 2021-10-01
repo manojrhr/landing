@@ -156,7 +156,24 @@
             <div class="slider-product-div">
 
                 <section class="product-slider slider">
+                    @foreach ($tours as $tour)
                     <div>
+                        <div class="product-innerblock">
+                            <div class="product-thumbnail">
+                                <img src="{{ asset($tour->image) }}" alt="">
+                            </div>
+                            <div class="d-flex align-items-center product-item-content">
+                                <div class="inner-product-content">
+                                    <h2><a href="{{ route('tour.single', $tour->slug) }}">{{ $tour->title }}</a></h2>
+                                    <div class="product-excerpt">{{ substr($tour->description, 0, 50) }}</div>
+                                    <div class="more-btn-cover"><a class="more-btn" href="{{ route('tour.single', $tour->slug) }}">More
+                                            Details</a></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    @endforeach
+                    {{-- <div>
                         <div class="product-innerblock">
                             <div class="product-thumbnail">
                                 <img src="{{ asset('assets/web/images/product2.jpg') }}" alt="">
@@ -207,7 +224,7 @@
                                 </div>
                             </div>
                         </div>
-                    </div>
+                    </div> --}}
 
                 </section>
             </div>

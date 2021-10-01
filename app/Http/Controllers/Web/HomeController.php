@@ -8,6 +8,7 @@ use App\Notifications\ContactFormSubmitted;
 use App\User;
 use App\Admin;
 use App\Category;
+use App\Tour;
 use Validator;
 use Notification;
 
@@ -31,7 +32,8 @@ class HomeController extends Controller
     public function index()
     {
         $categories = Category::all()->take(3);
-        return view('web.home', compact('categories'));
+        $tours = Tour::latest()->limit(5)->get();
+        return view('web.home', compact('categories', 'tours'));
     }
 
     public function contact(Request $request)

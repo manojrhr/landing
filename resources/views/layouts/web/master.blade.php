@@ -89,8 +89,8 @@
                         <div class="weather-block">
                             <a href="https://darksky.net/forecast/18.2787,-78.3465/us12/en" target="_blank"
                                 rel="nofollow noopener"><span class="weather-day weather-current"><span
-                                        class="weather_date">Thursday</span> <i class="wi wi-night-cloudy"></i> <em
-                                        class="weather-temp">26 °C</em></span></a>
+                                        class="weather_date">{{ date('l') }}</span> <i class="wi wi-night-cloudy"></i> <em
+                                        class="weather-temp">{{ get_latest_temp() }} °C</em></span></a>
                         </div>
                     </div>
                     <div class="col-md-4 align-items-center">

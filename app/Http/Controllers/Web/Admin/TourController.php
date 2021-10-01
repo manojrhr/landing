@@ -79,7 +79,7 @@ class TourController extends Controller
             if($check)
             {
                 $filename = time() .'.'. $avatar->getClientOriginalExtension();
-                $photo  = Image::make($avatar->getRealPath())->resize(307, 146, function($constraint)
+                $photo  = Image::make($avatar->getRealPath())->resize(300, 300, function($constraint)
                 {
                     $constraint->aspectRatio();
                 })->save(public_path('images/tour/'.$filename));
@@ -194,7 +194,7 @@ class TourController extends Controller
             if($check)
             {
                 $filename = time() .'.'. $avatar->getClientOriginalExtension();
-                $photo  = Image::make($avatar->getRealPath())->resize(307, 146, function($constraint)
+                $photo  = Image::make($avatar->getRealPath())->resize(300, 300, function($constraint)
                 {
                     $constraint->aspectRatio();
                 })->save(public_path('images/tour/'.$filename));
