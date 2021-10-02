@@ -113,11 +113,12 @@ class TourController extends Controller
         if($tour->save()){
             $request->session()->flash('message.level', 'success');
             $request->session()->flash('message.content', 'Tour created successfully.');
+            return redirect()->route('admin.tour.edit', $tour->id);
         } else {
             $request->session()->flash('message.level', 'error');
             $request->session()->flash('message.content', 'Something went wrong.');
+            return redirect()->route('admin.tour');
         }
-        return redirect()->route('admin.tour');
     }
 
     public function edit($id)

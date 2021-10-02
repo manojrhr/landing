@@ -21,7 +21,7 @@
                 <form class="form-horizontal" method="post" action="{{ route('admin.tour.edit.post', $tour->id)}}" enctype="multipart/form-data">
                 @csrf
                   <div class="form-group">
-                    <label for="category" class="col-sm-2 control-label">Category</label>
+                    <label for="category" class="col-sm-2 control-label">Category*</label>
                     <div class="col-sm-10">
                       <select class="form-control" id="category" name="category">
                         {{-- <option value="">-- Select Category for this Tour --</option> --}}
@@ -53,7 +53,7 @@
                     </div>
                   </div>
                   <div class="form-group">
-                    <label for="inputName" class="col-sm-2 control-label">Title</label>
+                    <label for="inputName" class="col-sm-2 control-label">Title*</label>
 
                     <div class="col-sm-10">
                       <input type="text" class="form-control" id="inputName" name="title" placeholder="Title" value="{{ $tour->title }}">
@@ -66,7 +66,7 @@
                     </div>
                   </div>
                   <div class="form-group">
-                    <label for="description" class="col-sm-2 control-label">Description</label>
+                    <label for="description" class="col-sm-2 control-label">Description*</label>
 
                     <div class="col-sm-10">
                       <textarea type="text" class="form-control" id="description" name="description" placeholder="Description" value="">{{ $tour->description }}</textarea>
@@ -150,10 +150,11 @@
                     </div>
                   </div>
                   <div class="form-group">
-                    <label for="image" class="col-sm-2 control-label">Image</label>
+                    <label for="image" class="col-sm-2 control-label">Image*</label>
 
                     <div class="col-sm-10">
-                      <input type="file" name="image" id="image">
+                      <input type="file" name="image" id="imgInp">
+                      <p><img src="{{ asset($tour->image) }}" id="tourimage" width="150px" style="margin-top: 10px"/></p>
 
                         @error('image')
                             <span class="invalid-feedback text-danger" role="alert">
@@ -167,6 +168,9 @@
 
                     <div class="col-sm-10">
                       <input type="file" name="photos[]" id="photos" multiple="multiple">
+                      @foreach (json_decode($tour->photos) as $photo)
+                          <img class="img-fluid" src="{{ asset($photo) }}" width="100px" style="margin-top: 5px"/>
+                      @endforeach
 
                         @error('photos')
                             <span class="invalid-feedback text-danger" role="alert">
@@ -183,7 +187,7 @@
                 </form>
               </div>
               <!-- /.tab-pane -->
-              <div class="active tab-pane" id="options">
+              <div class="tab-pane" id="options">
                 <form class="form-horizontal" method="post" action="{{ route('admin.add_tour_options', $tour->id)}}" enctype="multipart/form-data">
                 @csrf
                   <div class="form-group">
@@ -276,4 +280,15 @@
         <!-- /.col -->
       </div>
       <!-- /.row -->
+@endsection
+
+@section('scripts')
+  <script>
+    imgInp.onchange = evt => {
+      const [file] = imgInp.files
+      if (file) {
+        tourimage.src = URL.createObjectURL(file)
+      }
+    }
+  </script>
 @endsection

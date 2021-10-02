@@ -20,7 +20,7 @@
                 <form class="form-horizontal" method="post" action="{{ route('admin.tour.create.post')}}" enctype="multipart/form-data">
                 @csrf
                   <div class="form-group">
-                    <label for="category" class="col-sm-2 control-label">Category</label>
+                    <label for="category" class="col-sm-2 control-label">Category*</label>
                     <div class="col-sm-10">
                       <select class="form-control" id="category" name="category">
                         {{-- <option value="">-- Select Category for this Tour --</option> --}}
@@ -52,7 +52,7 @@
                     </div>
                   </div>
                   <div class="form-group">
-                    <label for="inputName" class="col-sm-2 control-label">Title</label>
+                    <label for="inputName" class="col-sm-2 control-label">Title*</label>
 
                     <div class="col-sm-10">
                       <input type="text" class="form-control" id="inputName" name="title" placeholder="Title" value="">
@@ -65,7 +65,7 @@
                     </div>
                   </div>
                   <div class="form-group">
-                    <label for="description" class="col-sm-2 control-label">Description</label>
+                    <label for="description" class="col-sm-2 control-label">Description*</label>
 
                     <div class="col-sm-10">
                       <textarea type="text" class="form-control" id="description" name="description" placeholder="Description" value=""></textarea>
@@ -149,7 +149,7 @@
                     </div>
                   </div>
                   <div class="form-group">
-                    <label for="image" class="col-sm-2 control-label">Image</label>
+                    <label for="image" class="col-sm-2 control-label">Image*</label>
 
                     <div class="col-sm-10">
                       <input type="file" name="image" id="image" required>
