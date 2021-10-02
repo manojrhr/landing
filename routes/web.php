@@ -21,10 +21,16 @@ Route::get('/', 'Web\HomeController@index')->name('home');
 
 Auth::routes(['verify' => true]);
 
+//TOURS
 Route::get('/tours', 'Web\TourController@tours')->name('tours');
 Route::get('/tour/{slug}', 'Web\TourController@single')->name('tour.single');
-
 Route::post('/tour/get_prices', 'Web\TourController@get_prices')->name('tour.get_prices');
+
+//TRANSFERS
+Route::get('/transfers', 'Web\TransferController@index')->name('transfers');
+
+//TRANSFERS
+Route::get('/promotions', 'Web\PromotionController@index')->name('promotions');
 
 Route::get('/blog', 'Web\BlogController@index')->name('blog');
 Route::get('/blog/{slug}', 'Web\BlogController@single')->name('blog.single');

@@ -131,10 +131,10 @@
                                         <a class="nav-link" href="{{ route('tours') }}">Tours</a>
                                     </li>
                                     <li class="nav-item">
-                                        <a class="nav-link" href="#">Transfers</a>
+                                        <a class="nav-link" href="{{ route('transfers') }}">Transfers</a>
                                     </li>
                                     <li class="nav-item">
-                                        <a class="nav-link" href="#">Promotions</a>
+                                        <a class="nav-link" href="{{ route('promotions') }}">Promotions</a>
                                     </li>
                                     <li class="nav-item">
                                         <a class="nav-link" href="{{ route('contact_us') }}">Contact Us</a>
@@ -215,8 +215,8 @@
                                         <div class="mobilemain-nav" id="responsive_menu">
                                             <ul>
                                                 <li class="Selected"><a href="{{ route('tours') }}">Tours</a></li>
-                                                <li><a href="#">Transfers</a></li>
-                                                <li><a href="#">Promotions</a></li>
+                                                <li><a href="{{ route('transfers') }}">Transfers</a></li>
+                                                <li><a href="{{ route('promotions') }}">Promotions</a></li>
                                                 <li><a class="nav-link" href="{{ route('contact_us') }}">Contact Us</a></li>
                                             </ul>
                                         </div>
@@ -360,7 +360,7 @@
                             <ul class="list-menu">
                                 <li><a href="{{ route('user.profile') }}">My account</a></li>
                                 <li><a href="{{ route('tours') }}">Tours</a></li>
-                                <li><a href="#">Transfers</a></li>
+                                <li><a href="{{ route('transfers') }}">Transfers</a></li>
                                 <li><a href="{{ route('blog') }}">Blog</a></li>
                                 <li><a href="{{ route('contact_us') }}">Contact Us</a></li>
                                 <li><a href="{{ route('about') }}">About Us</a></li>
