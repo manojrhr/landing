@@ -55,7 +55,7 @@
                     <label for="inputName" class="col-sm-2 control-label">Title*</label>
 
                     <div class="col-sm-10">
-                      <input type="text" class="form-control" id="inputName" name="title" placeholder="Title" value="">
+                      <input type="text" class="form-control" id="inputName" name="title" placeholder="Title*" value="{{ old('title') }}">
 
                         @error('title')
                             <span class="invalid-feedback text-danger" role="alert">
@@ -68,7 +68,7 @@
                     <label for="description" class="col-sm-2 control-label">Description*</label>
 
                     <div class="col-sm-10">
-                      <textarea type="text" class="form-control" id="description" name="description" placeholder="Description" value=""></textarea>
+                      <textarea type="text" class="form-control" id="description" name="description" placeholder="Description*" value="">{{ old('description') }}</textarea>
                       {{-- <input type="text" class="form-control" id="description" name="description" placeholder="Description" value=""> --}}
 
                         @error('description')
@@ -82,7 +82,7 @@
                     <label for="included" class="col-sm-2 control-label">included</label>
 
                     <div class="col-sm-10">
-                      <textarea type="text" class="form-control" id="included" name="included" placeholder="Included" value=""></textarea>
+                      <textarea type="text" class="form-control" id="included" name="included" placeholder="Included" value="">{{ old('included') }}</textarea>
                       {{-- <input type="text" class="form-control" id="description" name="description" placeholder="Description" value=""> --}}
 
                         @error('included')
@@ -96,7 +96,7 @@
                     <label for="add_info" class="col-sm-2 control-label">Additional Information</label>
 
                     <div class="col-sm-10">
-                      <textarea type="text" class="form-control" id="add_info" name="add_info" placeholder="Additional Information" value=""></textarea>
+                      <textarea type="text" class="form-control" id="add_info" name="add_info" placeholder="Additional Information" value="">{{ old('add_info') }}</textarea>
                       {{-- <input type="text" class="form-control" id="description" name="description" placeholder="Description" value=""> --}}
 
                         @error('add_info')
@@ -110,7 +110,7 @@
                     <label for="meta_title" class="col-sm-2 control-label">Meta Title</label>
 
                     <div class="col-sm-10">
-                      <textarea type="text" class="form-control" id="meta_title" name="meta_title" placeholder="Meta Title" value=""></textarea>
+                      <textarea type="text" class="form-control" id="meta_title" name="meta_title" placeholder="Meta Title" value="">{{ old('meta_title') }}</textarea>
                       {{-- <input type="text" class="form-control" id="description" name="description" placeholder="Description" value=""> --}}
 
                         @error('meta_title')
@@ -124,7 +124,7 @@
                     <label for="meta_description" class="col-sm-2 control-label">Meta Description</label>
 
                     <div class="col-sm-10">
-                      <textarea type="text" class="form-control" id="meta_description" name="meta_description" placeholder="Meta Description" value=""></textarea>
+                      <textarea type="text" class="form-control" id="meta_description" name="meta_description" placeholder="Meta Description" value="">{{ old('meta_description') }}</textarea>
                       {{-- <input type="text" class="form-control" id="description" name="description" placeholder="Description" value=""> --}}
 
                         @error('meta_description')
@@ -138,7 +138,7 @@
                     <label for="meta_keywords" class="col-sm-2 control-label">Meta Keywords</label>
 
                     <div class="col-sm-10">
-                      <textarea type="text" class="form-control" id="meta_keywords" name="meta_keywords" placeholder="Meta Keywords" value=""></textarea>
+                      <textarea type="text" class="form-control" id="meta_keywords" name="meta_keywords" placeholder="Meta Keywords" value="">{{ old('meta_keywords') }}</textarea>
                       {{-- <input type="text" class="form-control" id="description" name="description" placeholder="Description" value=""> --}}
 
                         @error('meta_keywords')
