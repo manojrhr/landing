@@ -36,20 +36,22 @@
                     @php $i=1; @endphp
                     @foreach ($categories as $category)
                     <div class="col-md-4 block-order{{ $i }}">
-                        <div class="inner-block">
-                            <div class="images-block" data-aos="zoom-in-left">
-                                <img src="{{ asset($category->image) }}" alt="" />
+                        <a href="{{ url($category->slug) }}">
+                            <div class="inner-block">
+                                <div class="images-block" data-aos="zoom-in-left">
+                                    <img src="{{ asset($category->image) }}" alt="" />
+                                </div>
+                                <div class="content-div-col {{ $i === 1 ? "one-block" : "" }}" data-aos="fade-left">
+                                    @if($i === 1)
+                                        <h3><i>{{ $category->title }}</i></h3>
+                                        <h2>{{ $category->subtitle }}</h2>
+                                    @else
+                                        <h2>{{ $category->title }}</h2>
+                                        <h4><i>{{ $category->subtitle }}</i></h4>
+                                    @endif
+                                </div>
                             </div>
-                            <div class="content-div-col {{ $i === 1 ? "one-block" : "" }}" data-aos="fade-left">
-                                @if($i === 1)
-                                <h3><i>{{ $category->title }}</i></h3>
-                                <h2>{{ $category->subtitle }}</h2>
-                                @else
-                                <h2>{{ $category->title }}</h2>
-                                <h4><i>{{ $category->subtitle }}</i></h4>
-                                @endif
-                            </div>
-                        </div>
+                        </a>
                     </div>
                     @php $i++; @endphp
                     @endforeach

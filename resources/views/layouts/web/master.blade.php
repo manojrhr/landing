@@ -182,7 +182,7 @@
                     <div class="d-flex justify-content-between align-items-center mobile-nav-row">
                         <div class="mobile-one-half">
                             <div class="mobile-logo">
-                                <a href="index.html"><img src="{{ asset('assets/web/images/kiuki-tours-logo-ws.svg') }}"
+                                <a href="{{ route('home') }}"><img src="{{ asset('assets/web/images/kiuki-tours-logo-ws.svg') }}"
                                         alt="Kiuki Tours &amp; Transportation Jamaica"
                                         title="Kiuki Tours &amp; Transportation Jamaica" itemprop="logo" /></a>
                             </div>
@@ -214,10 +214,10 @@
                                     <div class="mdesplay" style="display: none;">
                                         <div class="mobilemain-nav" id="responsive_menu">
                                             <ul>
-                                                <li class="Selected"><a href="tours.html">Tours</a></li>
-                                                <li><a href="transfers.html">Transfers</a></li>
+                                                <li class="Selected"><a href="{{ route('tours') }}">Tours</a></li>
+                                                <li><a href="#">Transfers</a></li>
                                                 <li><a href="#">Promotions</a></li>
-                                                <li><a class="nav-link" href="contact-us.html">Contact Us</a></li>
+                                                <li><a class="nav-link" href="{{ route('contact_us') }}">Contact Us</a></li>
                                             </ul>
                                         </div>
                                     </div>

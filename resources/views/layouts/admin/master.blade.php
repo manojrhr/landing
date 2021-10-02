@@ -54,9 +54,14 @@
     <!-- Logo -->
     <a href="{{ route('admin.dashboard') }}" class="logo">
       <!-- mini logo for sidebar mini 50x50 pixels -->
-      <span class="logo-mini"><b>A</b></span>
+      <span class="logo-mini"><b>K</b></span>
       <!-- logo for regular state and mobile devices -->
-      <span class="logo-lg"><b>Kiu</b>ki</span>
+      <span class="logo-lg">
+        <img
+          src="{{ asset('assets/web/images/kiuki-tours-logo-1-ws.svg') }}"
+          alt="Kiuki Tours &amp; Transportation Jamaica"
+          title="Kiuki Tours &amp; Transportation Jamaica" itemprop="logo" />
+      </span>
     </a>
     <!-- Header Navbar: style can be found in header.less -->
     <nav class="navbar navbar-static-top">
