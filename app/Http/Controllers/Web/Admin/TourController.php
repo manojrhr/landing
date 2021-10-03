@@ -138,7 +138,10 @@ class TourController extends Controller
         $tour_option = TourOption::where('tour_id', $tour->id)->delete();
         $image = $tour->image;
         if($tour->delete()){
-            unlink($image);
+            if (file_exists(public_path($image))) {
+                // dd('File is Exists ');
+                unlink($image);
+            }
             $request->session()->flash('message.level', 'success');
             $request->session()->flash('message.content', 'Tour deleted successfully.');
         } else {
@@ -188,7 +191,9 @@ class TourController extends Controller
         $tour->meta_keywords = $request->meta_keywords;
 
         if($request->hasFile('image')){
-            unlink($tour->image);
+            if (file_exists(public_path($tour->image))) {
+                unlink($tour->image);
+            }
             $avatar = $request->file('image');
             $allowedfileExtension=['jpg','jpeg','png'];
             $check=in_array($avatar->getClientOriginalExtension(),$allowedfileExtension);
@@ -207,7 +212,9 @@ class TourController extends Controller
 
         if($request->hasFile('photos')){
             foreach (json_decode($tour->photos) as $dphoto) { 
-                unlink($dphoto);
+                if (file_exists(public_path($dphoto))) {
+                    unlink($dphoto);
+                }
             }
             $photos = [];
             foreach ($request->file('photos') as $image) { 

@@ -1,6 +1,6 @@
 @extends('layouts.admin.master')
 
-@section('title', 'Add Category')
+@section('title', 'Update Tours')
 @section('subtitle')
 
 @section('style')
@@ -12,8 +12,8 @@
         <div class="col-md-12">
           <div class="nav-tabs-custom">
             <ul class="nav nav-tabs">
-              <li class="active"><a href="#add" data-toggle="tab">Add Tour</a></li>
-              <li><a href="#options" data-toggle="tab">Add Tour Options</a></li>
+              <li class="active"><a href="#add" data-toggle="tab">Tour</a></li>
+              <li><a href="#options" data-toggle="tab">Tour Options</a></li>
               {{-- <li><a href="#password" data-toggle="tab">Change User Password</a></li> --}}
             </ul>
             <div class="tab-content">

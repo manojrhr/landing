@@ -108,7 +108,9 @@ class SubCategoryController extends Controller
         $subcategory = SubCategory::findOrFail($id);
         $image = $subcategory->image;
         if($subcategory->delete()){
-            unlink($image);
+            if (file_exists(public_path($image))) {
+                unlink($image);
+            }
             $request->session()->flash('message.level', 'success');
             $request->session()->flash('message.content', 'SubCategory deleted successfully.');
         } else {
@@ -143,7 +145,9 @@ class SubCategoryController extends Controller
         $subcategory->meta_keywords = $request->meta_keywords;
 
         if($request->hasFile('img')){
-            unlink($subcategory->image);
+            if (file_exists(public_path($subcategory->image))) {
+                unlink($subcategory->image);
+            }
             $avatar = $request->file('img');
             $filename = time() .'.'. $avatar->getClientOriginalExtension();
             $photo  = Image::make($avatar->getRealPath())->resize(307, 146, function($constraint)

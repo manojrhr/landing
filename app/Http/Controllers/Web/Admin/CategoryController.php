@@ -100,7 +100,9 @@ class CategoryController extends Controller
         $category = Category::findOrFail($id);
         $image = $category->image;
         if($category->delete()){
-            unlink($image);
+            if (file_exists(public_path($image))) {
+                unlink($image);
+            }
             $request->session()->flash('message.level', 'success');
             $request->session()->flash('message.content', 'Category deleted successfully.');
         } else {
@@ -134,7 +136,10 @@ class CategoryController extends Controller
         $category->meta_keywords = $request->meta_keywords;
 
         if($request->hasFile('img')){
-            unlink($category->image);
+            if (file_exists(public_path($category->image))) {
+                // dd('File is Exists ');
+                unlink($category->image);
+            }
             $avatar = $request->file('img');
             $filename = time() .'.'. $avatar->getClientOriginalExtension();
             $photo  = Image::make($avatar->getRealPath())->save(public_path('images/category/'.$filename));

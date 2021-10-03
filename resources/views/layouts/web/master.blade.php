@@ -150,12 +150,12 @@
                                         </li>    
                                     @endauth
                                     
-                                    <li class="nav-item">
+                                    {{-- <li class="nav-item">
                                         <a href="#" title="Shopping Cart">
                                             <img src="{{ asset('assets/web/images/cart.png') }}" alt="cart" /><span
                                                 class="menu-item-count"><i class="fas fa-caret-left"></i>0</span>
                                         </a>
-                                    </li>
+                                    </li> --}}
                                     {{-- <li class="nav-item">
                                         <a class="search-link" href="#" title="search">
                                             <i class="fas fa-search"></i>
@@ -466,6 +466,16 @@
                     </div>
                 </div>
             </div>
+            
+            <div class="object-wppu-preview">
+                <div id="wppu-object-wrapper">
+                    <div class="d-flex align-items-center justify-content-center wppu-object-logo">
+                        <img class="lazyloaded" src="{{ asset('assets/web/images/kiuki-tours-logo-crest.svg') }}" alt="">
+                    </div>
+                    <div class="d-flex align-items-center justify-content-center wpppu-object-wrap" style="color:#352353;">
+                    </div>
+                </div>
+            </div>
         </footer>
     </div>
 
@@ -490,6 +500,9 @@
     <script src="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/alertify.min.js"></script>
 
     <script type="text/javascript">
+        jQuery(window).load(function() {
+            jQuery('.object-wppu-preview').hide(); 
+        });
         //AOS.init();
         AOS.init({
             easing: 'ease-out-back',
