@@ -65,9 +65,9 @@
                                     </div>
                                 @endforeach
 							</div>
-
 							{{-- <!-- Tour Pagination --> --}}
-							<div class="d-flex flex-wrap justify-content-center tour-filters-pagination">
+							{{ $tours->links('livewire.pagination-template') }}
+							{{-- <div class="d-flex flex-wrap justify-content-center tour-filters-pagination">
 								<span class="tour-pagination-item">
 									<a class="tour-pagination-link tour-pagination-current">1</a>
 								</span>
@@ -77,7 +77,7 @@
 								<span class="tour-pagination-item prev-next next">
 									<a class="tour-pagination-link prev-next next">Next</a>
 								</span>
-							</div>
+							</div> --}}
 						</div>
 					</div>
 				</div>
