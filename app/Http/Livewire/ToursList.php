@@ -8,7 +8,7 @@ use Livewire\WithPagination;
 
 class ToursList extends Component
 {
-    use WithPagination;
+    // use WithPagination;
 
     public $searchTerm = '';
 
