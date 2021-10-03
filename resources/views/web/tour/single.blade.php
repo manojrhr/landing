@@ -13,6 +13,7 @@
     <div class="tours-details-section-one">
 
         <div class="tours-images-gallery-cover">
+            @if($tour->photos)
             <div class="tours-images-gallery">
                 @foreach (json_decode($tour->photos) as $photo)
                     <div>
@@ -22,6 +23,7 @@
                     </div>                    
                 @endforeach
             </div>
+            @endif
             <div class="post-title-cover">
                 <h1 class="post-title-tag">{{ $tour->title }}</h1>
             </div>

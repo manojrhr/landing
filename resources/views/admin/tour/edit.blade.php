@@ -12,8 +12,8 @@
         <div class="col-md-12">
           <div class="nav-tabs-custom">
             <ul class="nav nav-tabs">
-              <li class="active"><a href="#add" data-toggle="tab">Tour</a></li>
-              <li><a href="#options" data-toggle="tab">Tour Options</a></li>
+              <li class="active" id="tour_tab"><a href="#add" data-toggle="tab">Tour</a></li>
+              <li id="tour_option_tab"><a href="#options" data-toggle="tab">Tour Options</a></li>
               {{-- <li><a href="#password" data-toggle="tab">Change User Password</a></li> --}}
             </ul>
             <div class="tab-content">
@@ -188,8 +188,10 @@
               </div>
               <!-- /.tab-pane -->
               <div class="tab-pane" id="options">
-                <form class="form-horizontal" method="post" action="{{ route('admin.add_tour_options', $tour->id)}}" enctype="multipart/form-data">
+                {{-- action="{{ route('admin.add_tour_options', $tour->id)}}" --}}
+                <form class="form-horizontal" id="tourOptionsForm" method="post">
                 @csrf
+                  <input type="hidden" value="" id="option_id"/>
                   <div class="form-group">
                     <label for="location" class="col-sm-2 control-label">Location</label>
                     <div class="col-sm-10">
@@ -210,7 +212,7 @@
                     <label for="child_rate" class="col-sm-2 control-label">Price for Child</label>
 
                     <div class="col-sm-10">
-                      <input type="text" class="form-control" id="child_rate" name="child_rate" placeholder="Price for Child" value="">
+                      <input type="text" class="form-control" id="child_rate" name="child_rate" placeholder="Price for Child" value="" required>
 
                         @error('child_rate')
                             <span class="invalid-feedback text-danger" role="alert">
@@ -223,7 +225,7 @@
                     <label for="adult_rate" class="col-sm-2 control-label">Price for Adult</label>
 
                     <div class="col-sm-10">
-                      <input type="text" class="form-control" id="adult_rate" name="adult_rate" placeholder="Price for Adult" value="">
+                      <input type="text" class="form-control" id="adult_rate" name="adult_rate" placeholder="Price for Adult" value="" required>
 
                         @error('adult_rate')
                             <span class="invalid-feedback text-danger" role="alert">
@@ -234,7 +236,8 @@
                   </div>
                   <div class="form-group">
                     <div class="col-sm-offset-2 col-sm-10">
-                      <button type="submit" class="btn btn-danger">Update Tour Option</button>
+                      <button type="submit" class="btn btn-danger">Create Tour Option</button>
+                      <button id="updateOption" class="btn btn-primary disabled">Update Tour Option</button>
                     </div>
                   </div>
                 </form>
@@ -262,8 +265,8 @@
                                   <td>{{ $option->child_rate }}</td>
                                   <td>{{ $option->adult_rate }}</td>
                                   <td>
-                                      <a class="btn btn-primary" href="{{ route('admin.tour.edit', $option->id) }}">Edit</a>
-                                      <a  class="btn btn-danger" href="{{ route('admin.tour_option_delete', $option->id) }}" onclick="return confirm('Are you sure?')">Delete</a>
+                                      <a class="btn btn-primary getOption" dataId="{{ $option->id }}">Edit</a>
+                                      <a class="btn btn-danger" href="{{ route('admin.tour_option_delete', $option->id) }}" onclick="return confirm('Are you sure?')">Delete</a>
                                   </td>
                               </tr>
                               <?php $i++; ?>
@@ -290,5 +293,119 @@
         tourimage.src = URL.createObjectURL(file)
       }
     }
+
+    function getFormData($form){
+        var unindexed_array = $form.serializeArray();
+        var indexed_array = {};
+
+        $.map(unindexed_array, function(n, i){
+            indexed_array[n['name']] = n['value'];
+        });
+
+        return indexed_array;
+    }
+
+    $(document).ready(function(){
+        $('#updateOption').addClass('disabled');
+        var CSRF_TOKEN = $('meta[name="csrf-token"]').attr('content');
+        $("#tourOptionsForm").submit(function(e){
+            e.preventDefault();
+            var $form = $("#tourOptionsForm");
+            var formdata = getFormData($form);
+            $.ajax({
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                },
+                url: '{{ route("admin.add_tour_options", $tour->id) }}',
+                type: 'POST',
+                data: formdata,
+                dataType: 'JSON',
+                success: function (data) { 
+                    alertify.set('notifier','position', 'top-right');
+                    if(data.success === true){
+                        alertify.success(data.message, '', 5,);
+                        window.timeout = setTimeout(function(){
+                            alertify.dismissAll();
+                        },5000);
+                        location.reload();
+                    } else {
+                        alertify.error(data.message, '', 5,);
+                        window.timeout = setTimeout(function(){
+                            alertify.dismissAll();
+                        },5000);
+                    }
+                }
+            });
+        });
+
+        $("#updateOption").click(function(e){
+            e.preventDefault();
+            var formData = new FormData();
+            formData.append('id', $("#option_id").val());
+            formData.append('location', $("#location").val());
+            formData.append('child_rate', $("#child_rate").val());
+            formData.append("adult_rate", $("#adult_rate").val());
+            $.ajax({
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                },
+                url: '{{ route("admin.update_tour_option") }}',
+                type: 'POST',
+                data: formData,
+                dataType: 'JSON',
+                cache: false,
+                contentType: false,
+                processData: false,
+                success: function (data) { 
+                    alertify.set('notifier','position', 'top-right');
+                    if(data.success === true){
+                        alertify.success(data.message, '', 5,);
+                        window.timeout = setTimeout(function(){
+                            alertify.dismissAll();
+                        },5000);
+                        location.reload();
+                    } else {
+                        alertify.error(data.message, '', 5,);
+                        window.timeout = setTimeout(function(){
+                            alertify.dismissAll();
+                        },5000);
+                    }
+                }
+            });
+        });
+        
+        $(".getOption").click(function(e){
+                // alert($(this).attr('dataId')); return;
+                var id = $(this).attr('dataId');
+                $.ajax({
+                    headers: {
+                        'X-CSRF-TOKEN': '{{ csrf_token() }}'
+                    },
+                    url: '{{ route("admin.getOptionDetails") }}',
+                    type: 'POST',
+                    data: {
+                        "_token": "{{ csrf_token() }}",
+                        "option_id": id
+                    },
+                    dataType: 'JSON',
+                    success: function (data) { 
+                        if(data.success === true){
+                            // $(".model-form").attr("id","updateEventTime");
+                            // $('#updateModelLabel').html('Update Availability for '+moment(data.event.date).format('MM/DD/YYYY'));
+                            $('#option_id').val(data.option.id);
+                            $('#child_rate').val(data.option.child_rate);
+                            $('#adult_rate').val(data.option.adult_rate);
+                            $('#updateOption').removeClass('disabled');
+                        } else {
+                            alertify.error(data.message, '', 5,);
+                            window.timeout = setTimeout(function(){
+                                alertify.dismissAll();
+                            },5000);
+                        }
+                    }
+                });
+            });
+
+    });
   </script>
 @endsection

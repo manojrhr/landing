@@ -105,6 +105,8 @@ Route::group(['prefix' => 'admin' , 'as' => 'admin.'], function(){
 	
 	Route::post('/tour-option/{id}', 'Web\Admin\TourController@add_tour_options')->name('add_tour_options');
 	Route::get('/tour-option/{id}/delete', 'Web\Admin\TourController@tour_option_delete')->name('tour_option_delete');
+	Route::post('/get_option_details', 'Web\Admin\TourController@get_option_details')->name('getOptionDetails');
+	Route::post('/update_tour_option', 'Web\Admin\TourController@update_tour_option')->name('update_tour_option');
 	
 	Route::get('update-email', 'Web\Admin\SettingController@getEmailUpdate')->name('getUpdateEmailForm');
 	Route::post('update-email', 'Web\Admin\SettingController@updateAdminEmail')->name('updateEmail');

@@ -265,13 +265,67 @@ class TourController extends Controller
         $option->child_rate = $request->child_rate;
         $option->adult_rate = $request->adult_rate;
 
-        if($option->save()){
-            $request->session()->flash('message.level', 'success');
-            $request->session()->flash('message.content', 'Tour option updated successfully.');
+        if($option->save())
+        {
+            $response = ['success' => true, 'message' => 'Tour option updated successfully.'];
         } else {
-            $request->session()->flash('message.level', 'error');
-            $request->session()->flash('message.content', 'Something went wrong.');
+            $response = ['success' => false, 'message' => 'Something went wrong.'];
         }
-        return Redirect::back();
+        return json_encode($response);
+    }
+
+    public function get_option_details(Request $request)
+    {
+        $validator = Validator::make($request->all(), [
+            'option_id' => 'required|exists:tour_options,id',
+        ]);
+
+        if ($validator->fails()) {
+
+            $errors = implode(',', $validator->messages()->all());
+            return $response_array = ['success' => false , 'message' => $errors, 'error_code' => 101];
+        }
+
+        $option = TourOption::where(['id' => $request->option_id])->first();
+        
+        if($option){
+            $response_array = ['success' => true, 'option' => $option];
+        } else {
+            $response_array = ['success' => false , 'message' => 'Something went wrong.', 'error_code' => 101];
+        }
+        return json_encode($response_array);
+    }
+
+    public function update_tour_option(Request $request)
+    {
+        $validator = Validator::make($request->all(), [
+            'id' => ['required'],
+            'location' => ['required'],
+            'child_rate' => ['required'],
+            'adult_rate' => ['required']
+        ],[
+            'id.required' => 'Something went wrong. Please reload page.'
+        ]);
+
+        if ($validator->fails()) {
+            $errors = implode(',', $validator->messages()->all());
+            $request->session()->flash('message.level', 'error');
+            $request->session()->flash('message.content', $errors);
+            return Redirect::back();
+        }
+
+        $option = TourOption::find($request->id);
+        // $option->tour_id = $request->id;
+        $option->location_id = $request->location;
+        $option->child_rate = $request->child_rate;
+        $option->adult_rate = $request->adult_rate;
+
+        if($option->save())
+        {
+            $response = ['success' => true, 'message' => 'Tour option updated successfully.'];
+        } else {
+            $response = ['success' => false, 'message' => 'Something went wrong.'];
+        }
+        return json_encode($response);
     }
 }
