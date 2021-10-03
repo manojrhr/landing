@@ -25,7 +25,7 @@
                         <select class="form-control" name="category_id" id="category_id" required>
                           {{-- <option value="" selected>-- Select Category --</option> --}}
                           @foreach($categories as $category)
-                            <option value="{{$category->id}}" {{ $category->id === $subcategory->category->id ? 'selected' : '' }}>{{$category->title}}</option>
+                            <option value="{{$category->id}}" {{ $category->id === $subcategory->category->id ? 'selected' : '' }}>{{ $category->title }}</option>
                           @endforeach
                         </select>
                       </div>
@@ -34,7 +34,7 @@
                     <label for="title" class="col-sm-2 control-label">Title</label>
 
                     <div class="col-sm-10">
-                      <input type="text" class="form-control" id="title" name="title" placeholder="Title" value="{{ $subcategory->title }}">
+                      <input type="text" class="form-control" id="title" name="title" placeholder="Title" value="{{ old('title', $subcategory->title) }}">
 
                         @error('title')
                             <span class="invalid-feedback text-danger" role="alert">
@@ -47,7 +47,7 @@
                     <label for="slug" class="col-sm-2 control-label">Slug</label>
 
                     <div class="col-sm-10">
-                      <input type="text" class="form-control" id="slug" name="slug" placeholder="Slug" value="{{ $subcategory->slug }}">
+                      <input type="text" class="form-control" id="slug" name="slug" placeholder="Slug" value="{{old('slug', $subcategory->slug) }}">
 
                         @error('slug')
                             <span class="invalid-feedback text-danger" role="alert">
@@ -60,7 +60,7 @@
                     <label for="subtitle" class="col-sm-2 control-label">Subtitle</label>
 
                     <div class="col-sm-10">
-                      <input type="text" class="form-control" id="subtitle" name="subtitle" placeholder="Subtitle" value="{{ $subcategory->subtitle }}">
+                      <input type="text" class="form-control" id="subtitle" name="subtitle" placeholder="Subtitle" value="{{ old('subtitle', $subcategory->subtitle }}">
 
                         @error('subtitle')
                             <span class="invalid-feedback text-danger" role="alert">
@@ -73,7 +73,7 @@
                     <label for="meta_title" class="col-sm-2 control-label">Meta Title</label>
 
                     <div class="col-sm-10">
-                      <textarea type="text" class="form-control" id="meta_title" name="meta_title" placeholder="Meta Title" value="">{{ $subcategory->meta_title }}</textarea>
+                      <textarea type="text" class="form-control" id="meta_title" name="meta_title" placeholder="Meta Title" value="">{{ old('meta_title', $subcategory->meta_title) }}</textarea>
                       {{-- <input type="text" class="form-control" id="description" name="description" placeholder="Description" value=""> --}}
 
                         @error('meta_title')
@@ -87,7 +87,7 @@
                     <label for="meta_description" class="col-sm-2 control-label">Meta Description</label>
 
                     <div class="col-sm-10">
-                      <textarea type="text" class="form-control" id="meta_description" name="meta_description" placeholder="Meta Description" value="">{{ $subcategory->meta_description }}</textarea>
+                      <textarea type="text" class="form-control" id="meta_description" name="meta_description" placeholder="Meta Description" value="">{{ old('meta_description', $subcategory->meta_description) }}</textarea>
                       {{-- <input type="text" class="form-control" id="description" name="description" placeholder="Description" value=""> --}}
 
                         @error('meta_description')
@@ -101,7 +101,7 @@
                     <label for="meta_keywords" class="col-sm-2 control-label">Meta Keywords</label>
 
                     <div class="col-sm-10">
-                      <textarea type="text" class="form-control" id="meta_keywords" name="meta_keywords" placeholder="Meta Keywords" value="">{{ $subcategory->meta_keywords }}</textarea>
+                      <textarea type="text" class="form-control" id="meta_keywords" name="meta_keywords" placeholder="Meta Keywords" value="">{{ old('meta_keywords', $subcategory->meta_keywords) }}</textarea>
                       {{-- <input type="text" class="form-control" id="description" name="description" placeholder="Description" value=""> --}}
 
                         @error('meta_keywords')
