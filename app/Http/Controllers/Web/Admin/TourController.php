@@ -192,7 +192,7 @@ class TourController extends Controller
 
         if($request->hasFile('image')){
             if (file_exists(public_path($tour->image))) {
-                unlink($tour->image);
+                unlink(public_path($tour->image));
             }
             $avatar = $request->file('image');
             $allowedfileExtension=['jpg','jpeg','png'];
@@ -213,7 +213,7 @@ class TourController extends Controller
         if($request->hasFile('photos')){
             foreach (json_decode($tour->photos) as $dphoto) { 
                 if (file_exists(public_path($dphoto))) {
-                    unlink($dphoto);
+                    unlink(public_path($dphoto));
                 }
             }
             $photos = [];
