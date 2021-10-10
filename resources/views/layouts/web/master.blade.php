@@ -189,12 +189,12 @@
                         </div>
                         <div class="mobile-one-half">
                             <ul class="d-flex justify-content-end align-items-center mobile-navul">
-                                <li>
+                                {{-- <li>
                                     <a href="#" title="Shopping Cart">
                                         <img src="images/cart-icon.png" alt="cart" /><span class="menu-item-count"><i
                                                 class="fas fa-caret-left"></i>0</span>
                                     </a>
-                                </li>
+                                </li> --}}
                                 <li>
                                     <a class="search-link" href="#" title="search">
                                         <i class="fas fa-search"></i>
@@ -218,6 +218,12 @@
                                                 <li><a href="{{ route('transfers') }}">Transfers</a></li>
                                                 <li><a href="{{ route('promotions') }}">Promotions</a></li>
                                                 <li><a class="nav-link" href="{{ route('contact_us') }}">Contact Us</a></li>
+                                                @guest
+                                                    <li><a class="nav-link" href="{{ route('login') }}">Login</a></li>    
+                                                @endguest
+                                                @auth
+                                                    <li><a class="nav-link" href="{{ route('user.profile') }}">My Account</a></li>    
+                                                @endauth
                                             </ul>
                                         </div>
                                     </div>
@@ -666,6 +672,7 @@
     @yield('scripts')
     @include('includes.flash-message')
     @livewireScripts
+</div>
 </body>
 
 </html>
