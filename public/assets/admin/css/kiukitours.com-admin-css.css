@@ -1,0 +1,28 @@
+/*--- Sidebar and Top --*/
+.skin-blue .main-header .navbar{ background:#1b99e8;}
+.skin-blue .main-header .logo{ background:#178cd5;}
+.skin-blue .sidebar-menu>li.header{ color:#fff; background:#252a2e;}
+.skin-blue .sidebar a{ color:#fff;}
+#main-sidebar, .treeview-menu>li>a{}
+.sidebar-menu>li>a>.fa, .sidebar-menu>li>a>.glyphicon, .sidebar-menu>li>a>.ion{ font-size:18px; width:30px;}
+.skin-blue .wrapper, .skin-blue .main-sidebar, .skin-blue .left-side{ background:#2f353a;}
+.treeview-menu{ padding:0;}
+.skin-blue .sidebar-menu li.treeview.menu-open{ background:#262a2e;}
+.skin-blue .sidebar-menu>li>.treeview-menu{ background:transparent;}
+.treeview-menu>li>a{ padding:12px 5px 12px 30px;}
+.skin-blue .sidebar-menu .treeview-menu>li>a{ background:transparent; color:#fff;}
+.skin-blue .sidebar-menu .treeview-menu>li>a:hover{ background:#1b99e8;}
+.skin-blue .sidebar-menu>li.active>a, .skin-blue .sidebar-menu>li.menu-open>a{ background:transparent;}
+.skin-blue .sidebar-menu>li:hover>a{ background:#1b99e8;}
+.skin-blue .sidebar-menu>li.active:hover>a, .skin-blue .sidebar-menu>li.menu-open:hover>a{ background:transparent; color:#fff;}
+.skin-blue .sidebar-menu>li.active>a:hover, .skin-blue .sidebar-menu>li.menu-open>a:hover{ background:#1b99e8;}
+
+
+/*--- Inner Desgin --*/
+.content-wrapper .content .box-body .dataTables_length label{ text-transform:capitalize;}
+.nav-tabs-custom>.nav-tabs{ position:relative; z-index:1; padding:0.7rem; margin:3rem 1rem 0; background-color:#178cd5; border:0; border-radius:0.25rem; -webkit-box-shadow:0 5px 11px 0 rgb(0 0 0 / 18%), 0 4px 15px 0 rgb(0 0 0 / 15%); box-shadow:0 5px 11px 0 rgb(0 0 0 / 18%), 0 4px 15px 0 rgb(0 0 0 / 15%); top:-2.5rem;}
+.nav-tabs-custom>.nav-tabs>li{ margin-top:0; margin-bottom:0; border:0;}
+.nav-tabs-custom>.nav-tabs>li.active{ border:0;}
+.nav-tabs-custom>.nav-tabs>li>a{ margin:0; border:0; color:#fff; border-radius:0.25rem;}
+.nav-tabs-custom>.nav-tabs>li>a:hover{ background:#1b99e8; border:0; color:#fff;}
+.nav-tabs-custom>.nav-tabs>li.active>a, .nav-tabs-custom>.nav-tabs>li.active:hover>a{ background:#1b99e8; border:0; color:#fff;}

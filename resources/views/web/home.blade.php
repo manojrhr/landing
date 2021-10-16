@@ -7,22 +7,92 @@
     <div class="home-slider">
         <section class="home-topslider slider">
             <div>
-                <img src="{{ asset('assets/web/images/slider2.jpg') }}">
+                <div sliders="inner-slide-cover">
+                    <a href="{{ asset('images/slider/slider1.jpg') }}" data-lightbox="home-slider">
+                        <img src="{{ asset('images/slider/slider1main.jpg') }}">
+                    </a>
+                </div>
             </div>
             <div>
-                <img src="{{ asset('assets/web/images/slider3.jpg') }}">
+                <div class="inner-slide-cover">
+                    <a href="{{ asset('images/slider/large-home-slider1.jpg') }}" data-lightbox="home-slider"
+                        data-title="Doctor's Cave Beach, Montego Bay">
+                        <img src="{{ asset('images/slider/home-slider1.jpg') }}">
+                        <div class="slider-content-div">Doctor's Cave Beach, Montego Bay</div>
+                    </a>
+                </div>
             </div>
             <div>
-                <img src="{{ asset('assets/web/images/slider4.jpg') }}">
+                <div class="inner-slide-cover">
+                    <a href="{{ asset('images/slider/large-home-slider2.jpg') }}" data-lightbox="home-slider"
+                        data-title="Doctor's Cave Beach , Montego Bay">
+                        <img src="{{ asset('images/slider/home-slider2.jpg') }}">
+                        <div class="slider-content-div">Doctor's Cave Beach , Montego Bay</div>
+                    </a>
+                </div>
             </div>
             <div>
-                <img src="{{ asset('assets/web/images/slider5.jpg') }}">
+                <div class="inner-slide-cover">
+                    <a href="{{ asset('images/slider/large-home-slider3.jpg') }}" data-lightbox="home-slider"
+                        data-title="Appleton Rum Tour , St. Elizabeth">
+                        <img src="{{ asset('images/slider/home-slider3.jpg') }}">
+                        <div class="slider-content-div">Appleton Rum Tour , St. Elizabeth</div>
+                    </a>
+                </div>
             </div>
             <div>
-                <img src="{{ asset('assets/web/images/slider6.jpg') }}">
+                <div class="inner-slide-cover">
+                    <a href="{{ asset('images/slider/large-home-slider4.jpg') }}" data-lightbox="home-slider"
+                        data-title="Auchindown , Westmoreland">
+                        <img src="{{ asset('images/slider/home-slider4.jpg') }}">
+                        <div class="slider-content-div">Auchindown , Westmoreland</div>
+                    </a>
+                </div>
             </div>
             <div>
-                <img src="{{ asset('assets/web/images/slider7.jpg') }}">
+                <div class="inner-slide-cover">
+                    <a href="{{ asset('images/slider/large-home-slider5.jpg') }}" data-lightbox="home-slider"
+                        data-title="Margaritaville , Montego Bay">
+                        <img src="{{ asset('images/slider/home-slider5.jpg') }}">
+                        <div class="slider-content-div">Margaritaville , Montego Bay</div>
+                    </a>
+                </div>
+            </div>
+            <div>
+                <div class="inner-slide-cover">
+                    <a href="{{ asset('images/slider/large-home-slider6.jpg') }}" data-lightbox="home-slider"
+                        data-title="Rick's Cafe , West End Negril">
+                        <img src="{{ asset('images/slider/home-slider6.jpg') }}">
+                        <div class="slider-content-div">Rick's Cafe , West End Negril</div>
+                    </a>
+                </div>
+            </div>
+            <div>
+                <div class="inner-slide-cover">
+                    <a href="{{ asset('images/slider/large-home-slider7.jpg') }}" data-lightbox="home-slider"
+                        data-title="Black River, St. Elizabeth">
+                        <img src="{{ asset('images/slider/home-slider7.jpg') }}">
+                        <div class="slider-content-div">Black River, St. Elizabeth</div>
+                    </a>
+                </div>
+            </div>
+            <div>
+                <div class="inner-slide-cover">
+                    <a href="{{ asset('images/slider/large-home-slider8.jpg') }}" data-lightbox="home-slider"
+                        data-title="Bob Marley 9 Miles Tour, St. Ann">
+                        <img src="{{ asset('images/slider/home-slider8.jpg') }}">
+                        <div class="slider-content-div">Bob Marley 9 Miles Tour, St. Ann</div>
+                    </a>
+                </div>
+            </div>
+            <div>
+                <div class="inner-slide-cover">
+                    <a href="{{ asset('images/slider/large-home-slider9.jpg') }}" data-lightbox="home-slider"
+                        data-title="Rick's Cafe, West End Negril">
+                        <img src="{{ asset('images/slider/home-slider9.jpg') }}">
+                        <div class="slider-content-div">Rick's Cafe, West End Negril</div>
+                    </a>
+                </div>
             </div>
         </section>
     </div>
@@ -38,10 +108,10 @@
                     <div class="col-md-4 block-order{{ $i }}">
                         <a href="{{ url($category->slug) }}">
                             <div class="inner-block">
-                                <div class="images-block" data-aos="zoom-in-left">
+                                <div class="images-block" data-aos="zoom-in-left" data-aos-once="true">
                                     <img src="{{ asset($category->image) }}" alt="" />
                                 </div>
-                                <div class="content-div-col {{ $i === 1 ? "one-block" : "" }}" data-aos="fade-left">
+                                <div class="content-div-col {{ $i === 1 ? "one-block" : "" }}" data-aos="fade-{{ $i === 1  ? "Left" : "" }}{{ $i === 2  ? "up" : "" }}{{ $i === 3  ? "right" : "" }}" data-aos-once="true">
                                     @if($i === 1)
                                         <h3><i>{{ $category->title }}</i></h3>
                                         <h2>{{ $category->subtitle }}</h2>
