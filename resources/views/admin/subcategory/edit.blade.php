@@ -60,7 +60,7 @@
                     <label for="subtitle" class="col-sm-2 control-label">Subtitle</label>
 
                     <div class="col-sm-10">
-                      <input type="text" class="form-control" id="subtitle" name="subtitle" placeholder="Subtitle" value="{{ old('subtitle', $subcategory->subtitle }}">
+                      <input type="text" class="form-control" id="subtitle" name="subtitle" placeholder="Subtitle" value="{{ old('subtitle', $subcategory->subtitle) }}">
 
                         @error('subtitle')
                             <span class="invalid-feedback text-danger" role="alert">
