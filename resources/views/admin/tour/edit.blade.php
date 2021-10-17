@@ -69,7 +69,7 @@
                     <label for="description" class="col-sm-2 control-label">Description*</label>
 
                     <div class="col-sm-10">
-                      <textarea type="text" class="form-control" id="description" name="description" placeholder="Description" value="">{{ $tour->description }}</textarea>
+                      <textarea type="text" class="form-control editor" id="description" name="description" placeholder="Description" value="">{{ $tour->description }}</textarea>
                       {{-- <input type="text" class="form-control" id="description" name="description" placeholder="Description" value=""> --}}
 
                         @error('description')
@@ -83,7 +83,7 @@
                     <label for="included" class="col-sm-2 control-label">included</label>
 
                     <div class="col-sm-10">
-                      <textarea type="text" class="form-control" id="included" name="included" placeholder="Included" value="">{{ $tour->included }}</textarea>
+                      <textarea type="text" class="form-control editor" id="included" name="included" placeholder="Included" value="">{{ $tour->included }}</textarea>
                       {{-- <input type="text" class="form-control" id="description" name="description" placeholder="Description" value=""> --}}
 
                         @error('included')
@@ -97,7 +97,7 @@
                     <label for="add_info" class="col-sm-2 control-label">Additional Information</label>
 
                     <div class="col-sm-10">
-                      <textarea type="text" class="form-control" id="add_info" name="add_info" placeholder="Additional Information" value="">{{ $tour->add_info }}</textarea>
+                      <textarea type="text" class="form-control editor" id="add_info" name="add_info" placeholder="Additional Information" value="">{{ $tour->add_info }}</textarea>
                       {{-- <input type="text" class="form-control" id="description" name="description" placeholder="Description" value=""> --}}
 
                         @error('add_info')
@@ -286,7 +286,21 @@
 @endsection
 
 @section('scripts')
-  <script>
+  <!-- CK Editor -->
+  <script src="{{ asset('assets/admin/bower_components/ckeditor/ckeditor.js') }}"></script>
+  <!-- Bootstrap WYSIHTML5 -->
+  <script src="{{ asset('assets/admin/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.all.min.js') }}"></script>
+  <script>    
+    $(function () {
+      // Replace the <textarea id="editor1"> with a CKEditor
+      // instance, using default configuration.
+      CKEDITOR.replace('description');
+      CKEDITOR.replace('included');
+      CKEDITOR.replace('add_info');
+      //bootstrap WYSIHTML5 - text editor
+      $('.textarea').wysihtml5();
+    })
+
     imgInp.onchange = evt => {
       const [file] = imgInp.files
       if (file) {

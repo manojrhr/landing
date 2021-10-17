@@ -191,3 +191,21 @@
       </div>
       <!-- /.row -->
 @endsection
+
+@section('scripts')
+  <!-- CK Editor -->
+  <script src="{{ asset('assets/admin/bower_components/ckeditor/ckeditor.js') }}"></script>
+  <!-- Bootstrap WYSIHTML5 -->
+  <script src="{{ asset('assets/admin/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.all.min.js') }}"></script>
+  <script>    
+    $(function () {
+      // Replace the <textarea id="editor1"> with a CKEditor
+      // instance, using default configuration.
+      CKEDITOR.replace('description');
+      CKEDITOR.replace('included');
+      CKEDITOR.replace('add_info');
+      //bootstrap WYSIHTML5 - text editor
+      $('.textarea').wysihtml5();
+    })
+  </script>
+@endsection
