@@ -84,12 +84,15 @@ jQuery(document).ready(function() {
 	//Home Slider
 	jQuery('.home-topslider').slick({
 		dots: false,
-		prevArrow: false,
-		nextArrow: false,
+		prevArrow: '<span class="slick-slide-arrow prev-arrow nav-design"><i class="fa fa-chevron-left" style=""></i></span>',
+		nextArrow: '<span class="slick-slide-arrow next-arrow nav-design"><i class="fa fa-chevron-right" style=""></i></span>',
 		infinite: true,
-		slidesToShow: 4,
+		slidesToShow: 1,
 		slidesToScroll: 1,
-		responsive: [
+		speed: 500,
+		fade: true,
+		cssEase: 'linear'
+		/* responsive: [
 			{
 			  breakpoint: 1024,
 			  settings: {
@@ -111,7 +114,7 @@ jQuery(document).ready(function() {
 				slidesToScroll: 1
 			  }
 			}
-		  ]
+		  ] */
 	});
 	
 	//Home Slider
