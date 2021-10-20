@@ -32,7 +32,7 @@
 
               <ul class="list-group list-group-unbordered">
                 <li class="list-group-item">
-                  <b>Total Bookings</b> <a class="pull-right">15</a>
+                  <b>Total Bookings</b> <a class="pull-right">{{ $user->bookings->count() }}</a>
                 </li>
                 <!-- <li class="list-group-item">
                   <b>Following</b> <a class="pull-right">543</a>
@@ -48,7 +48,7 @@
           <!-- /.box -->
 
           <!-- About Me Box -->
-          <div class="box box-primary">
+          {{-- <div class="box box-primary">
             <div class="box-header with-border">
               <h3 class="box-title">User Addresses</h3>
             </div>
@@ -62,7 +62,7 @@
               <hr>
             </div>
             <!-- /.box-body -->
-          </div>
+          </div> --}}
           <!-- /.box -->
         </div>
         <!-- /.col -->

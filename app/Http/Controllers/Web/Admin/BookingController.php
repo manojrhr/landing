@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Web\Admin;
 
 use App\Booking;
 use App\Http\Controllers\Controller;
+use App\User;
 use Illuminate\Http\Request;
 
 class BookingController extends Controller
@@ -13,11 +14,18 @@ class BookingController extends Controller
         $this->middleware('auth:admin');
     }
 
-    public function index()
+    public function index($id=null)
     {
         $title = "Bookings";
         $subTitle = "";
-        $bookings = Booking::with('user','tour')->latest()->get();
+        if($id === null)
+        {
+            $bookings = Booking::with('user','tour')->latest()->get();
+        } else {
+            $user = User::find($id);
+            $bookings = $user->bookings;
+            // $bookings = Booking::with('user','tour')->latest()->get();
+        }
         return view('admin.booking.index', compact('bookings', 'title', 'subTitle'));
     }
 

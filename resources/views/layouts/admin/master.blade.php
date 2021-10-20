@@ -161,12 +161,12 @@
       <!-- /.search form -->
       <!-- sidebar menu: : style can be found in sidebar.less -->
       <ul class="sidebar-menu" data-widget="tree">
-        <li class="header">MAIN NAVIGATION</li>
+        <li class="header">{{ request()->is('admin/category') ? 'active' : ''}}</li>
         <li class="{{ request()->is('admin') ? 'active' : '' }}" {{ request()->is('dashboard') ? 'active' : ''}}><a href="{{ route('admin.dashboard') }}"><i class="fa fa-book"></i><span>Dashboard</span></a></li>
-        <li class=""><a href="{{ route('admin.category') }}" {{ request()->is('admin/category') ? 'active' : ''}}><i class="fa fa-list"></i><span>Category</span></a></li>
-        <li class=""><a href="{{ route('admin.subcategory') }}"><i class="fa fa-list"></i><span>Subcategory</span></a></li>
+        <li class="{{ request()->is('admin/category*') ? 'active' : ''}}"><a href="{{ route('admin.category') }}"><i class="fa fa-list"></i><span>Category</span></a></li>
+        <li class="{{ request()->is('admin/subcategory*') ? 'active' : ''}}"><a href="{{ route('admin.subcategory') }}"><i class="fa fa-list"></i><span>Subcategory</span></a></li>
         {{-- <li class=""><a href="{{ route('admin.tour') }}"><i class="fa fa-list"></i><span>Tours</span></a></li> --}}
-        <li class="treeview">
+        <li class="treeview {{ request()->is('admin/location*') ? 'active' : ''}}{{ request()->is('admin/tour*') ? 'active' : ''}}">
           <a href="{{ route('admin.tour') }}">
             <i class="fa fa-plane"></i>
             <span>Tours</span>
@@ -174,13 +174,27 @@
               <i class="fa fa-angle-left pull-right"></i>
             </span>
           </a>
-          <ul class="treeview-menu">
-            <li><a href="{{ route('admin.tour') }}"><i class="fa fa-plane"></i> Tours</a></li>
-            <li><a href="{{ route('admin.location') }}"><i class="fa fa-circle-o"></i> Tour Locations</a></li>
+          <ul class="treeview-menu" style="display: {{ request()->is('admin/location*') ? 'block' : ''}}{{ request()->is('admin/tour*') ? 'block' : ''}};">
+            <li class="{{ request()->is('admin/tour*') ? 'active' : ''}}"><a href="{{ route('admin.tour') }}"><i class="fa fa-plane"></i> Tours</a></li>
+            <li class="{{ request()->is('admin/location*') ? 'active' : ''}}"><a href="{{ route('admin.location') }}"><i class="fa fa-circle-o"></i> Tour Locations</a></li>
             {{-- <li><a href="pages/charts/morris.html"><i class="fa fa-circle-o"></i> Tours Attributes</a></li> --}}
           </ul>
         </li>
-        <li class="treeview">
+        <li class="treeview {{ request()->is('admin/transfers*') ? 'active' : ''}}">
+          <a href="{{ route('admin.tour') }}">
+            <i class="fa fa-car "></i>
+            <span>Transfers</span>
+            <span class="pull-right-container">
+              <i class="fa fa-angle-left pull-right"></i>
+            </span>
+          </a>
+          <ul class="treeview-menu">
+            <li class="{{ request()->is('admin/transfers*') ? 'active' : ''}}"><a href="{{ route('admin.tour') }}"><i class="fa fa-plane"></i> Airport Transfers</a></li>
+            {{-- <li><a href="{{ route('admin.location') }}"><i class="fa fa-circle-o"></i> Tour Locations</a></li> --}}
+            {{-- <li><a href="pages/charts/morris.html"><i class="fa fa-circle-o"></i> Tours Attributes</a></li> --}}
+          </ul>
+        </li>
+        <li class="treeview {{ request()->is('admin/blog*') ? 'active' : ''}}">
           <a href="{{ route('admin.blog') }}">
             <i class="fa fa-comment"></i>
             <span>Blog Posts</span>
@@ -188,15 +202,15 @@
               <i class="fa fa-angle-left pull-right"></i>
             </span>
           </a>
-          <ul class="treeview-menu">
-            <li><a href="{{ route('admin.blog') }}"><i class="fa fa-comment"></i> Blog Posts</a></li>
-            <li><a href="{{ route('admin.blogcategory') }}"><i class="fa fa-circle-o"></i> Blog Category</a></li>
+          <ul class="treeview-menu" style="display: {{ request()->is('admin/blog*') ? 'block' : ''}}{{ request()->is('admin/blogcategory*') ? 'block' : ''}};">
+            <li class="{{ request()->is('admin/blog*') ? 'active' : ''}}"><a href="{{ route('admin.blog') }}"><i class="fa fa-comment"></i> Blog Posts</a></li>
+            <li class="{{ request()->is('admin/blogcategory*') ? 'active' : ''}}"><a href="{{ route('admin.blogcategory') }}"><i class="fa fa-circle-o"></i> Blog Category</a></li>
             {{-- <li><a href="pages/charts/morris.html"><i class="fa fa-circle-o"></i> Tours Attributes</a></li> --}}
           </ul>
         </li>
-        <li class=""><a href="{{ route('admin.bookings') }}"><i class="fa fa-globe "></i><span>Bookings</span></a></li>
+        <li class="{{ request()->is('admin/booking**') ? 'active' : ''}}"><a href="{{ route('admin.bookings') }}"><i class="fa fa-globe "></i><span>Bookings</span></a></li>
         {{-- <li class=""><a href="{{ route('admin.blog') }}"><i class="fa fa-list"></i><span>Blog Post</span></a></li> --}}
-        {{-- <li class="{{ request()->is('admin/users') ? 'active' : '' }}"><a href="{{ route('admin.users') }}"><i class="fa fa-user"></i><span>Customer</span></a></li> --}}
+        <li class="{{ request()->is('admin/users') ? 'active' : '' }}"><a href="{{ route('admin.users') }}"><i class="fa fa-user"></i><span>Customer</span></a></li>
         <!-- <li><a href=""><i class="fa fa-ship"></i><span>Jet Ski</span></a></li>
         <li><a href=""><i class="fa fa-ship"></i><span>Bookings</span></a></li>
         <li><a href=""><i class="fa fa-list"></i><span>Makes</span></a></li> -->

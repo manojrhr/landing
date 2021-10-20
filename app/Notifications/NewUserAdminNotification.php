@@ -44,22 +44,12 @@ class NewUserAdminNotification extends Notification
      */
     public function toMail($notifiable)
     {
-        Log::info('Admin user notification is sent..');
-        if($this->user->delivery_guy){
-            return (new MailMessage)
-                ->subject('Amaze - Admin a new delivery guy registered our platform')
-                ->line('New Delivery guy is registered on our platform.')
-                ->line('Please activate him from admin panel, in order to allow him to work on our platform.')
-                ->line('Delivery Guy Name: '.$this->user->name)
-                ->line('Phone Number: '.$this->user->phone)
-                ->action('See Deails', url('/admin/delivery-guy'));
-        }else{
-            return (new MailMessage)
-                ->subject('Amaze - Admin a new customer registered our platform')
-                ->line('New Customer registered on our platform.')
-                ->line('Customer Name: '.$this->user->name)
-                ->line('Phone Number: '.$this->user->phone)
-                ->action('See Deails', url('/admin/users'));
+        return (new MailMessage)
+            ->subject('Admin a new customer registered our platform')
+            ->line('New Customer registered on our platform.')
+            ->line('Customer Name: '.$this->user->name)
+            // ->line('Phone Number: '.$this->user->phone)
+            ->action('See Deails', url('/admin/users'));
         }
     }
 
@@ -72,7 +62,7 @@ class NewUserAdminNotification extends Notification
     public function toArray($notifiable)
     {
         return [
-            'message' => $this->user->name." has registered on Amaze",
+            'message' => $this->user->name." has registered on Website",
             'link' => '/admin/user/'.$this->user->id,
             'icon' => 'fa fa-user text-aqua',
         ];

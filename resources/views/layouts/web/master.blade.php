@@ -66,7 +66,7 @@
     @livewireStyles
 </head>
 
-@if(request()->is('airport-transfers*'))
+@if(request()->is('transfers/airport-transfers*'))
 <body class="bg-fixed banner-airport" data-aos-easing="ease-out-back" data-aos-duration="2000" data-aos-delay="0" style="padding-top: 0px;">
 @else
 <body>
