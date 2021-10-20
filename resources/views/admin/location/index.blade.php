@@ -36,7 +36,7 @@
                                 </div>
                             </div>
                             <div class="form-group">
-                              <div class="col-sm-offset-2 col-sm-10">
+                              <div class="col-sm-offset-2 col-sm-10 text-right">
                                 @if($location->id)
                                     <button type="submit" class="btn btn-primary">Update Location</button>
                                     <a href="{{ route('admin.location') }}" class="btn btn-primary">New Location</a>

@@ -47,7 +47,7 @@
                     <label for="slug" class="col-sm-2 control-label">Slug</label>
 
                     <div class="col-sm-10">
-                      <input type="text" class="form-control" id="slug" name="slug" placeholder="Slug" value="{{old('slug') }}">
+                      <input type="text" class="form-control" id="slug" name="slug" placeholder="Slug" value="{{ old('slug') }}">
 
                         @error('slug')
                             <span class="invalid-feedback text-danger" role="alert">
@@ -125,7 +125,7 @@
                     </div>
                   </div>
                   <div class="form-group">
-                    <div class="col-sm-offset-2 col-sm-10">
+                    <div class="col-sm-offset-2 col-sm-10 text-right">
                       <button type="submit" class="btn btn-danger">Create Category</button>
                     </div>
                   </div>

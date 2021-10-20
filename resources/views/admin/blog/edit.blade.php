@@ -134,7 +134,7 @@
                         </div>
                     </div>
                     <div class="form-group" style="margin-top: 15px">
-                        <div class="col-sm-offset-2 col-sm-10">
+                        <div class="col-sm-offset-2 col-sm-10 text-right">
                         <button type="submit" class="btn btn-lg btn-danger">Update Post</button>
                         </div>
                     </div>

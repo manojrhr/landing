@@ -114,7 +114,7 @@
                     </div>
                   </div>
                   <div class="form-group">
-                    <div class="col-sm-offset-2 col-sm-10">
+                    <div class="col-sm-offset-2 col-sm-10 text-right">
                       <button type="submit" class="btn btn-danger">Create Category</button>
                     </div>
                   </div>

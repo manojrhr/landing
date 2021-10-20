@@ -180,7 +180,7 @@
                     </div>
                   </div>
                   <div class="form-group">
-                    <div class="col-sm-offset-2 col-sm-10">
+                    <div class="col-sm-offset-2 col-sm-10 text-right">
                       <button type="submit" class="btn btn-danger">Update Tour</button>
                     </div>
                   </div>
@@ -235,7 +235,7 @@
                     </div>
                   </div>
                   <div class="form-group">
-                    <div class="col-sm-offset-2 col-sm-10">
+                    <div class="col-sm-offset-2 col-sm-10 text-right">
                       <button type="submit" class="btn btn-danger">Create Tour Option</button>
                       <button id="updateOption" class="btn btn-primary disabled">Update Tour Option</button>
                     </div>

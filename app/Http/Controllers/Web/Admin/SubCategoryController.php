@@ -137,7 +137,7 @@ class SubCategoryController extends Controller
         
         $subcategory = SubCategory::findOrFail($id);
         $subcategory->title = $request->title;
-        $subcategory->slug = str_slug($request->title);
+        $subcategory->slug = $request->slug;
         $subcategory->category_id = $request->category_id;
         $subcategory->subtitle = $request->subtitle;
         $subcategory->meta_title = $request->meta_title;
@@ -162,7 +162,7 @@ class SubCategoryController extends Controller
 
         if($subcategory->save()){
             $request->session()->flash('message.level', 'success');
-            $request->session()->flash('message.content', 'SubCategory created successfully.');
+            $request->session()->flash('message.content', 'SubCategory updated successfully.');
         } else {
             $request->session()->flash('message.level', 'error');
             $request->session()->flash('message.content', 'Something went wrong.');

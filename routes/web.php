@@ -28,7 +28,8 @@ Route::post('/tour/get_prices', 'Web\TourController@get_prices')->name('tour.get
 
 //TRANSFERS
 Route::get('/transfers', 'Web\TransferController@index')->name('transfers');
-
+Route::get('/transfers/{slug}', 'Web\TransferController@transfers')->name('transfers.type');
+// Route::view('/transfers/airport-transfers', 'web.transfers.airport');
 //TRANSFERS
 Route::get('/promotions', 'Web\PromotionController@index')->name('promotions');
 

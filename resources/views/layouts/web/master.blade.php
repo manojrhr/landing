@@ -66,7 +66,11 @@
     @livewireStyles
 </head>
 
+@if(request()->is('airport-transfers*'))
+<body class="bg-fixed banner-airport" data-aos-easing="ease-out-back" data-aos-duration="2000" data-aos-delay="0" style="padding-top: 0px;">
+@else
 <body>
+@endif
     <div>
         <header id="header">
             <!-- Top Header -->
@@ -506,7 +510,7 @@
     <script src="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/alertify.min.js"></script>
 
     <script type="text/javascript">
-        jQuery(window).load(function() {
+        jQuery(window).on('load', function() {
             jQuery('.object-wppu-preview').hide(); 
         });
         //AOS.init();
