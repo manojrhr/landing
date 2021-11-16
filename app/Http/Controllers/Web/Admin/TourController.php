@@ -254,9 +254,11 @@ class TourController extends Controller
 
         if ($validator->fails()) {
             $errors = implode(',', $validator->messages()->all());
-            $request->session()->flash('message.level', 'error');
-            $request->session()->flash('message.content', $errors);
-            return Redirect::back();
+            $response = ['success' => false, 'message' => $errors];
+            // $request->session()->flash('message.level', 'error');
+            // $request->session()->flash('message.content', $errors);
+            return json_encode($response);
+            // return Redirect::back();
         }
 
         $option = new TourOption();
@@ -309,9 +311,11 @@ class TourController extends Controller
 
         if ($validator->fails()) {
             $errors = implode(',', $validator->messages()->all());
-            $request->session()->flash('message.level', 'error');
-            $request->session()->flash('message.content', $errors);
-            return Redirect::back();
+            $response = ['success' => false, 'message' => $errors];
+            // $request->session()->flash('message.level', 'error');
+            // $request->session()->flash('message.content', $errors);
+            return json_encode($response);
+            // return Redirect::back();
         }
 
         $option = TourOption::find($request->id);

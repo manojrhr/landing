@@ -1,8 +1,6 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\User;
-use App\Notifications\DeliverGuyActivated;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -25,6 +23,7 @@ Auth::routes(['verify' => true]);
 Route::get('/tours', 'Web\TourController@tours')->name('tours');
 Route::get('/tour/{slug}', 'Web\TourController@single')->name('tour.single');
 Route::post('/tour/get_prices', 'Web\TourController@get_prices')->name('tour.get_prices');
+Route::post('/airport_transfer/get_prices', 'Web\AirportTransferController@get_prices')->name('get_airTransferPrice');
 
 //TRANSFERS
 Route::get('/transfers', 'Web\TransferController@index')->name('transfers');
@@ -125,6 +124,8 @@ Route::group(['prefix' => 'admin' , 'as' => 'admin.'], function(){
 	Route::get('booking/{id?}', 'Web\Admin\BookingController@index')->name('bookings');
 	Route::get('booking/single/{booking_id}', 'Web\Admin\BookingController@single')->name('booking.single');
 
+	Route::get('airport-transfer', 'Web\Admin\TransferController@index')->name('airport.transfer');
+	Route::post('add-shared', 'Web\Admin\TransferController@storeShared')->name('store.shared');
 });
 
 Route::post('/contact', 'Web\HomeController@contact')->name('post.contact');

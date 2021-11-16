@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers\Web;
 
+use App\AirportTransfer;
 use App\Category;
 use App\Http\Controllers\Controller;
+use App\Location;
 use App\SubCategory;
 use Illuminate\Http\Request;
 
@@ -21,6 +23,9 @@ class TransferController extends Controller
     {
         if($slug != 'airport-transfers')
             abort(404);
-        return view('web.transfers.airport');
+        $ids = AirportTransfer::select('location_id')->groupBy('location_id')->pluck('location_id')->toArray();
+        $locations = Location::whereIn('id', $ids)
+                            ->get();
+        return view('web.transfers.airport', compact('locations'));
     }
 }

@@ -45,8 +45,8 @@ class NewUserAdminNotification extends Notification
     public function toMail($notifiable)
     {
         return (new MailMessage)
-            ->subject('Admin a new customer registered our platform')
-            ->line('New Customer registered on our platform.')
+            ->subject('Admin a new customer registered our Website')
+            ->line('New Customer registered on our Website.')
             ->line('Customer Name: '.$this->user->name)
             // ->line('Phone Number: '.$this->user->phone)
             ->action('See Deails', url('/admin/users'));

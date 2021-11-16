@@ -41,7 +41,7 @@
                                     <button type="submit" class="btn btn-primary">Update Location</button>
                                     <a href="{{ route('admin.location') }}" class="btn btn-primary">New Location</a>
                                 @else
-                                    <button type="submit" class="btn btn-primary">Create Location</button>
+                                    <button type="submit" class="btn btn-primary">Add Location</button>
                                 @endif
                               </div>
                             </div>
