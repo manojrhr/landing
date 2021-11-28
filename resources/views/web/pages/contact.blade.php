@@ -22,8 +22,8 @@
                 <div class="banner-content" data-aos="fade-right">
                     <h1 class="page-heading-title">Contact Us</h1>
                     <ul class="social-icon-banner">
-                        <li><a href="#" target="_blank"><i class="fab fa-facebook-f"></i></a></li>
-                        <li><a href="#" target="_blank"><i class="fab fa-instagram"></i></a></li>
+                        <li><a href="https://www.facebook.com/kiukijamaica" target="_blank"><i class="fab fa-facebook-f"></i></a></li>
+                        <li><a href="https://www.instagram.com/kiukitours876/" target="_blank"><i class="fab fa-instagram"></i></a></li>
                     </ul>
                 </div>
             </div>
