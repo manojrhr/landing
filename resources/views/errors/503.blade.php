@@ -46,7 +46,11 @@ hr {
 
 <div class="bgimg">
   <div class="topleft">
-    <p>Logo</p>
+    <img
+      width="500px"
+      src="assets/web/images/kiuki-tours-logo-1-ws.svg"
+      alt="Kiuki Tours &amp; Transportation Jamaica"
+      title="Kiuki Tours &amp; Transportation Jamaica" itemprop="logo" />
   </div>
   <div class="middle">
     <h1>COMING SOON</h1>
