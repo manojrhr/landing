@@ -177,3 +177,5 @@ Route::get('testnot', function(){
 	dump($data->main['temp']);
 	dd(json_decode($result, true));
 });
+
+URL::forceScheme('https');
