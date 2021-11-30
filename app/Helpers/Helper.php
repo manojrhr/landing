@@ -4,6 +4,7 @@ use App\Blog;
 use Twilio\Rest\Client;
 use App\User;
 use App\Country;
+use App\PageComponent;
 
 if (!function_exists('null_safe')) {
 
@@ -29,6 +30,12 @@ if (!function_exists('null_safe')) {
 
         $data = (object)json_decode($result, true);
         return $data->main['temp'];
+    }
+
+    function get_component($slug)
+    {
+        $component = PageComponent::where('slug',$slug)->first();
+        return $component->body;
     }
 
     function get_latest_blog_post()

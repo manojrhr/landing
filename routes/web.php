@@ -126,6 +126,8 @@ Route::group(['prefix' => 'admin' , 'as' => 'admin.'], function(){
 
 	Route::get('airport-transfer', 'Web\Admin\TransferController@index')->name('airport.transfer');
 	Route::post('add-shared', 'Web\Admin\TransferController@storeShared')->name('store.shared');
+
+	Route::resource('page-component', 'Web\Admin\PageComponentController');
 });
 
 Route::post('/contact', 'Web\HomeController@contact')->name('post.contact');
