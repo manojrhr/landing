@@ -60,7 +60,7 @@
                     <label for="subtitle" class="col-sm-2 control-label">Subtitle</label>
 
                     <div class="col-sm-10">
-                      <input type="text" class="form-control" id="subtitle" name="subtitle" placeholder="Subtitle" value="{{ old('subtitle') }}">
+                      <input type="text" class="form-control" id="subtitle" name="subtitle" placeholder="Subtitle" value="{{ old('subtitle') }}" required>
 
                         @error('subtitle')
                             <span class="invalid-feedback text-danger" role="alert">
@@ -115,7 +115,7 @@
                     <label for="inputPhone" class="col-sm-2 control-label">Image</label>
 
                     <div class="col-sm-10">
-                      <input type="file" name="img" id="img" required>
+                      <input type="file" name="img" id="img">
 
                         @error('image')
                             <span class="invalid-feedback text-danger" role="alert">
