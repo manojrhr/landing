@@ -189,7 +189,7 @@
             </span>
           </a>
           <ul class="treeview-menu">
-            <li class="{{ request()->is('admin/transfers*') ? 'active' : ''}}"><a href="{{ route('admin.tour') }}"><i class="fa fa-plane"></i> Airport Transfers</a></li>
+            <li class="{{ request()->is('admin/transfers*') ? 'active' : ''}}"><a href="{{ route('admin.airport.transfer') }}"><i class="fa fa-plane"></i> Airport Transfers</a></li>
             {{-- <li><a href="{{ route('admin.location') }}"><i class="fa fa-circle-o"></i> Tour Locations</a></li> --}}
             {{-- <li><a href="pages/charts/morris.html"><i class="fa fa-circle-o"></i> Tours Attributes</a></li> --}}
           </ul>
