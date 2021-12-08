@@ -110,6 +110,8 @@ Route::group(['prefix' => 'admin' , 'as' => 'admin.'], function(){
 	
 	Route::get('update-email', 'Web\Admin\SettingController@getEmailUpdate')->name('getUpdateEmailForm');
 	Route::post('update-email', 'Web\Admin\SettingController@updateAdminEmail')->name('updateEmail');
+	Route::get('MaintenanceMode', 'Web\Admin\SettingController@MaintenanceMode')->name('MaintenanceMode');
+	Route::get('maintenance-mode', 'Web\Admin\SettingController@maintenance')->name('maintenance');
 	
 	Route::get('/blog', 'Web\Admin\BlogController@index')->name('blog');
 	Route::get('/blog/create', 'Web\Admin\BlogController@create')->name('blog.create');

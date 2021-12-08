@@ -169,7 +169,7 @@
                         <hr class="divider-tour-border" />
                         <div class="social-share-cover">
                             <div class="social-share-title">Share with friends.</div>
-                            <div class="d-flex flex-wrap justify-content-center social-share-links">
+                            {{-- <div class="d-flex flex-wrap justify-content-center social-share-links">
                                 <div class="share-link-div"><a href="#" class="share-link twitter-share"><i
                                             class="fab fa-twitter" aria-hidden="true"></i></a></div>
                                 <div class="share-link-div"><a href="#" class="share-link facebook-share"><i
@@ -178,7 +178,21 @@
                                             class="fab fa-pinterest" aria-hidden="true"></i></a></div>
                                 <div class="share-link-div"><a href="#" class="share-link whatsapp-share"><i
                                             class="fab fa-whatsapp" aria-hidden="true"></i></a></div>
+                            </div> --}}
+                            <!-- AddToAny BEGIN -->
+                            <div class="a2a_kit a2a_kit_size_32 a2a_default_style">
+                                <a class="a2a_button_twitter"></a>
+                                <a class="a2a_button_facebook"></a>
+                                <a class="a2a_button_pinterest"></a>
+                                <a class="a2a_button_whatsapp"></a>
                             </div>
+                            <script async src="https://static.addtoany.com/menu/page.js"></script>
+                            <!-- AddToAny END -->
+
+
+
+
+
                         </div>
                     </div>
                 </div>
@@ -194,8 +208,28 @@
             <div class="tours-like-posts">
                 <h2 class="tours-like-title">You May Like</h2>
                 <div class="row flex-wrap tours-like-row">
-
+                    @foreach ($more_tours as $more)
                     <div class="col-md-3 item-tours-like">
+                        <div class="inner-item-tours">
+                            <div class="image-tour-item">
+                                <a class="img-tour-link" href="{{ route('tour.single',$more->slug) }}"><img src="{{ asset($more->image) }}" alt=""></a>
+                                <div class="tour-quick-view-cover">
+                                    <!-- Button trigger modal -->
+                                    <div type="button" class="tour-quick-view" data-toggle="modal"
+                                        data-target="{{ route('tour.single',$more->slug) }}">Quick View</div>
+                                </div>
+
+                            </div>
+                            <div class="tour-item-content">
+                                <div class="cat-tour">Tours</div>
+                                <h3 class="tour-loop-product-title"><a href="#">{{ $more->title }}</a></h3>
+                                <a class="tour-loop-button" href="{{ route('tour.single',$more->slug) }}">More Details</a>
+                            </div>
+                        </div>
+                    </div>
+                        
+                    @endforeach
+                    {{-- <div class="col-md-3 item-tours-like">
                         <div class="inner-item-tours">
                             <div class="image-tour-item">
                                 <a class="img-tour-link" href="#"><img src="{{ asset('assets/web/images/1.jpg') }}" alt=""></a>
@@ -240,7 +274,6 @@
                                     <div type="button" class="tour-quick-view" data-toggle="modal"
                                         data-target="#product_view">Quick View</div>
                                 </div>
-
                             </div>
                             <div class="tour-item-content">
                                 <div class="cat-tour">Tours</div>
@@ -248,24 +281,7 @@
                                 <a class="tour-loop-button" href="#">More Details</a>
                             </div>
                         </div>
-                    </div>
-                    <div class="col-md-3 item-tours-like">
-                        <div class="inner-item-tours">
-                            <div class="image-tour-item">
-                                <a class="img-tour-link" href="#"><img src="{{ asset('assets/web/images/1.jpg') }}" alt=""></a>
-                                <div class="tour-quick-view-cover">
-                                    <!-- Button trigger modal -->
-                                    <div type="button" class="tour-quick-view" data-toggle="modal"
-                                        data-target="#product_view">Quick View</div>
-                                </div>
-                            </div>
-                            <div class="tour-item-content">
-                                <div class="cat-tour">Tours</div>
-                                <h3 class="tour-loop-product-title"><a href="#">Chill In Negril and Rick’s Café</a></h3>
-                                <a class="tour-loop-button" href="#">More Details</a>
-                            </div>
-                        </div>
-                    </div>
+                    </div> --}}
 
                 </div>
             </div>
