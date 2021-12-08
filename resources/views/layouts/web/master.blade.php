@@ -99,7 +99,7 @@
                     </div>
                     <div class="col-md-4 align-items-center">
                         <div class="tel-icons-wrapper">
-                            <a href="tel:+1-876-654-5160">
+                            <a href="tel:{{ get_component('phone_primary') }}">
                                 <i aria-hidden="true" class="fas fa-phone-alt"></i>
                                 <span class="icon-list-text">Call Us</span>
                             </a>
@@ -107,9 +107,9 @@
                         <div class="social-icons-wrapper">
                             <a href="https://kiukitours.com/contact-us/" target="_blank" rel="noopener">
                                 <i class="fas fa-envelope"></i></a>
-                            <a href="https://www.facebook.com/kiukijamaica" target="_blank" rel="noopener">
+                            <a href="{{ get_component('social_facebook') }}" target="_blank" rel="noopener">
                                 <i class="fab fa-facebook-f"></i></a>
-                            <a href="http://www.instagram.com/kiukitours876" target="_blank" rel="noopener">
+                            <a href="{{ get_component('social_insta') }}" target="_blank" rel="noopener">
                                 <i class="fab fa-instagram"></i></a>
                         </div>
                     </div>
@@ -304,8 +304,9 @@
     </div>
 
         <!-- Footer -->
-        {!! get_component('main_footer') !!}
-        {{-- <footer id="footer">
+        {{-- {!! get_component('main_footer') !!} --}}
+        
+        <footer id="footer">
             <div class="footer-shape-top">
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 100" preserveAspectRatio="none">
                     <path class="elementor-shape-fill" opacity="0.33"
@@ -323,7 +324,9 @@
                     <div class="d-flex flex-wrap footer-row">
                         <div class="div-one">
                             <div class="footerlogo">
-                                <!--?xml version="1.0" encoding="UTF-8" standalone="no"?--> <svg
+                                <!--?xml version="1.0" encoding="UTF-8" standalone="no"?--> 
+                                {!! get_component('footerlogo') !!}
+                                {{-- <svg
                                     xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
                                     xmlns:serif="http://www.serif.com/" width="100%" height="100%"
                                     viewBox="0 0 5959 1230" xml:space="preserve"
@@ -414,29 +417,22 @@
                                                 style="fill:rgb(53,35,83);fill-rule:nonzero;"></path>
                                         </g>
                                     </g>
-                                </svg> </div>
+                                </svg>  --}}
+                            </div>
                             <div class="tel-block">
-                                <a href="tel:+1-876-654-5160">+1-876-654-5160</a></div>
+                                <a href="tel:{{ get_component('phone_primary') }}">+1-876-654-5160</a></div>
                             <div class="social-links">
                                 <ul>
-                                    <li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
-                                    <li><a href="#"><i class="fab fa-instagram"></i></a></li>
+                                    <li><a href="{{ get_component('social_facebook') }}" target="_blank"><i class="fab fa-facebook-f" target="_blank"></i></a></li>
+                                    <li><a href="{{ get_component('social_insta') }}" target="_blank"><i class="fab fa-instagram" target="_blank"></i></a></li>
                                 </ul>
                             </div>
                         </div>
                         <div class="div-two">
-                            <div class="advertisment_title">Advertisment</div>
+                            {!! get_component('footer_advertisment') !!}
                         </div>
                         <div class="div-three">
-                            <h4 class="footer-col-title">Quick Links</h4>
-                            <ul class="list-menu">
-                                <li><a href="{{ route('user.profile') }}">My account</a></li>
-                                <li><a href="{{ route('tours') }}">Tours</a></li>
-                                <li><a href="{{ route('transfers') }}">Transfers</a></li>
-                                <li><a href="{{ route('blog') }}">Blog</a></li>
-                                <li><a href="{{ route('contact_us') }}">Contact Us</a></li>
-                                <li><a href="{{ route('about') }}">About Us</a></li>
-                            </ul>
+                            {!! get_component('footer_quicklinks') !!}
                         </div>
                     </div>
 
@@ -445,7 +441,7 @@
                 <div class="container">
                     <div class="logos-image">
                         <div class="d-flex flex-wrap justify-content-center flex-logos">
-                            <div class="logos-col"><img src="{{ asset('assets/web/images/powered-by-fac-web.gif') }}"
+                            <div class="logos-col"><img src="/assets/web/images/powered-by-fac-web.gif"
                                     class="image1" /></div>
                             <div class="logos-col">
                                 <div class="block-icon">
@@ -492,7 +488,7 @@
                                 </div>
                             </div>
                             <div class="logos-col"><img
-                                    src="{{ asset('assets/web/images/sc-mastercard-securecode.png') }}"
+                                    src="/assets/web/images/sc-mastercard-securecode.png"
                                     class="image2" /></div>
                             <div class="logos-col">
                                 <div class="block-icon">
@@ -517,9 +513,9 @@
                                     </svg>
                                 </div>
                             </div>
-                            <div class="logos-col"><img src="{{ asset('assets/web/images/verified-by-visa.jpg') }}"
+                            <div class="logos-col"><img src="/assets/web/images/verified-by-visa.jpg"
                                     class="image3" /></div>
-                            <div class="logos-col"><img src="{{ asset('assets/web/images/gif-maker.png') }}"
+                            <div class="logos-col"><img src="/assets/web/images/gif-maker.png"
                                     class="image4" /></div>
                         </div>
                     </div>
@@ -538,13 +534,13 @@
             <div class="object-wppu-preview">
                 <div id="wppu-object-wrapper">
                     <div class="d-flex align-items-center justify-content-center wppu-object-logo">
-                        <img class="lazyloaded" src="{{ asset('assets/web/images/kiuki-tours-logo-crest.svg') }}" alt="">
+                        <img class="lazyloaded" src="/assets/web/images/kiuki-tours-logo-crest.svg" alt="">
                     </div>
                     <div class="d-flex align-items-center justify-content-center wpppu-object-wrap" style="color:#352353;">
                     </div>
                 </div>
             </div>
-        </footer> --}}
+        </footer>
     </div>
 
     {{-- <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"

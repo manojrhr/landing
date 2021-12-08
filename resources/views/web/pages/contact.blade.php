@@ -76,11 +76,7 @@
                                         </g>
                                     </svg> </div>
                             </div>
-                            <div class="col-content">
-                                <p>Lorem ipsum dolor sit amet consectetur adipiscing elit sollicitudin, dignissim primis
-                                    libero duis at non quisque rutrum, malesuada eget sed vehicula egestas aptent mus.
-                                    Laoreet enim integer nascetur congue tempor vehicula semper massa ligula lacus.</p>
-                            </div>
+                            <div class="col-content">{!! get_component('contact_page_text') !!}</div>
                         </div>
                     </div>
                     <div class="contact-form-block">
@@ -92,28 +88,28 @@
                         <h4 class="sidebar-heading-title">Call Us</h4>
                         <div class="contact-info-box">
                             <div class="icon-box-icon">
-                                <a class="icon-animation-float" href="tel:+1-876-654-5160">
+                                <a class="icon-animation-float" href="tel:{{ get_component('phone_primary') }}">
                                     <i aria-hidden="true" class="fas fa-phone-alt"></i>
                                 </a>
                             </div>
                             <div class="icon-box-content">
                                 <h4 class="icon-box-title">
-                                    <a href="tel:+1-876-654-5160">Primary</a>
+                                    <a href="tel:{{ get_component('phone_primary') }}">Primary</a>
                                 </h4>
-                                <p class="icon-box-description">+1-876-654-5160</p>
+                                <p class="icon-box-description">{{ get_component('phone_primary') }}</p>
                             </div>
                         </div>
                         <div class="contact-info-box">
                             <div class="icon-box-icon">
-                                <a class="icon-animation-float no-bg" href="tel:+1-876-444-5555">
+                                <a class="icon-animation-float no-bg" href="tel:{{ get_component('phone_secondary') }}">
                                     <i aria-hidden="true" class="fas fa-phone-alt"></i>
                                 </a>
                             </div>
                             <div class="icon-box-content">
                                 <h4 class="icon-box-title">
-                                    <a href="tel:+1-876-444-5555">Secondary</a>
+                                    <a href="tel:{{ get_component('phone_secondary') }}">Secondary</a>
                                 </h4>
-                                <p class="icon-box-description">+1-876-444-5555</p>
+                                <p class="icon-box-description">{{ get_component('phone_secondary') }}</p>
                             </div>
                         </div>
                         <h4 class="sidebar-heading-title">VISIT US</h4>
@@ -123,11 +119,7 @@
                                     <i aria-hidden="true" class="fas fa-map-marked-alt"></i>
                                 </a>
                             </div>
-                            <div class="icon-box-content">Lot 1140<br>
-                                Catherine Hall<br>
-                                Montego Bay<br>
-                                St. James, Jamaica</p>
-                            </div>
+                            <div class="icon-box-content">{!! get_component('company_address') !!}</div>
                         </div>
                     </div>
                 </div>
