@@ -81,9 +81,9 @@
                         <ul class="inline-items">
                             <li class="icon-list-item">
                                 <span class="icon-list-icon"><i aria-hidden="true" class="far fa-clock"></i></span>
-                                <span class="icon-list-text">Mon - Fri: 9:00 - 18:30</span></li>
+                                <span class="icon-list-text">{{ get_component('timings') }}</span></li>
                             <li class="icon-list-item"><a
-                                    href="https://www.google.com/maps/place/Kiuki+Tours/@18.4590003,-77.9217018,17z/data=!3m1!4b1!4m5!3m4!1s0x8eda2a85ca60245d:0x56ba2a0872ebf6c7!8m2!3d18.4589952!4d-77.9195131">
+                                    href="{{ get_component('map_link') }}">
                                     <span class="icon-list-icon"><i aria-hidden="true"
                                             class="fas fa-map-marked-alt"></i></span>
                                     <span class="icon-list-text">Visit Us</span>
