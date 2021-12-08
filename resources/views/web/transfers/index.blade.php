@@ -1,8 +1,10 @@
 @extends('layouts.web.master')
 
+@section('title', $category->meta_title)
+@section('keywords', $category->meta_description)
+@section('description', $category->meta_keywords)
+
 @section('content')
-
-
 <!-- #Main Content-->
 <div id="main-content">
     <div class="section-transfers-one">

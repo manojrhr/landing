@@ -1,5 +1,9 @@
 @extends('layouts.web.master')
 
+@section('title', $cat->meta_title)
+@section('keywords', $cat->meta_description)
+@section('description', $cat->meta_keywords)
+
 @section('content')
 
 		<div id="main-content">

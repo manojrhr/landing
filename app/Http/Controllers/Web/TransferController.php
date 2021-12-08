@@ -16,7 +16,7 @@ class TransferController extends Controller
         $category = Category::where('slug', 'transfers')->first();
         $subcategories = SubCategory::where('category_id', $category->id)->get();
         // dd($subcategories->isEmpty());
-        return view('web.transfers.index', compact('subcategories'));
+        return view('web.transfers.index', compact('category','subcategories'));
     }
 
     public function transfers($slug)

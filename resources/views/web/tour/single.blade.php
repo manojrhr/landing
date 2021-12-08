@@ -1,6 +1,8 @@
 @extends('layouts.web.master')
 
 @section('title', $tour->title)
+@section('keywords', $tour->meta_description)
+@section('description', $tour->meta_keywords)
 
 @section('styles')
 @endsection

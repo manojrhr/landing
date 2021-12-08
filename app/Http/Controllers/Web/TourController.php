@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Web;
 
+use App\Category;
 use App\Http\Controllers\Controller;
 use App\Tour;
 use App\TourOption;
@@ -12,7 +13,8 @@ class TourController extends Controller
     public function tours()
     {
         // $tours = Tour::all();
-        return view('web.tour.tour-list');
+        $cat = Category::where('slug', 'tours')->first();
+        return view('web.tour.tour-list', compact('cat'));
     }
 
     public function single($slug)

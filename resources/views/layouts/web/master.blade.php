@@ -4,7 +4,8 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="">
+    <meta name="keywords" content="@yield('keywords','')">
+    <meta name="description" content="@yield('description','')">
     <meta name="author" content="">
     <meta name="generator" content="Hugo 0.80.0">
     <title>Kiuki Tours &amp; Transportation Ltd &#8211; @yield('title','The Impossible just takes a little longer.')</title>
