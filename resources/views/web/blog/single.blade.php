@@ -1,5 +1,9 @@
 @extends('layouts.web.master')
 
+@section('title', $post->title)
+@section('keywords', $post->meta_description)
+@section('description', $post->meta_keywords)
+
 @section('styles')
 
 @endsection
