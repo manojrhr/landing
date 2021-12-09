@@ -4,11 +4,8 @@
 @endsection
 
 @section('content')
-
 <!-- #Main Content-->
 <div id="main-content">
-
-
 	<!-- Section Account One -->
 	<div class="section-account-one">
 		<div class="container">
@@ -17,15 +14,13 @@
 				@include('includes.user.profile-menu')
 				<div class="user-info-data">
 					<div class="inner-user-info-data">
-					<p>Hello <strong>{{ $user->first_name.' '.$user->last_name }}</strong> (not <strong>{{ $user->first_name.' '.$user->last_name }}</strong>? <a href="#">Log out</a>)</p>
-					<p>From your account dashboard you can view your <a href="orders.html">recent orders</a>, manage your <a href="edit-address.html">shipping and billing addresses</a>, and <a href="edit-account.html">edit your password and account details</a>.</p>
+					<p>Hello <strong>{{ $user->first_name.' '.$user->last_name }}</strong> (not <strong>{{ $user->first_name.' '.$user->last_name }}</strong>? <a href="#" onclick="event.preventDefault(); document.getElementById('frm-logout').submit();">Log out</a>)</p>
+					<p>From your account dashboard you can view your <a href="{{ route('user.bookings') }}">recent bookings</a>, manage your <a href="edit-address.html">shipping and billing addresses</a>, and <a href="{{ route('user.get_password_form') }}">edit your password</a> and <a href="{{ route('user.edit_profile') }}">account details</a>.</p>
 					</div>
 				</div>
 			</div>
 		</div>
 	</div>
-	
-	
-	</div>
-	<!-- End #Main Content-->
+</div>
+<!-- End #Main Content-->
 @endsection
