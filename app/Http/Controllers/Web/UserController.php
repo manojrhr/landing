@@ -94,4 +94,12 @@ class UserController extends Controller
             return Redirect::back();
         }
     }
+
+    public function bookingDetails($booking_id, Request $request)
+    {
+        // dd($request->user()->id);
+        $booking = Booking::where('booking_id', $booking_id)->where('user_id', $request->user()->id)->first();
+        // dd($booking);
+        return view('web.user.booking-details', compact('booking'));
+    }
 }
