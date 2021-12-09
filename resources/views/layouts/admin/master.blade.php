@@ -211,7 +211,8 @@
         <li class="{{ request()->is('admin/booking**') ? 'active' : ''}}"><a href="{{ route('admin.bookings') }}"><i class="fa fa-globe "></i><span>Bookings</span></a></li>
         {{-- <li class=""><a href="{{ route('admin.blog') }}"><i class="fa fa-list"></i><span>Blog Post</span></a></li> --}}
         <li class="{{ request()->is('admin/users') ? 'active' : '' }}"><a href="{{ route('admin.users') }}"><i class="fa fa-user"></i><span>Customer</span></a></li>
-        <li class="{{ request()->is('admin/maintenance-mode') ? 'active' : '' }}"><a href="{{ route('admin.maintenance') }}"><i class="fa fa-user"></i><span>Maintenance Mode</span></a></li>
+        <li class="{{ request()->is('admin/page-component') ? 'active' : '' }}"><a href="{{ route('admin.page-component.index') }}"><i class="fa fa-newspaper-o"></i><span>Page Component</span></a></li>
+        <li class="{{ request()->is('admin/maintenance-mode') ? 'active' : '' }}"><a href="{{ route('admin.maintenance') }}"><i class="fa fa-wrench"></i><span>Maintenance Mode</span></a></li>
         <!-- <li><a href=""><i class="fa fa-ship"></i><span>Jet Ski</span></a></li>
         <li><a href=""><i class="fa fa-ship"></i><span>Bookings</span></a></li>
         <li><a href=""><i class="fa fa-list"></i><span>Makes</span></a></li> -->

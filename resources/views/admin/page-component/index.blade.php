@@ -25,6 +25,7 @@
                         <tr>
                             <th>#</th>
                             <th>Slug</th>
+                            <th>Value</th>
                             <th>Actions</th>
                         </tr>
                     </thead>
@@ -38,19 +39,24 @@
                                     <td>{{ $i }}</td>
                                     <td>
                                         {{-- <a href="{{ route('admin.user.single',$category->id) }}"> --}}
-                                            {{ $post->slug }}
+                                            {{ $component->slug }}
                                         {{-- </a> --}}
+                                    </td>
+                                    <td>
+                                        @if ($component->single === 1)
+                                            {{ $component->body }}
+                                        @endif
                                     </td>
                                     <td>
                                         <a class="btn btn-primary" href="{{ route('admin.page-component.edit', $component->id) }}">Edit</a>
                                         {{-- <a  class="btn btn-danger" href="{{ route('admin.page-component.destroy', $component->id) }}" onclick="return confirm('Are you sure?')">Delete</a> --}}
-                                        <form action="{{ route('admin.page-component.destroy', $component->id) }}" method="post">
+                                        {{-- <form action="{{ route('admin.page-component.destroy', $component->id) }}" method="post">
                                             @csrf
                                             @method('DELETE')
                                             <a href="#" class="btn btn-danger" title="Delete" data-toggle="tooltip" onclick="this.closest('form').submit();return false;">
                                               <i class="bi bi-trash-fill" style="color:white"></i>
                                            </a>
-                                 </form>
+                                        </form> --}}
                                     </td>
                                 </tr>
                                 <?php $i++; ?>

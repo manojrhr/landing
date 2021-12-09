@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Web\Admin;
 use App\Http\Controllers\Controller;
 use App\PageComponent;
 use Illuminate\Http\Request;
+use Validator;
 
 class PageComponentController extends Controller
 {
@@ -65,7 +66,8 @@ class PageComponentController extends Controller
      */
     public function edit(PageComponent $pageComponent)
     {
-        //
+        $component = $pageComponent;
+        return view('admin.page-component.edit', compact('component'));
     }
 
     /**
@@ -77,7 +79,27 @@ class PageComponentController extends Controller
      */
     public function update(Request $request, PageComponent $pageComponent)
     {
-        //
+        $validator = Validator::make($request->all(), [
+            'body' => ['required'],
+        ]);
+
+        if ($validator->fails()) {
+            $errors = implode(',', $validator->messages()->all());
+            $request->session()->flash('message.level', 'error');
+            $request->session()->flash('message.content', $errors);
+            return Redirect ::back()->withInput();
+        }
+
+        $pageComponent->body = $request->body;
+
+        if($pageComponent->save()){
+            $request->session()->flash('message.level', 'success');
+            $request->session()->flash('message.content', 'Post created successfully.');
+        } else {
+            $request->session()->flash('message.level', 'error');
+            $request->session()->flash('message.content', 'Something went wrong.');
+        }
+        return redirect()->route('admin.page-component.index');
     }
 
     /**
