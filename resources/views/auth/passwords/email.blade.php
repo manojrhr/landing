@@ -17,6 +17,9 @@
                 <h1 class="form-title">Lost Password</h1>
                 <p>Lost your password? Please enter your username or email address. You will receive a link to create a
                     new password via email.</p>
+                @if (session('status'))
+                    <p class="alert alert-success">{{ session('status') }}</p>
+                @endif
                 <div class="inner-form-user inner-form-lost">
                     @if(count( $errors ) > 0)
                     <div class="alert alert-danger" role="alert">
