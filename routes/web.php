@@ -39,7 +39,6 @@ Route::get('/blog/{slug}', 'Web\BlogController@single')->name('blog.single');
 Route::post('booking/save/{slug}', 'Web\BookingController@save')->name('booking.save');
 Route::get('booking/checkout/{slug}', 'Web\BookingController@checkout')->name('checkout');
 Route::get('booking/paymentSuccess', 'Web\BookingController@paymentSuccess')->name('paymentSuccess');
-Route::get('booking/details/{booking_id}', 'Web\UserController@bookingDetails')->name('bookingDetails');
 
 // PAYPAL ROUTES
 Route::get('paywithpaypal', array('as' => 'paywithpaypal','uses' => 'PaypalController@payWithPaypal',));
@@ -150,6 +149,11 @@ Route::group(['prefix' => 'user' , 'as' => 'user.'], function(){
 	Route::post('/update-password', 'Web\UserController@change_password')->name('change_password');
 
 	Route::get('/bookings', 'Web\UserController@bookings')->name('bookings');
+	Route::get('/booking/details/{booking_id}', 'Web\UserController@bookingDetails')->name('bookingDetails');
+
+	Route::get('/addresses', 'Web\UserController@addresses')->name('addresses');
+	Route::get('/address/{id}', 'Web\UserController@editAddress')->name('editAddress');
+	Route::post('/address/{id}', 'Web\UserController@updateAddress')->name('updateAddress');
 });
 
 

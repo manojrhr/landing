@@ -106,15 +106,15 @@ class UserRepository {
         return $response_array;
 	}
 
-	public static function update_address($request) {
+	public static function update_address($id, $request) {
 
         $validator = Validator::make($request->all(), [
-            'address_id' => 'required|exists:addresses,id',
-            'house_no' => 'required|string|max:255',
-            'city' => 'required|string|max:255',
-            'state' => 'required|string|max:255',
-            'tag' => 'required|string|max:50',
-            'pin' => 'required|integer',
+            'country_id' => 'required|string|max:255',
+            'address_1' => 'required|string|max:255',
+            'address_2' => 'required|string|max:255',
+            'city' => 'required|string',
+            'postal_code' => 'integer',
+            'phone' => ['required', 'numeric', 'min:10'],
         ]);
 
         if ($validator->fails()) {
@@ -122,14 +122,14 @@ class UserRepository {
             return $response_array = ['success' => false , 'message' => $errors, 'error_code' => 101];
         }
 
-        $address = Address::find($request->address_id);
-        $address->house_no = $request->house_no;
-        $address->area = $request->area;
-        $address->landmark = $request->landmark;
+        $address = Address::find($id);
+        $address->company = $request->company;
+        $address->country_id = $request->country_id;
+        $address->address_1 = $request->address_1;
+        $address->address_2 = $request->address_2;
         $address->city = $request->city;
-        $address->state = $request->state;
-        $address->pin = $request->pin;
-        $address->tag = $request->tag;
+        $address->postal_code = $request->postal_code;
+        $address->phone = $request->phone;
         $address->user_id = $request->user()->id;
 
         if($address->save()){

@@ -100,6 +100,7 @@ class PaypalController extends Controller
         $address->address_2 = $request->address_2;
         $address->city = $request->city;
         $address->postal_code = $request->postcode;
+        $address->phone = $user->phone;
         $address->user_id = $user->id;
         $address->save();
 

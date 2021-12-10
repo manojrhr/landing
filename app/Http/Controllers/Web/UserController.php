@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Web;
 
+use App\Address;
 use App\Booking;
 use App\Http\Controllers\Controller;
 use App\Repositories\UserRepository as UserRepo;
@@ -97,9 +98,33 @@ class UserController extends Controller
 
     public function bookingDetails($booking_id, Request $request)
     {
-        // dd($request->user()->id);
         $booking = Booking::where('booking_id', $booking_id)->where('user_id', $request->user()->id)->first();
-        // dd($booking);
         return view('web.user.booking-details', compact('booking'));
+    }
+
+    public function addresses(Request $request)
+    {
+        $addresses = Address::where('user_id',Auth::user()->id)->latest()->paginate(10);
+        return view('web.user.address', compact('addresses'));
+    }
+
+    public function editAddress($id, Request $request)
+    {
+        $address = Address::where('id', $id)->where('user_id', $request->user()->id)->first();
+        return view('web.user.edit-address', compact('address'));
+    }
+
+    public function updateAddress($id, Request $request)
+    {
+        $response_array = UserRepo::update_address($id, $request);
+        if($response_array['success'] === true){
+            $request->session()->flash('message.level', 'success');
+            $request->session()->flash('message.content', $response_array['message']);
+            return Redirect::back();
+        } else {
+            $request->session()->flash('message.level', 'error');
+            $request->session()->flash('message.content', $response_array['message']);
+            return Redirect::back();
+        }
     }
 }
