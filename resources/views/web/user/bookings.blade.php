@@ -34,7 +34,7 @@
                                             <tr>
                                                 <td>{{ $booking->booking_id }}</td>
                                                 <td><a href="{{ route('tour.single', $booking->tour->slug) }}" target="_blank">{{ $booking->tour->title }}</a></td>
-                                                <td><a href="view-order-3655.html">{{ $booking->booking_id }}</a></td>
+                                                <td><a href="{{ route('bookingDetails', $booking->booking_id) }}">{{ $booking->booking_id }}</a></td>
                                                 <td><time>{{ date('F j, Y', strtotime($booking->date)) }}</time></td>
                                                 {{-- <td><time>May 13, 2021</time></td> --}}
                                                 @if($booking->is_cod)
@@ -45,6 +45,13 @@
                                             </tr>
                                         @endforeach
                                     </tbody>
+                                    <tfoot>
+                                      <tr>
+                                        <td colspan="5" class="text-center">
+                                            {{ $bookings->links() }}
+                                        </td>
+                                      </tr>
+                                    </tfoot>
                                 @else
                                     <thead>
                                         <tr>

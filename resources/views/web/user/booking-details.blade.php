@@ -15,8 +15,9 @@
                 <div class="user-info-data">
                     <div class="inner-user-info-data">
                         <p>Order #<mark class="order-number">{{ $booking->booking_id }}</mark> was placed on <mark
-                                class="order-date">{{ date("F j, Y",strtotime($booking->created_at)) }}</mark> and is currently <mark
-                                class="order-status">Processing</mark>.</p>
+                                class="order-date">{{ date("F j, Y",strtotime($booking->created_at)) }}</mark> 
+                                {{-- and is currently <mark
+                                class="order-status">Processing</mark>.</p> --}}
                         <section class="section-order-details">
                             <h2 class="user-details-title">Order details</h2>
                             <table class="table table-user-details table-products-details">

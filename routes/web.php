@@ -157,14 +157,10 @@ Route::group(['prefix' => 'user' , 'as' => 'user.'], function(){
 Route::get('/testmail', function () {
 	Mail::send([], [], function ($message) {
 		$message->to('manojrhr@gmail.com')
-		->subject('Testing email from a2zamaze')
+		->subject('Testing email from Kiuki')
     	->setBody('<h1>Hi, welcome user!</h1>', 'text/html'); // for HTML rich messages
 	});
 })->name('testmail');
-
-Route::get('/testsms/{phone}', function ($phone) {
-	sendSms($phone, 'testing sms on a2zamaze.');
-})->name('testsms');
 
 Route::get('testnot', function(){
 	$url="https://api.openweathermap.org/data/2.5/weather?q=Kingston,JM&appid=28f6c380a7c1905b50a97e289869b2fe&units=metric";
