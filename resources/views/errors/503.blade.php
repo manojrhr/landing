@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html>
+  <title>Kiuki - Comming Soon</title>
 <style>
 body, html {
   height: 100%;
@@ -47,10 +48,10 @@ hr {
 <div class="bgimg">
   <div class="topleft">
     <img
-      width="500px"
-      src="assets/web/images/kiuki-tours-logo-1-ws.svg"
+      height="75px"
+      src="{{ get_component('main_logo') }}"
       alt="Kiuki Tours &amp; Transportation Jamaica"
-      title="Kiuki Tours &amp; Transportation Jamaica" itemprop="logo" />
+      title="Kiuki Tours &amp; Transportation Jamaica" itemprop="logo"/>
   </div>
   <div class="middle">
     <h1>COMING SOON</h1>

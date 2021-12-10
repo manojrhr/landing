@@ -14,7 +14,7 @@
     <div id="wrapper">
         <div id="header">
             <!-- <h1>Ski Ski</h1> -->
-            <img src="{{ asset('images/logo.png') }}" width="320px" style="margin-bottom: 25px">
+            <img src="{{ get_component('main_logo') }}" width="320px" style="margin-bottom: 25px">
             <h2><strong class="sep-one"></strong>We are coming soon<strong class="sep-two"></strong></h2>
         </div>
     <!-- <div id="middle">
