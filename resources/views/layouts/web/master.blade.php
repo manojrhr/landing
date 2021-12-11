@@ -123,7 +123,7 @@
                         <div class="col-md-4">
                             <div class="logo">
                                 <a href="{{ route('home') }}"><img
-                                        src="{{ asset('assets/web/images/kiuki-tours-logo-1-ws.svg') }}"
+                                        src="{{ get_component('main_logo') }}"
                                         alt="Kiuki Tours &amp; Transportation Jamaica"
                                         title="Kiuki Tours &amp; Transportation Jamaica" itemprop="logo" /></a>
                             </div>
@@ -324,7 +324,7 @@
                 <div class="container">
                     <div class="d-flex flex-wrap footer-row">
                         <div class="div-one">
-                            <div class="footerlogo">
+                            <div class="footerlogo text-center">
                                 <!--?xml version="1.0" encoding="UTF-8" standalone="no"?--> 
                                 {!! get_component('footerlogo') !!}
                                 {{-- <svg

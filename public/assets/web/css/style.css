@@ -45,7 +45,7 @@ mark{ background:yellow; color:black;}
 /*End Comman CSS*/
 
 /*Logo*/
-.logo img{ width:100%; max-width:350px;}
+.logo img{ width:100%; max-width:150px;}
 
 /*Header*/
 .top-header{background:#EF5707; color:#fff; padding:2px 20px;}
