@@ -135,7 +135,7 @@ Route::group(['prefix' => 'admin' , 'as' => 'admin.'], function(){
 
 Route::post('/contact', 'Web\HomeController@contact')->name('post.contact');
 Route::get('/page/{slug}', 'Web\PageController@show')->name('page');
-Route::get('/users/logout', 'Auth\LoginController@userLogout')->name('user.logout');
+Route::post('/users/logout', 'Auth\LoginController@userLogout')->name('user.logout');
 
 Route::group(['prefix' => 'user' , 'as' => 'user.'], function(){
 	Route::get('/my-account', 'Web\UserController@show_profile')->name('profile');

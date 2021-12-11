@@ -22,6 +22,9 @@ class User extends Authenticatable
          'phone', 'avatar', 'stripe_connect_id', 'completed_stripe_onboarding',
     ];
 
+    // protected $dispatchesEvents = [
+    //     'created' => NewUserRegisteredEvent::class,
+    // ];
     /**
      * The attributes that should be hidden for arrays.
      *

@@ -7,7 +7,7 @@
       <a href="{{ route('user.edit_profile') }}" class="list-group-item list-group-item-action {{ Route::is('user.edit_profile') ? 'active' : '' }}">Account details</a>
       <a href="{{ route('user.get_password_form') }}" class="list-group-item list-group-item-action {{ Route::is('user.get_password_form') ? 'active' : '' }}">Change Password</a>
       <a href="#" class="list-group-item list-group-item-action" onclick="event.preventDefault(); document.getElementById('frm-logout').submit();">Logout</a>
-      <form id="frm-logout" action="{{ route('logout') }}" method="POST" style="display: none;">
+      <form id="frm-logout" action="{{ route('user.logout') }}" method="POST" style="display: none;">
           {{ csrf_field() }}
       </form>
     </div> 
