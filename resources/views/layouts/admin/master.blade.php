@@ -166,7 +166,7 @@
         <li class="{{ request()->is('admin/category*') ? 'active' : ''}}"><a href="{{ route('admin.category') }}"><i class="fa fa-list"></i><span>Category</span></a></li>
         <li class="{{ request()->is('admin/subcategory*') ? 'active' : ''}}"><a href="{{ route('admin.subcategory') }}"><i class="fa fa-list"></i><span>Subcategory</span></a></li>
         {{-- <li class=""><a href="{{ route('admin.tour') }}"><i class="fa fa-list"></i><span>Tours</span></a></li> --}}
-        <li class="{{ request()->is('admin/tour') ? 'active' : '' }}"><a href="{{ route('admin.tour') }}"><i class="fa fa-plane"></i><span>Customer</span></a></li>
+        <li class="{{ request()->is('admin/tour') ? 'active' : '' }}"><a href="{{ route('admin.tour') }}"><i class="fa fa-plane"></i><span> Tours</span></a></li>
         <li class="{{ request()->is('admin/location*') ? 'active' : ''}}"><a href="{{ route('admin.location') }}"><i class="fa fa-circle-o"></i> Locations</a></li>
         {{-- <li class="treeview {{ request()->is('admin/location*') ? 'active' : ''}}{{ request()->is('admin/tour*') ? 'active' : ''}}">
           <a href="{{ route('admin.tour') }}">

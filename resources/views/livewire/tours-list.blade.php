@@ -45,24 +45,29 @@
 
 
 							<div class="tour-filters-list">
+								@if($tours->isEmpty())
+									<div class="text-center"><h3>No Tour Found</h3></div>
+								@endif
 							</div>
 
 							<div class="row flex-wrap row-tour-item">
                                 @foreach ($tours as $tour)
-                                    <div class="col-md-4 tour-item">
-                                        <div class="tour-inner-item">
-                                            <div class="tour-item-img"><a class="stretched-link"
-                                                    href="{{ route('tour.single',$tour->slug) }}"><img
-                                                        src="{{ asset($tour->image) }}" /></a></div>
-                                            <div class="tour-item-content">
-                                                <h4>{{ $tour->title }}</h4>
-                                                <div class="tour-text-editor">{{ substr($tour->description, 0, 100) }}...</div>
-                                                <div class="tour-more-button"><a class="stretched-link more-details-btn"
-                                                        href="{{ route('tour.single',$tour->slug) }}">More Details<i
-                                                            class="fa fa-chevron-right" aria-hidden="true"></i></a></div>
-                                            </div>
-                                        </div>
-                                    </div>
+									@if(count($tour->option) > 0)
+										<div class="col-md-4 tour-item">
+											<div class="tour-inner-item">
+												<div class="tour-item-img"><a class="stretched-link"
+														href="{{ route('tour.single',$tour->slug) }}"><img
+															src="{{ asset($tour->image) }}" /></a></div>
+												<div class="tour-item-content">
+													<h4>{{ $tour->title }}</h4>
+													<div class="tour-text-editor">{{ substr($tour->description, 0, 100) }}...</div>
+													<div class="tour-more-button"><a class="stretched-link more-details-btn"
+															href="{{ route('tour.single',$tour->slug) }}">More Details<i
+																class="fa fa-chevron-right" aria-hidden="true"></i></a></div>
+												</div>
+											</div>
+										</div>
+									@endif
                                 @endforeach
 							</div>
 							{{-- <!-- Tour Pagination --> --}}
