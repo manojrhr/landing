@@ -103,6 +103,7 @@ Route::group(['prefix' => 'admin' , 'as' => 'admin.'], function(){
 	Route::get('/tour/{id}/edit', 'Web\Admin\TourController@edit')->name('tour.edit');
 	Route::post('/tour/{id}/edit', 'Web\Admin\TourController@update')->name('tour.edit.post');
 	Route::get('/tour/delete/{id}', 'Web\Admin\TourController@delete')->name('tour.delete');
+	Route::get('/tour/status/{tour}', 'Web\Admin\TourController@toggleActive')->name('tour_status');
 	
 	Route::post('/tour-option/{id}', 'Web\Admin\TourController@add_tour_options')->name('add_tour_options');
 	Route::get('/tour-option/{id}/delete', 'Web\Admin\TourController@tour_option_delete')->name('tour_option_delete');

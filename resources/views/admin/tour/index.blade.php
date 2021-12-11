@@ -30,13 +30,18 @@
                                 <th>Title</th>
                                 <th>Slug</th>
                                 <th>Image</th>
+                                <th>Status</th>
                                 <th>Actions</th>
                             </tr>
                         </thead>
                         <tbody>
                             <?php $i=1 ?>
                                 @foreach($tours as $tour)
-                                    <tr>
+                                    @if(count($tour->option) <= 0)
+                                        <tr  style="background-color:#f5cccc !important">
+                                    @else
+                                        <tr>
+                                    @endif
                                         <td>{{ $i }}</td>
                                         <td>
                                             {{-- <a href="{{ route('admin.user.single',$category->id) }}"> --}}
@@ -46,6 +51,16 @@
                                         <td>{{ $tour->slug }}</td>
                                         <td>
                                             <img src="{{ asset($tour->image) }}" height="50px"/>
+                                        </td>
+                                        <td>
+                                            @if(count($tour->option) <= 0)
+                                                <span class="badge bg-red">No Tour Option</span>
+                                            @endif
+                                            @if($tour->active)
+                                                <a href="{{ route('admin.tour_status', $tour->id) }}"><span class="badge bg-green">Active</span></a>
+                                            @else
+                                                <a href="{{ route('admin.tour_status', $tour->id) }}"><span class="badge bg-red">In-Active</span></a>
+                                            @endif
                                         </td>
                                         <td>
                                             <a class="btn btn-primary" href="{{ route('admin.tour.edit', $tour->id) }}">Edit</a>

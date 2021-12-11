@@ -166,7 +166,9 @@
         <li class="{{ request()->is('admin/category*') ? 'active' : ''}}"><a href="{{ route('admin.category') }}"><i class="fa fa-list"></i><span>Category</span></a></li>
         <li class="{{ request()->is('admin/subcategory*') ? 'active' : ''}}"><a href="{{ route('admin.subcategory') }}"><i class="fa fa-list"></i><span>Subcategory</span></a></li>
         {{-- <li class=""><a href="{{ route('admin.tour') }}"><i class="fa fa-list"></i><span>Tours</span></a></li> --}}
-        <li class="treeview {{ request()->is('admin/location*') ? 'active' : ''}}{{ request()->is('admin/tour*') ? 'active' : ''}}">
+        <li class="{{ request()->is('admin/tour') ? 'active' : '' }}"><a href="{{ route('admin.tour') }}"><i class="fa fa-plane"></i><span>Customer</span></a></li>
+        <li class="{{ request()->is('admin/location*') ? 'active' : ''}}"><a href="{{ route('admin.location') }}"><i class="fa fa-circle-o"></i> Locations</a></li>
+        {{-- <li class="treeview {{ request()->is('admin/location*') ? 'active' : ''}}{{ request()->is('admin/tour*') ? 'active' : ''}}">
           <a href="{{ route('admin.tour') }}">
             <i class="fa fa-plane"></i>
             <span>Tours</span>
@@ -177,11 +179,10 @@
           <ul class="treeview-menu" style="display: {{ request()->is('admin/location*') ? 'block' : ''}}{{ request()->is('admin/tour*') ? 'block' : ''}};">
             <li class="{{ request()->is('admin/tour*') ? 'active' : ''}}"><a href="{{ route('admin.tour') }}"><i class="fa fa-plane"></i> Tours</a></li>
             <li class="{{ request()->is('admin/location*') ? 'active' : ''}}"><a href="{{ route('admin.location') }}"><i class="fa fa-circle-o"></i> Tour Locations</a></li>
-            {{-- <li><a href="pages/charts/morris.html"><i class="fa fa-circle-o"></i> Tours Attributes</a></li> --}}
           </ul>
-        </li>
+        </li> --}}
         <li class="treeview {{ request()->is('admin/transfers*') ? 'active' : ''}}">
-          <a href="{{ route('admin.tour') }}">
+          <a href="{{ route('admin.airport.transfer') }}">
             <i class="fa fa-car "></i>
             <span>Transfers</span>
             <span class="pull-right-container">

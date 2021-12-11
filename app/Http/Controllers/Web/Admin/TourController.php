@@ -332,4 +332,14 @@ class TourController extends Controller
         }
         return json_encode($response);
     }
+
+    public function toggleActive(Tour $tour, Request $request)
+    {
+        $tour->active= !$tour->active;
+        $tour->save();
+
+        $request->session()->flash('message.level', 'success');
+        $request->session()->flash('message.content', 'Status Changed');
+        return Redirect::back();
+    }
 }
