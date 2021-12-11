@@ -52,7 +52,7 @@
 
 							<div class="row flex-wrap row-tour-item">
                                 @foreach ($tours as $tour)
-									@if(count($tour->option) > 0)
+									@if(count($tour->option) > 0 && $tour->active)
 										<div class="col-md-4 tour-item">
 											<div class="tour-inner-item">
 												<div class="tour-item-img"><a class="stretched-link"

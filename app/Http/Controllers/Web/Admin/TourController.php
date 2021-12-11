@@ -267,6 +267,10 @@ class TourController extends Controller
         $option->child_rate = $request->child_rate;
         $option->adult_rate = $request->adult_rate;
 
+        $tour = Tour::find($id);
+        $tour->active = 1;
+        $tour->save();
+        
         if($option->save())
         {
             $response = ['success' => true, 'message' => 'Tour option updated successfully.'];
