@@ -339,6 +339,13 @@ class TourController extends Controller
 
     public function toggleActive(Tour $tour, Request $request)
     {
+        if(count($tour->option) <= 0)
+        {
+            $request->session()->flash('message.level', 'error');
+            $request->session()->flash('message.content', 'Please add tour option for this tour.');
+            return Redirect::back();
+        }
+
         $tour->active= !$tour->active;
         $tour->save();
 

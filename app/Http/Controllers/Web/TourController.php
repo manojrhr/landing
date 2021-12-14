@@ -19,7 +19,7 @@ class TourController extends Controller
 
     public function single($slug)
     {
-        $tour = Tour::where('slug', $slug)->first();
+        $tour = Tour::where('slug', $slug)->where('active', true)->first();
         if(!$tour){
             abort(404);
         }
