@@ -198,7 +198,9 @@
                       <select class="form-control" id="location" name="location">
                         {{-- <option value="">-- Select Category for this Tour --</option> --}}
                           @foreach ($locations as $location)
-                              <option value="{{ $location->id }}">{{ $location->name }}</option>
+                            @if($location->active)
+                              <option value="{{ $location->id }}">{{ $location->name }} | {{ $location->city }}</option>
+                            @endif
                           @endforeach
                       </select>
                         @error('title')
@@ -263,7 +265,7 @@
                                   <td>{{ $i }}</td>
                                   <td>
                                       {{-- <a href="{{ route('admin.user.single',$category->id) }}"> --}}
-                                          {{ $option->location->name }}
+                                          {{ $option->location->name }} | {{ $option->location->city }}
                                           @if(!$option->location->active)
                                               <span class="badge bg-red">InActive</span>
                                           @endif

@@ -128,7 +128,7 @@
                                                     @foreach ($options as $option)
                                                         @if($option->location->active)
                                                             <option value="{{ $option->location->id }}" data-adult="{{ $option->location->adult_rate }}
-                                                                data-child="{{ $option->location->child_rate }}">{{ $option->location->name }}</option>
+                                                                data-child="{{ $option->location->child_rate }}">{{ $option->location->name }} | {{ $option->location->city }}</option>
                                                         @endif
                                                     @endforeach
                                                 </select>
@@ -182,11 +182,11 @@
                                             class="fab fa-whatsapp" aria-hidden="true"></i></a></div>
                             </div> --}}
                             <!-- AddToAny BEGIN -->
-                            <div class="a2a_kit a2a_kit_size_32 a2a_default_style">
-                                <a class="a2a_button_twitter"></a>
-                                <a class="a2a_button_facebook"></a>
-                                <a class="a2a_button_pinterest"></a>
-                                <a class="a2a_button_whatsapp"></a>
+                            <div class="d-flex flex-wrap justify-content-center social-share-links a2a_kit a2a_kit_size_64 a2a_default_style">
+                                <a class="share-link-div a2a_button_twitter"></a>
+                                <a class="share-link-div a2a_button_facebook"></a>
+                                <a class="share-link-div a2a_button_pinterest"></a>
+                                <a class="share-link-div a2a_button_whatsapp"></a>
                             </div>
                             <script async src="https://static.addtoany.com/menu/page.js"></script>
                             <!-- AddToAny END -->

@@ -43,7 +43,9 @@
                         <select class="form-control" id="location" name="location">
                           {{-- <option value="">-- Select Category for this Tour --</option> --}}
                             @foreach ($locations as $location)
-                                <option value="{{ $location->id }}">{{ $location->name }}</option>
+                              @if($location->active)
+                                <option value="{{ $location->id }}">{{ $location->name }} | {{ $location->city }}</option>
+                              @endif
                             @endforeach
                         </select>
                           @error('title')
