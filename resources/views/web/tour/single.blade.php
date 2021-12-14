@@ -126,8 +126,10 @@
                                             <div class="select-form-input-div">
                                                 <select class="form-control" name="location_id" id="location">
                                                     @foreach ($options as $option)
-                                                        <option value="{{ $option->location->id }}" data-adult="{{ $option->location->adult_rate }}
-                                                            data-child="{{ $option->location->child_rate }}">{{ $option->location->name }}</option>
+                                                        @if($option->location->active)
+                                                            <option value="{{ $option->location->id }}" data-adult="{{ $option->location->adult_rate }}
+                                                                data-child="{{ $option->location->child_rate }}">{{ $option->location->name }}</option>
+                                                        @endif
                                                     @endforeach
                                                 </select>
                                             </div>

@@ -13,7 +13,10 @@
 @section('content')
           <div class="box">
             <div class="box-body">
-                <div class="row">
+                <div class="text-right">
+                    <a href="{{ route('admin.location.create') }}" class="btn btn-primary">Add Location</a>
+                </div>
+                {{-- <div class="row">
                     <div class="col-md-6 offset-md-3">
                         @if($location->id)
                             <form class="form-horizontal" method="post" action="{{ route('admin.location.update', $location->id) }}" enctype="multipart/form-data">
@@ -47,12 +50,15 @@
                             </div>
                         </form>
                     </div>
-                </div>
+                </div> --}}
                 <table id="example1" class="table table-bordered table-striped">
                     <thead>
                         <tr>
                             <th>#</th>
-                            <th>Name</th>
+                            <th>Hotel Name</th>
+                            <th>City</th>
+                            <th>Zip</th>
+                            <th>Status</th>
                             <th>Actions</th>
                         </tr>
                     </thead>
@@ -65,9 +71,21 @@
                                 <tr>
                                     <td>{{ $i }}</td>
                                     <td>{{ $location->name }}</td>
+                                    <td>{{ $location->city }}</td>
+                                    <td>{{ $location->zip }}</td>
                                     <td>
-                                        <a class="btn btn-primary" href="{{ route('admin.location', $location->id) }}">Edit</a>
-                                        <a  class="btn btn-danger" href="{{ route('admin.location.delete', $location->id) }}" onclick="return confirm('Are you sure?')">Delete</a>
+                                        <a href="{{ route('admin.location_status', $location->id) }}">
+                                            @if($location->active)
+                                                <span class="badge bg-green">Active</span>
+                                            @else
+                                                <span class="badge bg-red">In-Active</span>
+                                            @endif
+                                        </a>
+                                    </td>
+                                    <td>
+                                        <a class="btn btn-primary" href="{{ route('admin.location.edit', $location->id) }}">Edit</a>
+                                        <a  class="btn btn-danger" href="{{ route('admin.location.delete', $location->id) }}" 
+                                            onclick="return confirm('Are your sure?  All Tour Options and Airport Transfer related to this locaiton will also be deleted?')">Delete</a>
                                     </td>
                                 </tr>
                                 <?php $i++; ?>

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Web\Admin;
 
+use App\AirportTransfer;
 use App\Http\Controllers\Controller;
 use App\Location;
 use App\TourOption;
@@ -29,11 +30,26 @@ class LocationController extends Controller
         return view('admin.location.index', compact('location','locations','title','subTitle'));
     }
 
+    public function showform()
+    {
+        return $this->edit(new Location());
+    }
+
+    public function edit(Location $location)
+    {
+        return view('admin.location.edit', compact('location'));
+    }
+
     public function create(Request $request)
     {
         // dd($request->name);
         $validator = Validator::make($request->all(), [
             'name' => ['required'],
+            // 'address' => ['required','string'],
+            'city' => ['required','string'],
+            // 'zip' => ['integer'],
+            // 'lat' => ['string'],
+            // 'long' => ['string'],
         ]);
         if ($validator->fails()) 
         {
@@ -45,7 +61,24 @@ class LocationController extends Controller
 
         $location = new Location();
         $location->name = $request->name;
-        $location->slug = str_slug($request->name);
+        $location->slug = $request->slug;
+        $location->city = $request->city;
+        if($request->has('address'))
+        {
+            $location->address = $request->address;
+        }
+        if($request->has('zip'))
+        {
+            $location->zip = $request->zip;
+        }
+        if($request->has('lat'))
+        {
+            $location->lat = $request->lat;
+        }
+        if($request->has('long'))
+        {
+            $location->long = $request->long;
+        }
 
         if($location->save()){
             $request->session()->flash('message.level', 'success');
@@ -61,6 +94,11 @@ class LocationController extends Controller
     {
         $validator = Validator::make($request->all(), [
             'name' => ['required'],
+            // 'address' => ['required','string'],
+            'city' => ['required','string'],
+            // 'zip' => ['integer'],
+            // 'lat' => ['string'],
+            // 'long' => ['string'],
         ]);
         if ($validator->fails()) 
         {
@@ -72,7 +110,24 @@ class LocationController extends Controller
 
         $location = Location::findOrFail($id);
         $location->name = $request->name;
-        $location->slug = str_slug($request->name);
+        $location->slug = $request->slug;
+        $location->city = $request->city;
+        if($request->has('address'))
+        {
+            $location->address = $request->address;
+        }
+        if($request->has('zip'))
+        {
+            $location->zip = $request->zip;
+        }
+        if($request->has('lat'))
+        {
+            $location->lat = $request->lat;
+        }
+        if($request->has('long'))
+        {
+            $location->long = $request->long;
+        }
 
         if($location->save()){
             $request->session()->flash('message.level', 'success');
@@ -88,6 +143,7 @@ class LocationController extends Controller
     {
         $location = Location::findOrFail($id);
         $tour_option = TourOption::where('location_id', $location->id)->delete();
+        $airport_transfer = AirportTransfer::where('location_id', $location->id)->delete();
         if($location->delete()){
             $request->session()->flash('message.level', 'success');
             $request->session()->flash('message.content', 'Location deleted successfully.');
@@ -98,4 +154,13 @@ class LocationController extends Controller
         return Redirect::back();
     }
 
+    public function toggleActive(Location $location, Request $request)
+    {
+        $location->active= !$location->active;
+        $location->save();
+
+        $request->session()->flash('message.level', 'success');
+        $request->session()->flash('message.content', 'Status Changed');
+        return Redirect::back();
+    }
 }

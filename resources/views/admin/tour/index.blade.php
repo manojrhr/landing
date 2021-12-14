@@ -56,11 +56,13 @@
                                             @if(count($tour->option) <= 0)
                                                 <span class="badge bg-red">No Tour Option</span>
                                             @endif
-                                            @if($tour->active)
-                                                <a href="{{ route('admin.tour_status', $tour->id) }}"><span class="badge bg-green">Active</span></a>
-                                            @else
-                                                <a href="{{ route('admin.tour_status', $tour->id) }}"><span class="badge bg-red">In-Active</span></a>
-                                            @endif
+                                            <a href="{{ route('admin.tour_status', $tour->id) }}">
+                                                @if($tour->active)
+                                                    <span class="badge bg-green">Active</span>
+                                                @else
+                                                    <span class="badge bg-red">In-Active</span>
+                                                @endif
+                                            </a>
                                         </td>
                                         <td>
                                             <a class="btn btn-primary" href="{{ route('admin.tour.edit', $tour->id) }}">Edit</a>

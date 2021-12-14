@@ -82,12 +82,14 @@ Route::group(['prefix' => 'admin' , 'as' => 'admin.'], function(){
 	Route::get('/blogcategory', 'Web\Admin\BlogCategoryController@index')->name('blogcategory');
 	Route::get('/blogcategory/delete/{id}', 'Web\Admin\BlogCategoryController@delete')->name('blogcategory.delete');
 
-	Route::get('/location/{id?}', 'Web\Admin\LocationController@index')->name('location');
-	Route::post('/location/create', 'Web\Admin\LocationController@create')->name('location.create.post');
-	Route::post('/location/{id?}', 'Web\Admin\LocationController@update')->name('location.update');
-	Route::get('/location/{id}/edit', 'Web\Admin\LocationController@edit')->name('location.edit');
+	Route::get('/location/create', 'Web\Admin\LocationController@showform')->name('location.create');
+	Route::get('/location', 'Web\Admin\LocationController@index')->name('location');
+	Route::post('/location/save', 'Web\Admin\LocationController@create')->name('location.create.post');
+	Route::post('/location/{id}/save', 'Web\Admin\LocationController@update')->name('location.update');
+	Route::get('/location/{location}/edit', 'Web\Admin\LocationController@edit')->name('location.edit');
 	Route::get('/location/{id}/delete', 'Web\Admin\LocationController@delete')->name('location.delete');
 	Route::get('/location/delete/{id}', 'Web\Admin\LocationController@delete')->name('location.delete');
+	Route::get('/location/status/{location}', 'Web\Admin\LocationController@toggleActive')->name('location_status');
 
 	Route::get('/subcategory/create', 'Web\Admin\SubCategoryController@showForm')->name('subcategory.create');
 	Route::post('/subcategory/create', 'Web\Admin\SubCategoryController@create')->name('subcategory.create.post');

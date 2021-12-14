@@ -77,7 +77,9 @@
                                 <select class="form-control" name="location" id="location" onChange="get_transfer_price()">
                                     {{-- <option value="">--select location--</option> --}}
                                     @foreach ($locations as $location)
-                                        <option value="{{ $location->id }}">{{ $location->name }}</option>                                                           
+                                        @if($location->active)
+                                            <option value="{{ $location->id }}">{{ $location->name }}</option>                                                           
+                                        @endif
                                     @endforeach
                                 </select>
                             </div>

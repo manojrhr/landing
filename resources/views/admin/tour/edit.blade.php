@@ -255,11 +255,18 @@
                   <tbody>
                       <?php $i=1 ?>
                           @foreach($options as $option)
-                              <tr>
+                            @if(!$option->location->active)
+                                <tr  style="background-color:#f5cccc !important">
+                            @else
+                                <tr>
+                            @endif
                                   <td>{{ $i }}</td>
                                   <td>
                                       {{-- <a href="{{ route('admin.user.single',$category->id) }}"> --}}
                                           {{ $option->location->name }}
+                                          @if(!$option->location->active)
+                                              <span class="badge bg-red">InActive</span>
+                                          @endif
                                       {{-- </a> --}}
                                   </td>
                                   <td>{{ $option->child_rate }}</td>

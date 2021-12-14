@@ -261,7 +261,14 @@ class TourController extends Controller
             // return Redirect::back();
         }
 
-        $option = new TourOption();
+        $tourOption = TourOption::where('tour_id', $id)->where('location_id', $request->location)->first();
+        if($tourOption)
+        {
+            $option = $tourOption;
+        } else {
+            $option = new TourOption();
+        }
+
         $option->tour_id = $id;
         $option->location_id = $request->location;
         $option->child_rate = $request->child_rate;
@@ -272,8 +279,12 @@ class TourController extends Controller
         $tour->save();
         
         if($option->save())
-        {
-            $response = ['success' => true, 'message' => 'Tour option updated successfully.'];
+        { 
+            if($tourOption){
+                $response = ['success' => true, 'message' => 'Tour option updated successfully.'];
+            } else {
+                $response = ['success' => true, 'message' => 'Tour option created successfully.'];
+            }
         } else {
             $response = ['success' => false, 'message' => 'Something went wrong.'];
         }
