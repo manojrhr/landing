@@ -8,7 +8,7 @@
     <meta name="description" content="@yield('description','')">
     <meta name="author" content="">
     <meta name="generator" content="Hugo 0.80.0">
-    <title>Kiuki &amp; Transportation Ltd &#8211; @yield('title','The Impossible just takes a little longer.')</title>
+    <title>Kiuki Transportation Ltd &#8211; @yield('title','The Impossible just takes a little longer.')</title>
 
 
 
