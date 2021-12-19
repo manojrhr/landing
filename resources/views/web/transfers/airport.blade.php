@@ -10,8 +10,7 @@
                 <div class="left-airport-transfers">
                     <div class="breadcrumb-block breadcrumb-airport-transfers">
                         <nav class="d-flex flex-wrap justify-content-center nav-breadcrumb">
-                            <a href="index.html">Home</a>&nbsp;/&nbsp;<a href="tours.html">Tours</a>&nbsp;/&nbsp;YS and
-                            Tastes of Jamaica</nav>
+                            <a href="{{ route('home') }}">Home</a>&nbsp;/&nbsp;<a href="{{ route('transfers') }}}">Transfers</a>&nbsp;/&nbsp;Shared Transfers</nav>
                     </div>
                     <div class="title-transfers-airport">
                         <h1 class="title-airport">Airport Transfers</h1>
@@ -21,7 +20,7 @@
                     </div>
                     <div class="transfers-content-expert">
                         <p>Let’s arrange your MBJ airport transfer in advance to & from your hotel destination in
-                            comfort. Our shuttle transfer service takes from Sangsters International Airport in Montego
+                            comfort. Our shuttle transfer service takes you from Sangsters International Airport in Montego
                             Bay (MBJ) to your hotel, and back without any hassle for your departure.</p>
                     </div>
                     <hr class="divider-separator" />
@@ -34,7 +33,7 @@
                             Transfer</a>
                     </div>
                     <div id="book-airport-transfers-form" class="book-airport-transfers-form">
-                        <h3 class="airport-transfers-form-title">Book This Tour Below</h3>
+                        <h3 class="airport-transfers-form-title">Book Your Transfer Below</h3>
                         <div class="form-airport-transfers-booking-block">
                             <form>
                             @csrf

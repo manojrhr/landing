@@ -9,7 +9,7 @@
 <!-- #Main Content-->
 <div id="main-content">
     <!-- Banner -->
-    <div class="bg-fixed banner">
+    <div class="bg-fixed banner banner-one">
         <div class="banner-shape-bottom" data-negative="false">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 283.5 19.6" preserveAspectRatio="none">
                 <path class="elementor-shape-fill" style="opacity:0.33" d="M0 0L0 18.8 141.8 4.1 283.5 18.8 283.5 0z">
@@ -26,8 +26,8 @@
                 <div class="banner-content" data-aos="fade-right">
                     <h1 class="page-heading-title">About Us</h1>
                     <ul class="social-icon-banner">
-                        <li><a href="#" target="_blank"><i class="fab fa-facebook-f"></i></a></li>
-                        <li><a href="#" target="_blank"><i class="fab fa-instagram"></i></a></li>
+                        <li><a href="{{ get_component('social_facebook') }}" target="_blank"><i class="fab fa-facebook-f"></i></a></li>
+                        <li><a href="{{ get_component('social_insta') }}" target="_blank"><i class="fab fa-instagram"></i></a></li>
                     </ul>
                 </div>
             </div>
