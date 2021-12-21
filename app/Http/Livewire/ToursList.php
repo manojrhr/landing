@@ -16,7 +16,10 @@ class ToursList extends Component
     {
         $searchTerm = '%'.$this->searchTerm.'%';
         return view('livewire.tours-list', [
-            'tours' => Tour::where('title','like', $searchTerm)->orWhere('description','like', $searchTerm)->paginate(6),
+            'tours' => Tour::search($searchTerm)
+                        ->where('active', true)
+                        ->latest()
+                        ->paginate(6),
         ]);
     }
 }

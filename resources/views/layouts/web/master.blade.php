@@ -112,6 +112,10 @@
                                 <i class="fab fa-facebook-f"></i></a>
                             <a href="{{ get_component('social_insta') }}" target="_blank" rel="noopener">
                                 <i class="fab fa-instagram"></i></a>
+                            <a href="{{ get_component('social_twitter') }}" target="_blank" rel="noopener">
+                                <i class="fab fa-twitter"></i></a>
+                            <a href="{{ get_component('social_linkedin') }}" target="_blank" rel="noopener">
+                                <i class="fab fa-linkedin"></i></a>
                         </div>
                     </div>
                 </div>
@@ -124,14 +128,17 @@
                             <div class="logo">
                                 <a href="{{ route('home') }}"><img
                                         src="{{ get_component('main_logo') }}"
-                                        alt="Kiuki Tours &amp; Transportation Jamaica"
-                                        title="Kiuki Tours &amp; Transportation Jamaica" itemprop="logo" /></a>
+                                        alt="Kiuki Transportation Jamaica"
+                                        title="Kiuki Transportation Jamaica" itemprop="logo" /></a>
                             </div>
                         </div>
                         <div class="col-8">
                             <div class="collapse navbar-collapse align-items-end justify-content-end"
                                 id="navbarCollapse">
                                 <ul class="navbar-nav align-items-center">
+                                    <li class="nav-item active">
+                                        <a class="nav-link" href="{{ route('home') }}">Home</a>
+                                    </li>
                                     <li class="nav-item active">
                                         <a class="nav-link" href="{{ route('tours') }}">Tours</a>
                                     </li>
@@ -426,6 +433,8 @@
                                 <ul>
                                     <li><a href="{{ get_component('social_facebook') }}" target="_blank"><i class="fab fa-facebook-f" target="_blank"></i></a></li>
                                     <li><a href="{{ get_component('social_insta') }}" target="_blank"><i class="fab fa-instagram" target="_blank"></i></a></li>
+                                    <li><a href="{{ get_component('social_twitter') }}" target="_blank"><i class="fab fa-twitter" target="_blank"></i></a></li>
+                                    <li><a href="{{ get_component('social_linkedin') }}" target="_blank"><i class="fab fa-linkedin" target="_blank"></i></a></li>
                                 </ul>
                             </div>
                         </div>

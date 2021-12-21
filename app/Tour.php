@@ -15,4 +15,29 @@ class Tour extends Model
     {
         return $this->hasMany(TourOption::class)->take(1);
     }
+
+    public function category()
+    {
+        return $this->belongsTo(Category::class);
+    }
+
+    public function subcategory()
+    {
+        return $this->belongsTo(Category::class);
+    }
+
+    public function scopeSearch($query,$term)
+    {
+        // $term = "%$term%";
+        $query->where(function ($query) use ($term) {
+            $query->where('title','like', $term)
+                ->orWhere('description','like', $term)
+                ->orWhereHas('category', function ($query) use ($term){
+                    $query->where('title','like', $term);
+                })
+                ->orWhereHas('subcategory', function ($query) use ($term){
+                    $query->where('title','like', $term);
+                });
+        });
+    }
 }

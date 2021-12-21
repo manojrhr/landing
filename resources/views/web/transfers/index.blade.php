@@ -50,6 +50,90 @@
                     @endif
                 </div>
             </div>
+
+            <!-- Section Two -->
+            <div class="section-two mt-5">
+                <div class="container">
+                    <div class="row align-items-center no-margin">
+                        <div class="col-md-6">
+                            <div class="sub-heading">Personalized Transportation</div>
+                            <h4 class="main-heading">First-Class Impressions.</h4>
+                            <hr class="divider" />
+                            <p class="no-margin">Kiuki Tours is pleased to offer professional transportation for visitors, business
+                                executives, and various groups to their destination throughout Jamaica.</p>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="gallery-row mobile-hide">
+                                <div class="gallery-col">
+                                    <div class="gallery-img">
+                                        <img src="{{ asset('assets/web/images/img1.jpg') }}" alt="" />
+                                    </div>
+                                </div>
+                                <div class="gallery-col">
+                                    <div class="gallery-img">
+                                        <img src="{{ asset('assets/web/images/img2.jpg') }}" alt="" />
+                                    </div>
+                                </div>
+                                <div class="gallery-col">
+                                    <div class="gallery-img">
+                                        <img src="{{ asset('assets/web/images/img3.jpg') }}" alt="" />
+                                    </div>
+                                </div>
+                                <div class="gallery-col">
+                                    <div class="gallery-img">
+                                        <img src="{{ asset('assets/web/images/img4.jpg') }}" alt="" />
+                                    </div>
+                                </div>
+                                <div class="gallery-col">
+                                    <div class="gallery-img">
+                                        <img src="{{ asset('assets/web/images/img5.jpg') }}" alt="" />
+                                    </div>
+                                </div>
+                                <div class="gallery-col">
+                                    <div class="gallery-img">
+                                        <img src="{{ asset('assets/web/images/img6.jpg') }}" alt="" />
+                                    </div>
+                                </div>
+                            </div>
+            
+                            <div class="gallery-slider-cover mobile-show" style="display:none;">
+                                <div class="gallery-slider">
+                                    <div>
+                                        <div class="gallery-innerdiv">
+                                            <img src="{{ asset('assets/web/images/img1.jpg') }}" alt="" />
+                                        </div>
+                                    </div>
+                                    <div>
+                                        <div class="gallery-innerdiv">
+                                            <img src="{{ asset('assets/web/images/img2.jpg') }}" alt="" />
+                                        </div>
+                                    </div>
+                                    <div>
+                                        <div class="gallery-innerdiv">
+                                            <img src="{{ asset('assets/web/images/img3.jpg') }}" alt="" />
+                                        </div>
+                                    </div>
+                                    <div>
+                                        <div class="gallery-innerdiv">
+                                            <img src="{{ asset('assets/web/images/img4.jpg') }}" alt="" />
+                                        </div>
+                                    </div>
+                                    <div>
+                                        <div class="gallery-innerdiv">
+                                            <img src="{{ asset('assets/web/images/img5.jpg') }}" alt="" />
+                                        </div>
+                                    </div>
+                                    <div>
+                                        <div class="gallery-innerdiv">
+                                            <img src="{{ asset('assets/web/images/img6.jpg') }}" alt="" />
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 </div>

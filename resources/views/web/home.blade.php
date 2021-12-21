@@ -5,8 +5,7 @@
 <!-- #Main Content-->
 <div id="main-content">
    
-    <audio controls autoplay loop visibility hidden>
-    <source src="{{ asset('images/audio/kiuki_beat_short.mp3') }}">
+    <audio id="welcome_audio" autoplay loop visibility hidden src="{{ asset('images/audio/kiuki_beat_short.mp3') }}">
    </audio>
     
     
@@ -134,89 +133,24 @@
     </div>
 </div>
 
-<!-- Section Two -->
-<div class="section-two">
-    <div class="container">
-        <div class="row align-items-center no-margin">
-            <div class="col-md-6">
-                <div class="sub-heading">Personalized Transportation</div>
-                <h4 class="main-heading">First-Class Impressions.</h4>
-                <hr class="divider" />
-                <p class="no-margin">Kiuki Tours is pleased to offer professional transportation for visitors, business
-                    executives, and various groups to their destination throughout Jamaica.</p>
-            </div>
-            <div class="col-md-6">
-                <div class="gallery-row mobile-hide">
-                    <div class="gallery-col">
-                        <div class="gallery-img">
-                            <img src="{{ asset('assets/web/images/img1.jpg') }}" alt="" />
-                        </div>
-                    </div>
-                    <div class="gallery-col">
-                        <div class="gallery-img">
-                            <img src="{{ asset('assets/web/images/img2.jpg') }}" alt="" />
-                        </div>
-                    </div>
-                    <div class="gallery-col">
-                        <div class="gallery-img">
-                            <img src="{{ asset('assets/web/images/img3.jpg') }}" alt="" />
-                        </div>
-                    </div>
-                    <div class="gallery-col">
-                        <div class="gallery-img">
-                            <img src="{{ asset('assets/web/images/img4.jpg') }}" alt="" />
-                        </div>
-                    </div>
-                    <div class="gallery-col">
-                        <div class="gallery-img">
-                            <img src="{{ asset('assets/web/images/img5.jpg') }}" alt="" />
-                        </div>
-                    </div>
-                    <div class="gallery-col">
-                        <div class="gallery-img">
-                            <img src="{{ asset('assets/web/images/img6.jpg') }}" alt="" />
-                        </div>
-                    </div>
-                </div>
-
-                <div class="gallery-slider-cover mobile-show" style="display:none;">
-                    <div class="gallery-slider">
-                        <div>
-                            <div class="gallery-innerdiv">
-                                <img src="{{ asset('assets/web/images/img1.jpg') }}" alt="" />
-                            </div>
-                        </div>
-                        <div>
-                            <div class="gallery-innerdiv">
-                                <img src="{{ asset('assets/web/images/img2.jpg') }}" alt="" />
-                            </div>
-                        </div>
-                        <div>
-                            <div class="gallery-innerdiv">
-                                <img src="{{ asset('assets/web/images/img3.jpg') }}" alt="" />
-                            </div>
-                        </div>
-                        <div>
-                            <div class="gallery-innerdiv">
-                                <img src="{{ asset('assets/web/images/img4.jpg') }}" alt="" />
-                            </div>
-                        </div>
-                        <div>
-                            <div class="gallery-innerdiv">
-                                <img src="{{ asset('assets/web/images/img5.jpg') }}" alt="" />
-                            </div>
-                        </div>
-                        <div>
-                            <div class="gallery-innerdiv">
-                                <img src="{{ asset('assets/web/images/img6.jpg') }}" alt="" />
-                            </div>
-                        </div>
-                    </div>
+    <!-- Section About One -->
+    <div class="section-about-one">
+        <div class="container">
+            {{-- <div class="sub-heading-content">About Us</div> --}}
+            <h2 class="about-heading-title">Our Mission</h2>
+            <div class="row no-margin">
+                <div class="col-md-12 about-one-half">
+                    <p>Kuiki Tours provides quality and excellent service without compromise of customer service and
+                        safety. Our mantra “Shine with Excellence” allows us to collaborate with various entities to
+                        provide effective and efficient service, all to serve you better.</p>
+                    <p>Our modern fleet management system can mobilize over 1500 seats for your conference or special
+                        event. Town cars with drivers can help you to explore the island or do it on your time and at
+                        your pace. We are here to help you make the best of your vacation, meeting or event in Jamaica.
+                    </p>
                 </div>
             </div>
         </div>
     </div>
-</div>
 
 
 <!-- Section Three -->
@@ -238,7 +172,7 @@
                             <div class="d-flex align-items-center product-item-content">
                                 <div class="inner-product-content">
                                     <h2><a href="{{ route('tour.single', $tour->slug) }}">{{ $tour->title }}</a></h2>
-                                    <div class="product-excerpt">{{ substr($tour->description, 0, 50) }}</div>
+                                    <div class="product-excerpt">{!! substr($tour->description, 0, 50) !!}</div>
                                     <div class="more-btn-cover"><a class="more-btn" href="{{ route('tour.single', $tour->slug) }}">More
                                             Details</a></div>
                                 </div>
@@ -340,4 +274,14 @@
 {{-- </div> --}}
 <!-- End #Main Content-->
     
+@endsection
+
+@section('scripts')
+<script>
+    document.addEventListener('click', musicPlay);
+    function musicPlay() {
+        document.getElementById('welcome_audio').play();
+        document.removeEventListener('click', musicPlay);
+    }
+</script>
 @endsection

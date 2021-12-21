@@ -7,7 +7,7 @@
 							<div class="search-tour">
 								<form class="d-flex flex-wrap justify-content-center">
 									<input class="tour-search-input" type="search" autocomplete="off" value=""
-										placeholder="Search our Tours..." wire:model="searchTerm" >
+										placeholder="Search our Tours..." wire:model.debounce.500ms="searchTerm" >
 									<button type="button" class="tour-filter-submit">
 										<i class="fa fa-search"></i>
 									</button>
@@ -52,7 +52,7 @@
 
 							<div class="row flex-wrap row-tour-item">
                                 @foreach ($tours as $tour)
-									@if(count($tour->option) > 0 && $tour->active)
+									{{-- @if(count($tour->option) > 0 && $tour->active) --}}
 										<div class="col-md-4 tour-item">
 											<div class="tour-inner-item">
 												<div class="tour-item-img"><a class="stretched-link"
@@ -60,14 +60,14 @@
 															src="{{ asset($tour->image) }}" /></a></div>
 												<div class="tour-item-content">
 													<h4>{{ $tour->title }}</h4>
-													<div class="tour-text-editor">{{ substr($tour->description, 0, 100) }}...</div>
+													<div class="tour-text-editor">{!! substr($tour->description, 0, 100) !!}...</div>
 													<div class="tour-more-button"><a class="stretched-link more-details-btn"
 															href="{{ route('tour.single',$tour->slug) }}">More Details<i
 																class="fa fa-chevron-right" aria-hidden="true"></i></a></div>
 												</div>
 											</div>
 										</div>
-									@endif
+									{{-- @endif --}}
                                 @endforeach
 							</div>
 							{{-- <!-- Tour Pagination --> --}}

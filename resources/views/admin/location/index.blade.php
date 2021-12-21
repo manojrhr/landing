@@ -56,7 +56,7 @@
                         <tr>
                             <th>#</th>
                             <th>Hotel Name</th>
-                            <th>City</th>
+                            <th>Attraction</th>
                             <th>Zip</th>
                             <th>Status</th>
                             <th>Actions</th>

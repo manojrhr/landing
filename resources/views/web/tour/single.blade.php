@@ -75,16 +75,20 @@
                                 @endforeach
                             </div>
                         </div>
-                        <hr class="divider-tour" />
-                        <div class="tour-included-block">
-                            <h3 class="tour-contant-heading">Included on This Tour</h3>
-                            <p>{!! $tour->included !!}</p>
-                        </div>
-                        <hr class="divider-tour" />
-                        <div class="tour-additional-block">
-                            <h3 class="tour-contant-heading">Additional Information</h3>
-                            <p>{!! $tour->add_info !!}</p>
-                        </div>
+                        @if($tour->included != '' || $tour->included != null)
+                            <hr class="divider-tour" />
+                            <div class="tour-included-block">
+                                <h3 class="tour-contant-heading">Included on This Tour</h3>
+                                <p>{!! $tour->included !!}</p>
+                            </div>
+                        @endif
+                        @if($tour->add_info != '' || $tour->add_info != null)
+                            <hr class="divider-tour" />
+                            <div class="tour-additional-block">
+                                <h3 class="tour-contant-heading">Additional Information</h3>
+                                <p>{!! $tour->add_info !!}</p>
+                            </div>
+                        @endif
                         <hr class="divider-tour" />
                         <div class="tour-post-prev-cover">
                             <a href="#" class="tour-post-prev-btn"><i aria-hidden="true"

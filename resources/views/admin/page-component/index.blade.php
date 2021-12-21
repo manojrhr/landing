@@ -39,7 +39,7 @@
                                     <td>{{ $i }}</td>
                                     <td>
                                         {{-- <a href="{{ route('admin.user.single',$category->id) }}"> --}}
-                                            {{ $component->slug }}
+                                            {{ ucwords(str_replace("_"," ", $component->slug)) }}
                                         {{-- </a> --}}
                                     </td>
                                     <td>

@@ -68,13 +68,13 @@
                         <h4 class="heading-title-small">News &amp; Blogs</h4>
                         <div class="d-flex flex-wrap post-blog-item">
                             <div class="flex-shrink-0 post__thumbnail">
-                                <a class="post-thumbnail-block" href="#">
+                                <a class="post-thumbnail-block" href="{{ route('blog.single', $post->slug) }}">
                                     <img src="{{ asset($post->feature_image) }}">
                                 </a>
                             </div>
                             <div class="flex-grow-2 blog_post_text">
                                 <h4 class="post_title">
-                                    <a href="#">{{ $post->title }}</a>
+                                    <a href="{{ route('blog.single', $post->slug) }}">{{ $post->title }}</a>
                                 </h4>
                                 <div class="blog_post_meta_data">
                                     <span class="blog-post-date">{{ date("F j, Y", strtotime($post->created_at)) }}<</span>
@@ -90,11 +90,11 @@
                         <p>Stay connected with us on social media about our latest news &amp; blogs.</p>
                         <ul class="link-social-icons-wrapper">
                             <li>
-                                <a href="#" class="link-social-icon" target="_blank" rel="noopener">
+                                <a href="{{ get_component('social_facebook') }}" class="link-social-icon" target="_blank" rel="noopener">
                                     <i class="fab fa-facebook-f"></i></a>
                             </li>
                             <li>
-                                <a href="#" class="link-social-icon insta-icon" target="_blank" rel="noopener">
+                                <a href="{{ get_component('social_insta') }}" class="link-social-icon insta-icon" target="_blank" rel="noopener">
                                     <i class="fab fa-instagram"></i></a>
                             </li>
                         </ul>

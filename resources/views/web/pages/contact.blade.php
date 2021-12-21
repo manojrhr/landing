@@ -24,6 +24,8 @@
                     <ul class="social-icon-banner">
                         <li><a href="{{ get_component('social_facebook') }}" target="_blank"><i class="fab fa-facebook-f"></i></a></li>
                         <li><a href="{{ get_component('social_insta') }}" target="_blank"><i class="fab fa-instagram"></i></a></li>
+                        <li><a href="{{ get_component('social_twitter') }}" target="_blank"><i class="fab fa-twitter"></i></a></li>
+                        <li><a href="{{ get_component('social_linkedin') }}" target="_blank"><i class="fab fa-linkedin"></i></a></li>
                     </ul>
                 </div>
             </div>
@@ -110,6 +112,20 @@
                                     <a href="tel:{{ get_component('phone_secondary') }}">Secondary</a>
                                 </h4>
                                 <p class="icon-box-description">{!! get_component('phone_secondary') !!}</p>
+                            </div>
+                        </div>
+                        <h4 class="sidebar-heading-title">WRITE US</h4>
+                        <div class="contact-info-box">
+                            <div class="icon-box-icon">
+                                <a class="icon-animation-float scroll-link" href="#kiuki-map">
+                                    <i aria-hidden="true" class="fas fa-envelope"></i>
+                                </a>
+                            </div>
+                            <div class="icon-box-content">
+                                <h4 class="icon-box-title">
+                                    <a href="mailto:{{ get_component('email') }}">Email</a>
+                                </h4>
+                                <p class="icon-box-description">{!! get_component('email') !!}</p>
                             </div>
                         </div>
                         <h4 class="sidebar-heading-title">VISIT US</h4>

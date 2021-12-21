@@ -1,6 +1,11 @@
 @extends('layouts.admin.master')
 
-@section('title', 'Add Category')
+@if($location->exists)
+  @section('title', 'Edit Location')
+@else
+  @section('title', 'Add Location')
+@endif
+
 @section('subtitle')
 
 @section('style')
@@ -62,7 +67,7 @@
                       </div>
                     </div>
                     <div class="form-group">
-                      <label for="city" class="col-sm-2 control-label">City</label>
+                      <label for="city" class="col-sm-2 control-label">Attraction</label>
   
                       <div class="col-sm-10">
                         <input type="text" class="form-control" id="city" name="city" placeholder="City" value="{{ old('city', $location->city) }}">

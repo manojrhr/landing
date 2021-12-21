@@ -59,7 +59,7 @@
                                 <div class="advertisement-info">Advertisement</div>
                             </div>
                         </div>
-                        <div class="newsletters-block">
+                        {{-- <div class="newsletters-block">
                             <div class="newsletters-content">
                                 <div class="icon-newsletters"><i class="fa fa-envelope" aria-hidden="true"></i></div>
                                 <div class="title-newsletters">Newsletters</div>
@@ -70,7 +70,7 @@
                             <div class="tags-content">
                                 <h3 class="tags-title">Popular Tags</h3>
                             </div>
-                        </div>
+                        </div> --}}
                     </div>
                 </div>
             </div>
