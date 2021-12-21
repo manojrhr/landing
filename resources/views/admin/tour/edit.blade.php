@@ -42,7 +42,7 @@
                       <select class="form-control" id="subcategory" name="subcategory">
                         <option value="">-- Select Sub Category for this Tour --</option>
                           @foreach ($subcategories as $subcategory)
-                              <option value="{{ $subcategory->id }}" {{ $category->id === $tour->subcategory_id ? 'selected' : '' }}>{{ $subcategory->title }} - {{ $subcategory->subtitle }}</option>
+                              <option value="{{ $subcategory->id }}" {{ $subcategory->id === $tour->subcategory_id ? 'selected' : '' }}>{{ $subcategory->title }} - {{ $subcategory->subtitle }}</option>
                           @endforeach
                       </select>
                         @error('title')

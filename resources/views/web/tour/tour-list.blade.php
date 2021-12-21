@@ -13,7 +13,9 @@
 				</div>
 				<img src="{{ asset('assets/web/images/mapbg.png') }}" alt="map">
 			</div>
+			
             <livewire:tours-list />
+            
 		</div>
 
 @endsection

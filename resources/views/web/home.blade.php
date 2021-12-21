@@ -4,15 +4,16 @@
 @section('content')
 <!-- #Main Content-->
 <div id="main-content">
+   
+    <audio controls autoplay loop visibility hidden>
+    <source src="{{ asset('images/audio/kiuki_beat_short.mp3') }}">
+   </audio>
+    
+    
+  
     <div class="home-slider">
         <section class="home-topslider slider">
-            <div>
-                <div sliders="inner-slide-cover">
-                    <a href="{{ asset('images/slider/slider1.jpg') }}" data-lightbox="home-slider">
-                        <img src="{{ asset('images/slider/slider1main.jpg') }}">
-                    </a>
-                </div>
-            </div>
+          
             <div>
                 <div class="inner-slide-cover">
                     <a href="{{ asset('images/slider/large-home-slider1.jpg') }}" data-lightbox="home-slider"

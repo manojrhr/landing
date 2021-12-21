@@ -3,7 +3,6 @@
 @section('title', $tour->title)
 @section('keywords', $tour->meta_description)
 @section('description', $tour->meta_keywords)
-
 @section('styles')
 @endsection
 
@@ -54,7 +53,7 @@
                                 <div class="tab-pane fade show active" id="nav-description" role="tabpanel"
                                     aria-labelledby="nav-description-tab">
                                     <h3>Description</h3>
-                                    <p class="no-margin">{{ $tour->description }}</p>
+                                    <p class="no-margin">{!! $tour->description !!}</p>
                                 </div>
                                 <div class="tab-pane fade" id="nav-reviews" role="tabpanel"
                                     aria-labelledby="nav-reviews-tab">
@@ -79,12 +78,12 @@
                         <hr class="divider-tour" />
                         <div class="tour-included-block">
                             <h3 class="tour-contant-heading">Included on This Tour</h3>
-                            <p>{{ $tour->included }}</p>
+                            <p>{!! $tour->included !!}</p>
                         </div>
                         <hr class="divider-tour" />
                         <div class="tour-additional-block">
                             <h3 class="tour-contant-heading">Additional Information</h3>
-                            <p>{{ $tour->add_info }}</p>
+                            <p>{!! $tour->add_info !!}</p>
                         </div>
                         <hr class="divider-tour" />
                         <div class="tour-post-prev-cover">
@@ -169,6 +168,8 @@
                             </div>
                         @endif
                         <hr class="divider-tour-border" />
+                       
+                       <!--
                         <div class="social-share-cover">
                             <div class="social-share-title">Share with friends.</div>
                             {{-- <div class="d-flex flex-wrap justify-content-center social-share-links">
@@ -181,13 +182,17 @@
                                 <div class="share-link-div"><a href="#" class="share-link whatsapp-share"><i
                                             class="fab fa-whatsapp" aria-hidden="true"></i></a></div>
                             </div> --}}
+                            -->
                             <!-- AddToAny BEGIN -->
+                             <!--
                             <div class="d-flex flex-wrap justify-content-center social-share-links a2a_kit a2a_kit_size_64 a2a_default_style">
                                 <a class="share-link-div a2a_button_twitter"></a>
                                 <a class="share-link-div a2a_button_facebook"></a>
                                 <a class="share-link-div a2a_button_pinterest"></a>
                                 <a class="share-link-div a2a_button_whatsapp"></a>
                             </div>
+                            
+                            -->
                             <script async src="https://static.addtoany.com/menu/page.js"></script>
                             <!-- AddToAny END -->
 

@@ -109,7 +109,7 @@
                                 <h4 class="icon-box-title">
                                     <a href="tel:{{ get_component('phone_secondary') }}">Secondary</a>
                                 </h4>
-                                <p class="icon-box-description">{{ get_component('phone_secondary') }}</p>
+                                <p class="icon-box-description">{!! get_component('phone_secondary') !!}</p>
                             </div>
                         </div>
                         <h4 class="sidebar-heading-title">VISIT US</h4>
