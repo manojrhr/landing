@@ -9,6 +9,7 @@
     <meta name="author" content="">
     <meta name="generator" content="Hugo 0.80.0">
     <title>Kiuki Transportation Ltd &#8211; @yield('title','The Impossible just takes a little longer.')</title>
+    <link rel="shortcut icon" href="{{ asset('favicon.ico') }}"  type='image/x-icon'>
 
 
 
