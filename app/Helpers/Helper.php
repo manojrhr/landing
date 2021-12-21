@@ -35,6 +35,9 @@ if (!function_exists('null_safe')) {
     function get_component($slug)
     {
         $component = PageComponent::where('slug',$slug)->first();
+        if(!$component){
+            return '';
+        }
         return $component->body;
     }
 

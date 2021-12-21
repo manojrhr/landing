@@ -114,7 +114,7 @@
                                 <i class="fab fa-instagram"></i></a>
                             <a href="{{ get_component('social_twitter') }}" target="_blank" rel="noopener">
                                 <i class="fab fa-twitter"></i></a>
-                            <a href="{{ get_component('social_linkedin') }}" target="_blank" rel="noopener">
+                            <a href="{{ get_component('social_linkedin1') }}" target="_blank" rel="noopener">
                                 <i class="fab fa-linkedin"></i></a>
                         </div>
                     </div>
