@@ -47,7 +47,9 @@
                                     <td>{{ $category->subtitle }}</td>
                                     <td>{{ $category->slug }}</td>
                                     <td>
-                                        <img src="{{ asset($category->image) }}" height="50px"/>
+                                        @if($category->image)
+                                            <img src="{{ asset($category->image) }}" height="50px"/>
+                                        @endif
                                     </td>
                                     <td>
                                         <a class="btn btn-primary" href="{{ route('admin.subcategory.edit', $category->id) }}">Edit</a>

@@ -59,6 +59,8 @@ class SubCategoryController extends Controller
             // return $response_array = ['success' => false , 'message' => $errors, 'error_code' => 101];
         }
         
+        $subcategory = new SubCategory();
+
         if($request->hasFile('img')){
             $avatar = $request->file('img');
             $filename = time() .'.'. $avatar->getClientOriginalExtension();
@@ -69,13 +71,9 @@ class SubCategoryController extends Controller
             // $photo = Image::make($avatar)->resize(307, 146)->save(public_path('images/category/'.$filename));
 
             $fileName = 'images/subcategory/'.$filename;
-        } else {
-            $request->session()->flash('message.level', 'error');
-            $request->session()->flash('message.content', 'SubCategory Image is requried.');
-            return Redirect::back();
+            $subcategory->image = $fileName;
         }
 
-        $subcategory = new SubCategory();
         $subcategory->title = $request->title;
         $subcategory->slug = str_slug($request->title);
         $subcategory->category_id = $request->category_id;
@@ -83,7 +81,6 @@ class SubCategoryController extends Controller
         $subcategory->meta_title = $request->meta_title;
         $subcategory->meta_description = $request->meta_description;
         $subcategory->meta_keywords = $request->meta_keywords;
-        $subcategory->image = $fileName;
 
         if($subcategory->save()){
             $request->session()->flash('message.level', 'success');
