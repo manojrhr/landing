@@ -21,7 +21,7 @@ class TransferController extends Controller
 
     public function transfers($slug)
     {
-        if($slug != 'airport-transfers')
+        if($slug != 'shared-transfers')
             abort(404);
         $ids = AirportTransfer::select('location_id')->groupBy('location_id')->pluck('location_id')->toArray();
         $locations = Location::whereIn('id', $ids)
