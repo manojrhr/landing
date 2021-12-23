@@ -21,11 +21,16 @@ class TransferController extends Controller
 
     public function transfers($slug)
     {
-        if($slug != 'shared-transfers')
-            abort(404);
+        // if($slug != 'shared-transfers')
+        //     abort(404);
+        $subcategory = SubCategory::where('slug',$slug)->first();
         $ids = AirportTransfer::select('location_id')->groupBy('location_id')->pluck('location_id')->toArray();
         $locations = Location::whereIn('id', $ids)
                             ->get();
-        return view('web.transfers.airport', compact('locations'));
+        if (view()->exists('web.transfers.'.$slug)) {
+                return view('web.transfers.'.$slug, compact('locations','subcategory'));
+        }else{
+            abort(404);
+        }
     }
 }

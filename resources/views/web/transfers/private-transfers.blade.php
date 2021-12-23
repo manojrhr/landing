@@ -10,10 +10,10 @@
                 <div class="left-airport-transfers">
                     <div class="breadcrumb-block breadcrumb-airport-transfers">
                         <nav class="d-flex flex-wrap justify-content-center nav-breadcrumb">
-                            <a href="{{ route('home') }}">Home</a>&nbsp;/&nbsp;<a href="{{ route('transfers') }}}">Transfers</a>&nbsp;/&nbsp;Shared Transfers</nav>
+                            <a href="{{ route('home') }}">Home</a>&nbsp;/&nbsp;<a href="{{ route('transfers') }}">Transfers</a>&nbsp;/&nbsp;Private Transfers</nav>
                     </div>
                     <div class="title-transfers-airport">
-                        <h1 class="title-airport">Airport Transfers</h1>
+                        <h1 class="title-airport">Private Transfers</h1>
                     </div>
                     <div class="busimg-block-title" style="display:none;">
                         <img src="images/bus-img.png" />
@@ -48,8 +48,8 @@
                             </div>
                         </div>
                         <div class="form-row-block">
-                            <div class="d-flex flex-wrap row-form-div">
-                                <div class="one-half left-one-half">
+                            {{-- <div class="d-flex flex-wrap row-form-div"> --}}
+                                {{-- <div class="one-half left-one-half">
                                     <span class="label-span">Transfer Type</span>
                                     <div class="select-form-input-div">
                                         <select class="form-control" name="type" id="type" onChange="calculate_price()">
@@ -57,8 +57,9 @@
                                             <option value="private">Private</option>
                                         </select>
                                     </div>
-                                </div>
-                                <div class="one-half right-one-half">
+                                </div> --}}
+                                <input type="hidden" id="type" name="type" value="shared"/>
+                                {{-- <div class=""> --}}
                                     <span class="label-span">One-way/Round Trip</span>
                                     <div class="select-form-input-div">
                                         <select class="form-control" name="trip_type" id="trip_type" onChange="calculate_price()">
@@ -67,8 +68,8 @@
                                             <option value="one-way-fr-mbj">One-Way from MBJ Airport</option>
                                         </select>
                                     </div>
-                                </div>
-                            </div>
+                                {{-- </div> --}}
+                            {{-- </div> --}}
                         </div>
                         <div class="form-row-block">
                             <span class="label-span">One-way/Round Trip</span>
@@ -2774,7 +2775,7 @@
                 </div>
                 <div class="right-airport-transfers">
                     <div class="busimg-block">
-                        <img src="{{ asset('assets/web/images/bus-img.png') }}" />
+                        <img src="{{ asset($subcategory->image) }}" />
                     </div>
                     <div class="social-share-cover">
                         <div class="social-share-title">Share with friends.</div>
@@ -2806,11 +2807,14 @@
 
 @section('scripts')
 <script>
+    jQuery(document).ready(function() { calculate_price(); });
+    
     // $( "#datepicker1" ).datepicker({ minDate: 0});
     jQuery('#datepicker1').datepicker({  minDate:new Date()});
 
     function calculate_price(){
-        var type = jQuery('#type').val();
+        // var type = jQuery('#type').val();
+        var type = "shared";
         if(jQuery("#location").val() ===''){
             // alert('Please select an location');
             get_transfer_price();
@@ -2821,8 +2825,9 @@
         var total_pax = Number(adult) + Number(child);
         if(total_pax > 10){
             alert('Cannot add more than 10 persons');
-            var adult = jQuery('#adults').val(0);
+            var adult = jQuery('#adults').val(1);
             var child = jQuery('#child').val(0);
+            total_pax = 1;
         }
         var trip_type = jQuery('#trip_type').val();
         if(type==="shared"){

@@ -37,7 +37,7 @@
                                     href="airport-transfers.html">Book your transfer!</a>
                             </div>
                             @foreach ($subcategories as $subcat)
-                                <a href="">
+                                <a href="{{ route('transfers.type',$subcat->slug) }}">
                                     <div class="transfer-div {{ $loop->iteration === 1 ? 'shared' : '' }}{{ $loop->iteration === 2 ? 'private' : '' }}{{ $loop->iteration === 3 ? 'luxury' : '' }}-transfer" data-aos="zoom-in" data-aos-delay="2000" data-aos-once="true">
                                         {{ $subcat->title }}
                                     </div>
