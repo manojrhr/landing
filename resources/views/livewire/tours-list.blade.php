@@ -16,23 +16,24 @@
 
 
 							<div class="tours-smart-filters-checkboxes">
-								<div
-									class="d-flex flex-wrap justify-content-center align-items-center cover-tours-checkboxes-list">
-									<div
-										class="d-flex flex-wrap justify-content-center align-items-center tours-checkboxes-list">
+								<div class="d-flex flex-wrap justify-content-center align-items-center cover-tours-checkboxes-list">
+									<div class="d-flex flex-wrap justify-content-center align-items-center tours-checkboxes-list">
 										<div class="tours-checkboxes-list-item">
+											<input class="check" type="checkbox" wire.model="subcategory" name="adventure" value="adventure" hidden>
 											<span class="list-checkboxes-icon">
 												<i class="fa fa-check check-icon"></i>
 											</span>
-											<span class="list-checkboxes-label">Adventure</span>
+											<span class="list-checkboxes-label">{{ $subcategory }}Adventure</span>
 										</div>
 										<div class="tours-checkboxes-list-item">
+											<input class="check" type="checkbox" name="historical" value="historical" hidden>
 											<span class="list-checkboxes-icon">
 												<i class="fa fa-check check-icon"></i>
 											</span>
 											<span class="list-checkboxes-label">Historical</span>
 										</div>
 										<div class="tours-checkboxes-list-item">
+											<input class="check" type="checkbox" name="nature" value="nature" hidden>
 											<span class="list-checkboxes-icon">
 												<i class="fa fa-check check-icon"></i>
 											</span>
