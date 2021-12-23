@@ -1272,3 +1272,13 @@ table.cart-table-responsive tr:nth-child(2n) td{ background:rgba(0,0,0,0.025);}
     transform:rotate(0deg) scale(1);
 	opacity:1;
 }
+
+
+
+.slider-product .slider-product-div .product-thumbnail img {
+    height: 432px;
+}
+
+.inline-items li, .weather-block, .tel-icons-wrapper .icon-list-text{ font-size:13.3px;}
+
+.tours-details-row .col-details-sidebar, .tours-details-row .col-details-content{ width:100%;}

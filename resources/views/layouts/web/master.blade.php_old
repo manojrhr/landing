@@ -78,7 +78,7 @@
             <!-- Top Header -->
             <div class="top-header">
                 <div class="row row-flex justify-content-center align-items-center text-center">
-                    <div class="col-md-5">
+                    <div class="col-md-6">
                         <ul class="inline-items">
                             <li class="icon-list-item">
                                 <span class="icon-list-icon"><i aria-hidden="true" class="far fa-clock"></i></span>
@@ -89,7 +89,7 @@
                                 <span class="icon-list-text"> 24 Hour Support Available</span></li>
                                 
                             <li class="icon-list-item"><a
-                                    href="{{ get_component('map_link') }}"  target="_blank">
+                                    href="{{ get_component('map_link') }}">
                                     <span class="icon-list-icon"><i aria-hidden="true"
                                             class="fas fa-map-marked-alt"></i></span>
                                     <span class="icon-list-text">Visit Us</span>
@@ -104,7 +104,7 @@
                                         class="weather-temp">{{ get_latest_temp() }} °C</em></span></a>
                         </div>
                     </div>
-                    <div class="col-md-5 align-items-center">
+                    <div class="col-md-4 align-items-center">
                         <div class="tel-icons-wrapper">
                             <a href="tel:{{ get_component('phone_primary') }}">
                                 <i aria-hidden="true" class="fas fa-phone-alt"></i>
@@ -434,7 +434,7 @@
                                 </svg>  --}}
                             </div>
                             <div class="tel-block">
-                                <a href="tel:{{ get_component('phone_primary') }}">{{ get_component('phone_primary') }}</a></div>
+                                <a href="tel:{{ get_component('phone_primary') }}">+1-876-654-5160</a></div>
                             <div class="social-links">
                                 <ul>
                                     <li><a href="{{ get_component('social_facebook') }}" target="_blank"><i class="fab fa-facebook-f" target="_blank"></i></a></li>
@@ -559,10 +559,13 @@
         </footer>
     </div>
 
-     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" crossorigin="anonymous">
-    </script>  
-   
-   <script src="https://code.jquery.com/jquery-2.2.0.min.js" type="text/javascript"></script>
+    {{-- <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous">
+    </script> --}}
+    <script
+        src="https://code.jquery.com/jquery-3.6.0.min.js"
+        integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
+        crossorigin="anonymous"></script>
     <script src="{{ asset('assets/web/js/bootstrap.bundle.min.js') }}"></script>
     <script src="{{ asset('assets/web/js/slick.min.js') }}" type="text/javascript" charset="utf-8"></script>
     <script src="{{ asset('assets/web/js/aos.js') }}"></script>
@@ -571,11 +574,175 @@
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/js/select2.min.js"></script>
     <script type="text/javascript" src="{{ asset('assets/web/js/jquery.mmenu.js') }}"></script>
-	<script type="text/javascript" src="{{ asset('assets/web/js/custom.js') }}"></script>
+	<script type="text/javascript" src="{{ asset('assets/web/js/custom.js') }}"></script>	
+
     <!-- Alertify -->
     <script src="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/alertify.min.js"></script>
-    
 
+    <script type="text/javascript">
+        jQuery(window).on('load', function() {
+            jQuery('.object-wppu-preview').hide(); 
+        });
+        //AOS.init();
+        AOS.init({
+            easing: 'ease-out-back',
+            duration: 2000
+        });
+
+
+        var j = jQuery.noConflict();
+        j(function () {
+            j('#responsive_menu').mmenu();
+            j('html').addClass('mm-right mm-front');
+            j('#responsive_menu').addClass('mm-right mm-front');
+        });
+
+        //Fixed Navbar	
+        jQuery(window).scroll(function () {
+            if (jQuery(this).scrollTop() > 400) {
+                jQuery('#navbar_top').addClass('fixed');
+                jQuery('#mobile-nav-header').addClass('fixed');
+            } else {
+                jQuery('#navbar_top').removeClass('fixed');
+                jQuery('#mobile-nav-header').removeClass('fixed');
+            }
+        });
+
+        jQuery(document).ready(function () {
+            //Product Image Zoom
+            var jQueryeasyzoom = jQuery('.easyzoom').easyZoom();
+
+            //Select
+            jQuery('.select2').select2();
+
+            //Scroll Link
+            jQuery('.scroll-link').click(function () {
+                var sectionTo = $(this).attr('href');
+                jQuery('html, body').animate({
+                    scrollTop: $(sectionTo).offset().top
+                }, 1500);
+            });
+
+            //Book Airport Transfers Form 
+            jQuery(".booking-form-airport-button").click(function () {
+                jQuery("#transfers-book-instantly").addClass("hide");
+                jQuery("#book-airport-transfers-form").addClass("active");
+                jQuery('html, body').animate({
+                    scrollTop: jQuery("#book-airport-transfers-form").offset().top - 220
+                }, 2000);
+            });
+
+            // Input Select Airline Number
+            jQuery(".checkbox-input").change(function () {
+                if (jQuery(this).prop('checked')) {
+                    jQuery(this).parent().parent().addClass("active-check");
+
+                } else {
+                    jQuery(this).parent().parent().removeClass("active-check");
+                }
+            });
+
+            //Book Tour Form 
+            jQuery(".tour-booking-form-button").click(function () {
+                jQuery("#tour-form-button-cover").addClass("hide");
+                jQuery("#tour-booking-form").addClass("active");
+                jQuery('html, body').animate({
+                    scrollTop: jQuery("#tour-booking-form").offset().top - 220
+                }, 2000);
+            });
+
+            //Search Bar
+            jQuery(".search-link").click(function () {
+                jQuery(".search-divblock").addClass("active");
+            });
+            jQuery(".buttonsearch").click(function () {
+                jQuery(".search-divblock").removeClass("active");
+            });
+
+            //Home Slider
+            jQuery('.home-topslider').slick({
+                dots: false,
+                prevArrow: false,
+                nextArrow: false,
+                infinite: true,
+                slidesToShow: 4,
+                slidesToScroll: 1,
+                responsive: [{
+                        breakpoint: 1024,
+                        settings: {
+                            slidesToShow: 4,
+                            slidesToScroll: 1
+                        }
+                    },
+                    {
+                        breakpoint: 959,
+                        settings: {
+                            slidesToShow: 3,
+                            slidesToScroll: 1
+                        }
+                    },
+                    {
+                        breakpoint: 767,
+                        settings: {
+                            slidesToShow: 1,
+                            slidesToScroll: 1
+                        }
+                    }
+                ]
+            });
+
+            //Home Slider
+            jQuery('.gallery-slider').slick({
+                dots: false,
+                prevArrow: false,
+                nextArrow: false,
+                infinite: true,
+                slidesToShow: 1,
+                slidesToScroll: 1,
+                responsive: [{
+                        breakpoint: 768,
+                        settings: {
+                            slidesToShow: 1,
+                            slidesToScroll: 1
+                        }
+                    },
+                    {
+                        breakpoint: 767,
+                        settings: {
+                            slidesToShow: 1,
+                            slidesToScroll: 1
+                        }
+                    }
+                ]
+            });
+
+            
+			//Product Slider
+			jQuery('.product-slider').slick({
+				dots: false,
+				prevArrow: '<span class="slick-slide-arrow prev-arrow"><i class="fa fa-chevron-left" style=""></i></span>',
+				nextArrow: '<span class="slick-slide-arrow next-arrow"><i class="fa fa-chevron-right" style=""></i></span>',
+				infinite: true,
+				slidesToShow: 2,
+				slidesToScroll: 1,
+				responsive: [{
+						breakpoint: 768,
+						settings: {
+							slidesToShow: 1,
+							slidesToScroll: 1
+						}
+					},
+					{
+						breakpoint: 767,
+						settings: {
+							slidesToShow: 1,
+							slidesToScroll: 1
+						}
+					}
+				]
+			});
+        });
+    </script>
     @yield('scripts')
     @include('includes.flash-message')
     @livewireScripts
