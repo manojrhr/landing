@@ -66,20 +66,24 @@ class BookingController extends Controller
             return Redirect::back();
         }
 
-        $tour = Tour::where('slug', $slug)->first();
-        if(!$tour){
-            abort(404);
+        if($slug === "transfers"){
+            $booking['tour_id'] = 0;
+        } else {
+            $tour = Tour::where('slug', $slug)->first();
+            if(!$tour){
+                abort(404);
+            }
         }
         
         $adult_total = $request->adult_count * $request->adult_rate;
         $child_total = $request->child_count * $request->child_rate;
         $total_amount = $adult_total + $child_total;
+        
         if ($total_amount != $request->amount) {
             $request->session()->flash('message.level', 'error');
             $request->session()->flash('message.content', 'Something went wrong. Please refresh the page.');
             return Redirect::back();
         }
-
         // $latest_booking = Booking::latest()->first();
         // if($latest_booking){
         //     $booking_id = $latest_booking->booking_id + 1;
@@ -88,7 +92,6 @@ class BookingController extends Controller
         // }
 
         // $booking[];
-        $booking['tour_id'] = (int)$tour->id;
         // $booking['booking_id'] = $booking_id;
         $booking['location_id'] = (int)$request->location_id;
         $booking['date'] = date('Y-m-d', strtotime($request->date));
@@ -122,7 +125,11 @@ class BookingController extends Controller
         $booking = (object)$request->session()->get('booking')[0];
         // dd($request->session());
         // $booking = Booking::where('booking_id', $booking_id)->firstOrFail();
-        $tour = Tour::where('slug', $slug)->firstOrFail();
+        if($slug === "transfers"){
+            $tour = new Tour();
+        }else{
+            $tour = Tour::where('slug', $slug)->firstOrFail();
+        }
         $location = Location::findOrFail($booking->location_id);
         return view('web.booking.checkout', compact('booking', 'tour', 'location'));
     }

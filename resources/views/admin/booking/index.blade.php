@@ -46,7 +46,7 @@
                                         </a>
                                     </td>
                                     <td>{{ $booking->user->first_name }} {{ $booking->user->last_name }}</td>
-                                    <td>{{ $booking->tour->title }}</td>
+                                    <td>{{ $booking->tour_id === 0 ? 'Transfer' : $booking->tour->title }}</td>
                                     <td>{{ date('F j, Y', strtotime($booking->date)) }}</td>
                                     <td>{{ date('F j, Y, g:i a', strtotime($booking->created_at)) }}</td>
                                     <td>

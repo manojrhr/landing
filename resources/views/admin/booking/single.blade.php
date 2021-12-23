@@ -84,7 +84,7 @@
                         <b>Customer Phone</b> <a class="pull-right">{{ $booking->user->phone }}</a>
                     </li>
                     <li class="list-group-item">
-                        <b>Tour Title</b> <a class="pull-right">{{ $booking->tour->title }}</a>
+                        <b>{{ $booking->tour_id === 0 ? 'Transfer' : "Tour Title" }}</b> <a class="pull-right">{{ $booking->tour_id === 0 ? 'Transfer' : $booking->tour->title }}</a>
                     </li>
                     <li class="list-group-item">
                         <b>Pickup From</b> <a class="pull-right">{{ $booking->location->name }}</a>

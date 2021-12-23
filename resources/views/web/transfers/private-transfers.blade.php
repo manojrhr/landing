@@ -35,8 +35,13 @@
                     <div id="book-airport-transfers-form" class="book-airport-transfers-form">
                         <h3 class="airport-transfers-form-title">Book Your Transfer Below</h3>
                         <div class="form-airport-transfers-booking-block">
-                            <form>
-                            @csrf
+                        <form method="POST" id="payment-form" role="form" action="{{ route('booking.save', 'transfers') }}" >
+                        {{ csrf_field() }}
+                            <input type="hidden" id="type" name="type" value="shared"/>
+                            <input type="hidden" name="date" id="date" value="{{ date('d-m-Y') }}"/>
+                            <input type="hidden" name="adult_rate" id="adult_rate" value=""/>
+                            <input type="hidden" name="child_rate" id="child_rate" value=""/>
+                            <input type="hidden" name="amount" id="amount" value=""/>
                             <input type="hidden" name="pax_price" id="pax_price" value=""/>
                             <div class="wc-bookings-booking-form">
                                 <div
@@ -58,7 +63,6 @@
                                         </select>
                                     </div>
                                 </div> --}}
-                                <input type="hidden" id="type" name="type" value="shared"/>
                                 {{-- <div class=""> --}}
                                     <span class="label-span">One-way/Round Trip</span>
                                     <div class="select-form-input-div">
@@ -74,7 +78,7 @@
                         <div class="form-row-block">
                             <span class="label-span">One-way/Round Trip</span>
                             <div class="select-form-input-div">
-                                <select class="form-control" name="location" id="location" onChange="get_transfer_price()">
+                                <select class="form-control" name="location_id" id="location" onChange="get_transfer_price()">
                                     {{-- <option value="">--select location--</option> --}}
                                     @foreach ($locations as $location)
                                         @if($location->active)
@@ -89,12 +93,12 @@
                             <div class="d-flex flex-wrap row-form-div">
                                 <div class="one-half left-one-half">
                                     <span class="label-span">Number of Adults (Ages 12+)</span>
-                                    <input name="adults" id="adults" class="input-box" type="number" value="1" min="1" step="1" max="100"
+                                    <input name="adult_count" id="adults" class="input-box" type="number" value="1" min="1" step="1" max="100"
                                         id="pickup_num_adults" onChange="calculate_price()" required="">
                                 </div>
                                 <div class="one-half right-one-half">
                                     <span class="label-span">Number of Children (Ages 3-11)</span>
-                                    <input name="child" id="child" class="input-box" type="number" value="0" min="0" step="1" max="100"
+                                    <input name="child_count" id="child" class="input-box" type="number" value="0" min="0" step="1" max="100"
                                         id="pickup_num_children" onChange="calculate_price()" required="">
                                 </div>
                             </div>
@@ -107,7 +111,7 @@
                         <div class="form-row-block">
                             <span class="label-span">Additional Transfer Information</span>
                             <textarea class="textarea-box" rows="4" maxlength="500"
-                                id="adtl_pickup_info_input"></textarea>
+                                id="adtl_pickup_info_input" name="pickup_info"></textarea>
                         </div>
                         <div class="tour_total_pricing">
                             <h4 class="price_title">Transfer Pricing</h4>
@@ -121,7 +125,7 @@
                 </div>
                 <div class="right-airport-transfers">
                     <div class="busimg-block">
-                        <img src="{{ asset($subcategory->image) }}" />
+                        <img src="{{ asset('assets/web/images/bus-img.png') }}" />
                     </div>
                     <div class="social-share-cover">
                         <div class="social-share-title">Share with friends.</div>
@@ -156,7 +160,33 @@
     jQuery(document).ready(function() { calculate_price(); });
     
     // $( "#datepicker1" ).datepicker({ minDate: 0});
-    jQuery('#datepicker1').datepicker({  minDate:new Date()});
+    // jQuery('#datepicker1').datepicker({  minDate:new Date()});
+    
+            //Date Picker
+            jQuery('#datepicker1').datepicker({
+                dateFormat: 'dd-mm-yy',
+                defaultDate: "+1w",
+                changeMonth: true,
+                numberOfMonths: 1,
+                minDate:new Date(), // <-------- this will disable all dates prior to the date passed there.
+                onClose: function( selectedDate ) {
+                    $( "#to" ).datepicker( "option", "minDate", selectedDate );
+                },
+                inline: true,
+                firstDay: 1,
+                //nextText: '&rarr;',
+                //prevText: '&larr;',
+                showOtherMonths: true,
+                //dateFormat: 'dd MM yy',
+                dayNamesMin: ['S', 'M', 'T', 'W', 'T', 'F', 'S'],
+                onSelect: function(dateText) {
+                    jQuery('#date').val(dateText);
+                    console.log("Selected date: " + dateText + "; input's current value: " + this.value);
+                }
+                //showOn: "button",
+                //buttonImage: "img/calendar-blue.png",
+                //buttonImageOnly: true,
+            });
 
     function calculate_price(){
         // var type = jQuery('#type').val();
@@ -183,7 +213,12 @@
                 get_transfer_price();
             }
             if(trip_type === "round-trip"){
+                jQuery('#adult_rate').val(price*2);
+                jQuery('#child_rate').val(price*2);
                 price = price * 2;
+            }else{
+                jQuery('#adult_rate').val(price);
+                jQuery('#child_rate').val(price);
             }
             // console.log('total pax '+total_pax);
             // console.log('pax price '+price);
@@ -193,6 +228,7 @@
                 jQuery('.single_add_to_cart_button').removeAttr('disabled');;
             }
             jQuery('#transfer_price').html(total_price+'.00');
+            jQuery('#amount').val(total_price);
         }
     }
 
