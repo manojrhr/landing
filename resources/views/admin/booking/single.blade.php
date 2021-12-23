@@ -58,7 +58,11 @@
                     </li>
                   @else
                     <li class="list-group-item">
-                      <b>Payment Not Received Yet</b>
+                        @if ($booking->is_cod)
+                            <b>Cash on Delivery</b>
+                        @else
+                            <b>Payment Not Received Yet</b>
+                        @endif
                     </li>
                   @endif
                 </ul>
