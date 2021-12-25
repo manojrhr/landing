@@ -29,12 +29,19 @@
                                 </thead>
                                 <tbody>
                                     <tr>
-                                        <td><a href="#">{{ $booking->tour->title }}</a> <strong
+                                        <td>
+                                            @if($booking->tour_id !=0)
+                                                <a href="{{ route('tour.single', $booking->tour->slug) }}" target="_blank">{{ $booking->tour->title }}</a>
+                                            @else
+                                                Transfer
+                                            @endif
+                                            {{-- <a href="#">{{ $booking->tour->title }}</a>  --}}
+                                            <strong
                                                 class="product-quantity">×&nbsp;1</strong>
                                             <ul class="wc-item-meta">
                                                 <li>
-                                                    <strong class="wc-item-meta-label">Pickup Location:</strong>
-                                                    <p>{{ $booking->pickup_info }}</p>
+                                                    <strong class="wc-item-meta-label">Pickup Info:</strong>
+                                                    <p>{{ $booking->hotel->name.' | '.$booking->zone->name }}</p>
                                                 </li>
                                                 <li>
                                                     <strong class="wc-item-meta-label">Number of

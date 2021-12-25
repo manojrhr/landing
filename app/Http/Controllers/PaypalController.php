@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Address;
 use App\Booking;
 use App\Http\Requests;
+use App\Notifications\CustomerOrderBookedSuccess;
 use App\User;
 use Illuminate\Http\Request;
 use Validator;
@@ -131,6 +132,7 @@ class PaypalController extends Controller
             // $request->session()->put('tour_slug', $tour_slug);
             $request->session()->flash('message.level', 'success');
             $request->session()->flash('message.content', 'Payment success !!');
+            $user->notify((new CustomerOrderBookedSuccess($booking)));
             return Redirect::route('paymentSuccess');
         }
         $payer = new Payer();
@@ -231,6 +233,8 @@ class PaypalController extends Controller
             $booking->payer_id = $request->PayerID;
             $booking->payment_status = $result->getState();
             $booking->save();
+            $user = $booking->user;
+            $user->notify((new CustomerOrderBookedSuccess($booking)));
             $request->session()->flash('message.level', 'success');
             $request->session()->flash('message.content', 'Payment success !!');
             return Redirect::route('paymentSuccess');
