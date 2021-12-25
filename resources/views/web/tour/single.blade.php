@@ -164,7 +164,7 @@
                                                     <span class="label-span">Number of Children (Ages 3-11)</span>
                                                     <input class="input-box" type="number" name="child_count" value="0" min="0" step="1"
                                                         max="100" id="pickup_num_children" onchange="price_count();" required="">
-                                                    <span class="cost_per_text">$<span id="child_price">{{ $tour->zone[0]->child_price_percentage / $tour->zone[0]->cost_per_adult * 100}}</span> per Child</span>
+                                                    <span class="cost_per_text">$<span id="child_price">{{ ($tour->zone[0]->child_price_percentage / 100) $tour->zone[0]->cost_per_adult }}</span> per Child</span>
                                                 </div>
                                             </div>
                                         </div>
