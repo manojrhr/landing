@@ -74,7 +74,7 @@
                                     onChange="get_transfer_price()">
                                     <option value="">--Select Hotel--</option>
                                 </select> --}}
-                                <select class="form-control" name="hotel_id" id="hotel_id">
+                                <select class="form-control" name="hotel_id" id="hotel_id" required>
                                 </select>
                             </div>
                         </div>
@@ -258,8 +258,21 @@
             },
             dataType: 'JSON',
             success: function (data) {
-                jQuery('#adult_price').val(data.price);
-                console.log(data.price);
+                if(data.price != 0){
+                    jQuery('#adult_price').val(data.price);
+                } else {
+                    alert('No transfer available for such persons');
+                    jQuery('#adults').val(1);
+                    jQuery('.single_add_to_cart_button').attr('disabled','disabled');
+                    jQuery('.single_add_to_cart_button').addClass('disabled');
+                    jQuery('#adult_price').val(data.price);
+                    jQuery('#adult_price').val(0);
+                    get_adult_transfer_price();
+                    // jQuery('#transfer_price').html('0.00');
+                    // jQuery('#amount').val(0);
+                }
+                // jQuery('#adult_price').val(data.price);
+                // console.log(data.price);
                 total_price();
             }
         });
@@ -296,7 +309,16 @@
             },
             dataType: 'JSON',
             success: function (data) {
-                jQuery('#child_price').val(data.price/2);
+                if(data.price != 0){
+                    jQuery('#child_price').val(data.price/2);
+                } else {
+                    alert('No transfer available for such persons');
+                    jQuery('#child').val(0);
+                    jQuery('.single_add_to_cart_button').attr('disabled','disabled');
+                    jQuery('.single_add_to_cart_button').addClass('disabled');
+                    jQuery('#transfer_price').html('0.00');
+                    jQuery('#amount').val(0);
+                }
                 // console.log(data.price);
                 total_price();
             }

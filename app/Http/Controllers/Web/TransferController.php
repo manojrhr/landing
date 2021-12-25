@@ -59,7 +59,11 @@ class TransferController extends Controller
                                     ->where('transfer_type_id', $request->type_id)
                                     ->whereRaw($person." BETWEEN min_persons AND max_persons")
                                     ->first();
-        $data['price'] = $price->transfer_price;
+        if($price){
+            $data['price'] = $price->transfer_price;
+        } else {
+            $data['price'] = 0;
+        }
         return response()->json($data);
     }
 }
