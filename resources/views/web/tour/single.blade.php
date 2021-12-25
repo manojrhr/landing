@@ -443,7 +443,7 @@ function formatOutput (item) {
                 defaultDate: "+1d",
                 changeMonth: true,
                 numberOfMonths: 1,
-                minDate: new Date()-1, // <-------- this will disable all dates prior to the date passed there.
+                minDate: new Date(), // <-------- this will disable all dates prior to the date passed there.
                 onClose: function( selectedDate ) {
                     $( "#to" ).datepicker( "option", "minDate", selectedDate );
                 },
