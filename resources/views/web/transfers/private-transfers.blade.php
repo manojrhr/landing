@@ -175,7 +175,7 @@
     //Date Picker
     jQuery('#datepicker1').datepicker({
         dateFormat: 'dd-mm-yy',
-        defaultDate: "+1w",
+        defaultDate: "+1d",
         changeMonth: true,
         numberOfMonths: 1,
         minDate:new Date(), // <-------- this will disable all dates prior to the date passed there.

@@ -132,7 +132,7 @@
                                                     @foreach ($zones as $zone)
                                                         @if($zone->zone->active)
                                                             <option value="{{ $zone->zone_id }}" data-adult="{{ $zone->cost_per_adult }}"
-                                                                data-child="{{ $zone->child_price_percentage / $zone->cost_per_adult * 100 }}">{{ $zone->zone->name }}</option>                                                           
+                                                                data-child="{{ $zone->child_price_percentage / $zone->cost_per_adult * 100 ? 0 : ''}}">{{ $zone->zone->name }}</option>                                                           
                                                         @endif
                                                     @endforeach
                                                     {{-- @foreach ($options as $option)
@@ -440,7 +440,7 @@ function formatOutput (item) {
             //Date Picker
             jQuery('#datepicker').datepicker({
                 dateFormat: 'dd-mm-yy',
-                defaultDate: "+1w",
+                defaultDate: "+1d",
                 changeMonth: true,
                 numberOfMonths: 1,
                 minDate: new Date()-1, // <-------- this will disable all dates prior to the date passed there.
