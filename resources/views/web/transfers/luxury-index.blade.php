@@ -18,7 +18,7 @@
                                     <h4>Deluxy</h4>
                                     <div class="tour-text-editor"></div>
                                     <div class="tour-more-button"><a class="stretched-link more-details-btn"
-                                            href="{{ route('transfers.type','delux') }}">More Details<i
+                                            href="{{ route('transfers.type','delux') }}">Book Now<i
                                                 class="fa fa-chevron-right" aria-hidden="true"></i></a></div>
                                 </div>
                             </div>
@@ -32,7 +32,7 @@
                                     <h4>Suburban</h4>
                                     <div class="tour-text-editor"></div>
                                     <div class="tour-more-button"><a class="stretched-link more-details-btn"
-                                            href="{{ route('transfers.type','suburban') }}">More Details<i
+                                            href="{{ route('transfers.type','suburban') }}">Book Now<i
                                                 class="fa fa-chevron-right" aria-hidden="true"></i></a></div>
                                 </div>
                             </div>
