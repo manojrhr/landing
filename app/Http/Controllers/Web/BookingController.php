@@ -124,6 +124,87 @@ class BookingController extends Controller
         // }
     }
 
+    public function transfer($slug, Request $request)
+    {
+        $validator = Validator::make($request->all(), [
+            'zone_id' => 'required|integer',
+            'date' => 'required',
+            'adult_price' => 'required|integer',
+            'child_price' => 'required|integer',
+            'amount' => 'required|integer',
+            'adult_count' => 'required|integer',
+            'child_count' => 'required|integer'
+        ], $messages = [
+            'zone_id.required' => 'Something went wrong. Please refresh the page.',
+            'date.required' => 'Something went wrong. Please refresh the page.',
+            'adult_rate.required' => 'Something went wrong. Please refresh the page.',
+            'child_rate.required' => 'Something went wrong. Please refresh the page.',
+            'amount.required' => 'Something went wrong with Amount. Please refresh the page.',
+            'adult_count.required' => 'Number of adults required.',
+            'child_count.required' => 'Number of childs required.',
+            
+            'zone_id.integer' => 'Something went wrong. Please refresh the page.',
+            'adult_rate.integer' => 'Something went wrong. Please refresh the page.',
+            'child_rate.integer' => 'Something went wrong. Please refresh the page.',
+            'amount.integer' => 'Something went wrong. Please refresh the page.',
+            'adult_count.integer' => 'Number of adults are invalid.',
+            'child_count.integer' => 'Number of childs are invalid.',
+        ]);
+
+        if ($validator->fails()) {
+            $errors = implode(',', $validator->messages()->all());
+            $request->session()->flash('message.level', 'error');
+            $request->session()->flash('message.content', $errors);
+            return Redirect::back();
+        }
+
+        $booking['tour_id'] = 0;
+        $adult_total = $request->adult_count * $request->adult_rate;
+        $child_total = $request->child_count * $request->child_rate;
+        $total_amount = $adult_total + $child_total;
+        
+        if ($total_amount != $request->amount) {
+            $request->session()->flash('message.level', 'error');
+            $request->session()->flash('message.content', 'Something went wrong. Please refresh the page.');
+            return Redirect::back();
+        }
+        // $latest_booking = Booking::latest()->first();
+        // if($latest_booking){
+        //     $booking_id = $latest_booking->booking_id + 1;
+        // } else {
+        //     $booking_id = 10001;
+        // }
+
+        // $booking[];
+        // $booking['booking_id'] = $booking_id;
+        $booking['location_id'] = (int)$request->location_id;
+        $booking['hotel_id'] = (int)$request->hotel_id;
+        $booking['date'] = date('Y-m-d', strtotime($request->date));
+        $booking['adult_rate'] = (int)$request->adult_rate;
+        $booking['child_rate'] = (int)$request->child_rate;
+        $booking['total_amount'] = (int)$request->amount;
+        $booking['adult_count'] = (int)$request->adult_count;
+        $booking['child_count'] = (int)$request->child_count;
+        if($request->has('pickup_info')){
+            $booking['pickup_info'] = $request->pickup_info;
+        }
+        // $booking->save();
+        $request->session()->forget('booking');
+        $request->session()->push('booking', $booking);
+        $request->session()->put('tour_slug', $slug);
+        // dump($request->all());
+        // dd(session()->all());
+        return Redirect::route('checkout', $slug);
+
+        // if($request->session()->push('booking', $booking)){
+        //     return Redirect::route('checkout', [$booking->booking_id, $slug]);
+        // } else {
+        //     $request->session()->flash('message.level', 'error');
+        //     $request->session()->flash('message.content', 'Something went wrong.');
+        //     return Redirect::back()->withInput();
+        // }
+    }
+
     public function checkout($slug, Request $request)
     {
         if(!$request->session()->get('booking')){

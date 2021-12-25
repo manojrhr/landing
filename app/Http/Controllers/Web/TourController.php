@@ -52,7 +52,7 @@ class TourController extends Controller
         // dd($option);
         if($option){
             $child_rate = $option->child_price_percentage / $option->cost_per_adult * 100;
-            $option->child_rate = $child_rate;
+            $option->child_rate = round($child_rate);
             $response = ['success' => true, 'option' => $option];
         } else {
             $response = ['success' => true, 'message' => 'Tour not available for selected location'];
