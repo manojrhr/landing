@@ -123,7 +123,21 @@
                                             <div class="wc-bookings-booking-cost"><strong>This booking date is
                                                     available!</strong></div>
                                         </div>
-
+                                        
+                                        <div class="form-row-block">
+                                            <span class="label-span">Select Destination</span>
+                                            <div class="select-form-input-div">
+                                                <select class="form-control" name="location_id" id="location">
+                                                    @foreach ($options as $option)
+                                                        @if($option->location->active)
+                                                            <option value="{{ $option->location->id }}" data-adult="{{ $option->location->adult_rate }}
+                                                                data-child="{{ $option->location->child_rate }}">{{ $option->location->name }} | {{ $option->location->city }}</option>
+                                                        @endif
+                                                    @endforeach
+                                                </select>
+                                            </div>
+                                        </div>
+                                        
                                         <div class="form-row-block">
                                             <span class="label-span">Pickup Location</span>
                                             <div class="select-form-input-div">

@@ -155,10 +155,12 @@
                                                                 <div class="gallery-block">
                                     <a href="/images/tour/suberban-transfer-5.jpg" data-lightbox="photos"><img class="img-fluid" src="/images/tour/suberban-transfer-5.jpg"></a>
                                 </div> 
-                                </div>                  
-                                                                <div class="gallery-block">
+                                <div class="gallery-block">
                                     <a href="/images/tour/suberban-transfer-6.jpg" data-lightbox="photos"><img class="img-fluid" src="/images/tour/suberban-transfer-6.jpg"></a>
                                 </div> 
+                                
+                                </div>                  
+                                                                
                         </div>
                     </div>
                 </div>
