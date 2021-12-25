@@ -150,26 +150,21 @@
                     <div class="photo-gallery">
                         <h3 class="photo-gallery-heading">Photo Gallery</h3>
                         <div class="d-flex flex-wrap justify-content-center flex-logos row-photo-gallery">
-                            <div class="gallery-block">
-                                <a href="/images/tour/1633117262.2312.jpg"
-                                    data-lightbox="photos"><img class="img-fluid"
-                                        src="/images/tour/1633117262.2312.jpg"></a>
-                            </div>
-                            <div class="gallery-block">
-                                <a href="/images/tour/1633117262.5045.jpg"
-                                    data-lightbox="photos"><img class="img-fluid"
-                                        src="/images/tour/1633117262.5045.jpg"></a>
-                            </div>
-                            <div class="gallery-block">
-                                <a href="/images/tour/1633117262.7777.jpg"
-                                    data-lightbox="photos"><img class="img-fluid"
-                                        src="/images/tour/1633117262.7777.jpg"></a>
-                            </div>
-                            <div class="gallery-block">
-                                <a href="/images/tour/1633117263.0619.jpg"
-                                    data-lightbox="photos"><img class="img-fluid"
-                                        src="/images/tour/1633117263.0619.jpg"></a>
-                            </div>
+                                                                <div class="gallery-block">
+                                    <a href="/images/tour/1640174644.1646.jpg" data-lightbox="photos"><img class="img-fluid" src="https://kiukija.com/images/tour/1640174644.1646.jpg"></a>
+                                </div>                  
+                                                                <div class="gallery-block">
+                                    <a href="/images/tour/1640174644.3733.jpg" data-lightbox="photos"><img class="img-fluid" src="https://kiukija.com/images/tour/1640174644.3733.jpg"></a>
+                                </div>                  
+                                                                <div class="gallery-block">
+                                    <a href="/images/tour/1640174644.5701.jpg" data-lightbox="photos"><img class="img-fluid" src="https://kiukija.com/images/tour/1640174644.5701.jpg"></a>
+                                </div>                  
+                                                                <div class="gallery-block">
+                                    <a href="/images/tour/1640174644.7448.jpg" data-lightbox="photos"><img class="img-fluid" src="https://kiukija.com/images/tour/1640174644.7448.jpg"></a>
+                                </div>                  
+                                                                <div class="gallery-block">
+                                    <a href="/images/tour/1640174644.9058.jpg" data-lightbox="photos"><img class="img-fluid" src="https://kiukija.com/images/tour/1640174644.9058.jpg"></a>
+                                </div>               
                         </div>
                     </div>
                 </div>
