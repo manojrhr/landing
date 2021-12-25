@@ -10,10 +10,10 @@
                 <div class="left-airport-transfers">
                     <div class="breadcrumb-block breadcrumb-airport-transfers">
                         <nav class="d-flex flex-wrap justify-content-center nav-breadcrumb">
-                            <a href="{{ route('home') }}">Home</a>&nbsp;/&nbsp;<a href="{{ route('transfers') }}">Transfers</a>&nbsp;/&nbsp;Private Transfers</nav>
+                            <a href="{{ route('home') }}">Home</a>&nbsp;/&nbsp;<a href="{{ route('transfers') }}">Transfers</a>&nbsp;/&nbsp;Suburban Transfers</nav>
                     </div>
                     <div class="title-transfers-airport">
-                        <h1 class="title-airport">Private Transfers</h1>
+                        <h1 class="title-airport">Suburban Transfers</h1>
                     </div>
                     <div class="busimg-block-title" style="display:none;">
                         <img src="images/bus-img.png" />
