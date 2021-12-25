@@ -10,10 +10,10 @@
                 <div class="left-airport-transfers">
                     <div class="breadcrumb-block breadcrumb-airport-transfers">
                         <nav class="d-flex flex-wrap justify-content-center nav-breadcrumb">
-                            <a href="{{ route('home') }}">Home</a>&nbsp;/&nbsp;<a href="{{ route('transfers') }}">Transfers</a>&nbsp;/&nbsp;Private Transfers</nav>
+                            <a href="{{ route('home') }}">Home</a>&nbsp;/&nbsp;<a href="{{ route('transfers') }}">Transfers</a>&nbsp;/&nbsp;Shared Transfers</nav>
                     </div>
                     <div class="title-transfers-airport">
-                        <h1 class="title-airport">Private Transfers</h1>
+                        <h1 class="title-airport">Shared Transfers</h1>
                     </div>
                     <div class="busimg-block-title" style="display:none;">
                         <img src="images/bus-img.png" />
@@ -74,7 +74,7 @@
                                     onChange="get_transfer_price()">
                                     <option value="">--Select Hotel--</option>
                                 </select> --}}
-                                <select class="form-control" name="hotel_id" id="hotel_id">
+                                <select class="form-control" name="hotel_id" id="hotel_id" required>
                                 </select>
                             </div>
                         </div>
@@ -115,7 +115,7 @@
                 </div>
                 <div class="right-airport-transfers">
                     <div class="busimg-block">
-                        <img src="/images/transfer/private_transfer/private-transfer-main.jpeg" />
+                        <img src="/images/transfer/shared_transfer/shared-transfer-main.jpeg" />
                     </div>
                     {{-- <div class="social-share-cover">
                         <div class="social-share-title">Share with friends.</div>
@@ -128,13 +128,34 @@
                         <script async src="https://static.addtoany.com/menu/page.js"></script>
                     </div> --}}
                     <div class="photo-gallery">
-                        <h3 class="photo-gallery-heading">Photo Gallery</h3><div class="d-flex flex-wrap justify-content-center flex-logos row-photo-gallery">
+                        <h3 class="photo-gallery-heading">Photo Gallery</h3>
+                        <div class="d-flex flex-wrap justify-content-center flex-logos row-photo-gallery">
                             <div class="gallery-block">
-                                <a href="/images/transfer/private_transfer/private-transfer-main.jpeg" data-lightbox="photos"><img
-                                        class="img-fluid" src="/images/transfer/private_transfer/private-transfer-main.jpeg"></a>
+                                <a href="/images/transfer/shared_transfer/shared-transfer-main.jpeg"
+                                    data-lightbox="photos"><img class="img-fluid"
+                                        src="/images/transfer/shared_transfer/shared-transfer-main.jpeg"></a>
                             </div>
-                       
-                    
+                            <div class="gallery-block">
+                                <a href="/images/transfer/shared_transfer/shared-transfer-1.jpeg"
+                                    data-lightbox="photos"><img class="img-fluid"
+                                        src="/images/transfer/shared_transfer/shared-transfer-1.jpeg"></a>
+                            </div>
+                            <div class="gallery-block">
+                                <a href="/images/transfer/shared_transfer/shared-transfer-2.jpeg"
+                                    data-lightbox="photos"><img class="img-fluid"
+                                        src="/images/transfer/shared_transfer/shared-transfer-2.jpeg"></a>
+                            </div>
+                            <div class="gallery-block">
+                                <a href="/images/transfer/shared_transfer/shared-transfer-3.jpeg"
+                                    data-lightbox="photos"><img class="img-fluid"
+                                        src="/images/transfer/shared_transfer/shared-transfer-3.jpeg"></a>
+                            </div>
+                            <div class="gallery-block">
+                                <a href="/images/transfer/shared_transfer/shared-transfer-4.jpeg"
+                                    data-lightbox="photos"><img class="img-fluid"
+                                        src="/images/transfer/shared_transfer/shared-transfer-4.jpeg"></a>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -258,8 +279,21 @@
             },
             dataType: 'JSON',
             success: function (data) {
-                jQuery('#adult_price').val(data.price);
-                console.log(data.price);
+                if(data.price != 0){
+                    jQuery('#adult_price').val(data.price*person);
+                } else {
+                    alert('No transfer available for such persons');
+                    jQuery('#adults').val(1);
+                    jQuery('.single_add_to_cart_button').attr('disabled','disabled');
+                    jQuery('.single_add_to_cart_button').addClass('disabled');
+                    jQuery('#adult_price').val(data.price);
+                    jQuery('#adult_price').val(0);
+                    // get_adult_transfer_price();
+                    // jQuery('#transfer_price').html('0.00');
+                    // jQuery('#amount').val(0);
+                }
+                // jQuery('#adult_price').val(data.price);
+                // console.log(data.price);
                 total_price();
             }
         });
@@ -296,7 +330,17 @@
             },
             dataType: 'JSON',
             success: function (data) {
-                jQuery('#child_price').val(data.price/2);
+                if(data.price != 0){
+                    var childPrice = Math.round(data.price/2);
+                    jQuery('#child_price').val(childPrice*person);
+                } else {
+                    alert('No transfer available for such persons');
+                    jQuery('#child').val(0);
+                    jQuery('.single_add_to_cart_button').attr('disabled','disabled');
+                    jQuery('.single_add_to_cart_button').addClass('disabled');
+                    jQuery('#transfer_price').html('0.00');
+                    jQuery('#amount').val(0);
+                }
                 // console.log(data.price);
                 total_price();
             }

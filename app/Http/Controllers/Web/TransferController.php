@@ -55,10 +55,19 @@ class TransferController extends Controller
     public function get_private_price(Request $request)
     {
         $person = $request->person;
-        $price = TransferPrice::where("zone_id", $request->zone_id)
-                                    ->where('transfer_type_id', $request->type_id)
-                                    ->whereRaw($person." BETWEEN min_persons AND max_persons")
-                                    ->first();
+        if($request->type_id === '1'){
+            $price = TransferPrice::where("zone_id", $request->zone_id)
+                                        ->where('transfer_type_id', $request->type_id)
+                                        // ->whereRaw($person." BETWEEN min_persons AND max_persons")
+                                        ->first();
+
+        }else {
+            $price = TransferPrice::where("zone_id", $request->zone_id)
+                                        ->where('transfer_type_id', $request->type_id)
+                                        ->whereRaw($person." BETWEEN min_persons AND max_persons")
+                                        ->first();
+        }
+        // dd($price);
         if($price){
             $data['price'] = $price->transfer_price;
         } else {
