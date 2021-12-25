@@ -53,38 +53,27 @@
                             </div>
                         </div>
                         <div class="form-row-block">
-                            {{-- <div class="d-flex flex-wrap row-form-div"> --}}
-                                {{-- <div class="one-half left-one-half">
-                                    <span class="label-span">Transfer Type</span>
-                                    <div class="select-form-input-div">
-                                        <select class="form-control" name="type" id="type" onChange="calculate_price()">
-                                            <option value="shared">Shared</option>
-                                            <option value="private">Private</option>
-                                        </select>
-                                    </div>
-                                </div> --}}
-                                {{-- <div class=""> --}}
-                                    <span class="label-span">One-way/Round Trip</span>
-                                    <div class="select-form-input-div">
-                                        <select class="form-control" name="trip_type" id="trip_type" onChange="calculate_price()">
-                                            <option value="round-trip">Round Trip</option>
-                                            <option value="one-way-to-mbj">One-Way to MBJ Airport</option>
-                                            <option value="one-way-fr-mbj">One-Way from MBJ Airport</option>
-                                        </select>
-                                    </div>
-                                {{-- </div> --}}
-                            {{-- </div> --}}
-                        </div>
-                        <div class="form-row-block">
-                            <span class="label-span">One-way/Round Trip</span>
+                            <span class="label-span">Select Destination</span>
                             <div class="select-form-input-div">
-                                <select class="form-control" name="location_id" id="location" onChange="get_transfer_price()">
-                                    {{-- <option value="">--select location--</option> --}}
-                                    @foreach ($locations as $location)
-                                        @if($location->active)
-                                            <option value="{{ $location->id }}">{{ $location->name }} | {{ $location->city }}</option>                                                           
+                                <select class="form-control" name="zone_id" id="zone_id"
+                                    onChange="get_hotels()">
+                                    <option value="">--Select Destination--</option>
+                                    @foreach ($zones as $zone)
+                                        @if($zone->active)
+                                            <option value="{{ $zone->id }}">{{ $zone->name }}</option>                                                           
                                         @endif
                                     @endforeach
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-row-block">
+                            <span class="label-span">Select Hotel</span>
+                            <div class="select-form-input-div">
+                                {{-- <select class="form-control" name="hotel" id="hotel"
+                                    onChange="get_transfer_price()">
+                                    <option value="">--Select Hotel--</option>
+                                </select> --}}
+                                <select class="form-control" name="hotel_id" id="hotel_id">
                                 </select>
                             </div>
                         </div>
@@ -138,11 +127,33 @@
                         <script async src="https://static.addtoany.com/menu/page.js"></script>
                     </div> --}}
                     <div class="photo-gallery">
+                        <h3 class="photo-gallery-heading">Photo Gallery</h3><div class="d-flex flex-wrap justify-content-center flex-logos row-photo-gallery">
+                            <div class="gallery-block">
+                                <a href="/images/transfer/private_transfer/private-transfer-main.jpeg" data-lightbox="photos"><img
+                                        class="img-fluid" src="/images/transfer/private_transfer/private-transfer-main.jpeg"></a>
+                            </div>
                         <h3 class="photo-gallery-heading">Photo Gallery</h3>
                         <div class="d-flex flex-wrap justify-content-center flex-logos row-photo-gallery">
-                                                                <div class="gallery-block">
-                                    <a href="/images/transfer/private_transfer/private-transfer-main.jpeg" data-lightbox="photos"><img class="img-fluid" src="/images/transfer/private_transfer/private-transfer-main.jpeg"></a>
-                                </div>       
+                            <div class="gallery-block">
+                                <a href="/images/tour/1640174644.1646.jpg" data-lightbox="photos"><img class="img-fluid"
+                                        src="https://kiukija.com/images/tour/1640174644.1646.jpg"></a>
+                            </div>
+                            <div class="gallery-block">
+                                <a href="/images/tour/1640174644.3733.jpg" data-lightbox="photos"><img class="img-fluid"
+                                        src="https://kiukija.com/images/tour/1640174644.3733.jpg"></a>
+                            </div>
+                            <div class="gallery-block">
+                                <a href="/images/tour/1640174644.5701.jpg" data-lightbox="photos"><img class="img-fluid"
+                                        src="https://kiukija.com/images/tour/1640174644.5701.jpg"></a>
+                            </div>
+                            <div class="gallery-block">
+                                <a href="/images/tour/1640174644.7448.jpg" data-lightbox="photos"><img class="img-fluid"
+                                        src="https://kiukija.com/images/tour/1640174644.7448.jpg"></a>
+                            </div>
+                            <div class="gallery-block">
+                                <a href="/images/tour/1640174644.9058.jpg" data-lightbox="photos"><img class="img-fluid"
+                                        src="https://kiukija.com/images/tour/1640174644.9058.jpg"></a>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -160,31 +171,31 @@
     // $( "#datepicker1" ).datepicker({ minDate: 0});
     // jQuery('#datepicker1').datepicker({  minDate:new Date()});
     
-            //Date Picker
-            jQuery('#datepicker1').datepicker({
-                dateFormat: 'dd-mm-yy',
-                defaultDate: "+1w",
-                changeMonth: true,
-                numberOfMonths: 1,
-                minDate:new Date(), // <-------- this will disable all dates prior to the date passed there.
-                onClose: function( selectedDate ) {
-                    $( "#to" ).datepicker( "option", "minDate", selectedDate );
-                },
-                inline: true,
-                firstDay: 1,
-                //nextText: '&rarr;',
-                //prevText: '&larr;',
-                showOtherMonths: true,
-                //dateFormat: 'dd MM yy',
-                dayNamesMin: ['S', 'M', 'T', 'W', 'T', 'F', 'S'],
-                onSelect: function(dateText) {
-                    jQuery('#date').val(dateText);
-                    console.log("Selected date: " + dateText + "; input's current value: " + this.value);
-                }
-                //showOn: "button",
-                //buttonImage: "img/calendar-blue.png",
-                //buttonImageOnly: true,
-            });
+    //Date Picker
+    jQuery('#datepicker1').datepicker({
+        dateFormat: 'dd-mm-yy',
+        defaultDate: "+1w",
+        changeMonth: true,
+        numberOfMonths: 1,
+        minDate:new Date(), // <-------- this will disable all dates prior to the date passed there.
+        onClose: function( selectedDate ) {
+            $( "#to" ).datepicker( "option", "minDate", selectedDate );
+        },
+        inline: true,
+        firstDay: 1,
+        //nextText: '&rarr;',
+        //prevText: '&larr;',
+        showOtherMonths: true,
+        //dateFormat: 'dd MM yy',
+        dayNamesMin: ['S', 'M', 'T', 'W', 'T', 'F', 'S'],
+        onSelect: function(dateText) {
+            jQuery('#date').val(dateText);
+            console.log("Selected date: " + dateText + "; input's current value: " + this.value);
+        }
+        //showOn: "button",
+        //buttonImage: "img/calendar-blue.png",
+        //buttonImageOnly: true,
+    });
 
     function calculate_price(){
         // var type = jQuery('#type').val();
@@ -197,12 +208,12 @@
         var adult = jQuery('#adults').val();
         var child = jQuery('#child').val();
         var total_pax = Number(adult) + Number(child);
-        if(total_pax > 10){
-            alert('Cannot add more than 10 persons');
-            var adult = jQuery('#adults').val(1);
-            var child = jQuery('#child').val(0);
-            total_pax = 1;
-        }
+        // if(total_pax > 10){
+        //     alert('Cannot add more than 10 persons');
+        //     var adult = jQuery('#adults').val(1);
+        //     var child = jQuery('#child').val(0);
+        //     total_pax = 1;
+        // }
         var trip_type = jQuery('#trip_type').val();
         if(type==="shared"){
             var price = jQuery('#pax_price').val();
@@ -230,6 +241,29 @@
         }
     }
 
+    function get_hotels() {
+        // var location_id = this.value;
+        var zone_id = jQuery("#zone_id").val();
+        var type = jQuery('#type').val();
+        jQuery.ajax({
+            headers: {
+                'X-CSRF-TOKEN': '{{ csrf_token() }}'
+            },
+            url: "{{ route('get_hotels') }}",
+            type: 'POST',
+            data: {
+                "_token": "{{ csrf_token() }}",
+                "zone_id": zone_id,
+            },
+            dataType: 'JSON',
+            success: function (data) {
+                $('#hotel_id').html('<option value="">--Select Hotels--</option>'); 
+                $.each(data.hotels,function(key,value){
+                    $("#hotel_id").append('<option value="'+value.id+'">'+value.name+'</option>');
+                });
+            }
+        });
+    }
     
     // jQuery(document).ready(function() {
         // jQuery("#location").change(function () {
