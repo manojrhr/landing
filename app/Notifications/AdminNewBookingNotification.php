@@ -11,14 +11,15 @@ class AdminNewBookingNotification extends Notification
 {
     use Queueable;
 
+    public $booking;
     /**
      * Create a new notification instance.
      *
      * @return void
      */
-    public function __construct()
+    public function __construct(Booking $booking)
     {
-        //
+        $this->booking = $booking;
     }
 
     /**
@@ -41,9 +42,10 @@ class AdminNewBookingNotification extends Notification
     public function toMail($notifiable)
     {
         return (new MailMessage)
-                    ->line('The introduction to the notification.')
-                    ->action('Notification Action', url('/'))
-                    ->line('Thank you for using our application!');
+                ->subject('Your booking request received')
+                ->greeting('Hello! Admin')
+                ->line('New booking request has been received on website.')
+                ->action('See Booking Details', url('admin/booking'));
     }
 
     /**

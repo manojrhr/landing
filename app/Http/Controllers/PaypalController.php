@@ -3,8 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Address;
+use App\Admin;
 use App\Booking;
 use App\Http\Requests;
+use App\Notifications\AdminNewBookingNotification;
 use App\Notifications\CustomerOrderBookedSuccess;
 use App\User;
 use Illuminate\Http\Request;
@@ -12,6 +14,7 @@ use Validator;
 use URL;
 use Auth;
 use Hash;
+use Notification;
 use Session;
 use Redirect;
 use Input;
@@ -133,6 +136,8 @@ class PaypalController extends Controller
             $request->session()->flash('message.level', 'success');
             $request->session()->flash('message.content', 'Payment success !!');
             $user->notify((new CustomerOrderBookedSuccess($booking)));
+            $admins = Admin::all();
+            Notification::send($admins, new AdminNewBookingNotification($booking));
             return Redirect::route('paymentSuccess');
         }
         $payer = new Payer();
@@ -235,6 +240,8 @@ class PaypalController extends Controller
             $booking->save();
             $user = $booking->user;
             $user->notify((new CustomerOrderBookedSuccess($booking)));
+            $admins = Admin::all();
+            Notification::send($admins, new AdminNewBookingNotification($booking));
             $request->session()->flash('message.level', 'success');
             $request->session()->flash('message.content', 'Payment success !!');
             return Redirect::route('paymentSuccess');
