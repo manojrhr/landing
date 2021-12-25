@@ -134,6 +134,7 @@ Route::group(['prefix' => 'admin' , 'as' => 'admin.'], function(){
 	Route::post('add-shared', 'Web\Admin\TransferController@storeShared')->name('store.shared');
 
 	Route::resource('page-component', 'Web\Admin\PageComponentController');
+	Route::resource('gallery', 'Web\Admin\GalleryImagesController');
 });
 
 Route::post('/contact', 'Web\HomeController@contact')->name('post.contact');

@@ -1,12 +1,24 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Web\Admin;
 
+use App\Http\Controllers\Controller;
 use App\GalleryImages;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class GalleryImagesController extends Controller
 {
+    /**
+     * Create a new controller instance.
+     *
+     * @return void
+     */
+    public function __construct()
+    {
+        $this->middleware('auth:admin');
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -14,7 +26,13 @@ class GalleryImagesController extends Controller
      */
     public function index()
     {
-        //
+        // $gallery = GalleryImages::all();
+        $galleries =  DB::table('gallery_images')
+                    ->select('id','slug')
+                    ->groupBy('slug')
+                    ->get();
+        // dd($gallery->count());
+        return view('admin.gallery.index', compact('galleries'));
     }
 
     /**
@@ -44,9 +62,9 @@ class GalleryImagesController extends Controller
      * @param  \App\GalleryImages  $galleryImages
      * @return \Illuminate\Http\Response
      */
-    public function show(GalleryImages $galleryImages)
+    public function show(GalleryImages $gallery)
     {
-        //
+        return view('admin.gallery.single', compact('$gallery'));
     }
 
     /**
