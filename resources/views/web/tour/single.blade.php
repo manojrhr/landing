@@ -120,14 +120,16 @@
                                                 class="wc-bookings-date-picker wc-bookings-date-picker-booking wc_bookings_field_start_date">
                                                 <div id="datepicker"></div>
                                             </div>
-                                            <div class="wc-bookings-booking-cost"><strong>This booking date is
-                                                    available!</strong></div>
+                                   <div class="wc-bookings-booking-cost"><strong>This booking date is
+                                                    available!</strong></div> 
                                         </div>
                                         
                                         <div class="form-row-block">
                                             <span class="label-span">Select Destination</span>
                                             <div class="select-form-input-div">
                                                 <select class="form-control" name="location_id" id="location">
+                                                                         
+                                                    
                                                     @foreach ($zones as $zone)
                                                         @if($zone->zone->active)
                                                             <option value="{{ $zone->zone_id }}" data-adult="{{ $zone->cost_per_adult }}"
@@ -164,7 +166,7 @@
                                                     <span class="label-span">Number of Children (Ages 3-11)</span>
                                                     <input class="input-box" type="number" name="child_count" value="0" min="0" step="1"
                                                         max="100" id="pickup_num_children" onchange="price_count();" required="">
-                                                    <span class="cost_per_text">$<span id="child_price">{{ ($tour->zone[0]->child_price_percentage / 100) $tour->zone[0]->cost_per_adult }}</span> per Child</span>
+                                                    <span class="cost_per_text">$<span id="child_price">{{ round(($tour->zone[0]->child_price_percentage / 100) * $tour->zone[0]->cost_per_adult) }}</span> per Child</span>
                                                 </div>
                                             </div>
                                         </div>

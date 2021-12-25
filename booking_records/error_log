@@ -1,0 +1,21 @@
+[25-Dec-2021 06:19:52 America/Boise] PHP Warning:  mysqli_connect(): php_network_getaddresses: getaddrinfo failed: Name or service not known in /home2/kiukitou/public_html/booking_records/booking.php on line 3
+[25-Dec-2021 06:19:52 America/Boise] PHP Warning:  mysqli_connect(): (HY000/2002): php_network_getaddresses: getaddrinfo failed: Name or service not known in /home2/kiukitou/public_html/booking_records/booking.php on line 3
+[25-Dec-2021 06:19:52 America/Boise] PHP Warning:  mysqli_error() expects parameter 1 to be mysqli, bool given in /home2/kiukitou/public_html/booking_records/booking.php on line 3
+[25-Dec-2021 06:21:15 America/Boise] PHP Warning:  mysqli_connect(): php_network_getaddresses: getaddrinfo failed: Name or service not known in /home2/kiukitou/public_html/booking_records/booking.php on line 3
+[25-Dec-2021 06:21:15 America/Boise] PHP Warning:  mysqli_connect(): (HY000/2002): php_network_getaddresses: getaddrinfo failed: Name or service not known in /home2/kiukitou/public_html/booking_records/booking.php on line 3
+[25-Dec-2021 06:21:15 America/Boise] PHP Warning:  mysqli_error() expects parameter 1 to be mysqli, bool given in /home2/kiukitou/public_html/booking_records/booking.php on line 3
+[25-Dec-2021 06:23:29 America/Boise] PHP Warning:  mysqli_connect(): php_network_getaddresses: getaddrinfo failed: Name or service not known in /home2/kiukitou/public_html/booking_records/booking.php on line 3
+[25-Dec-2021 06:23:29 America/Boise] PHP Warning:  mysqli_connect(): (HY000/2002): php_network_getaddresses: getaddrinfo failed: Name or service not known in /home2/kiukitou/public_html/booking_records/booking.php on line 3
+[25-Dec-2021 06:23:29 America/Boise] PHP Warning:  mysqli_error() expects parameter 1 to be mysqli, bool given in /home2/kiukitou/public_html/booking_records/booking.php on line 3
+[25-Dec-2021 06:24:15 America/Boise] PHP Warning:  mysqli_connect(): php_network_getaddresses: getaddrinfo failed: Name or service not known in /home2/kiukitou/public_html/booking_records/booking.php on line 3
+[25-Dec-2021 06:24:15 America/Boise] PHP Warning:  mysqli_connect(): (HY000/2002): php_network_getaddresses: getaddrinfo failed: Name or service not known in /home2/kiukitou/public_html/booking_records/booking.php on line 3
+[25-Dec-2021 06:24:15 America/Boise] PHP Warning:  mysqli_error() expects parameter 1 to be mysqli, bool given in /home2/kiukitou/public_html/booking_records/booking.php on line 3
+[25-Dec-2021 06:24:27 America/Boise] PHP Warning:  mysqli_connect(): php_network_getaddresses: getaddrinfo failed: Name or service not known in /home2/kiukitou/public_html/booking_records/booking.php on line 3
+[25-Dec-2021 06:24:27 America/Boise] PHP Warning:  mysqli_connect(): (HY000/2002): php_network_getaddresses: getaddrinfo failed: Name or service not known in /home2/kiukitou/public_html/booking_records/booking.php on line 3
+[25-Dec-2021 06:24:27 America/Boise] PHP Warning:  mysqli_error() expects parameter 1 to be mysqli, bool given in /home2/kiukitou/public_html/booking_records/booking.php on line 3
+[25-Dec-2021 06:25:03 America/Boise] PHP Warning:  mysqli_connect(): php_network_getaddresses: getaddrinfo failed: Name or service not known in /home2/kiukitou/public_html/booking_records/index.php on line 3
+[25-Dec-2021 06:25:03 America/Boise] PHP Warning:  mysqli_connect(): (HY000/2002): php_network_getaddresses: getaddrinfo failed: Name or service not known in /home2/kiukitou/public_html/booking_records/index.php on line 3
+[25-Dec-2021 06:25:03 America/Boise] PHP Warning:  mysqli_error() expects parameter 1 to be mysqli, bool given in /home2/kiukitou/public_html/booking_records/index.php on line 3
+[25-Dec-2021 06:26:31 America/Boise] PHP Warning:  mysqli_connect(): php_network_getaddresses: getaddrinfo failed: Name or service not known in /home2/kiukitou/public_html/booking_records/index.php on line 3
+[25-Dec-2021 06:26:31 America/Boise] PHP Warning:  mysqli_connect(): (HY000/2002): php_network_getaddresses: getaddrinfo failed: Name or service not known in /home2/kiukitou/public_html/booking_records/index.php on line 3
+[25-Dec-2021 06:26:31 America/Boise] PHP Warning:  mysqli_error() expects parameter 1 to be mysqli, bool given in /home2/kiukitou/public_html/booking_records/index.php on line 3
