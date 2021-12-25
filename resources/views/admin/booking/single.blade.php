@@ -91,7 +91,10 @@
                         <b>{{ $booking->tour_id === 0 ? 'Transfer' : "Tour Title" }}</b> <a class="pull-right">{{ $booking->tour_id === 0 ? 'Transfer' : $booking->tour->title }}</a>
                     </li>
                     <li class="list-group-item">
-                        <b>Pickup From</b> <a class="pull-right">{{ $booking->location->name }}</a>
+                        <b>Pickup From</b> <a class="pull-right">{{ $booking->zone->name }}</a>
+                    </li>
+                    <li class="list-group-item">
+                        <b>Hotel Name</b> <a class="pull-right">{{ $booking->hotel->name ? $booking->hotel->name : '' }}</a>
                     </li>
                     <li class="list-group-item">
                         <b>Total Amount</b> <a class="pull-right">{{ '$'.$booking->total_amount }}</a>
