@@ -51,7 +51,7 @@ class TourController extends Controller
         $option = ToursZonePrices::where(['tour_id' => $request->tour_id, 'zone_id' => $request->location_id])->first();
         // dd($option);
         if($option){
-            $child_rate = $option->child_price_percentage / $option->cost_per_adult * 100;
+            $child_rate = ($option->child_price_percentage / $option->cost_per_adult) * 100;
             $option->child_rate = round($child_rate);
             $response = ['success' => true, 'option' => $option];
         } else {
