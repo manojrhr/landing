@@ -132,7 +132,7 @@
                                                     @foreach ($zones as $zone)
                                                         @if($zone->zone->active)
                                                             <option value="{{ $zone->zone_id }}" data-adult="{{ $zone->cost_per_adult }}"
-                                                                data-child="{{ $zone->cost_per_adult ? $zone->child_price_percentage / $zone->cost_per_adult * 100 : ''}}">{{ $zone->zone->name }}</option>                                                           
+                                                                data-child="{{ $zone->cost_per_adult !=0 ? $zone->child_price_percentage / $zone->cost_per_adult * 100 : ''}}">{{ $zone->zone->name }}</option>                                                           
                                                         @endif
                                                     @endforeach
                                                     {{-- @foreach ($options as $option)
