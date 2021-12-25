@@ -269,6 +269,12 @@
         jQuery('.single_add_to_cart_button').attr('disabled','disabled');
         jQuery('.single_add_to_cart_button').addClass('disabled');;
         var person = jQuery('#child').val();
+        if(person === '0'){
+            console.log('price is 0');
+            jQuery('#child_price').val(0);
+            total_price();
+            return;
+        }
         var zone_id = jQuery("#zone_id").val();
         var type_id = jQuery("#type_id").val();
         if(zone_id === ''){
@@ -291,7 +297,7 @@
             dataType: 'JSON',
             success: function (data) {
                 jQuery('#child_price').val(data.price/2);
-                console.log(data.price);
+                // console.log(data.price);
                 total_price();
             }
         });
