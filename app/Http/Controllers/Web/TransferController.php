@@ -27,6 +27,11 @@ class TransferController extends Controller
         $ids = AirportTransfer::select('location_id')->groupBy('location_id')->pluck('location_id')->toArray();
         $locations = Location::whereIn('id', $ids)
                             ->get();
+        if($slug === 'luxury-transfers')
+        {
+            return view('web.transfers.luxury-index');
+        }
+
         if (view()->exists('web.transfers.'.$slug)) {
                 return view('web.transfers.'.$slug, compact('locations','subcategory'));
         }else{

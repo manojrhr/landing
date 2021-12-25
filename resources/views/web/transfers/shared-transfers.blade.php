@@ -151,24 +151,24 @@
                         <h3 class="photo-gallery-heading">Photo Gallery</h3>
                         <div class="d-flex flex-wrap justify-content-center flex-logos row-photo-gallery">
                             <div class="gallery-block">
-                                <a href="http://localhost:8000/images/tour/1633117262.2312.jpg"
+                                <a href="/images/tour/1633117262.2312.jpg"
                                     data-lightbox="photos"><img class="img-fluid"
-                                        src="http://localhost:8000/images/tour/1633117262.2312.jpg"></a>
+                                        src="/images/tour/1633117262.2312.jpg"></a>
                             </div>
                             <div class="gallery-block">
-                                <a href="http://localhost:8000/images/tour/1633117262.5045.jpg"
+                                <a href="/images/tour/1633117262.5045.jpg"
                                     data-lightbox="photos"><img class="img-fluid"
-                                        src="http://localhost:8000/images/tour/1633117262.5045.jpg"></a>
+                                        src="/images/tour/1633117262.5045.jpg"></a>
                             </div>
                             <div class="gallery-block">
-                                <a href="http://localhost:8000/images/tour/1633117262.7777.jpg"
+                                <a href="/images/tour/1633117262.7777.jpg"
                                     data-lightbox="photos"><img class="img-fluid"
-                                        src="http://localhost:8000/images/tour/1633117262.7777.jpg"></a>
+                                        src="/images/tour/1633117262.7777.jpg"></a>
                             </div>
                             <div class="gallery-block">
-                                <a href="http://localhost:8000/images/tour/1633117263.0619.jpg"
+                                <a href="/images/tour/1633117263.0619.jpg"
                                     data-lightbox="photos"><img class="img-fluid"
-                                        src="http://localhost:8000/images/tour/1633117263.0619.jpg"></a>
+                                        src="/images/tour/1633117263.0619.jpg"></a>
                             </div>
                         </div>
                     </div>
