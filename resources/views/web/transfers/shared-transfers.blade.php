@@ -127,17 +127,8 @@
                     <div class="busimg-block">
                         <img src="{{ asset('assets/web/images/bus-img.png') }}" />
                     </div>
-                    <div class="social-share-cover">
+                    {{-- <div class="social-share-cover">
                         <div class="social-share-title">Share with friends.</div>
-                        {{-- <div class="d-flex flex-wrap justify-content-center social-share-links">
-                            <div class="share-link-div"><a href="#" class="share-link twitter-share"><i
-                                        class="fab fa-twitter" aria-hidden="true"></i></a></div>
-                            <div class="share-link-div"><a href="#" class="share-link facebook-share"><i
-                                        class="fab fa-facebook" aria-hidden="true"></i></a></div>
-                            <div class="share-link-div"><a href="#" class="share-link whatsapp-share"><i
-                                        class="fab fa-whatsapp" aria-hidden="true"></i></a></div>
-                        </div> --}}
-                        <!-- AddToAny BEGIN -->
                         <div class="d-flex flex-wrap justify-content-center social-share-links a2a_kit a2a_kit_size_64 a2a_default_style">
                             <a class="share-link-div a2a_button_twitter"></a>
                             <a class="share-link-div a2a_button_facebook"></a>
@@ -145,8 +136,7 @@
                             <a class="share-link-div a2a_button_whatsapp"></a>
                         </div>
                         <script async src="https://static.addtoany.com/menu/page.js"></script>
-                        <!-- AddToAny END -->
-                    </div>
+                    </div> --}}
                     <div class="photo-gallery">
                         <h3 class="photo-gallery-heading">Photo Gallery</h3>
                         <div class="d-flex flex-wrap justify-content-center flex-logos row-photo-gallery">
