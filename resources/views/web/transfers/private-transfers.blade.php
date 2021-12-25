@@ -36,13 +36,14 @@
                         <h3 class="airport-transfers-form-title">Book Your Transfer Below</h3>
                         <div class="form-airport-transfers-booking-block">
                         <form method="POST" id="payment-form" role="form" action="{{ route('booking.save', 'transfers') }}" >
-                        {{ csrf_field() }}
-                            <input type="hidden" id="type" name="type" value="shared"/>
+                            {{ csrf_field() }}
+                            <input type="hidden" id="type" name="type" value="{{ $transfer_type->name }}"/>
+                            <input type="hidden" id="type_id" name="type_id" value="{{ $transfer_type->id }}"/>
                             <input type="hidden" name="date" id="date" value="{{ date('d-m-Y') }}"/>
-                            <input type="hidden" name="adult_rate" id="adult_rate" value=""/>
-                            <input type="hidden" name="child_rate" id="child_rate" value=""/>
+                            <input type="hidden" name="adult_price" id="adult_price" value=""/>
+                            <input type="hidden" name="child_price" id="child_price" value=""/>
                             <input type="hidden" name="amount" id="amount" value=""/>
-                            <input type="hidden" name="pax_price" id="pax_price" value=""/>
+                            {{-- <input type="hidden" name="pax_price" id="pax_price" value=""/> --}}
                             <div class="wc-bookings-booking-form">
                                 <div
                                     class="wc-bookings-date-picker wc-bookings-date-picker-booking wc_bookings_field_start_date">
@@ -83,12 +84,12 @@
                                 <div class="one-half left-one-half">
                                     <span class="label-span">Number of Adults (Ages 12+)</span>
                                     <input name="adult_count" id="adults" class="input-box" type="number" value="1" min="1" step="1" max="100"
-                                        id="pickup_num_adults" onChange="calculate_price()" required="">
+                                        id="pickup_num_adults" onChange="get_adult_transfer_price()" required="">
                                 </div>
                                 <div class="one-half right-one-half">
                                     <span class="label-span">Number of Children (Ages 3-11)</span>
                                     <input name="child_count" id="child" class="input-box" type="number" value="0" min="0" step="1" max="100"
-                                        id="pickup_num_children" onChange="calculate_price()" required="">
+                                        id="pickup_num_children" onChange="get_child_transfer_price()" required="">
                                 </div>
                             </div>
                         </div>
@@ -166,7 +167,7 @@
 
 @section('scripts')
 <script>
-    jQuery(document).ready(function() { calculate_price(); });
+    // jQuery(document).ready(function() { calculate_price(); });
     
     // $( "#datepicker1" ).datepicker({ minDate: 0});
     // jQuery('#datepicker1').datepicker({  minDate:new Date()});
@@ -197,52 +198,39 @@
         //buttonImageOnly: true,
     });
 
+    function total_price(){
+        var adult_price = jQuery('#adult_price').val();
+        var child_price = jQuery('#child_price').val();
+        if(adult_price === ''){
+            adult_price = 0;
+        }
+        if(child_price === ''){
+            child_price = 0;
+        }
+        var amount = Number(adult_price) + Number(child_price);
+        if(amount > 0){
+            jQuery('.single_add_to_cart_button').removeClass('disabled');
+            jQuery('.single_add_to_cart_button').removeAttr('disabled');;
+        }
+        jQuery('#transfer_price').html(Math.round(amount)+'.00');
+        jQuery('#amount').val(Math.round(amount));
+    }
+
     function calculate_price(){
-        // var type = jQuery('#type').val();
-        var type = "shared";
-        if(jQuery("#location").val() ===''){
-            // alert('Please select an location');
-            get_transfer_price();
-            return;
+        var adult_price = jQuery('#adult_price').val();
+        var child_price = jQuery('#child_price').val();
+        var amount = Number(adult_price) + Number(child_price);
+        if(adult_price === ''){
+            // alert('price is null');
+            get_adult_transfer_price().delay( 500 );
         }
-        var adult = jQuery('#adults').val();
-        var child = jQuery('#child').val();
-        var total_pax = Number(adult) + Number(child);
-        // if(total_pax > 10){
-        //     alert('Cannot add more than 10 persons');
-        //     var adult = jQuery('#adults').val(1);
-        //     var child = jQuery('#child').val(0);
-        //     total_pax = 1;
+        // if(child_price === ''){
+        //     // alert('price is null');
+        //     get_adult_transfer_price().delay( 500 );
         // }
-        var trip_type = jQuery('#trip_type').val();
-        if(type==="shared"){
-            var price = jQuery('#pax_price').val();
-            if(price === ''){
-                // alert('price is null');
-                get_transfer_price();
-            }
-            if(trip_type === "round-trip"){
-                jQuery('#adult_rate').val(price*2);
-                jQuery('#child_rate').val(price*2);
-                price = price * 2;
-            }else{
-                jQuery('#adult_rate').val(price);
-                jQuery('#child_rate').val(price);
-            }
-            // console.log('total pax '+total_pax);
-            // console.log('pax price '+price);
-            var total_price = total_pax * price;
-            if(total_price > 0){
-                jQuery('.single_add_to_cart_button').removeClass('disabled');
-                jQuery('.single_add_to_cart_button').removeAttr('disabled');;
-            }
-            jQuery('#transfer_price').html(total_price+'.00');
-            jQuery('#amount').val(total_price);
-        }
     }
 
     function get_hotels() {
-        // var location_id = this.value;
         var zone_id = jQuery("#zone_id").val();
         var type = jQuery('#type').val();
         jQuery.ajax({
@@ -259,48 +247,75 @@
             success: function (data) {
                 $('#hotel_id').html('<option value="">--Select Hotels--</option>'); 
                 $.each(data.hotels,function(key,value){
+                    get_adult_transfer_price();
                     $("#hotel_id").append('<option value="'+value.id+'">'+value.name+'</option>');
                 });
             }
         });
     }
     
-    // jQuery(document).ready(function() {
-        // jQuery("#location").change(function () {
-        function get_transfer_price() {
-            // var location_id = this.value;
-            var location_id = jQuery("#location").val();
-            var type = jQuery('#type').val();
-            jQuery.ajax({
-                headers: {
-                    'X-CSRF-TOKEN': '{{ csrf_token() }}'
-                },
-                url: "{{ route('get_airTransferPrice') }}",
-                type: 'POST',
-                data: {
-                    "_token": "{{ csrf_token() }}",
-                    "location_id": location_id,
-                    "type": type
-                },
-                dataType: 'JSON',
-                success: function (data) {
-                    if(data.success === true){
-                        if(type === "shared") {
-                            // console.log(data.option.price_pax);
-                            jQuery('#pax_price').val(data.option.price_pax);
-                            calculate_price();
-                            return;
-                        } else {
-                            return;
-                        }
-                    } else {
-                        return;
-                    }
-                }
-            });
-        // });
+    function get_adult_transfer_price() {
+        jQuery('.single_add_to_cart_button').attr('disabled','disabled');
+        jQuery('.single_add_to_cart_button').addClass('disabled');;
+        var person = jQuery('#adults').val();
+        var zone_id = jQuery("#zone_id").val();
+        var type_id = jQuery("#type_id").val();
+        if(zone_id === ''){
+            alert("Please select destination.");
+            jQuery("#zone_id").focus();
+            return;
         }
-    // });
-
+        jQuery.ajax({
+            headers: {
+                'X-CSRF-TOKEN': '{{ csrf_token() }}'
+            },
+            url: "{{ route('get_private_price') }}",
+            type: 'POST',
+            data: {
+                "_token": "{{ csrf_token() }}",
+                "zone_id": zone_id,
+                "person": person,
+                "type_id": type_id
+            },
+            dataType: 'JSON',
+            success: function (data) {
+                jQuery('#adult_price').val(data.price);
+                console.log(data.price);
+                total_price();
+            }
+        });
+    }
+    
+    function get_child_transfer_price() {
+        jQuery('.single_add_to_cart_button').attr('disabled','disabled');
+        jQuery('.single_add_to_cart_button').addClass('disabled');;
+        var person = jQuery('#child').val();
+        var zone_id = jQuery("#zone_id").val();
+        var type_id = jQuery("#type_id").val();
+        if(zone_id === ''){
+            alert("Please select destination.");
+            jQuery("#zone_id").focus();
+            return;
+        }
+        jQuery.ajax({
+            headers: {
+                'X-CSRF-TOKEN': '{{ csrf_token() }}'
+            },
+            url: "{{ route('get_private_price') }}",
+            type: 'POST',
+            data: {
+                "_token": "{{ csrf_token() }}",
+                "zone_id": zone_id,
+                "person": person,
+                "type_id": type_id
+            },
+            dataType: 'JSON',
+            success: function (data) {
+                jQuery('#child_price').val(data.price/2);
+                console.log(data.price);
+                total_price();
+            }
+        });
+    }
 </script>
 @endsection

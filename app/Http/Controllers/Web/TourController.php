@@ -6,6 +6,7 @@ use App\Category;
 use App\Http\Controllers\Controller;
 use App\Tour;
 use App\TourOption;
+use App\Zone;
 use Illuminate\Http\Request;
 
 class TourController extends Controller
@@ -20,12 +21,13 @@ class TourController extends Controller
     public function single($slug)
     {
         $tour = Tour::where('slug', $slug)->where('active', true)->first();
+        $zones = Zone::all();
         if(!$tour){
             abort(404);
         }
         $more_tours = Tour::where('id', '!=' , $tour->id)->take(4)->orderBy('id', 'desc')->get();
         $options = TourOption::where('tour_id', $tour->id)->get();
-        return view('web.tour.single', compact('tour', 'options', 'more_tours'));
+        return view('web.tour.single', compact('tour', 'options', 'more_tours','zones'));
     }
 
     public function get_prices(Request $request)

@@ -127,11 +127,12 @@
                                         <div class="form-row-block">
                                             <span class="label-span">Select Destination</span>
                                             <div class="select-form-input-div">
-                                                <select class="form-control" name="location_id" id="location">
-                                                    @foreach ($options as $option)
-                                                        @if($option->location->active)
-                                                            <option value="{{ $option->location->id }}" data-adult="{{ $option->location->adult_rate }}
-                                                                data-child="{{ $option->location->child_rate }}">{{ $option->location->name }} | {{ $option->location->city }}</option>
+                                                <select class="form-control" name="zone_id" id="zone_id"
+                                                    onChange="get_hotels()">
+                                                    <option value="">--Select Destination--</option>
+                                                    @foreach ($zones as $zone)
+                                                        @if($zone->active)
+                                                            <option value="{{ $zone->id }}">{{ $zone->name }}</option>                                                           
                                                         @endif
                                                     @endforeach
                                                 </select>
@@ -139,15 +140,9 @@
                                         </div>
                                         
                                         <div class="form-row-block">
-                                            <span class="label-span">Pickup Location</span>
+                                            <span class="label-span">Select Hotel</span>
                                             <div class="select-form-input-div">
-                                                <select class="form-control" name="location_id" id="location">
-                                                    @foreach ($options as $option)
-                                                        @if($option->location->active)
-                                                            <option value="{{ $option->location->id }}" data-adult="{{ $option->location->adult_rate }}
-                                                                data-child="{{ $option->location->child_rate }}">{{ $option->location->name }} | {{ $option->location->city }}</option>
-                                                        @endif
-                                                    @endforeach
+                                                <select class="form-control" name="hotel_id" id="hotel_id">
                                                 </select>
                                             </div>
                                         </div>
@@ -357,6 +352,29 @@ jQuery(document).ready(function() {
         });
     });
 });
+
+function get_hotels() {
+    var zone_id = jQuery("#zone_id").val();
+    var type = jQuery('#type').val();
+    jQuery.ajax({
+        headers: {
+            'X-CSRF-TOKEN': '{{ csrf_token() }}'
+        },
+        url: "{{ route('get_hotels') }}",
+        type: 'POST',
+        data: {
+            "_token": "{{ csrf_token() }}",
+            "zone_id": zone_id,
+        },
+        dataType: 'JSON',
+        success: function (data) {
+            $('#hotel_id').html('<option value="">--Select Hotels--</option>'); 
+            $.each(data.hotels,function(key,value){
+                $("#hotel_id").append('<option value="'+value.id+'">'+value.name+'</option>');
+            });
+        }
+    });
+}
 
 function price_count(){
     var adults = jQuery('#pickup_num_adults').val();
