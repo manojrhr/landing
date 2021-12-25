@@ -95,8 +95,9 @@
                 <div class="checkout-form-cover">
                     <form class="needs-validation" action="{{  route('paypal')  }}" method="POST" novalidate>
                         @csrf
+                        <input type="hidden" name="booking[hotel_id]" value="{{ $booking->hotel_id }}"/>
                         <input type="hidden" name="booking[tour_id]" value="{{ $booking->tour_id }}"/>
-                        <input type="hidden" name="booking[location_id]" value="{{ $booking->location_id }}"/>
+                        <input type="hidden" name="booking[zone_id]" value="{{ $booking->location_id }}"/>
                         <input type="hidden" name="booking[date]" value="{{ $booking->date }}"/>
                         <input type="hidden" name="booking[adult_rate]" value="{{ $booking->adult_rate }}"/>
                         <input type="hidden" name="booking[child_rate]" value="{{ $booking->child_rate }}"/>

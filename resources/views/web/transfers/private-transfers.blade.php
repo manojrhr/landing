@@ -245,9 +245,9 @@
             },
             dataType: 'JSON',
             success: function (data) {
+                get_adult_transfer_price();
                 $('#hotel_id').html('<option value="">--Select Hotels--</option>'); 
                 $.each(data.hotels,function(key,value){
-                    get_adult_transfer_price();
                     $("#hotel_id").append('<option value="'+value.id+'">'+value.name+'</option>');
                 });
             }

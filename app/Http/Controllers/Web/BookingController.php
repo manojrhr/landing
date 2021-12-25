@@ -5,10 +5,12 @@ namespace App\Http\Controllers\Web;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Booking;
+use App\Hotel;
 use App\Location;
 use Redirect;
 use App\Repositories\BookingRepository as BookingRepo;
 use App\Tour;
+use App\Zone;
 use DateTime;
 use Validator;
 use Session;
@@ -70,6 +72,7 @@ class BookingController extends Controller
             $booking['tour_id'] = 0;
         } else {
             $tour = Tour::where('slug', $slug)->first();
+            $booking['tour_id'] = $tour->id;
             if(!$tour){
                 abort(404);
             }
@@ -94,6 +97,7 @@ class BookingController extends Controller
         // $booking[];
         // $booking['booking_id'] = $booking_id;
         $booking['location_id'] = (int)$request->location_id;
+        $booking['hotel_id'] = (int)$request->hotel_id;
         $booking['date'] = date('Y-m-d', strtotime($request->date));
         $booking['adult_rate'] = (int)$request->adult_rate;
         $booking['child_rate'] = (int)$request->child_rate;
@@ -107,7 +111,10 @@ class BookingController extends Controller
         $request->session()->forget('booking');
         $request->session()->push('booking', $booking);
         $request->session()->put('tour_slug', $slug);
+        // dump($request->all());
+        // dd(session()->all());
         return Redirect::route('checkout', $slug);
+
         // if($request->session()->push('booking', $booking)){
         //     return Redirect::route('checkout', [$booking->booking_id, $slug]);
         // } else {
@@ -130,8 +137,10 @@ class BookingController extends Controller
         }else{
             $tour = Tour::where('slug', $slug)->firstOrFail();
         }
-        $location = Location::findOrFail($booking->location_id);
-        return view('web.booking.checkout', compact('booking', 'tour', 'location'));
+        // dd($slug);
+        $location = Zone::findOrFail($booking->location_id);
+        $hotel = Hotel::findOrFail($booking->location_id);
+        return view('web.booking.checkout', compact('booking', 'tour', 'location', 'hotel'));
     }
 
     public function paymentSuccess(Request $request)

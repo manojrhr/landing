@@ -50,7 +50,6 @@ class NewUserAdminNotification extends Notification
             ->line('Customer Name: '.$this->user->name)
             // ->line('Phone Number: '.$this->user->phone)
             ->action('See Deails', url('/admin/users'));
-        }
     }
 
     /**

@@ -16,6 +16,11 @@ class Tour extends Model
         return $this->hasMany(TourOption::class)->take(1);
     }
 
+    public function zone()
+    {
+        return $this->hasMany(ToursZonePrices::class)->take(1);
+    }
+
     public function category()
     {
         return $this->belongsTo(Category::class);
