@@ -1147,16 +1147,17 @@ legend {
 .tour-form-button-cover{ display:none;}
 .tour-form-button-fixed{ display:block!important;}
 .bus-image-div{ max-width:56%;}
-.privatecar-image-div{ max-width:49%; top:66%; left:23%; transform:translate(-50%, -50%);}
-.luxurycar-image-div{ max-width:49%; top:70%; right:-25%; transform:translate(-50%, -50%);}
-.transfer-div.private-transfer{ top:84%; font-size:16px; left:20%; transform:translate(-50%, -50%);}
-.transfer-div.luxury-transfer{ top:88%; font-size:16px; right:-27%; transform:translate(-50%, -50%);}
+.privatecar-image-div{ max-width:49%; top:48%; left:3%; transform:translate(-50%, -50%);}
+.luxurycar-image-div{ max-width:49%; top:48%; right:-2%; transform:translate(-50%, -50%);}
+.transfer-div.private-transfer{ top:76%; font-size:13px; left:4%; transform:translate(-50%, -50%);}
+.transfer-div.luxury-transfer{ top:74%; font-size:13px; right:-5%; transform:translate(-50%, -50%);}
 .transfers-heading-title{ font-size:24px;}
-.bus-image-div{ left:50%; top:28%; transform:translate(-50%, -50%);}
-.transfer-div.shared-transfer{ left:53%; top:0%; transform:translate(-50%, -50%);}
+.bus-image-div{ left:22%; top:8%; transform:translate(-50%, -50%);}
+.transfer-div.shared-transfer{ left:27%; top:-7%; font-size:14px; transform:translate(-50%, -50%);}
 .book-transfer .book-arrow{ width:24px;}
-.book-transfer a{ font-size:13px;}
-.book-transfer{ right:0%; left:72%;}
+.book-transfer a{ font-size:13px; width:62px;}
+.book-transfer{ text-align:right; margin-right:139px;}
+.book-transfer.aos-animate{ margin-right:139px;}
 .transfers-book-instantly{ display:none;}
 .transfers-book-instantly-fixed{ display:block!important;}
 .busimg-block-title{ display:block!important; margin:-78px 0 20px;}
@@ -1210,7 +1211,6 @@ table.cart-table-responsive tr:nth-child(2n) td{ background:rgba(0,0,0,0.025);}
 .cart-table-responsive .actions .update-cart-button{ width:100%;}
 
 .cart-menu-cover:hover .wpbf-woo-sub-menu, .wpbf-woo-sub-menu{ display:none;}
-
 }
 
 @media (max-width:438px) {
@@ -1223,7 +1223,13 @@ table.cart-table-responsive tr:nth-child(2n) td{ background:rgba(0,0,0,0.025);}
 }
 /* Samsung Tab
 ----------------------------------------------- */
-@media only screen and (min-device-width : 600px) and (max-device-width : 700px) {}
+@media only screen and (min-device-width : 550px) and (max-device-width : 767px) {
+.book-transfer a{ font-size:20px; width:92px;}
+.book-transfer .book-arrow{ width:36px;}
+.transfer-div.shared-transfer{ font-size:22px;}
+.transfer-div.private-transfer{ font-size:21px;}
+.transfer-div.luxury-transfer{ font-size:21px;}
+}
 
 
 /* TABLET LAYOUT 
@@ -1254,6 +1260,7 @@ table.cart-table-responsive tr:nth-child(2n) td{ background:rgba(0,0,0,0.025);}
 .post-blog-items-cover .post-blog-item .post__thumbnail{ width:100%; margin:0;}
 .divider-block-new{ padding:0;}
 .divider-block-new:last-child{ display:none;}
+.book-transfer{ right:-130px;}
 
 }
 
