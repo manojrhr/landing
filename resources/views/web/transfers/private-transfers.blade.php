@@ -310,7 +310,7 @@
             dataType: 'JSON',
             success: function (data) {
                 if(data.price != 0){
-                    jQuery('#child_price').val(data.price/2);
+                    jQuery('#child_price').val(Math.round(data.price/2));
                 } else {
                     alert('No transfer available for such persons');
                     jQuery('#child').val(0);
