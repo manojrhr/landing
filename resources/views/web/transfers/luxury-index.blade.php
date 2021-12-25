@@ -12,13 +12,13 @@
                         <div class="col-md-6 tour-item">
                             <div class="tour-inner-item">
                                 <div class="tour-item-img"><a class="stretched-link"
-                                        href=""><img
+                                        href="{{ route('transfers.type','delux') }}"><img
                                             src="https://kiukija.com/images/tour/1640072695.jpg" /></a></div>
                                 <div class="tour-item-content">
                                     <h4>Deluxy</h4>
                                     <div class="tour-text-editor">asdfasdfsadfasdfasdf asdfasddf asdf </div>
                                     <div class="tour-more-button"><a class="stretched-link more-details-btn"
-                                            href="">More Details<i
+                                            href="{{ route('transfers.type','delux') }}">More Details<i
                                                 class="fa fa-chevron-right" aria-hidden="true"></i></a></div>
                                 </div>
                             </div>
@@ -26,13 +26,13 @@
                         <div class="col-md-6 tour-item">
                             <div class="tour-inner-item">
                                 <div class="tour-item-img"><a class="stretched-link"
-                                        href=""><img
+                                        href="{{ route('transfers.type','suburban') }}"><img
                                             src="https://kiukija.com/images/tour/1640072695.jpg" /></a></div>
                                 <div class="tour-item-content">
                                     <h4>Suburban</h4>
                                     <div class="tour-text-editor">asdfasdfsadfasdfasdf asdfasddf asdf </div>
                                     <div class="tour-more-button"><a class="stretched-link more-details-btn"
-                                            href="">More Details<i
+                                            href="{{ route('transfers.type','suburban') }}">More Details<i
                                                 class="fa fa-chevron-right" aria-hidden="true"></i></a></div>
                                 </div>
                             </div>
