@@ -35,13 +35,13 @@
                     <div id="book-airport-transfers-form" class="book-airport-transfers-form">
                         <h3 class="airport-transfers-form-title">Book Your Transfer Below</h3>
                         <div class="form-airport-transfers-booking-block">
-                        <form method="POST" id="payment-form" role="form" action="{{ route('booking.save', 'transfers') }}" >
+                        <form method="POST" id="payment-form" role="form" action="{{ route('booking.transfer.save', 'transfers') }}" >
                             {{ csrf_field() }}
                             <input type="hidden" id="type" name="type" value="{{ $transfer_type->name }}"/>
                             <input type="hidden" id="type_id" name="type_id" value="{{ $transfer_type->id }}"/>
                             <input type="hidden" name="date" id="date" value="{{ date('d-m-Y') }}"/>
                             <input type="hidden" name="adult_price" id="adult_price" value=""/>
-                            <input type="hidden" name="child_price" id="child_price" value=""/>
+                            <input type="hidden" name="child_price" id="child_price" value="0"/>
                             <input type="hidden" name="amount" id="amount" value=""/>
                             {{-- <input type="hidden" name="pax_price" id="pax_price" value=""/> --}}
                             <div class="wc-bookings-booking-form">

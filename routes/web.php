@@ -43,6 +43,8 @@ Route::post('booking/save/{slug}', 'Web\BookingController@save')->name('booking.
 Route::get('booking/checkout/{slug}', 'Web\BookingController@checkout')->name('checkout');
 Route::get('booking/paymentSuccess', 'Web\BookingController@paymentSuccess')->name('paymentSuccess');
 
+Route::post('booking/transfer/{slug}', 'Web\BookingController@transfer')->name('booking.transfer.save');
+
 // PAYPAL ROUTES
 Route::get('paywithpaypal', array('as' => 'paywithpaypal','uses' => 'PaypalController@payWithPaypal',));
 Route::post('paypal', array('as' => 'paypal','uses' => 'PaypalController@postPaymentWithpaypal',));

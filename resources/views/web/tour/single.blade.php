@@ -128,11 +128,10 @@
                                             <span class="label-span">Select Destination</span>
                                             <div class="select-form-input-div">
                                                 <select class="form-control" name="location_id" id="location">
-                                                    
                                                     @foreach ($zones as $zone)
                                                         @if($zone->zone->active)
                                                             <option value="{{ $zone->zone_id }}" data-adult="{{ $zone->cost_per_adult }}"
-                                                                data-child="{{ $zone->cost_per_adult !=0 ? $zone->child_price_percentage / $zone->cost_per_adult * 100 : ''}}">{{ $zone->zone->name }}</option>                                                           
+                                                                data-child="">{{ $zone->zone->name }}</option>                                                           
                                                         @endif
                                                     @endforeach
                                                     {{-- @foreach ($options as $option)

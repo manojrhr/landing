@@ -135,18 +135,18 @@ class BookingController extends Controller
             'adult_count' => 'required|integer',
             'child_count' => 'required|integer'
         ], $messages = [
-            'zone_id.required' => 'Something went wrong. Please refresh the page.',
-            'date.required' => 'Something went wrong. Please refresh the page.',
-            'adult_rate.required' => 'Something went wrong. Please refresh the page.',
-            'child_rate.required' => 'Something went wrong. Please refresh the page.',
+            'zone_id.required' => 'Something went wrong1. Please refresh the page.',
+            'date.required' => 'Something went wrong2. Please refresh the page.',
+            'adult_rate.required' => 'Something went wrong3. Please refresh the page.',
+            'child_rate.required' => 'Something went wrong4. Please refresh the page.',
             'amount.required' => 'Something went wrong with Amount. Please refresh the page.',
             'adult_count.required' => 'Number of adults required.',
             'child_count.required' => 'Number of childs required.',
             
-            'zone_id.integer' => 'Something went wrong. Please refresh the page.',
-            'adult_rate.integer' => 'Something went wrong. Please refresh the page.',
-            'child_rate.integer' => 'Something went wrong. Please refresh the page.',
-            'amount.integer' => 'Something went wrong. Please refresh the page.',
+            'zone_id.integer' => 'Something went wrong5. Please refresh the page.',
+            'adult_rate.integer' => 'Something went wrong6. Please refresh the page.',
+            'child_rate.integer' => 'Something went wrong7. Please refresh the page.',
+            'amount.integer' => 'Something went wrong8. Please refresh the page.',
             'adult_count.integer' => 'Number of adults are invalid.',
             'child_count.integer' => 'Number of childs are invalid.',
         ]);
