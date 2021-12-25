@@ -106,7 +106,7 @@ class SubCategoryController extends Controller
         $image = $subcategory->image;
         if($subcategory->delete()){
             if (file_exists(public_path($image))) {
-                unlink($image);
+                unlink(public_path($image));
             }
             $request->session()->flash('message.level', 'success');
             $request->session()->flash('message.content', 'SubCategory deleted successfully.');
@@ -143,7 +143,7 @@ class SubCategoryController extends Controller
 
         if($request->hasFile('img')){
             if (file_exists(public_path($subcategory->image))) {
-                unlink($subcategory->image);
+                unlink(public_path($subcategory->image));
             }
             $avatar = $request->file('img');
             $filename = time() .'.'. $avatar->getClientOriginalExtension();

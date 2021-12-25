@@ -101,7 +101,7 @@ class CategoryController extends Controller
         $image = $category->image;
         if($category->delete()){
             if (file_exists(public_path($image))) {
-                unlink($image);
+                unlink(public_path($image));
             }
             $request->session()->flash('message.level', 'success');
             $request->session()->flash('message.content', 'Category deleted successfully.');
