@@ -7,15 +7,15 @@
     <div class="container">
         <div class="airport-transfers-cover">
             <div class="d-flex flex-wrap row-airport-transfers">
-                <div class="left-airport-transfers">
+                <div class="luxury-transfers">
                     <div class="row flex-wrap row-tour-item">
                         <div class="col-md-6 tour-item">
                             <div class="tour-inner-item">
                                 <div class="tour-item-img"><a class="stretched-link"
                                         href="{{ route('transfers.type','delux') }}"><img
-                                            src="https://kiukija.com/images/tour/1640072695.jpg" /></a></div>
+                                            src="/images/tour/delux-main.jpg" /></a></div>
                                 <div class="tour-item-content">
-                                    <h4>Deluxy</h4>
+                                    <h4>Delux Transfer</h4>
                                     <div class="tour-text-editor"></div>
                                     <div class="tour-more-button"><a class="stretched-link more-details-btn"
                                             href="{{ route('transfers.type','delux') }}">Book Now<i
@@ -27,9 +27,9 @@
                             <div class="tour-inner-item">
                                 <div class="tour-item-img"><a class="stretched-link"
                                         href="{{ route('transfers.type','suburban') }}"><img
-                                            src="https://kiukija.com/images/tour/1640072695.jpg" /></a></div>
+                                            src="/images/tour/suberban-main.jpg" /></a></div>
                                 <div class="tour-item-content">
-                                    <h4>Suburban</h4>
+                                    <h4>Suburban Transfer</h4>
                                     <div class="tour-text-editor"></div>
                                     <div class="tour-more-button"><a class="stretched-link more-details-btn"
                                             href="{{ route('transfers.type','suburban') }}">Book Now<i
@@ -38,21 +38,6 @@
                             </div>
                         </div>
                     </div>
-                </div>
-                <div class="right-airport-transfers">
-                    <div class="busimg-block">
-                        <img src="{{ asset('assets/web/images/bus-img.png') }}" />
-                    </div>
-                    {{-- <div class="social-share-cover">
-                        <div class="social-share-title">Share with friends.</div>
-                        <div class="d-flex flex-wrap justify-content-center social-share-links a2a_kit a2a_kit_size_64 a2a_default_style">
-                            <a class="share-link-div a2a_button_twitter"></a>
-                            <a class="share-link-div a2a_button_facebook"></a>
-                            <a class="share-link-div a2a_button_pinterest"></a>
-                            <a class="share-link-div a2a_button_whatsapp"></a>
-                        </div>
-                        <script async src="https://static.addtoany.com/menu/page.js"></script>
-                    </div> --}}
                 </div>
             </div>
         </div>

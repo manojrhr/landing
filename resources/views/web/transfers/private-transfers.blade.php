@@ -125,7 +125,7 @@
                 </div>
                 <div class="right-airport-transfers">
                     <div class="busimg-block">
-                        <img src="{{ asset('assets/web/images/bus-img.png') }}" />
+                        <img src="/images/transfer/private_transfer/private-transfer-main.jpeg" />
                     </div>
                     {{-- <div class="social-share-cover">
                         <div class="social-share-title">Share with friends.</div>
@@ -141,20 +141,8 @@
                         <h3 class="photo-gallery-heading">Photo Gallery</h3>
                         <div class="d-flex flex-wrap justify-content-center flex-logos row-photo-gallery">
                                                                 <div class="gallery-block">
-                                    <a href="/images/tour/1640174644.1646.jpg" data-lightbox="photos"><img class="img-fluid" src="https://kiukija.com/images/tour/1640174644.1646.jpg"></a>
-                                </div>                  
-                                                                <div class="gallery-block">
-                                    <a href="/images/tour/1640174644.3733.jpg" data-lightbox="photos"><img class="img-fluid" src="https://kiukija.com/images/tour/1640174644.3733.jpg"></a>
-                                </div>                  
-                                                                <div class="gallery-block">
-                                    <a href="/images/tour/1640174644.5701.jpg" data-lightbox="photos"><img class="img-fluid" src="https://kiukija.com/images/tour/1640174644.5701.jpg"></a>
-                                </div>                  
-                                                                <div class="gallery-block">
-                                    <a href="/images/tour/1640174644.7448.jpg" data-lightbox="photos"><img class="img-fluid" src="https://kiukija.com/images/tour/1640174644.7448.jpg"></a>
-                                </div>                  
-                                                                <div class="gallery-block">
-                                    <a href="/images/tour/1640174644.9058.jpg" data-lightbox="photos"><img class="img-fluid" src="https://kiukija.com/images/tour/1640174644.9058.jpg"></a>
-                                </div>               
+                                    <a href="/images/transfer/private_transfer/private-transfer-main.jpeg" data-lightbox="photos"><img class="img-fluid" src="/images/transfer/private_transfer/private-transfer-main.jpeg"></a>
+                                </div>       
                         </div>
                     </div>
                 </div>

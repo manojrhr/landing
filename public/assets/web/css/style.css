@@ -1289,3 +1289,10 @@ table.cart-table-responsive tr:nth-child(2n) td{ background:rgba(0,0,0,0.025);}
 .inline-items li, .weather-block, .tel-icons-wrapper .icon-list-text{ font-size:13.3px;}
 
 .tours-details-row .col-details-sidebar, .tours-details-row .col-details-content{ width:100%;}
+
+.luxury-transfers { 
+    width: 100%;
+    padding: 32px 64px;
+    
+}
+.right-airport-transfers .busimg-block img { margin-top:50px;}

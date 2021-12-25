@@ -10,10 +10,10 @@
                 <div class="left-airport-transfers">
                     <div class="breadcrumb-block breadcrumb-airport-transfers">
                         <nav class="d-flex flex-wrap justify-content-center nav-breadcrumb">
-                            <a href="{{ route('home') }}">Home</a>&nbsp;/&nbsp;<a href="{{ route('transfers') }}">Transfers</a>&nbsp;/&nbsp;Luxury Transfers</nav>
+                            <a href="{{ route('home') }}">Home</a>&nbsp;/&nbsp;<a href="{{ route('transfers') }}">Transfers</a>&nbsp;/&nbsp;Delux Transfers</nav>
                     </div>
                     <div class="title-transfers-airport">
-                        <h1 class="title-airport">Luxury Transfers</h1>
+                        <h1 class="title-airport">Delux Transfers</h1>
                     </div>
                     <div class="busimg-block-title" style="display:none;">
                         <img src="images/bus-img.png" />
@@ -125,7 +125,7 @@
                 </div>
                 <div class="right-airport-transfers">
                     <div class="busimg-block">
-                        <img src="{{ asset('assets/web/images/bus-img.png') }}" />
+                        <img src="/images/tour/delux-main.jpg" />
                     </div>
                     {{-- <div class="social-share-cover">
                         <div class="social-share-title">Share with friends.</div>
@@ -141,20 +141,18 @@
                         <h3 class="photo-gallery-heading">Photo Gallery</h3>
                         <div class="d-flex flex-wrap justify-content-center flex-logos row-photo-gallery">
                                                                 <div class="gallery-block">
-                                    <a href="/images/tour/1640174644.1646.jpg" data-lightbox="photos"><img class="img-fluid" src="https://kiukija.com/images/tour/1640174644.1646.jpg"></a>
+                                    <a href="/images/tour/delux-transfer-1.jpg" data-lightbox="photos"><img class="img-fluid" src="/images/tour/delux-transfer-1.jpg"></a>
                                 </div>                  
                                                                 <div class="gallery-block">
-                                    <a href="/images/tour/1640174644.3733.jpg" data-lightbox="photos"><img class="img-fluid" src="https://kiukija.com/images/tour/1640174644.3733.jpg"></a>
+                                    <a href="/images/tour/delux-transfer-2.jpg" data-lightbox="photos"><img class="img-fluid" src="/images/tour/delux-transfer-2.jpg"></a>
                                 </div>                  
                                                                 <div class="gallery-block">
-                                    <a href="/images/tour/1640174644.5701.jpg" data-lightbox="photos"><img class="img-fluid" src="https://kiukija.com/images/tour/1640174644.5701.jpg"></a>
+                                    <a href="/images/tour/delux-transfer-3.jpg" data-lightbox="photos"><img class="img-fluid" src="/images/tour/delux-transfer-3.jpg"></a>
                                 </div>                  
                                                                 <div class="gallery-block">
-                                    <a href="/images/tour/1640174644.7448.jpg" data-lightbox="photos"><img class="img-fluid" src="https://kiukija.com/images/tour/1640174644.7448.jpg"></a>
+                                    <a href="/images/tour/delux-transfer-4.jpg" data-lightbox="photos"><img class="img-fluid" src="/images/tour/delux-transfer-4.jpg"></a>
                                 </div>                  
-                                                                <div class="gallery-block">
-                                    <a href="/images/tour/1640174644.9058.jpg" data-lightbox="photos"><img class="img-fluid" src="https://kiukija.com/images/tour/1640174644.9058.jpg"></a>
-                                </div>               
+                                            
                         </div>
                     </div>
                 </div>

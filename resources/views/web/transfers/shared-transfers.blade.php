@@ -125,7 +125,7 @@
                 </div>
                 <div class="right-airport-transfers">
                     <div class="busimg-block">
-                        <img src="{{ asset('assets/web/images/bus-img.png') }}" />
+                        <img src="/images/transfer/shared_transfer/shared-transfer-main.jpeg" />
                     </div>
                     {{-- <div class="social-share-cover">
                         <div class="social-share-title">Share with friends.</div>
@@ -141,19 +141,19 @@
                         <h3 class="photo-gallery-heading">Photo Gallery</h3>
                         <div class="d-flex flex-wrap justify-content-center flex-logos row-photo-gallery">
                                                                 <div class="gallery-block">
-                                    <a href="/images/tour/1640174644.1646.jpg" data-lightbox="photos"><img class="img-fluid" src="https://kiukija.com/images/tour/1640174644.1646.jpg"></a>
+                                    <a href="/images/transfer/shared_transfer/shared-transfer-main.jpeg" data-lightbox="photos"><img class="img-fluid" src="/images/transfer/shared_transfer/shared-transfer-main.jpeg"></a>
                                 </div>                  
                                                                 <div class="gallery-block">
-                                    <a href="/images/tour/1640174644.3733.jpg" data-lightbox="photos"><img class="img-fluid" src="https://kiukija.com/images/tour/1640174644.3733.jpg"></a>
+                                    <a href="/images/transfer/shared_transfer/shared-transfer-1.jpeg" data-lightbox="photos"><img class="img-fluid" src="/images/transfer/shared_transfer/shared-transfer-1.jpeg"></a>
                                 </div>                  
                                                                 <div class="gallery-block">
-                                    <a href="/images/tour/1640174644.5701.jpg" data-lightbox="photos"><img class="img-fluid" src="https://kiukija.com/images/tour/1640174644.5701.jpg"></a>
+                                    <a href="/images/transfer/shared_transfer/shared-transfer-2.jpeg" data-lightbox="photos"><img class="img-fluid" src="/images/transfer/shared_transfer/shared-transfer-2.jpeg"></a>
                                 </div>                  
                                                                 <div class="gallery-block">
-                                    <a href="/images/tour/1640174644.7448.jpg" data-lightbox="photos"><img class="img-fluid" src="https://kiukija.com/images/tour/1640174644.7448.jpg"></a>
+                                    <a href="/images/transfer/shared_transfer/shared-transfer-3.jpeg" data-lightbox="photos"><img class="img-fluid" src="/images/transfer/shared_transfer/shared-transfer-3.jpeg"></a>
                                 </div>                  
                                                                 <div class="gallery-block">
-                                    <a href="/images/tour/1640174644.9058.jpg" data-lightbox="photos"><img class="img-fluid" src="https://kiukija.com/images/tour/1640174644.9058.jpg"></a>
+                                    <a href="/images/transfer/shared_transfer/shared-transfer-4.jpeg" data-lightbox="photos"><img class="img-fluid" src="/images/transfer/shared_transfer/shared-transfer-4.jpeg"></a>
                                 </div>               
                         </div>
                     </div>

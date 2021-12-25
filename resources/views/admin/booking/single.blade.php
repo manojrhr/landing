@@ -94,7 +94,7 @@
                         <b>Pickup From</b> <a class="pull-right">{{ $booking->location->name }}</a>
                     </li>
                     <li class="list-group-item">
-                        <b>Total Amount</b> <a class="pull-right">{{ $booking->total_amount }}</a>
+                        <b>Total Amount</b> <a class="pull-right">{{ '$'.$booking->total_amount }}</a>
                     </li>
                     <li class="list-group-item">
                         <b>Booking Date</b> <a class="pull-right">{{ date('F j, Y', strtotime($booking->date)) }}</a>
@@ -105,7 +105,7 @@
                     </li>
                     <li class="list-group-item">
                         <b>Pickup Info</b> <a
-                            class="pull-right">{{ date('F j, Y, g:i a', strtotime($booking->pickup_info)) }}</a>
+                            class="pull-right">{{ $booking->pickup_info }}</a>
                     </li>
                 </ul>
             </div>
