@@ -6,8 +6,13 @@
 						<div class="tours-items-block">
 							<div class="search-tour">
 								<form class="d-flex flex-wrap justify-content-center">
-									<input class="tour-search-input" type="search" autocomplete="off" value=""
+									<input class="tour-search-input" list="suggestions" type="search" autocomplete="off" value=""
 										placeholder="Search our Tours..." wire:model.debounce.500ms="searchTerm" >
+										<datalist id="suggestions">
+											@foreach ($tours->take(10) as $tour)
+												<option>{{ $tour->title }}</option>
+											@endforeach
+										<datalist>
 									<button type="button" class="tour-filter-submit">
 										<i class="fa fa-search"></i>
 									</button>
