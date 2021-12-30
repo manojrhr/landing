@@ -115,7 +115,7 @@
                 </div>
                 <div class="right-airport-transfers">
                     <div class="busimg-block">
-                        <img src="/images/transfer/private_transfer/private-transfer-main.jpeg" />
+                        <img src="/images/tour/suberban-main.jpg" />
                     </div>
                     {{-- <div class="social-share-cover">
                         <div class="social-share-title">Share with friends.</div>
@@ -130,9 +130,30 @@
                     <div class="photo-gallery">
                         <h3 class="photo-gallery-heading">Photo Gallery</h3><div class="d-flex flex-wrap justify-content-center flex-logos row-photo-gallery">
                             <div class="gallery-block">
-                                <a href="/images/transfer/private_transfer/private-transfer-main.jpeg" data-lightbox="photos"><img
-                                        class="img-fluid" src="/images/transfer/private_transfer/private-transfer-main.jpeg"></a>
+                                <a href="/images/tour/suberban-transfer-1.jpg" data-lightbox="photos"><img
+                                        class="img-fluid" src="/images/tour/suberban-transfer-1.jpg"></a>
                             </div>
+                            <div class="gallery-block">
+                                <a href="/images/tour/suberban-transfer-2.jpg" data-lightbox="photos"><img
+                                        class="img-fluid" src="/images/tour/suberban-transfer-2.jpg"></a>
+                            </div>
+                            <div class="gallery-block">
+                                <a href="/images/tour/suberban-transfer-3.jpg" data-lightbox="photos"><img
+                                        class="img-fluid" src="/images/tour/suberban-transfer-3.jpg"></a>
+                            </div>
+                            <div class="gallery-block">
+                                <a href="/images/tour/suberban-transfer-4.jpg" data-lightbox="photos"><img
+                                        class="img-fluid" src="/images/tour/suberban-transfer-4.jpg"></a>
+                            </div>
+                            <div class="gallery-block">
+                                <a href="/images/tour/suberban-transfer-5.jpg" data-lightbox="photos"><img
+                                        class="img-fluid" src="/images/tour/suberban-transfer-5.jpg"></a>
+                            </div>
+                            <div class="gallery-block">
+                                <a href="/images/tour/suberban-transfer-6.jpg" data-lightbox="photos"><img
+                                        class="img-fluid" src="/images/tour/suberban-transfer-6.jpg"></a>
+                            </div>
+                            
                        
                     
                     </div>

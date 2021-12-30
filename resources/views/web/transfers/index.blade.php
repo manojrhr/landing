@@ -13,7 +13,7 @@
                 <div class="inner-airport-transfers">
                     <h2 class="transfers-heading-title">Airport Transfers (MBJ)</h2>
                     @if($subcategories->isEmpty())
-                        <h3 class="text-center">Comming Soon</h3>
+                        <h3 class="text-center">No Category Available</h3>
                     @else
                         <div class="steering-wheel-block">
                             <div class="steering-wheel-image" data-aos="steering-wheel" data-aos-once="true">

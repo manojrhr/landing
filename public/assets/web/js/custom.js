@@ -37,6 +37,21 @@ jQuery(document).ready(function() {
 		//buttonImageOnly: true,
 	});
 	
+	
+	
+	jQuery( ".tours-checkboxes-list-item" ).click(function() {
+		jQuery( this ).toggleClass( "active" );
+		var checkBoxes = $(this).find(':checkbox');
+		if(checkBoxes.prop("checked")==true){
+			checkBoxes.prop("checked", false); 
+		}else{
+			checkBoxes.prop("checked", true)
+		}
+	});
+	
+	
+	
+	
 	//Scroll Link
 	jQuery('.scroll-link').click(function() {
 		var sectionTo = $(this).attr('href');

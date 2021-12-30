@@ -15,9 +15,7 @@
                     <div class="title-transfers-airport">
                         <h1 class="title-airport">Private Transfers</h1>
                     </div>
-                    <div class="busimg-block-title" style="display:none;">
-                        <img src="images/bus-img.png" />
-                    </div>
+                  
                     <div class="transfers-content-expert">
                         <p>Let’s arrange your MBJ airport transfer in advance to & from your hotel destination in
                             comfort. Our shuttle transfer service takes you from Sangsters International Airport in Montego

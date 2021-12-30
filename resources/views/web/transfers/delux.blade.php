@@ -15,9 +15,7 @@
                     <div class="title-transfers-airport">
                         <h1 class="title-airport">Delux Transfers</h1>
                     </div>
-                    <div class="busimg-block-title" style="display:none;">
-                        <img src="images/bus-img.png" />
-                    </div>
+           
                     <div class="transfers-content-expert">
                         <p>Let’s arrange your MBJ airport transfer in advance to & from your hotel destination in
                             comfort. Our shuttle transfer service takes you from Sangsters International Airport in Montego
@@ -115,7 +113,7 @@
                 </div>
                 <div class="right-airport-transfers">
                     <div class="busimg-block">
-                        <img src="/images/transfer/private_transfer/private-transfer-main.jpeg" />
+                        <img src="/images/tour/delux-main.jpg" />
                     </div>
                     {{-- <div class="social-share-cover">
                         <div class="social-share-title">Share with friends.</div>
@@ -130,8 +128,20 @@
                     <div class="photo-gallery">
                         <h3 class="photo-gallery-heading">Photo Gallery</h3><div class="d-flex flex-wrap justify-content-center flex-logos row-photo-gallery">
                             <div class="gallery-block">
-                                <a href="/images/transfer/private_transfer/private-transfer-main.jpeg" data-lightbox="photos"><img
-                                        class="img-fluid" src="/images/transfer/private_transfer/private-transfer-main.jpeg"></a>
+                                <a href="/images/tour/delux-transfer-1.jpg" data-lightbox="photos"><img
+                                        class="img-fluid" src="/images/tour/delux-transfer-1.jpg"></a>
+                            </div>
+                            <div class="gallery-block">
+                                <a href="/images/tour/delux-transfer-2.jpg" data-lightbox="photos"><img
+                                        class="img-fluid" src="/images/tour/delux-transfer-2.jpg"></a>
+                            </div>
+                            <div class="gallery-block">
+                                <a href="/images/tour/delux-transfer-3.jpg" data-lightbox="photos"><img
+                                        class="img-fluid" src="/images/tour/delux-transfer-3.jpg"></a>
+                            </div>
+                            <div class="gallery-block">
+                                <a href="/images/tour/delux-transfer-4.jpg" data-lightbox="photos"><img
+                                        class="img-fluid" src="/images/tour/delux-transfer-4.jpg"></a>
                             </div>
                        
                     
