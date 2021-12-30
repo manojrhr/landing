@@ -63,7 +63,7 @@ class TourController extends Controller
         
         $tour = new Tour();
         $tour->category_id = $request->category;
-        $tour->subcategory_id = $request->subcategory;
+        // $tour->subcategory_id = $request->subcategory;
         $tour->title = $request->title;
         $tour->slug = str_slug($request->title);
         $tour->description = $request->description;
@@ -112,6 +112,7 @@ class TourController extends Controller
         }
 
         if($tour->save()){
+            $tour->subcategories()->sync($request->subcategory);
             $request->session()->flash('message.level', 'success');
             $request->session()->flash('message.content', 'Tour created successfully.');
             return redirect()->route('admin.tour.edit', $tour->id);
