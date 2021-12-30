@@ -12,6 +12,7 @@ use App\TourOption;
 use Validator;
 use Redirect;
 use Image;
+use DB;
 
 class TourController extends Controller
 {
@@ -62,7 +63,7 @@ class TourController extends Controller
         
         $tour = new Tour();
         $tour->category_id = $request->category;
-        $tour->subcategory_id = $request->subcategory;
+        // $tour->subcategory_id = $request->subcategory;
         $tour->title = $request->title;
         $tour->slug = str_slug($request->title);
         $tour->description = $request->description;
@@ -111,6 +112,7 @@ class TourController extends Controller
         }
 
         if($tour->save()){
+            $tour->subcategories()->sync($request->subcategory);
             $request->session()->flash('message.level', 'success');
             $request->session()->flash('message.content', 'Tour created successfully.');
             return redirect()->route('admin.tour.edit', $tour->id);
@@ -129,7 +131,13 @@ class TourController extends Controller
         $tour = Tour::findOrFail($id);
         $locations = Location::all();
         $options = TourOption::with('location')->where('tour_id',$tour->id)->get();
-        return view('admin.tour.edit', compact('tour','subcategories', 'categories', 'locations', 'options'));
+        $subcategories_ids = DB::table('subcategory_tours')
+                        ->where('tour_id', $id)
+                        ->select('sub_category_id')
+                        ->groupBy('sub_category_id')
+                        ->pluck('sub_category_id')
+                        ->toArray();
+        return view('admin.tour.edit', compact('tour','subcategories','subcategories_ids', 'categories', 'locations', 'options'));
     }
 
     public function delete($id, Request $request)
@@ -166,6 +174,9 @@ class TourController extends Controller
 
     public function update($id, Request $request)
     {
+        // $tour = Tour::find($id);
+        // $tour->subcategories()->sync($request->subcategory);
+        // dd($request->subcategory);
         $validator = Validator::make($request->all(), [
             'title' => ['required'],
             'description' => ['required']
@@ -180,7 +191,6 @@ class TourController extends Controller
         
         $tour = Tour::findOrFail($id);
         $tour->category_id = $request->category;
-        $tour->subcategory_id = $request->subcategory;
         $tour->title = $request->title;
         $tour->slug = str_slug($request->title);
         $tour->description = $request->description;
@@ -189,6 +199,8 @@ class TourController extends Controller
         $tour->meta_title = $request->meta_title;
         $tour->meta_description = $request->meta_description;
         $tour->meta_keywords = $request->meta_keywords;
+
+        $tour->subcategories()->sync($request->subcategory);
 
         if($request->hasFile('image')){
             if (file_exists(public_path($tour->image))) {
