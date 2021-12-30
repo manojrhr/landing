@@ -7,7 +7,7 @@
 							<div class="search-tour">
 								<form class="d-flex flex-wrap justify-content-center">
 									<input class="tour-search-input" list="suggestions" type="search" autocomplete="off" value=""
-										placeholder="Search our Tours..." wire:model.debounce.500ms="searchTerm" >
+										placeholder="Search our Tours..." wire:model="searchTerm" >
 										<datalist id="suggestions">
 											@foreach ($tours->take(10) as $tour)
 												<option>{{ $tour->title }}</option>
