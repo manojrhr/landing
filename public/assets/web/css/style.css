@@ -1296,3 +1296,19 @@ table.cart-table-responsive tr:nth-child(2n) td{ background:rgba(0,0,0,0.025);}
     
 }
 .right-airport-transfers .busimg-block img { margin-top:50px;}
+
+ 
+
+@media (max-width:767px) {
+    
+.footerlogo{ max-width:100%!important;}
+.transfers-heading-title{ top:-57px;}
+.inner-airport-transfers{ margin-top:72px;}
+.home-one .block-order2, .home-one .block-order3{ max-width:100%;}
+.social-links ul li {padding: 0 9px 10px !important;}
+
+.tel-block a {font-size: 17px; }
+.transfers-instantly-button-fixed {    padding: 11px 32px;    background: #352353;  }
+.footer-bottom p { font-size: 16.4px;}
+div.title-transfers-airport{color:none !important;}
+}

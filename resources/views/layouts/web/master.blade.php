@@ -112,7 +112,7 @@
                             </a>
                         </div>
                         <div class="social-icons-wrapper">
-                            <a href="mailto:info@kiukitours.com" target="_blank" rel="noopener">
+                            <a href="mailto:info@kiukija.com" target="_blank" rel="noopener">
                                 <i class="fas fa-envelope"></i></a>
                             <a href="{{ get_component('social_facebook') }}" target="_blank" rel="noopener">
                                 <i class="fab fa-facebook-f"></i></a>

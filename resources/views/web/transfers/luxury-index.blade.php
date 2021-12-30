@@ -162,4 +162,11 @@
     // });
 
 </script>
+<style>
+@media (max-width:767px) {
+    .tour-item-img img {
+    width: 100%;
+    padding-bottom: 50px;
+}}
+</style>
 @endsection
