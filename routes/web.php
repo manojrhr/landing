@@ -1,5 +1,6 @@
 <?php
 
+use App\Tour;
 use Illuminate\Support\Facades\Route;
 /*
 |--------------------------------------------------------------------------
@@ -189,4 +190,12 @@ Route::get('testnot', function(){
 	dump($data);
 	dump($data->main['temp']);
 	dd(json_decode($result, true));
+});
+Route::get('tourzone', function(){
+	$tour = Tour::find(1);
+	$subcategoryds = [1, 2];
+	// $user->roles()->attach($roleIds);
+	dump($tour->zones);
+	$tour->subcategories()->attach($subcategoryds);
+	dd($tour->zones);
 });

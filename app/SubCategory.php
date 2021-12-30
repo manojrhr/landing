@@ -10,4 +10,9 @@ class SubCategory extends Model
     {
         return $this->belongsTo(Category::class);
     }
+
+    public function tours()
+    {
+        return $this->belongsToMany(Tour::class, 'subcategory_tours');
+    }
 }

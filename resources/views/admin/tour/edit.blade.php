@@ -4,7 +4,16 @@
 @section('subtitle')
 
 @section('style')
-
+{{-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css"> --}}
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.1/css/bootstrap-select.css" />
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.bundle.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.1/js/bootstrap-select.min.js"></script>
+<style>
+  .bootstrap-select > .dropdown-toggle {
+    width: 400%;
+}
+</style>
 @endsection
 
 @section('content')
@@ -39,10 +48,10 @@
                   <div class="form-group">
                     <label for="subcategory" class="col-sm-2 control-label">Sub Category</label>
                     <div class="col-sm-10">
-                      <select class="form-control" id="subcategory" name="subcategory">
+                      <select id="subcategory" name="subcategory[]" class="form-group selectpicker" multiple data-live-search="true">
                         <option value="">-- Select Sub Category for this Tour --</option>
                           @foreach ($subcategories as $subcategory)
-                              <option value="{{ $subcategory->id }}" {{ $subcategory->id === $tour->subcategory_id ? 'selected' : '' }}>{{ $subcategory->title }} - {{ $subcategory->subtitle }}</option>
+                              <option value="{{ $subcategory->id }}" {{ in_array($subcategory->id, $subcategories_ids) ? 'selected' : '' }}>{{ $subcategory->title }} - {{ $subcategory->subtitle }}</option>
                           @endforeach
                       </select>
                         @error('title')
