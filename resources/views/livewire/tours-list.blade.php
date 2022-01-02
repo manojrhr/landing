@@ -6,16 +6,23 @@
 						<div class="tours-items-block">
 							<div class="search-tour">
 								<form class="d-flex flex-wrap justify-content-center">
-									<input class="tour-search-input" list="suggestions" type="search" autocomplete="off" value=""
-										placeholder="Search our Tours..." wire:model="searchTerm" >
+									<input class="tour-search-input" list="suggestions" type="search" oninput="hideList(this)" autocomplete="off" value=""
+										placeholder="Search our Tours..." 
+										wire:model="searchTerm"
+										wire:keydown.escape="resetval" >
+										{{-- <option wire:loading >Searching...</option> --}}
 										<datalist id="suggestions">
-											@foreach ($tours->take(10) as $tour)
-												<option>{{ $tour->title }}</option>
-											@endforeach
+										@if(!empty($searchTerm))
+											@if(!empty($headings))
+												@foreach($headings->take(10) as $tour)
+													<option>{{ $tour->title }}</option>
+												@endforeach
+											@endif
+										@endif
 										<datalist>
-									<button type="button" class="tour-filter-submit">
+									{{-- <button type="button" class="tour-filter-submit">
 										<i class="fa fa-search"></i>
-									</button>
+									</button> --}}
 								</form>
 							</div>
 
@@ -24,21 +31,21 @@
 								<div class="d-flex flex-wrap justify-content-center align-items-center cover-tours-checkboxes-list">
 									<div class="d-flex flex-wrap justify-content-center align-items-center tours-checkboxes-list">
 										<div class="tours-checkboxes-list-item">
-											<input class="check" type="checkbox" wire.model="subcategory" name="adventure" value="adventure" hidden>
+											<input class="check" type="checkbox" wire:model="subcategory" name="type" value="1" hidden>
 											<span class="list-checkboxes-icon">
 												<i class="fa fa-check check-icon"></i>
 											</span>
-											<span class="list-checkboxes-label">{{ $subcategory }}Adventure</span>
+											<span class="list-checkboxes-label">Adventure</span>
 										</div>
 										<div class="tours-checkboxes-list-item">
-											<input class="check" type="checkbox" name="historical" value="historical" hidden>
+											<input class="check" type="checkbox" wire:model="subcategory" name="type" value="2" hidden>
 											<span class="list-checkboxes-icon">
 												<i class="fa fa-check check-icon"></i>
 											</span>
 											<span class="list-checkboxes-label">Historical</span>
 										</div>
 										<div class="tours-checkboxes-list-item">
-											<input class="check" type="checkbox" name="nature" value="nature" hidden>
+											<input class="check" type="checkbox" wire:model="subcategory" name="type" value="3" hidden>
 											<span class="list-checkboxes-icon">
 												<i class="fa fa-check check-icon"></i>
 											</span>
@@ -96,3 +103,15 @@
 					</div>
 				</div>
 			</div>
+@section('scripts')
+<script>
+	function hideList(input) {
+		var datalist = document.querySelector("datalist");
+		if (input.value) {
+			datalist.id = "suggestions";
+		} else {
+			datalist.id = "";	
+		}
+	}
+</script>
+@endsection

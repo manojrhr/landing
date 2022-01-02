@@ -9,9 +9,9 @@ use Livewire\WithPagination;
 class ToursList extends Component
 {
     // use WithPagination;
-
     public $searchTerm = '';
-    public $subcategory;
+    public $subcategory = [];
+    public $headings;
 
     public function updatedSubcategory()
     {
@@ -21,6 +21,25 @@ class ToursList extends Component
                 return $subcategory != false;
             }
         );
+    }
+
+    public function resetval()
+    {
+        $this->searchTerm = '';
+        $this->headings = [];
+    }
+
+    public function updatedSearchTerm()
+    {
+        if($this->searchTerm === ''){
+            $this->resetval();
+        }
+        $searchTerm = '%'.$this->searchTerm.'%';
+        $this->headings = Tour::search($searchTerm)
+                            ->where('active', true)
+                            ->latest()
+                            ->get();
+                            // ->toArray();
     }
 
     public function render()
