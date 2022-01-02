@@ -32,7 +32,7 @@
                   <div class="form-group">
                     <label for="category" class="col-sm-2 control-label">Category*</label>
                     <div class="col-sm-10">
-                      <select class="form-control" id="category" name="category">
+                      <select class="form-control" id="category" onChange="get_scategory()" name="category">
                         {{-- <option value="">-- Select Category for this Tour --</option> --}}
                           @foreach ($categories as $category)
                               <option value="{{ $category->id }}" {{ $category->id === $tour->category_id ? 'selected' : '' }}>{{ $category->title }} - {{ $category->subtitle }}</option>
@@ -48,8 +48,8 @@
                   <div class="form-group">
                     <label for="subcategory" class="col-sm-2 control-label">Sub Category</label>
                     <div class="col-sm-10">
-                      <select id="subcategory" name="subcategory[]" class="form-group selectpicker" multiple data-live-search="true">
-                        <option value="">-- Select Sub Category for this Tour --</option>
+                      <select id="subcategory" name="subcategory[]" class="form-group " style="margin-left: 1px; width: 100%;"  multiple data-live-search="true">
+                        {{-- <option value="">-- Select Sub Category for this Tour --</option> --}}
                           @foreach ($subcategories as $subcategory)
                               <option value="{{ $subcategory->id }}" {{ in_array($subcategory->id, $subcategories_ids) ? 'selected' : '' }}>{{ $subcategory->title }} - {{ $subcategory->subtitle }}</option>
                           @endforeach
@@ -439,5 +439,31 @@
             });
 
     });
+    
+    function get_scategory() {
+        var category_id = jQuery("#category").val();
+        jQuery.ajax({
+            headers: {
+                'X-CSRF-TOKEN': '{{ csrf_token() }}'
+            },
+            url: "{{ route('admin.get_subcategory') }}",
+            type: 'POST',
+            data: {
+                "_token": "{{ csrf_token() }}",
+                "category_id": category_id,
+            },
+            dataType: 'JSON',
+            success: function (data) {
+                // $('#subcategory').html('<option value="">--Select Subcategory--</option>'); 
+                $('#subcategory').empty();
+                if (data.scat.length === 0) {
+                    $('#subcategory').html('<option value="">--Sorry No subcategory available--</option>'); 
+                }
+                $.each(data.scat,function(key,value){
+                    $("#subcategory").append('<option value="'+value.id+'">'+value.title+'</option>');
+                });
+            }
+        });
+    }
   </script>
 @endsection

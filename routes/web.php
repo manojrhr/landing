@@ -113,6 +113,8 @@ Route::group(['prefix' => 'admin' , 'as' => 'admin.'], function(){
 	Route::get('/tour/delete/{id}', 'Web\Admin\TourController@delete')->name('tour.delete');
 	Route::get('/tour/status/{tour}', 'Web\Admin\TourController@toggleActive')->name('tour_status');
 	
+	Route::post('getsubcategory', 'Web\Admin\TourController@getsubcategory')->name('get_subcategory');
+	
 	Route::post('/tour-option/{id}', 'Web\Admin\TourController@add_tour_options')->name('add_tour_options');
 	Route::get('/tour-option/{id}/delete', 'Web\Admin\TourController@tour_option_delete')->name('tour_option_delete');
 	Route::post('/get_option_details', 'Web\Admin\TourController@get_option_details')->name('getOptionDetails');

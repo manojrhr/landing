@@ -127,10 +127,10 @@ class TourController extends Controller
     {
         // dd($id);
         $categories = Category::all(['id', 'title', 'subtitle']);
-        $subcategories = SubCategory::all(['id', 'title', 'subtitle']);
         $tour = Tour::findOrFail($id);
         $locations = Location::all();
         $options = TourOption::with('location')->where('tour_id',$tour->id)->get();
+        $subcategories = SubCategory::select(['id', 'title', 'subtitle'])->where('category_id', $tour->category_id)->get();
         $subcategories_ids = DB::table('subcategory_tours')
                         ->where('tour_id', $id)
                         ->select('sub_category_id')
@@ -375,5 +375,12 @@ class TourController extends Controller
         $request->session()->flash('message.level', 'success');
         $request->session()->flash('message.content', 'Status Changed');
         return Redirect::back();
+    }
+
+    public function getsubcategory(Request $request)
+    {
+        $data['scat'] = SubCategory::where("category_id", $request->category_id)
+                    ->get(["title","id"]);
+        return response()->json($data);
     }
 }
