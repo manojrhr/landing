@@ -39,7 +39,7 @@
                     <div class="col-details-content">
                         <div class="breadcrumb-block">
                             <nav class="d-flex flex-wrap justify-content-center nav-breadcrumb">
-                                <a href="{{ route('home') }}">Home</a>&nbsp;/&nbsp;<a href="tours.html">Tours</a>&nbsp;/&nbsp;{{ $tour->title }}</nav>
+                                <a href="{{ route('home') }}">Home</a>&nbsp;/&nbsp;<a href="{{ route('tours') }}">Tours</a>&nbsp;/&nbsp;{{ $tour->title }}</nav>
                         </div>
                         <div class="tours-tabs">
                             <div class="nav nav-tours-tabs">
@@ -91,7 +91,7 @@
                         @endif
                         <hr class="divider-tour" />
                         <div class="tour-post-prev-cover">
-                            <a href="#" class="tour-post-prev-btn"><i aria-hidden="true"
+                            <a href="{{ url()->previous() }}" class="tour-post-prev-btn"><i aria-hidden="true"
                                     class="fas fa-caret-left"></i>Back</a>
                         </div>
                     </div>
@@ -127,9 +127,9 @@
                                         <div class="form-row-block">
                                             <span class="label-span">Select Destination</span>
                                             <div class="select-form-input-div">
-                                                <select class="form-control" name="location_id" id="location">
-                                                                         
-                                                    
+                                                <select class="form-control" name="location_id" id="location" required>
+                                                    <option value="" data-adult=""
+                                                        data-child="">-- Select Destination --</option>     
                                                     @foreach ($zones as $zone)
                                                         @if($zone->zone->active)
                                                             <option value="{{ $zone->zone_id }}" data-adult="{{ $zone->cost_per_adult }}"
@@ -160,13 +160,13 @@
                                                     <span class="label-span">Number of Adults (Ages 12+)</span>
                                                     <input class="input-box" type="number" name="adult_count" value="1" min="1" step="1"
                                                         max="100" id="pickup_num_adults" onchange="price_count();" required="">
-                                                    <span class="cost_per_text">$<span id="adult_price">{{ $tour->zone[0]->cost_per_adult }}</span> per Adult</span>
+                                                    <span class="cost_per_text">$<span id="adult_price">0.00</span> per Adult</span>
                                                 </div>
                                                 <div class="one-half right-one-half">
                                                     <span class="label-span">Number of Children (Ages 3-11)</span>
                                                     <input class="input-box" type="number" name="child_count" value="0" min="0" step="1"
                                                         max="100" id="pickup_num_children" onchange="price_count();" required="">
-                                                    <span class="cost_per_text">$<span id="child_price">{{ round(($tour->zone[0]->child_price_percentage / 100) * $tour->zone[0]->cost_per_adult) }}</span> per Child</span>
+                                                    <span class="cost_per_text">$<span id="child_price">0.00</span> per Child</span>
                                                 </div>
                                             </div>
                                         </div>
@@ -178,7 +178,7 @@
                                         </div>
                                         <div class="tour_total_pricing">
                                             <h4 class="price_title">Total Tour Pricing</h4>
-                                            <h4 class="price" id="tour_price">$<span id="total_price">{{ $tour->zone[0]->cost_per_adult  }}</span>.00</h4>
+                                            <h4 class="price" id="tour_price">$<span id="total_price">0.00</span></h4>
                                         </div>
                                         <div class="submit-button-cover"><button type="submit"
                                                 class="form-tour-booking-button single_add_to_cart_button button"
