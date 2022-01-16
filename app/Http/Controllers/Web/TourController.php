@@ -37,8 +37,8 @@ class TourController extends Controller
                                 ->get();
         // dd($zones->pluck('zone_id')->toArray());
         $zoneIds = $zones->pluck('zone_id')->toArray();
-        $more_tours = Tour::whereHas('zone', function($q) use($zoneIds) {
-                        $q->whereIn('id', $zoneIds);
+        $more_tours = Tour::whereHas('zones', function($q) use($zoneIds) {
+                        $q->whereIn('zone_id', $zoneIds);
                     })->take(4)->get();
         // dd($mTour);
         // $zones = Zone::whereIn('id', $zone_id)->get();
