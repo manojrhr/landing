@@ -36,6 +36,11 @@ class Tour extends Model
         return $this->belongsTo(Category::class);
     }
 
+    public function zones()
+    {
+        return $this->belongsToMany(Zone::class, 'tours_zone_prices');
+    }
+
     public function scopeSearch($query,$term)
     {
         // $term = "%$term%";

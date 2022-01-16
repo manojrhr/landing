@@ -10,4 +10,9 @@ class ToursZonePrices extends Model
     {
         return $this->belongsTo(Zone::class);
     }
+    
+    public function tours()
+    {
+        return $this->belongsTo(Tour::class);
+    }
 }

@@ -35,12 +35,18 @@ class TourController extends Controller
         $zones = ToursZonePrices::where('tour_id', $tour->id)
                                 ->groupBy('zone_id')
                                 ->get();
-        // dd($zones);
+        // dd($zones->pluck('zone_id')->toArray());
+        $zoneIds = $zones->pluck('zone_id')->toArray();
+        $more_tours = Tour::whereHas('zone', function($q) use($zoneIds) {
+                        $q->whereIn('id', $zoneIds);
+                    })->take(4)->get();
+        // dd($mTour);
         // $zones = Zone::whereIn('id', $zone_id)->get();
         if(!$tour){
             abort(404);
         }
-        $more_tours = Tour::where('id', '!=' , $tour->id)->take(4)->orderBy('id', 'desc')->get();
+        // $more_tours = Tour::where('id', '!=' , $tour->id)->take(4)->orderBy('id', 'desc')->get();
+        // $more_tours = Tour::where('id', '!=' , $tour->id)->take(4)->orderBy('id', 'desc')->get();
         $options = TourOption::where('tour_id', $tour->id)->get();
         return view('web.tour.single', compact('tour', 'options', 'more_tours','zones'));
     }
