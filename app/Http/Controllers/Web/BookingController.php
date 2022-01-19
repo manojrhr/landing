@@ -39,8 +39,8 @@ class BookingController extends Controller
         $validator = Validator::make($request->all(), [
             'location_id' => 'required|integer',
             'date' => 'required',
-            'adult_rate' => 'required|integer',
-            'child_rate' => 'required|integer',
+            'adult_rate' => 'required',
+            'child_rate' => 'required',
             'amount' => 'required',
             'adult_count' => 'required',
             'child_count' => 'required'
@@ -54,8 +54,6 @@ class BookingController extends Controller
             'child_count.required' => 'Number of childs required.',
             
             'location_id.integer' => 'Something went wrong. Please refresh the page.',
-            'adult_rate.integer' => 'Something went wrong. Please refresh the page.',
-            'child_rate.integer' => 'Something went wrong. Please refresh the page.',
         ]);
 
         if ($validator->fails()) {
@@ -96,8 +94,8 @@ class BookingController extends Controller
         $booking['location_id'] = (int)$request->location_id;
         $booking['hotel_id'] = (int)$request->hotel_id;
         $booking['date'] = date('Y-m-d', strtotime($request->date));
-        $booking['adult_rate'] = (int)$request->adult_rate;
-        $booking['child_rate'] = (int)$request->child_rate;
+        $booking['adult_rate'] = number_format($request->adult_rate, 2);
+        $booking['child_rate'] = number_format($request->child_rate, 2);
         $booking['total_amount'] = number_format($request->amount, 2);
         $booking['adult_count'] = number_format($request->adult_count, 2);
         $booking['child_count'] = number_format($request->child_count, 2);
@@ -127,8 +125,8 @@ class BookingController extends Controller
         $validator = Validator::make($request->all(), [
             'zone_id' => 'required|integer',
             'date' => 'required',
-            'adult_price' => 'required|integer',
-            'child_price' => 'required|integer',
+            'adult_price' => 'required',
+            'child_price' => 'required',
             'amount' => 'required',
             'adult_count' => 'required',
             'child_count' => 'required'
@@ -142,8 +140,6 @@ class BookingController extends Controller
             'child_count.required' => 'Number of childs required.',
             
             'zone_id.integer' => 'Something went wrong. Please refresh the page.',
-            'adult_rate.integer' => 'Something went wrong. Please refresh the page.',
-            'child_rate.integer' => 'Something went wrong. Please refresh the page.',
         ]);
 
         if ($validator->fails()) {
@@ -175,8 +171,8 @@ class BookingController extends Controller
         $booking['location_id'] = (int)$request->zone_id;
         $booking['hotel_id'] = (int)$request->hotel_id;
         $booking['date'] = date('Y-m-d', strtotime($request->date));
-        $booking['adult_rate'] = (int)$request->adult_rate;
-        $booking['child_rate'] = (int)$request->child_rate;
+        $booking['adult_rate'] = number_format($request->adult_rate, 2);
+        $booking['child_rate'] = number_format($request->child_rate, 2);
         $booking['total_amount'] = number_format($request->amount, 2);
         $booking['adult_count'] = number_format($request->adult_count, 2);
         $booking['child_count'] = number_format($request->child_count, 2);
