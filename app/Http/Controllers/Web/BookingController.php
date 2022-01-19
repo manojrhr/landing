@@ -41,9 +41,9 @@ class BookingController extends Controller
             'date' => 'required',
             'adult_rate' => 'required|integer',
             'child_rate' => 'required|integer',
-            'amount' => 'required|integer',
-            'adult_count' => 'required|integer',
-            'child_count' => 'required|integer'
+            'amount' => 'required',
+            'adult_count' => 'required',
+            'child_count' => 'required'
         ], $messages = [
             'location_id.required' => 'Something went wrong. Please refresh the page.',
             'date.required' => 'Something went wrong. Please refresh the page.',
@@ -56,9 +56,6 @@ class BookingController extends Controller
             'location_id.integer' => 'Something went wrong. Please refresh the page.',
             'adult_rate.integer' => 'Something went wrong. Please refresh the page.',
             'child_rate.integer' => 'Something went wrong. Please refresh the page.',
-            'amount.integer' => 'Something went wrong. Please refresh the page.',
-            'adult_count.integer' => 'Number of adults are invalid.',
-            'child_count.integer' => 'Number of childs are invalid.',
         ]);
 
         if ($validator->fails()) {
@@ -101,9 +98,9 @@ class BookingController extends Controller
         $booking['date'] = date('Y-m-d', strtotime($request->date));
         $booking['adult_rate'] = (int)$request->adult_rate;
         $booking['child_rate'] = (int)$request->child_rate;
-        $booking['total_amount'] = (int)$request->amount;
-        $booking['adult_count'] = (int)$request->adult_count;
-        $booking['child_count'] = (int)$request->child_count;
+        $booking['total_amount'] = number_format($request->amount, 2);
+        $booking['adult_count'] = number_format($request->adult_count, 2);
+        $booking['child_count'] = number_format($request->child_count, 2);
         if($request->has('pickup_info')){
             $booking['pickup_info'] = $request->pickup_info;
         }
@@ -132,9 +129,9 @@ class BookingController extends Controller
             'date' => 'required',
             'adult_price' => 'required|integer',
             'child_price' => 'required|integer',
-            'amount' => 'required|integer',
-            'adult_count' => 'required|integer',
-            'child_count' => 'required|integer'
+            'amount' => 'required',
+            'adult_count' => 'required',
+            'child_count' => 'required'
         ], $messages = [
             'zone_id.required' => 'Something went wrong. Please refresh the page.',
             'date.required' => 'Something went wrong. Please refresh the page.',
@@ -147,9 +144,6 @@ class BookingController extends Controller
             'zone_id.integer' => 'Something went wrong. Please refresh the page.',
             'adult_rate.integer' => 'Something went wrong. Please refresh the page.',
             'child_rate.integer' => 'Something went wrong. Please refresh the page.',
-            'amount.integer' => 'Something went wrong8. Please refresh the page.',
-            'adult_count.integer' => 'Number of adults are invalid.',
-            'child_count.integer' => 'Number of childs are invalid.',
         ]);
 
         if ($validator->fails()) {
@@ -183,9 +177,9 @@ class BookingController extends Controller
         $booking['date'] = date('Y-m-d', strtotime($request->date));
         $booking['adult_rate'] = (int)$request->adult_rate;
         $booking['child_rate'] = (int)$request->child_rate;
-        $booking['total_amount'] = (int)$request->amount;
-        $booking['adult_count'] = (int)$request->adult_count;
-        $booking['child_count'] = (int)$request->child_count;
+        $booking['total_amount'] = number_format($request->amount, 2);
+        $booking['adult_count'] = number_format($request->adult_count, 2);
+        $booking['child_count'] = number_format($request->child_count, 2);
         if($request->has('pickup_info')){
             $booking['pickup_info'] = $request->pickup_info;
         }

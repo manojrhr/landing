@@ -1,12 +1,12 @@
 <?php 
 return [ 
-    'client_id' => 'AWVn_Qkhp5zu1GGLLfo2XSc9sdE6K_8EZNFj5fM3Z3bfbsv9_FkWRAppl5H9EkYUljmJJC5P3vqbP_LZ',
-	'secret' => 'EEA_XcATrktKY5ohKh3tBe0mkimWfpeAyAxPX8BUHogc0iDW8nGJO5HNqS9l89MuVfyfwQXrichiJJDL',
+    'client_id' => env('PAYPAL_CLIENTID'),
+	'secret' => env('PAYPAL_SECRET'),
     'settings' => array(
         /**
         * Available option 'sandbox' or 'live'
         */
-        'mode' => 'sandbox',
+        'mode' => env('PAYPAL_MODE', 'sandbox'),
         'http.ConnectionTimeOut' => 1000,
         'log.LogEnabled' => true,
         'log.FileName' => storage_path() . '/logs/paypal.log',
