@@ -105,6 +105,7 @@
                         <input type="hidden" name="booking[adult_count]" value="{{ $booking->adult_count }}"/>
                         <input type="hidden" name="booking[child_count]" value="{{ $booking->child_count }}"/>
                         <input type="hidden" name="booking[pickup_info]" value="{{ $booking->pickup_info }}"/>
+                        <input type="hidden" name="booking[add_package]" value="{{ $booking->add_package }}"/>
                         <div class="row">
                             <div class="col-md-7 info">
                                 <div class="customer_details">
@@ -272,6 +273,16 @@
                                                     <dd>
                                                         <p>Total: {{ $booking->adult_count + $booking->child_count }} ({{ $booking->adult_count }}/{{ $booking->child_count }})</p>
                                                     </dd>
+                                                    @if($booking->add_package)
+                                                    <br>
+                                                    <dt><b>Additional Packages</b></dt>
+                                                    <dd>
+                                                        @php $packages = explode(',',$booking->add_package) @endphp
+                                                        @foreach ($packages as $pack)
+                                                            <p>{{ $pack }}</p>
+                                                        @endforeach
+                                                    </dd>
+                                                    @endif
                                                     {{-- <br>
                                                     <dt>Pickup Time of Tour ( hour:minute AM/PM )</dt>
                                                     <dd>

@@ -29,7 +29,13 @@ if (!function_exists('null_safe')) {
         curl_close($ch);
 
         $data = (object)json_decode($result, true);
-        return $data->main['temp'];
+        // dd(property_exists($data, 'main')) ;
+        // dd(is_array($data->main));
+        if(property_exists($data, 'main')){
+            return $data->main['temp'];
+        } else {
+            return '';
+        }
     }
 
     function get_component($slug)

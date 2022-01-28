@@ -22,7 +22,7 @@
           <div class="nav-tabs-custom">
             <ul class="nav nav-tabs">
               <li class="active" id="tour_tab"><a href="#add" data-toggle="tab">Tour</a></li>
-              <li id="tour_option_tab"><a href="#options" data-toggle="tab">Tour Options</a></li>
+              <li id="tour_option_tab"><a href="#options" data-toggle="tab">Additional Tour Packages</a></li>
               {{-- <li><a href="#password" data-toggle="tab">Change User Password</a></li> --}}
             </ul>
             <div class="tab-content">
@@ -201,11 +201,10 @@
                 <form class="form-horizontal" id="tourOptionsForm" method="post">
                 @csrf
                   <input type="hidden" value="" id="option_id"/>
-                  <div class="form-group">
+                  {{-- <div class="form-group">
                     <label for="location" class="col-sm-2 control-label">Location</label>
                     <div class="col-sm-10">
                       <select class="form-control" id="location" name="location">
-                        {{-- <option value="">-- Select Category for this Tour --</option> --}}
                           @foreach ($locations as $location)
                             @if($location->active)
                               <option value="{{ $location->id }}">{{ $location->name }} | {{ $location->city }}</option>
@@ -218,14 +217,14 @@
                             </span>
                         @enderror
                     </div>
-                  </div>
+                  </div> --}}
                   <div class="form-group">
-                    <label for="child_rate" class="col-sm-2 control-label">Price for Child</label>
+                    <label for="title" class="col-sm-2 control-label">Title</label>
 
                     <div class="col-sm-10">
-                      <input type="text" class="form-control" id="child_rate" name="child_rate" placeholder="Price for Child" value="" required>
+                      <input type="text" class="form-control" id="title" name="title" placeholder="Additional Tour Title" value="" required>
 
-                        @error('child_rate')
+                        @error('title')
                             <span class="invalid-feedback text-danger" role="alert">
                                 <strong>{{ $message }}</strong>
                             </span>
@@ -233,12 +232,12 @@
                     </div>
                   </div>
                   <div class="form-group">
-                    <label for="adult_rate" class="col-sm-2 control-label">Price for Adult</label>
+                    <label for="price" class="col-sm-2 control-label">Price</label>
 
                     <div class="col-sm-10">
-                      <input type="text" class="form-control" id="adult_rate" name="adult_rate" placeholder="Price for Adult" value="" required>
+                      <input type="text" class="form-control" id="price" name="price" placeholder="Price for Additional Tour" value="" required>
 
-                        @error('adult_rate')
+                        @error('price')
                             <span class="invalid-feedback text-danger" role="alert">
                                 <strong>{{ $message }}</strong>
                             </span>
@@ -247,7 +246,7 @@
                   </div>
                   <div class="form-group">
                     <div class="col-sm-offset-2 col-sm-10 text-right">
-                      <button type="submit" class="btn btn-danger">Create Tour Option</button>
+                      <button type="submit" class="btn btn-danger">Add Additional Tour</button>
                       <button id="updateOption" class="btn btn-primary disabled">Update Tour Option</button>
                     </div>
                   </div>
@@ -257,31 +256,23 @@
                   <thead>
                       <tr>
                           <th>#</th>
-                          <th>Location</th>
-                          <th>Price for Child</th>
-                          <th>Price for Adult</th>
+                          {{-- <th>Location</th> --}}
+                          <th>Tour Title</th>
+                          <th>Price</th>
                           <th>Actions</th>
                       </tr>
                   </thead>
                   <tbody>
                       <?php $i=1 ?>
                           @foreach($options as $option)
-                            @if(!$option->location->active)
+                            {{-- @if(!$option->location->active)
                                 <tr  style="background-color:#f5cccc !important">
-                            @else
+                            @else --}}
                                 <tr>
-                            @endif
+                            {{-- @endif --}}
                                   <td>{{ $i }}</td>
-                                  <td>
-                                      {{-- <a href="{{ route('admin.user.single',$category->id) }}"> --}}
-                                          {{ $option->location->name }} | {{ $option->location->city }}
-                                          @if(!$option->location->active)
-                                              <span class="badge bg-red">InActive</span>
-                                          @endif
-                                      {{-- </a> --}}
-                                  </td>
-                                  <td>{{ $option->child_rate }}</td>
-                                  <td>{{ $option->adult_rate }}</td>
+                                  <td>{{ $option->title }}</td>
+                                  <td>{{ $option->price }}</td>
                                   <td>
                                       <a class="btn btn-primary getOption" dataId="{{ $option->id }}">Edit</a>
                                       <a class="btn btn-danger" href="{{ route('admin.tour_option_delete', $option->id) }}" onclick="return confirm('Are you sure?')">Delete</a>
@@ -374,9 +365,9 @@
             e.preventDefault();
             var formData = new FormData();
             formData.append('id', $("#option_id").val());
-            formData.append('location', $("#location").val());
-            formData.append('child_rate', $("#child_rate").val());
-            formData.append("adult_rate", $("#adult_rate").val());
+            // formData.append('location', $("#location").val());
+            formData.append('title', $("#title").val());
+            formData.append("price", $("#price").val());
             $.ajax({
                 headers: {
                     'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
@@ -425,8 +416,8 @@
                             // $(".model-form").attr("id","updateEventTime");
                             // $('#updateModelLabel').html('Update Availability for '+moment(data.event.date).format('MM/DD/YYYY'));
                             $('#option_id').val(data.option.id);
-                            $('#child_rate').val(data.option.child_rate);
-                            $('#adult_rate').val(data.option.adult_rate);
+                            $('#title').val(data.option.title);
+                            $('#price').val(data.option.price);
                             $('#updateOption').removeClass('disabled');
                         } else {
                             alertify.error(data.message, '', 5,);

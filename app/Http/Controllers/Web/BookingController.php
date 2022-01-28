@@ -76,11 +76,12 @@ class BookingController extends Controller
         $adult_total = $request->adult_count * $request->adult_rate;
         $child_total = $request->child_count * $request->child_rate;
         $total_amount = $adult_total + $child_total;
-        
-        if ($total_amount != $request->amount) {
-            $request->session()->flash('message.level', 'error');
-            $request->session()->flash('message.content', 'Something went wrong. Please refresh the page.');
-            return Redirect::back();
+        if(!$request->has('add_pack')){
+            if ($total_amount != $request->amount) {
+                $request->session()->flash('message.level', 'error');
+                $request->session()->flash('message.content', 'Something went wrong. Please refresh the page.');
+                return Redirect::back();
+            }
         }
         // $latest_booking = Booking::latest()->first();
         // if($latest_booking){
@@ -101,6 +102,10 @@ class BookingController extends Controller
         $booking['child_count'] = number_format($request->child_count, 2);
         if($request->has('pickup_info')){
             $booking['pickup_info'] = $request->pickup_info;
+        }
+
+        if($request->has('add_pack')){
+            $booking['add_package'] = $request->add_pack;
         }
         // $booking->save();
         $request->session()->forget('booking');

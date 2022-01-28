@@ -63,6 +63,14 @@
                                                         Child):</strong>
                                                     <p>{{ $booking->child_rate }}</p>
                                                 </li>
+                                                @if($booking->add_package)
+                                                <li> <strong class="wc-item-meta-label">Additional Packages:</strong></br>
+                                                    @php $packages = explode(',',$booking->add_package) @endphp
+                                                    @foreach ($packages as $pack)
+                                                        {{ $pack }}</br>
+                                                    @endforeach
+                                                </li>
+                                                @endif
                                             </ul>
                                             <div class="wc-booking-summary">
                                                 <strong class="wc-booking-summary-number">

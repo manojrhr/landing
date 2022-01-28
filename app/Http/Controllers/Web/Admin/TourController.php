@@ -259,9 +259,8 @@ class TourController extends Controller
     public function add_tour_options($id, Request $request)
     {
         $validator = Validator::make($request->all(), [
-            'location' => ['required'],
-            'child_rate' => ['required'],
-            'adult_rate' => ['required']
+            'title' => ['required'],
+            'price' => ['required']
         ]);
 
         if ($validator->fails()) {
@@ -273,7 +272,7 @@ class TourController extends Controller
             // return Redirect::back();
         }
 
-        $tourOption = TourOption::where('tour_id', $id)->where('location_id', $request->location)->first();
+        $tourOption = TourOption::where('tour_id', $id)->where('title', $request->title)->first();
         if($tourOption)
         {
             $option = $tourOption;
@@ -282,13 +281,13 @@ class TourController extends Controller
         }
 
         $option->tour_id = $id;
-        $option->location_id = $request->location;
-        $option->child_rate = $request->child_rate;
-        $option->adult_rate = $request->adult_rate;
+        // $option->location_id = $request->location;
+        $option->title = $request->title;
+        $option->price = number_format($request->price, 2);;
 
-        $tour = Tour::find($id);
-        $tour->active = 1;
-        $tour->save();
+        // $tour = Tour::find($id);
+        // $tour->active = 1;
+        // $tour->save();
         
         if($option->save())
         { 
@@ -329,9 +328,9 @@ class TourController extends Controller
     {
         $validator = Validator::make($request->all(), [
             'id' => ['required'],
-            'location' => ['required'],
-            'child_rate' => ['required'],
-            'adult_rate' => ['required']
+            // 'location' => ['required'],
+            'title' => ['required'],
+            'price' => ['required']
         ],[
             'id.required' => 'Something went wrong. Please reload page.'
         ]);
@@ -347,9 +346,9 @@ class TourController extends Controller
 
         $option = TourOption::find($request->id);
         // $option->tour_id = $request->id;
-        $option->location_id = $request->location;
-        $option->child_rate = $request->child_rate;
-        $option->adult_rate = $request->adult_rate;
+        // $option->location_id = $request->location;
+        $option->title = $request->title;
+        $option->price = $request->price;
 
         if($option->save())
         {
@@ -362,12 +361,12 @@ class TourController extends Controller
 
     public function toggleActive(Tour $tour, Request $request)
     {
-        if(count($tour->option) <= 0)
-        {
-            $request->session()->flash('message.level', 'error');
-            $request->session()->flash('message.content', 'Please add tour option for this tour.');
-            return Redirect::back();
-        }
+        // if(count($tour->option) <= 0)
+        // {
+        //     $request->session()->flash('message.level', 'error');
+        //     $request->session()->flash('message.content', 'Please add tour option for this tour.');
+        //     return Redirect::back();
+        // }
 
         $tour->active= !$tour->active;
         $tour->save();

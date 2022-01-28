@@ -115,6 +115,7 @@
                                         <input type="hidden" name="adult_rate" id="adult_rate" value="{{ $tour->option[0]->adult_rate }}"/>
                                         <input type="hidden" name="child_rate" id="child_rate" value="{{ $tour->option[0]->child_rate }}"/>
                                         <input type="hidden" name="amount" id="amount" value="{{ $tour->option[0]->adult_rate }}"/>
+                                        <input type="hidden" name="add_pack" id="add_pack" value="{{ $tour->option[0]->adult_rate }}"/>
                                         <div class="wc-bookings-booking-form">
                                             <div
                                                 class="wc-bookings-date-picker wc-bookings-date-picker-booking wc_bookings_field_start_date">
@@ -175,6 +176,21 @@
                                             <span class="label-span">Additional Pickup Information</span>
                                             <textarea class="textarea-box" rows="4" maxlength="500"
                                                 id="adtl_pickup_info_input" name="pickup_info"></textarea>
+                                        </div>
+                                        <div class="form-row-block">
+                                            <span class="label-span">Additional Packages</span>
+                                            <div id="packs">
+                                                @foreach ($tour->options as $option)
+                                                    <label style="display: block;">
+                                                        <input type="checkbox" id="additional_package_{{ $option->id }}" 
+                                                        data-detail="{{ $option->title }}-{{ $option->price }}"
+                                                        value="{{ $option->price }}"
+                                                        onchange="price_count();"
+                                                        name="additional_packages[]">
+                                                        {{ $option->title }} -- ${{ $option->price }}
+                                                    </label>
+                                                @endforeach
+                                            </div>
                                         </div>
                                         <div class="tour_total_pricing">
                                             <h4 class="price_title">Total Tour Pricing</h4>
@@ -412,6 +428,8 @@ function get_hotels(zone_id) {
 }
 
 function price_count(){
+
+
     var adults = jQuery('#pickup_num_adults').val();
     var childs = jQuery('#pickup_num_children').val();
     var adult_price = jQuery('#adult_rate').val();
@@ -420,6 +438,25 @@ function price_count(){
     var adult_total = adults * adult_price;
     var child_total = childs * child_price;
     var GTotal = adult_total + child_total;
+    // console.log(GTotal);
+    $('#packs :checkbox:checked').each(function(i,v){
+        GTotal = GTotal + parseFloat($(v).val());
+    });
+
+    var add_pack = $.map($(':checkbox[name=additional_packages\\[\\]]:checked'), function(n, i){
+        return n.dataset.detail;
+    }).join(',');
+    // console.log(add_pack);
+
+    // $("#packs :checkbox").change(function(e){
+    //     if ($(this).is(":checked")){
+    //         GTotal = GTotal + parseFloat($(this).data("price"));
+    //     }
+    //     console.log(parseFloat($(this).data("price")));
+    // });
+    // console.log(GTotal);
+    
+    jQuery('#add_pack').val(add_pack);
     jQuery('#amount').val(GTotal);
     jQuery('#total_price').html(GTotal);
 }
