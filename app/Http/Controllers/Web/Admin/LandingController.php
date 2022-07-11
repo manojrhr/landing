@@ -10,6 +10,7 @@ use Redirect;
 use App\Pages;
 use App\Images;
 use App\Details;
+use Validator;
 
 class LandingController extends Controller
 {
@@ -24,7 +25,8 @@ class LandingController extends Controller
      */
     public function index()
     {
-        return view('admin.landing.index');
+        $pages = Pages::all();
+        return view('admin.landing.index', compact('pages'));
     }
 
     public function create()
@@ -34,6 +36,21 @@ class LandingController extends Controller
 
     public function add(Request $request)
     {
+        $validator = Validator::make($request->all(), [
+            'page_name' => ['required'],
+            'slug' => ['required'],
+            'price' => ['required'],
+            'actual_price' => ['required'],
+        ]);
+
+        if ($validator->fails()) {
+            $errors = implode(',', $validator->messages()->all());
+            $request->session()->flash('message.level', 'error');
+            $request->session()->flash('message.content', $errors);
+            return Redirect::back()->withInput();
+            // return $response_array = ['success' => false , 'message' => $errors, 'error_code' => 101];
+        }
+
         $landing = new Pages();
         $landing->page_name = $request->page_name;
         $landing->price = $request->price;
@@ -76,7 +93,8 @@ class LandingController extends Controller
             }
             $detail->page_id = $landing->id;
             $detail->save();
-            dump($detail->id);
+            // dump($detail->id);
         }
+        return redirect()->route('admin.landing')->with('success', 'Landing Page Created Successfully!');
     }
 }

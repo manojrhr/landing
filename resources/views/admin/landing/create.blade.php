@@ -18,29 +18,29 @@
                     <div class="col-md-6">
                         <div class="form-group">
                             <label for="page_name">Page/Product Name</label>
-                            <input type="text" class="form-control" id="page_name" name="page_name" placeholder="Page Name" required>
+                            <input type="text" class="form-control" id="page_name" name="page_name" placeholder="Page Name" value="{{ old('page_name') }}" required>
                         </div>
                         <div class="form-group">
                             <label for="price">Price</label>
-                            <input type="text" class="form-control" id="price"  name="price" placeholder="Price" required>
+                            <input type="text" class="form-control" id="price"  name="price" placeholder="Price" value="{{ old('price') }}" required>
                         </div>
                         <div class="form-group">
                             <label for="price">Actual Price <small>(<span style="text-decoration: line-through;">19.00</span>)</small></label>
-                            <input type="text" class="form-control" id="actual_price" name="actual_price" placeholder="Actual Price" required>
+                            <input type="text" class="form-control" id="actual_price" name="actual_price" placeholder="Actual Price" value="{{ old('actual_price') }}" required>
                         </div>
                     </div>
                     <div class="col-md-6">
                         <div class="form-group">
                             <label for="slug">Slug</label>
-                            <input type="text" class="form-control" id="slug" name="slug" placeholder="">
+                            <input type="text" class="form-control" id="slug" name="slug" value="{{ old('slug') }}" placeholder="">
                         </div>
                         <div class="form-group">
                             <label for="phone">Phone</label>
-                            <input type="text" class="form-control" id="phone" name="phone" placeholder="+41 985 655 6548">
+                            <input type="text" class="form-control" id="phone" name="phone" value="{{ old('phone') }}" placeholder="+41 985 655 6548">
                         </div>
                         <div class="form-group">
                             <label for="email">Email</label>
-                            <input type="email" class="form-control" id="email" name="email" placeholder="Email">
+                            <input type="email" class="form-control" id="email" name="email" value="{{ old('email') }}" placeholder="Email">
                         </div>
                     </div>
                     <div class="col-md-12">
@@ -48,7 +48,7 @@
                         <table class="table" id="dynamicTable">
                             <tr class="text-center">
                                 <td style="width: 20%"><input type="file" accept="image/*" name="img[0][image]" required></td>
-                                <td style="width: 20%"><input type="text" class="form-control" name="img[0][name]" placeholder="Image Name" required></td>
+                                <td style="width: 20%"><input type="text" class="form-control" name="img[0][name]" value="{{ old('img[0][name]') }}" placeholder="Image Name" required></td>
                                 <td class="text-left"><button type="button" name="add" id="add" class="btn btn-success">Add More</button></td>
                             </tr>
                         </table>
@@ -66,8 +66,8 @@
                         <h3>Add Product Sub Details</h3> --}}
                         <table class="table" id="dynamicDetailTable">
                             <tr class="text-center">
-                                <td style="width: 20%"><input type="text" class="form-control" name="product[0][heading]" placeholder="Heading" required></td>
-                                <td style="width: 30%"><textarea class="form-control" name="product[0][detail]" rows="3" placeholder="Detail"></textarea></td>
+                                <td style="width: 20%"><input type="text" class="form-control" name="product[0][heading]" value="{{ old('product[0][heading]') }}" placeholder="Heading" required></td>
+                                <td style="width: 30%"><textarea class="form-control" name="product[0][detail]" value="{{ old('product[0][detail]') }}" rows="3" placeholder="Detail"></textarea></td>
                                 <td style="width: 20%"><input type="file" accept="image/*" name="product[0][image]"></td>
                                 <td class="text-left"><button type="button" name="add" id="addDetail" class="btn btn-success">Add More</button></td>
                             </tr>
