@@ -3,8 +3,8 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>Kiuki | @yield('title')</title>
-  <link rel="shortcut icon" href="{{ asset('favicon.ico') }}"  type='image/x-icon'>
+  <title>Admin | @yield('title')</title>
+  {{-- <link rel="shortcut icon" href="{{ asset('favicon.ico') }}"  type='image/x-icon'> --}}
   <meta name="csrf-token" content="{{ csrf_token() }}" />
   <!-- Tell the browser to be responsive to screen width -->
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
@@ -39,6 +39,9 @@
 	<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/css/themes/semantic.min.css"/>
 	<!-- Bootstrap theme -->
 	<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/css/themes/bootstrap.min.css"/>
+	<link rel="stylesheet" href="https://cdn.datatables.net/1.10.16/css/dataTables.bootstrap.css"/>
+	<link rel="stylesheet" href="https://cdn.datatables.net/1.12.1/css/jquery.dataTables.min.css"/>
+	<link rel="stylesheet" href="https://cdn.datatables.net/1.10.16/css/dataTables.bootstrap.min.css"/>
 
   <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
   <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -58,13 +61,10 @@
     <!-- Logo -->
     <a href="{{ route('admin.dashboard') }}" class="logo">
       <!-- mini logo for sidebar mini 50x50 pixels -->
-      <span class="logo-mini"><b>K</b></span>
+      <span class="logo-mini"><b>A</b></span>
       <!-- logo for regular state and mobile devices -->
       <span class="logo-lg">
-        <img
-          src="{{ asset('assets/web/images/kiuki-tours-logo-1-ws.svg') }}"
-          alt="Kiuki Tours &amp; Transportation Jamaica"
-          title="Kiuki Tours &amp; Transportation Jamaica" itemprop="logo" />
+        <b>Admin</b> Panel
       </span>
     </a>
     <!-- Header Navbar: style can be found in header.less -->
@@ -96,7 +96,7 @@
                 @endforeach
                 </ul>
               </li>
-              <li class="footer"><a href="{{ route('admin.markAllasRead') }}">Mark all as read</a></li>
+              <li class="footer"><a href="">Mark all as read</a></li>
             </ul>
           </li>
           <!-- User Account: style can be found in dropdown.less -->
@@ -165,11 +165,9 @@
       <ul class="sidebar-menu" data-widget="tree">
         <li class="header">{{ request()->is('admin/category') ? 'active' : ''}}</li>
         <li class="{{ request()->is('admin') ? 'active' : '' }}" {{ request()->is('dashboard') ? 'active' : ''}}><a href="{{ route('admin.dashboard') }}"><i class="fa fa-book"></i><span>Dashboard</span></a></li>
-        <li class="{{ request()->is('admin/category*') ? 'active' : ''}}"><a href="{{ route('admin.category') }}"><i class="fa fa-list"></i><span>Category</span></a></li>
-        <li class="{{ request()->is('admin/subcategory*') ? 'active' : ''}}"><a href="{{ route('admin.subcategory') }}"><i class="fa fa-list"></i><span>Subcategory</span></a></li>
+        <li class="{{ request()->is('admin.landing') ? 'active' : '' }}"><a href="{{ route('admin.landing') }}"><i class="fa fa-list"></i><span>Landing Pages</span></a></li>
+        {{-- <li class=""><a href=""><i class="fa fa-list"></i><span>Subcategory</span></a></li> --}}
         {{-- <li class=""><a href="{{ route('admin.tour') }}"><i class="fa fa-list"></i><span>Tours</span></a></li> --}}
-        <li class="{{ request()->is('admin/tour') ? 'active' : '' }}"><a href="{{ route('admin.tour') }}"><i class="fa fa-plane"></i><span> Tours</span></a></li>
-        <li class="{{ request()->is('admin/location*') ? 'active' : ''}}"><a href="{{ route('admin.location') }}"><i class="fa fa-circle-o"></i> Locations</a></li>
         {{-- <li class="treeview {{ request()->is('admin/location*') ? 'active' : ''}}{{ request()->is('admin/tour*') ? 'active' : ''}}">
           <a href="{{ route('admin.tour') }}">
             <i class="fa fa-plane"></i>
@@ -183,39 +181,6 @@
             <li class="{{ request()->is('admin/location*') ? 'active' : ''}}"><a href="{{ route('admin.location') }}"><i class="fa fa-circle-o"></i> Tour Locations</a></li>
           </ul>
         </li> --}}
-        <li class="treeview {{ request()->is('admin/transfers*') ? 'active' : ''}}">
-          <a href="{{ route('admin.airport.transfer') }}">
-            <i class="fa fa-car "></i>
-            <span>Transfers</span>
-            <span class="pull-right-container">
-              <i class="fa fa-angle-left pull-right"></i>
-            </span>
-          </a>
-          <ul class="treeview-menu">
-            <li class="{{ request()->is('admin/transfers*') ? 'active' : ''}}"><a href="{{ route('admin.airport.transfer') }}"><i class="fa fa-plane"></i> Airport Transfers</a></li>
-            {{-- <li><a href="{{ route('admin.location') }}"><i class="fa fa-circle-o"></i> Tour Locations</a></li> --}}
-            {{-- <li><a href="pages/charts/morris.html"><i class="fa fa-circle-o"></i> Tours Attributes</a></li> --}}
-          </ul>
-        </li>
-        <li class="treeview {{ request()->is('admin/blog*') ? 'active' : ''}}">
-          <a href="{{ route('admin.blog') }}">
-            <i class="fa fa-comment"></i>
-            <span>Blog Posts</span>
-            <span class="pull-right-container">
-              <i class="fa fa-angle-left pull-right"></i>
-            </span>
-          </a>
-          <ul class="treeview-menu" style="display: {{ request()->is('admin/blog*') ? 'block' : ''}}{{ request()->is('admin/blogcategory*') ? 'block' : ''}};">
-            <li class="{{ request()->is('admin/blog*') ? 'active' : ''}}"><a href="{{ route('admin.blog') }}"><i class="fa fa-comment"></i> Blog Posts</a></li>
-            <li class="{{ request()->is('admin/blogcategory*') ? 'active' : ''}}"><a href="{{ route('admin.blogcategory') }}"><i class="fa fa-circle-o"></i> Blog Category</a></li>
-            {{-- <li><a href="pages/charts/morris.html"><i class="fa fa-circle-o"></i> Tours Attributes</a></li> --}}
-          </ul>
-        </li>
-        <li class="{{ request()->is('admin/booking**') ? 'active' : ''}}"><a href="{{ route('admin.bookings') }}"><i class="fa fa-globe "></i><span>Bookings</span></a></li>
-        {{-- <li class=""><a href="{{ route('admin.blog') }}"><i class="fa fa-list"></i><span>Blog Post</span></a></li> --}}
-        <li class="{{ request()->is('admin/users') ? 'active' : '' }}"><a href="{{ route('admin.users') }}"><i class="fa fa-user"></i><span>Customer</span></a></li>
-        <li class="{{ request()->is('admin/page-component') ? 'active' : '' }}"><a href="{{ route('admin.page-component.index') }}"><i class="fa fa-newspaper-o"></i><span>Page Component</span></a></li>
-        <li class="{{ request()->is('admin/maintenance-mode') ? 'active' : '' }}"><a href="{{ route('admin.maintenance') }}"><i class="fa fa-wrench"></i><span>Maintenance Mode</span></a></li>
         <!-- <li><a href=""><i class="fa fa-ship"></i><span>Jet Ski</span></a></li>
         <li><a href=""><i class="fa fa-ship"></i><span>Bookings</span></a></li>
         <li><a href=""><i class="fa fa-list"></i><span>Makes</span></a></li> -->

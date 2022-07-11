@@ -35,9 +35,7 @@
 <body class="hold-transition login-page">
 <div class="login-box">
   <div class="login-logo">
-    <a href="{{ route('home') }}">
-      <img src="{{ asset('assets/web/images/kiuki-tours-logo-1-ws.svg') }}" width="320px">
-    </a>
+    <a href="{{ route('admin.login') }}"><b>Admin</b> Login</a>
   </div>
   <!-- /.login-logo -->
   <div class="login-box-body">

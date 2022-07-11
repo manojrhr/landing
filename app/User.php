@@ -18,8 +18,8 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'first_name', 'last_name', 'email', 'password', 'delivery_guy', 'verified', 'otp', 'c_code',
-         'phone', 'avatar', 'stripe_connect_id', 'completed_stripe_onboarding',
+        'first_name', 'last_name', 'email', 'password', 'email_verified_at', 'otp', 'c_code',
+         'phone',
     ];
 
     // protected $dispatchesEvents = [

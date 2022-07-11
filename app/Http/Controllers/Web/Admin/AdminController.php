@@ -30,11 +30,7 @@ class AdminController extends Controller
      */
     public function index()
     {
-        $user_count = User::count();
-        $category_count = Category::count();
-        $sub_category_count = SubCategory::count();
-        $tour_count = Tour::count();
-        return view('admin.dashboard', compact('user_count','category_count','sub_category_count','tour_count'));
+        return view('admin.dashboard');
     }
 
     public function markAllasRead(Request $request)
