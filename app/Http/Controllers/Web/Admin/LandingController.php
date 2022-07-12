@@ -73,12 +73,12 @@ class LandingController extends Controller
             $image->name = $imgName;
             $image->slug = $slug;
             $image->image = '/product_images/'.$imageName;
-            $image->page_id = $landing->id;
+            $image->pages_id = $landing->id;
             $image->save();
             // dump($image->id);
             // dump($value['image']->getClientOriginalExtension());
         }
-
+        $i = 0;
         foreach ($request->product as $key => $product) {
             // Images::create($value);..
             // dump($value);
@@ -86,13 +86,14 @@ class LandingController extends Controller
             $detail->heading = $product['heading'];
             $detail->detail = isset($product['detail']) ? $product['detail'] : null;
             if(isset($product['image'])){
-                $proImgName = Str::slug($request->page_name).'-'.time();
+                $proImgName = Str::slug($request->page_name).$i.'-'.time();
                 $imageName = $proImgName.'.'.$product['image']->getClientOriginalExtension();
                 $product['image']->move(public_path('/detail_images'), $imageName);
-                $detail->image = '/product_images/'.$imageName;
+                $detail->image = '/detail_images/'.$imageName;
             }
-            $detail->page_id = $landing->id;
+            $detail->pages_id = $landing->id;
             $detail->save();
+            $i++;
             // dump($detail->id);
         }
         return redirect()->route('admin.landing')->with('success', 'Landing Page Created Successfully!');

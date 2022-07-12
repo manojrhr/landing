@@ -18,7 +18,7 @@ class CreateDetailsTable extends Migration
             $table->string('heading');
             $table->string('detail')->nullable();
             $table->string('image')->nullable();
-            $table->bigInteger('page_id');
+            $table->bigInteger('pages_id');
             $table->timestamps();
         });
     }

@@ -47,7 +47,7 @@
                     @foreach ($pages as $page)
                         <tr>
                             <td>{{ $page->page_name }}</td>
-                            <td>{{ $page->slug }}</td>
+                            <td><a href="{{ route('viewPages',$page->slug) }}" target="_blank">{{ $page->slug }}</a></td>
                             <td>{{ $page->price }}</td>
                             <td>{{ $page->actual_price }}</td>
                             <td>{{ $page->phone }}</td>

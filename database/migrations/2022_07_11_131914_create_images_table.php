@@ -18,7 +18,7 @@ class CreateImagesTable extends Migration
             $table->string('name');
             $table->string('slug')->unique();
             $table->string('image');
-            $table->bigInteger('page_id');
+            $table->bigInteger('pages_id');
             $table->timestamps();
         });
     }
